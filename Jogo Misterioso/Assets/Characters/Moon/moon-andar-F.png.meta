@@ -1,22 +1,19 @@
 fileFormatVersion: 2
-guid: eae8aaa7dbb96e94b8eb60c0cb34ac55
+guid: ff32902ab5c61b84dab4754987529898
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4298345892085953899
-    second: sprite_0
+      213: 1034966480550744652
+    second: moon-andar-F_0
   - first:
-      213: 7468057293271108204
-    second: sprite_1
+      213: 825253955752434513
+    second: moon-andar-F_1
   - first:
-      213: 2076983720127968420
-    second: sprite_2
+      213: -6065704003476601093
+    second: moon-andar-F_2
   - first:
-      213: -1842589531783952824
-    second: sprite_3
-  - first:
-      213: -1768044199346558973
-    second: sprite_4
+      213: 4929080912708494070
+    second: moon-andar-F_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -108,11 +105,24 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: sprite_0
+      name: moon-andar-F_0
       rect:
         serializedVersion: 2
         x: 95
@@ -127,20 +137,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 59a057c4f253954c0800000000000000
-      internalID: -4298345892085953899
+      spriteID: c42d9a3d780fc5e00800000000000000
+      internalID: 1034966480550744652
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sprite_1
+      name: moon-andar-F_1
       rect:
         serializedVersion: 2
         x: 415
         y: 0
         width: 146
-        height: 305
+        height: 320
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -149,14 +159,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c6a80bf6a8ed3a760800000000000000
-      internalID: 7468057293271108204
+      spriteID: 15b1c12b914e37b00800000000000000
+      internalID: 825253955752434513
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sprite_2
+      name: moon-andar-F_2
       rect:
         serializedVersion: 2
         x: 735
@@ -171,14 +181,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4a43f7a60bde2dc10800000000000000
-      internalID: 2076983720127968420
+      spriteID: bf6cc18a85a42dba0800000000000000
+      internalID: -6065704003476601093
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sprite_3
+      name: moon-andar-F_3
       rect:
         serializedVersion: 2
         x: 1055
@@ -193,30 +203,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8460a23559ecd66e0800000000000000
-      internalID: -1842589531783952824
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: sprite_4
-      rect:
-        serializedVersion: 2
-        x: 1375
-        y: 0
-        width: 146
-        height: 320
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 30822ce0b25a677e0800000000000000
-      internalID: -1768044199346558973
+      spriteID: 6f2e52789fc976440800000000000000
+      internalID: 4929080912708494070
       vertices: []
       indices: 
       edges: []
