@@ -129,8 +129,8 @@ TextureImporter:
         y: 0
         width: 146
         height: 320
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -151,8 +151,8 @@ TextureImporter:
         y: 0
         width: 146
         height: 320
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -173,8 +173,8 @@ TextureImporter:
         y: 0
         width: 146
         height: 320
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -195,8 +195,8 @@ TextureImporter:
         y: 0
         width: 146
         height: 320
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -213,7 +213,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: c1cb19515d5a904478ccff7542de8700
     internalID: 0
     vertices: []
     indices: 
@@ -222,7 +222,11 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      moon-andar-Cima_0: -3388223980028603684
+      moon-andar-Cima_1: 8922432158912111707
+      moon-andar-Cima_2: 8442154207408157009
+      moon-andar-Cima_3: 6727774220145436265
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
