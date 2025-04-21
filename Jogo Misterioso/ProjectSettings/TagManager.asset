@@ -38,11 +38,17 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Default
-    uniqueID: 0
+  - name: fundo
+    uniqueID: 3456346657
+    locked: 0
+  - name: Player
+    uniqueID: 3411412835
     locked: 0
   - name: colisao
-    uniqueID: 2358995811
+    uniqueID: 2487212485
+    locked: 0
+  - name: Default
+    uniqueID: 0
     locked: 0
   m_RenderingLayers:
   - Default
