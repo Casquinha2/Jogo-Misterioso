@@ -14,7 +14,7 @@ public class InventoryController : MonoBehaviour
     void Start()
     {
 
-        itemDictionary = FindObjectOfType<ItemDictionary>();
+        itemDictionary = FindFirstObjectByType<ItemDictionary>();
 
         //for(int i = 0; i < slotCount; i++)
         //{
@@ -63,7 +63,7 @@ public class InventoryController : MonoBehaviour
 
     public void setInventoryItems(List<InventorySaveData> inventorySaveData)
     {
-        //Tirar o Inventory Panel para evitar réplicas
+        //Tirar o Inventory Panel para evitar rï¿½plicas
 
         foreach(Transform child in inventoryPanel.transform)
         {

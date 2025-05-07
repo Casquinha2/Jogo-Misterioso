@@ -5,7 +5,7 @@ public class PlayerItemCollector : MonoBehaviour
     private InventoryController inventoryController;
     void Start()
     {
-        inventoryController = FindObjectOfType<InventoryController>();
+        inventoryController = FindFirstObjectByType<InventoryController>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
