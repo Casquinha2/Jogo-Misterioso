@@ -6,6 +6,9 @@ public class InventoryController : MonoBehaviour
 {
     private ItemDictionary itemDictionary;
 
+    private List<InventorySaveData> inventorySaveData = new List<InventorySaveData>();
+
+
     public GameObject inventoryPanel;
     public GameObject slotPrefab;
     public int slotCount;
@@ -15,6 +18,8 @@ public class InventoryController : MonoBehaviour
     {
 
         itemDictionary = FindFirstObjectByType<ItemDictionary>();
+
+        setInventoryItems(inventorySaveData);
 
         //for(int i = 0; i < slotCount; i++)
         //{
@@ -63,7 +68,7 @@ public class InventoryController : MonoBehaviour
 
     public void setInventoryItems(List<InventorySaveData> inventorySaveData)
     {
-        //Tirar o Inventory Panel para evitar r�plicas
+        //Tirar o Inventory Panel para evitar replicas
 
         foreach(Transform child in inventoryPanel.transform)
         {
