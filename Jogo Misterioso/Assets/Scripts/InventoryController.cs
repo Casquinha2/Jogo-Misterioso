@@ -11,7 +11,7 @@ public class InventoryController : MonoBehaviour
 
     public GameObject inventoryPanel;
     public GameObject slotPrefab;
-    public int slotCount;
+    private int slotCount = 12;
     public GameObject[] itemPrefabs;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -19,7 +19,7 @@ public class InventoryController : MonoBehaviour
 
         itemDictionary = FindFirstObjectByType<ItemDictionary>();
 
-        setInventoryItems(inventorySaveData);
+        SetInventoryItems(inventorySaveData);
 
         /*
         for(int i = 0; i < slotCount; i++)
@@ -62,62 +62,59 @@ public class InventoryController : MonoBehaviour
             
             if(slot.currentItem != null)
             {
-                Debug.Log($"NAO FOI NULL, EXISTE ITEMS");
                 Item item = slot.currentItem.GetComponent<Item>();
                 invData.Add(new InventorySaveData { itemID = item.ID, slotIndex = slotTransform.GetSiblingIndex() });
             }
-            Debug.Log($"FOI NULL");
         }
         return invData;
     }
 
-    public void setInventoryItems(List<InventorySaveData> inventorySaveData)
+    public void SetInventoryItems(List<InventorySaveData> inventorySaveData)
     {
-        //Tirar o Inventory Panel para evitar replicas
+        StartCoroutine(RebuildInventory(inventorySaveData));
+    }
 
-        foreach(Transform child in inventoryPanel.transform)
+    private IEnumerator RebuildInventory(List<InventorySaveData> dataList)
+    {
+        // 1) Limpa todos os filhos
+        for (int i = inventoryPanel.transform.childCount - 1; i >= 0; i--)
         {
-            Destroy(child.gameObject);
+            Destroy(inventoryPanel.transform.GetChild(i).gameObject);
         }
 
+        // 2) Aguarda um frame para o Unity processar os Destroy()
+        yield return null;
+
+        // 3) (Re)cria os slots
         for (int i = 0; i < slotCount; i++)
         {
             Instantiate(slotPrefab, inventoryPanel.transform);
         }
 
-        Debug.Log($"Total de slots criados: {inventoryPanel.transform.childCount}");
 
-
-        foreach (InventorySaveData data in inventorySaveData)
+        // 4) Preenche com os itens salvos
+        foreach (var data in dataList)
         {
-            Debug.Log($"Tentando restaurar item ID {data.itemID} no slot {data.slotIndex}");
-            
             if (data.slotIndex < slotCount)
             {
-                Slot slot = inventoryPanel.transform.GetChild(data.slotIndex).GetComponent<Slot>();
-                GameObject itemPrefab = itemDictionary.GetItemPrefab(data.itemID);
-                
+                var slot = inventoryPanel.transform.GetChild(data.slotIndex).GetComponent<Slot>();
+                var itemPrefab = itemDictionary.GetItemPrefab(data.itemID);
                 if (itemPrefab != null)
                 {
-                    Debug.Log($"Item {data.itemID} existe, instanciando no slot {data.slotIndex}");
-                    GameObject item = Instantiate(itemPrefab, slot.transform);
+                    var item = Instantiate(itemPrefab, slot.transform);
                     item.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
                     slot.currentItem = item;
-
-                    Debug.Log($"Slot {data.slotIndex} agora contém: {slot.currentItem?.name ?? "Nenhum item"}");
-
-
                 }
                 else
                 {
-                    Debug.LogError($"Item ID {data.itemID} não encontrado no dicionário!");
+                    Debug.LogError($"Item ID {data.itemID} não encontrado!");
                 }
             }
             else
             {
-                Debug.LogError($"Índice do slot ({data.slotIndex}) fora do limite ({slotCount})!");
+                Debug.LogError($"SlotIndex {data.slotIndex} fora de alcance!");
             }
         }
-
     }
+
 }
