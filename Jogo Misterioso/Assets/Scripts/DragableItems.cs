@@ -41,6 +41,7 @@ public class DragableItems : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
                 dropSlot = dropItem.GetComponentInParent<Slot>();
             }
         }
+        
         Slot originalSlot = originalParent.GetComponent<Slot>();
 
         if (dropSlot != null)

@@ -27,10 +27,11 @@ public class SaveController : MonoBehaviour
 
             };
 
-            string jsonData = JsonUtility.ToJson(saveData, true);
-
-            File.WriteAllText(saveLocation, jsonData);
+            
+            File.WriteAllText(saveLocation, JsonUtility.ToJson(saveData));
             Debug.Log($"Game saved successfully to {saveLocation}");
+
+            Debug.Log($"Items guardados inv {saveData.inventorySaveData}");
         }
         catch (System.Exception e)
         {

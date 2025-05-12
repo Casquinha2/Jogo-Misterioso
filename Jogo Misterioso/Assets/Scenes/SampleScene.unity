@@ -154,7 +154,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 8, y: -303.00006}
+  m_AnchoredPosition: {x: 4.8, y: -284.7}
   m_SizeDelta: {x: 117.921, y: 60.317}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &80216820
@@ -3501,7 +3501,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1618931270
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3826,6 +3826,7 @@ MonoBehaviour:
   slotCount: 12
   itemPrefabs:
   - {fileID: 6285964433250669323, guid: adffe0da600c07945a8d6133c8d2aa99, type: 3}
+  - {fileID: 392913818972287996, guid: c0c457a07796bce468d5193f3f4080fc, type: 3}
 --- !u!1 &1891880504
 GameObject:
   m_ObjectHideFlags: 0
@@ -4040,6 +4041,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemPrefabs:
   - {fileID: 1310431425736053669, guid: adffe0da600c07945a8d6133c8d2aa99, type: 3}
+  - {fileID: 4638782528810627922, guid: c0c457a07796bce468d5193f3f4080fc, type: 3}
 --- !u!1 &2027152177
 GameObject:
   m_ObjectHideFlags: 0
@@ -4053,7 +4055,7 @@ GameObject:
   - component: {fileID: 2027152179}
   - component: {fileID: 2027152178}
   m_Layer: 5
-  m_Name: Slots
+  m_Name: Layout Slots
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4175,7 +4177,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 8, y: -303}
+  m_AnchoredPosition: {x: 4.8, y: -284.7}
   m_SizeDelta: {x: 117.921, y: 60.317}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2039633635

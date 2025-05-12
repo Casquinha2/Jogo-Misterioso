@@ -21,16 +21,18 @@ public class InventoryController : MonoBehaviour
 
         setInventoryItems(inventorySaveData);
 
-        //for(int i = 0; i < slotCount; i++)
-        //{
-            //Slot slot = Instantiate(slotPrefab, inventoryPanel.transform).GetComponent<Slot>();
-            //if(i < itemPrefabs.Length)
-            //{
-                //GameObject item = Instantiate(itemPrefabs[i], slot.transform);
-              //  item.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
-            //    slot.currentItem = item;
-          //  }
-        //}
+        /*
+        for(int i = 0; i < slotCount; i++)
+        {
+            Slot slot = Instantiate(slotPrefab, inventoryPanel.transform).GetComponent<Slot>();
+            if(i < itemPrefabs.Length)
+            {
+                GameObject item = Instantiate(itemPrefabs[i], slot.transform);
+                item.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
+                slot.currentItem = item;
+            }
+        }
+        */
     }
 
     public bool AddItem(GameObject itemPrefab)
@@ -57,11 +59,14 @@ public class InventoryController : MonoBehaviour
         foreach(Transform slotTransform in inventoryPanel.transform)
         {
             Slot slot = slotTransform.GetComponent<Slot>();
+            
             if(slot.currentItem != null)
             {
+                Debug.Log($"NAO FOI NULL, EXISTE ITEMS");
                 Item item = slot.currentItem.GetComponent<Item>();
                 invData.Add(new InventorySaveData { itemID = item.ID, slotIndex = slotTransform.GetSiblingIndex() });
             }
+            Debug.Log($"FOI NULL");
         }
         return invData;
     }
@@ -75,24 +80,44 @@ public class InventoryController : MonoBehaviour
             Destroy(child.gameObject);
         }
 
-        for(int i = 0; i < slotCount; i++)
+        for (int i = 0; i < slotCount; i++)
         {
             Instantiate(slotPrefab, inventoryPanel.transform);
         }
 
-        foreach(InventorySaveData data in inventorySaveData)
+        Debug.Log($"Total de slots criados: {inventoryPanel.transform.childCount}");
+
+
+        foreach (InventorySaveData data in inventorySaveData)
         {
-            if(data.slotIndex < slotCount)
+            Debug.Log($"Tentando restaurar item ID {data.itemID} no slot {data.slotIndex}");
+            
+            if (data.slotIndex < slotCount)
             {
                 Slot slot = inventoryPanel.transform.GetChild(data.slotIndex).GetComponent<Slot>();
                 GameObject itemPrefab = itemDictionary.GetItemPrefab(data.itemID);
-                if(itemPrefab != null)
+                
+                if (itemPrefab != null)
                 {
+                    Debug.Log($"Item {data.itemID} existe, instanciando no slot {data.slotIndex}");
                     GameObject item = Instantiate(itemPrefab, slot.transform);
                     item.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
                     slot.currentItem = item;
+
+                    Debug.Log($"Slot {data.slotIndex} agora contém: {slot.currentItem?.name ?? "Nenhum item"}");
+
+
+                }
+                else
+                {
+                    Debug.LogError($"Item ID {data.itemID} não encontrado no dicionário!");
                 }
             }
+            else
+            {
+                Debug.LogError($"Índice do slot ({data.slotIndex}) fora do limite ({slotCount})!");
+            }
         }
+
     }
 }
