@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 648fa42727b63ae458df6a3968223511, type: 3}
-  m_Name: NewObjectInteraction
+  m_Name: CabeceiraDialogue
   m_EditorClassIdentifier: 
+  objectName: Cabeceira
   dialogueLines:
-  - "Procur\xE1ste a chave na mesa de cabeceira*"
-  - "N\xE3o encontr\xE1ste nada para al\xE9m de uns chocolates!"
+  - Encontraste a chave
+  - Ela foi adicionada no teu inventario
   typingSpeed: 0.05
   autoProgressLines: 0101
   autoProgressDelay: 2.5
