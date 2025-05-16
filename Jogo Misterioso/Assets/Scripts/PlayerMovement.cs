@@ -51,24 +51,4 @@ public class PlayerMovement : MonoBehaviour
         animator.SetFloat("InputY", moveInput.y);
         afktimer = 0f;
     }
-
-    /*void OnCollisionEnter2D(Collision2D collision)
-    {   
-        //esperar 0.5 sec
-        
-        if (collision.gameObject.CompareTag("Collider"))
-        {
-            isTouchingWall = true;
-            animator.SetBool("isWalking", false); // Stop animation immediately
-        }
-    }
-
-    void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Collider"))
-        {
-            isTouchingWall = false;
-        }
-    }*/
-
 }
