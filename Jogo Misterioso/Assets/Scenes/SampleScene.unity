@@ -1686,9 +1686,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6611c19a41c742045b7f89ab16e3ceb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tutorialDialogueData: {fileID: 0}
-  tutorialDialoguePanel: {fileID: 0}
-  tutorialDialogueText: {fileID: 0}
+  tutorialDialogueData: {fileID: 11400000, guid: be2195097f1f27a4e886558f2a45cf23, type: 2}
+  tutorialDialoguePanel: {fileID: 731770740}
+  tutorialDialogueText: {fileID: 909641905}
 --- !u!4 &672360635
 Transform:
   m_ObjectHideFlags: 0

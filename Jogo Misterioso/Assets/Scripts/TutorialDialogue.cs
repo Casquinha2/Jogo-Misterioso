@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using TMPro;
-using System;
+using System.Linq;
 
 public class TutorialDialogue : MonoBehaviour
 {
@@ -12,59 +12,73 @@ public class TutorialDialogue : MonoBehaviour
     public TMP_Text tutorialDialogueText;
     
     private int tutorialDialogueIndex;
-    private bool tutorialIsTyping, tutorialIsDialogueActive, wpress, apress, spress, dpress, uppress, downpress, leftpress, rightpress, epress, enterpress;
+    private bool tutorialIsTyping, tutorialIsDialogueActive;
+    
+    // Use a HashSet to ensure keys are tracked uniquely
+    HashSet<int> teste = new HashSet<int>();
 
     void Start()
     {
         tutorialDialoguePanel.SetActive(true);
-        wpress = uppress = false;
-        apress = leftpress = false;
-        spress = downpress = false;
-        dpress = rightpress = false;
-        epress = enterpress = false;
-
+        StartTutorialDialog();
     }
 
-    void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+    void Update() {
+        // Add unique key presses to the HashSet
+        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
         {
-            wpress = uppress = true;
+            teste.Add(1);
         }
-        else if(Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
+        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            apress = leftpress = true;
+            teste.Add(2);
         }
-        else if(Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
+        if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
         {
-            spress = downpress = true;
+            teste.Add(3);
         }
-        else if(Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
+        if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
         {
-            dpress = rightpress = true;
+            teste.Add(4);
         }
-        else if(Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Return))
+        if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Return))
         {
-            epress = enterpress = true;
+            teste.Add(5);
+        }
+        if (Input.GetKeyDown(KeyCode.Tab) || Input.GetKeyDown(KeyCode.Escape))
+        {
+            teste.Add(6);
+        }
+
+        // Only check input after the current line finished typing
+        if (!tutorialIsTyping)
+        {
+            if (tutorialDialogueIndex == 0 && new HashSet<int> { 1, 2, 3, 4 }.IsSubsetOf(teste))
+            {
+                NextLine();
+            }
+            else if (tutorialDialogueIndex == 1 && teste.Contains(5))
+            {
+                NextLine();
+            }
+            else if (tutorialDialogueIndex == 2 && teste.Contains(6))
+            {
+                NextLine();
+            }
         }
     }
-
-
 
     void StartTutorialDialog()
     {
         tutorialIsDialogueActive = true;
         tutorialDialogueIndex = 0;
-
-        //nameText.SetText(objDialogueData.name);
-
-        tutorialDialoguePanel.SetActive(true);
-
+        teste.Clear(); // Clear any previous key inputs
         StartCoroutine(TypeLine());
     }
-
+    
     void NextLine()
     {
+        // If the text is still being typed, complete it immediately.
         if (tutorialIsTyping)
         {
             StopAllCoroutines();
@@ -73,6 +87,8 @@ public class TutorialDialogue : MonoBehaviour
         }
         else if (++tutorialDialogueIndex < tutorialDialogueData.dialogueLines.Length)
         {
+            // Clear the input for the next dialogue line
+            teste.Clear();
             StartCoroutine(TypeLine());
         }
         else
@@ -80,24 +96,17 @@ public class TutorialDialogue : MonoBehaviour
             EndobjDialogue();
         }
     }
-    IEnumerator TypeLine()
+
+    IEnumerator TypeLine() 
     {
         tutorialIsTyping = true;
         tutorialDialogueText.SetText("");
-
-        foreach(char letter in tutorialDialogueData.dialogueLines[tutorialDialogueIndex])
+        foreach (char letter in tutorialDialogueData.dialogueLines[tutorialDialogueIndex])
         {
             tutorialDialogueText.text += letter;
             yield return new WaitForSeconds(tutorialDialogueData.typingSpeed);
         }
-
         tutorialIsTyping = false;
-
-        if(tutorialDialogueData.autoProgressLines.Length > tutorialDialogueIndex && tutorialDialogueData.autoProgressLines[tutorialDialogueIndex])
-        {
-            yield return new WaitForSeconds(tutorialDialogueData.autoProgressDelay);
-            NextLine();
-        }
     }
 
     public void EndobjDialogue()
@@ -106,7 +115,5 @@ public class TutorialDialogue : MonoBehaviour
         tutorialIsDialogueActive = false;
         tutorialDialogueText.SetText("");
         tutorialDialoguePanel.SetActive(false);
-
     }
-
 }
