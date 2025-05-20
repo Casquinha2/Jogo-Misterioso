@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 648fa42727b63ae458df6a3968223511, type: 3}
-  m_Name: SecretariaDialogue
+  m_Name: TvDialogue
   m_EditorClassIdentifier: 
-  objectName: Secretaria
+  objectName: Tv
   dialogueLines:
-  - "Ser\xE1 que guardei a chave do quarto nas gavetas da minha secret\xE1ria?"
+  - "Eu lembro-me de ver Tv... Ser\xE1 que quando fui buscar o comando deixei l\xE1?"
   - "Pelos vistos n\xE3o, n\xE3o encontro aqui nada."
   typingSpeed: 0.05
   autoProgressLines: 0101
