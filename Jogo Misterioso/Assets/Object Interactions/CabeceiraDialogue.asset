@@ -19,4 +19,4 @@ MonoBehaviour:
   - "*Chave adicionada ao teu invent\xE1rio\""
   typingSpeed: 0.05
   autoProgressLines: 010101
-  autoProgressDelay: 2.5
+  autoProgressDelay: 1.5

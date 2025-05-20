@@ -42,15 +42,36 @@ public class PortaInteraction : MonoBehaviour, IInteractable
             Slot slot = slotTransform.GetComponent<Slot>();
             if (slot != null && slot.currentItem != null)
             {
-                Debug.Log($"Slot item name: {slot.currentItem.name}");
-                if (slot.currentItem.name == itemPrefab.name)
+                Item inventoryItem = slot.currentItem.GetComponent<Item>();
+                if (inventoryItem != null)
                 {
-                    hasItem = true;
-                    Debug.Log("Key detected in inventory!");
-                    break;
+                    // Get the desired item ID from the prefab
+                    int desiredItemID = itemPrefab.GetComponent<Item>().ID;
+                    
+                    // Compare the inventory item's ID with the desired item's ID
+                    if (inventoryItem.ID == desiredItemID)
+                    {
+                        Debug.Log("Desired item found in inventory! Removing now...");
+                        hasItem = true;
+
+                        // Remove the item visually by setting the parent to null
+                        slot.currentItem.transform.SetParent(null); 
+
+                        // Destroy the GameObject (removes it from the UI)
+                        Destroy(slot.currentItem);
+
+                        // Clear the slot reference so the inventory knows it's empty
+                        slot.currentItem = null;
+
+                        //ir para proximo mapa
+
+                        break;
+                    }
+
                 }
             }
         }
+
 
 
         // Select the proper dialogue array based on the inventory check.
