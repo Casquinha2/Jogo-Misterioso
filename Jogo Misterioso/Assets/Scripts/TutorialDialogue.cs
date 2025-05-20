@@ -12,10 +12,10 @@ public class TutorialDialogue : MonoBehaviour
     public TMP_Text tutorialDialogueText;
     
     private int tutorialDialogueIndex;
-    private bool tutorialIsTyping, tutorialIsDialogueActive;
+    private bool tutorialIsTyping;
     
     // Use a HashSet to ensure keys are tracked uniquely
-    HashSet<int> teste = new HashSet<int>();
+    private HashSet<int> inputs = new HashSet<int>();
 
     void Start()
     {
@@ -27,41 +27,41 @@ public class TutorialDialogue : MonoBehaviour
         // Add unique key presses to the HashSet
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
         {
-            teste.Add(1);
+            inputs.Add(1);
         }
         if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            teste.Add(2);
+            inputs.Add(2);
         }
         if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
         {
-            teste.Add(3);
+            inputs.Add(3);
         }
         if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
         {
-            teste.Add(4);
+            inputs.Add(4);
         }
         if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Return))
         {
-            teste.Add(5);
+            inputs.Add(5);
         }
         if (Input.GetKeyDown(KeyCode.Tab) || Input.GetKeyDown(KeyCode.Escape))
         {
-            teste.Add(6);
+            inputs.Add(6);
         }
 
         // Only check input after the current line finished typing
         if (!tutorialIsTyping)
         {
-            if (tutorialDialogueIndex == 0 && new HashSet<int> { 1, 2, 3, 4 }.IsSubsetOf(teste))
+            if (tutorialDialogueIndex == 0 && new HashSet<int> { 1, 2, 3, 4 }.IsSubsetOf(inputs))
             {
                 NextLine();
             }
-            else if (tutorialDialogueIndex == 1 && teste.Contains(5))
+            else if (tutorialDialogueIndex == 1 && inputs.Contains(5))
             {
                 NextLine();
             }
-            else if (tutorialDialogueIndex == 2 && teste.Contains(6))
+            else if (tutorialDialogueIndex == 2 && inputs.Contains(6))
             {
                 NextLine();
             }
@@ -70,9 +70,8 @@ public class TutorialDialogue : MonoBehaviour
 
     void StartTutorialDialog()
     {
-        tutorialIsDialogueActive = true;
         tutorialDialogueIndex = 0;
-        teste.Clear(); // Clear any previous key inputs
+        inputs.Clear(); // Clear any previous key inputs
         StartCoroutine(TypeLine());
     }
     
@@ -88,7 +87,7 @@ public class TutorialDialogue : MonoBehaviour
         else if (++tutorialDialogueIndex < tutorialDialogueData.dialogueLines.Length)
         {
             // Clear the input for the next dialogue line
-            teste.Clear();
+            inputs.Clear();
             StartCoroutine(TypeLine());
         }
         else
@@ -97,7 +96,7 @@ public class TutorialDialogue : MonoBehaviour
         }
     }
 
-    IEnumerator TypeLine() 
+    IEnumerator TypeLine()
     {
         tutorialIsTyping = true;
         tutorialDialogueText.SetText("");
@@ -107,12 +106,17 @@ public class TutorialDialogue : MonoBehaviour
             yield return new WaitForSeconds(tutorialDialogueData.typingSpeed);
         }
         tutorialIsTyping = false;
+        
+        if (tutorialDialogueData.autoProgressLines.Length > tutorialDialogueIndex && tutorialDialogueData.autoProgressLines[tutorialDialogueIndex])
+        {
+            yield return new WaitForSeconds(tutorialDialogueData.autoProgressDelay);
+            NextLine();
+        }
     }
 
     public void EndobjDialogue()
     {
         StopAllCoroutines();
-        tutorialIsDialogueActive = false;
         tutorialDialogueText.SetText("");
         tutorialDialoguePanel.SetActive(false);
     }

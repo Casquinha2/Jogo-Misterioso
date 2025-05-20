@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: Cabeceira
   dialogueLines:
-  - Encontraste a chave
-  - Ela foi adicionada no teu inventario
+  - "Ser\xE1 que afinal deixei a chave do quarto na minha mesa de cabeceira?"
+  - "Por ascaso ela est\xE1 aqui, deixa guard\xE1-la"
+  - "*Chave adicionada ao teu invent\xE1rio\""
   typingSpeed: 0.05
-  autoProgressLines: 0101
+  autoProgressLines: 010101
   autoProgressDelay: 2.5
