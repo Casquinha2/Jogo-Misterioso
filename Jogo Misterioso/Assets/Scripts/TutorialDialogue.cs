@@ -123,7 +123,7 @@ public class TutorialDialogue : MonoBehaviour
     public void EndobjDialogue()
     {
         StopAllCoroutines();
-        tutorialDialogueText.SetText("");
+        tutorialDialogueText.SetText("TUTORIAL ACABADO");
         tutorialDialoguePanel.SetActive(false);
     }
 }

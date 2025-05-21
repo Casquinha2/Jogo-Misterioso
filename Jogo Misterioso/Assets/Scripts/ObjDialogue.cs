@@ -44,7 +44,6 @@ public class ObjDialogue : MonoBehaviour, IInteractable
                         // Compare the inventory item's ID with the desired item's ID
                         if (inventoryItem.ID == desiredItemID)
                         {
-                            Debug.Log("Desired item found in inventory! Removing now...");
                             hasItem = true;
                             break;
                         }

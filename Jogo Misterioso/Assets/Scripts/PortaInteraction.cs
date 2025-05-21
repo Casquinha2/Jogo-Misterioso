@@ -5,7 +5,7 @@ using TMPro;
 public class PortaInteraction : MonoBehaviour, IInteractable
 {
     public ObjectInteractionDialogue objDialogueData;
-    public int indexDialogue; // Determines where to slice the dialogueLines array.
+    public int indexDialogueCerto; // Determines where to slice the dialogueLines array.
     public GameObject objDialoguePanel;
     public TMP_Text objDialogueText; // Single TMP_Text for displaying dialogue.
 
@@ -24,8 +24,8 @@ public class PortaInteraction : MonoBehaviour, IInteractable
         inventoryController = FindFirstObjectByType<InventoryController>();
         
         // Slice dialogueLines into right and wrong sections.
-        rightDialogue = objDialogueData.dialogueLines[..indexDialogue];   // Elements from 0 to index-1.
-        wrongDialogue = objDialogueData.dialogueLines[indexDialogue..];    // Elements from index to end.
+        rightDialogue = objDialogueData.dialogueLines[..indexDialogueCerto];   // Elements from 0 to index-1.
+        wrongDialogue = objDialogueData.dialogueLines[indexDialogueCerto..];    // Elements from index to end.
     }
 
     public bool CanInteract()
@@ -51,7 +51,6 @@ public class PortaInteraction : MonoBehaviour, IInteractable
                     // Compare the inventory item's ID with the desired item's ID
                     if (inventoryItem.ID == desiredItemID)
                     {
-                        Debug.Log("Desired item found in inventory! Removing now...");
                         hasItem = true;
 
                         // Remove the item visually by setting the parent to null
@@ -63,7 +62,10 @@ public class PortaInteraction : MonoBehaviour, IInteractable
                         // Clear the slot reference so the inventory knows it's empty
                         slot.currentItem = null;
 
+
                         //ir para proximo mapa
+
+
 
                         break;
                     }
