@@ -12,7 +12,7 @@ public class TutorialDialogue : MonoBehaviour
     public TMP_Text tutorialDialogueText;
     
     private int tutorialDialogueIndex;
-    private bool tutorialIsTyping;
+    private bool tutorialIsTyping, wait;
     
     // Use a HashSet to ensure keys are tracked uniquely
     private HashSet<int> inputs = new HashSet<int>();
@@ -21,6 +21,7 @@ public class TutorialDialogue : MonoBehaviour
     {
         tutorialDialoguePanel.SetActive(true);
         StartTutorialDialog();
+        wait = false;
     }
 
     void Update() {
@@ -63,6 +64,7 @@ public class TutorialDialogue : MonoBehaviour
             }
             else if (tutorialDialogueIndex == 2 && inputs.Contains(6))
             {
+                wait = true;
                 NextLine();
             }
         }
@@ -98,6 +100,10 @@ public class TutorialDialogue : MonoBehaviour
 
     IEnumerator TypeLine()
     {
+        if (wait)
+        {
+            yield return new WaitForSeconds(0.5f);
+        }
         tutorialIsTyping = true;
         tutorialDialogueText.SetText("");
         foreach (char letter in tutorialDialogueData.dialogueLines[tutorialDialogueIndex])

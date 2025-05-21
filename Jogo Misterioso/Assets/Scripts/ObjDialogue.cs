@@ -9,14 +9,16 @@ public class ObjDialogue : MonoBehaviour, IInteractable
     public TMP_Text objDialogueText;
     
     private int objDialogueIndex;
-    private bool objIsTyping, objIsDialogueActive;
+    private bool objIsTyping, objIsDialogueActive, hasItem;
 
     private InventoryController inventoryController;
     public GameObject itemPrefab;
+    public GameObject inventoryPanel;
 
     void Start()
     {
         inventoryController = FindFirstObjectByType<InventoryController>();
+        hasItem = false;
     }
     public bool CanInteract()
     {
@@ -26,8 +28,35 @@ public class ObjDialogue : MonoBehaviour, IInteractable
     public void Interact()
     {
         if (itemPrefab)
-        {
-            inventoryController.AddItem(itemPrefab);
+        {   
+            
+            foreach (Transform slotTransform in inventoryPanel.transform)
+            {
+                Slot slot = slotTransform.GetComponent<Slot>();
+                if (slot != null && slot.currentItem != null)
+                {
+                    Item inventoryItem = slot.currentItem.GetComponent<Item>();
+                    if (inventoryItem != null)
+                    {
+                        // Get the desired item ID from the prefab
+                        int desiredItemID = itemPrefab.GetComponent<Item>().ID;
+
+                        // Compare the inventory item's ID with the desired item's ID
+                        if (inventoryItem.ID == desiredItemID)
+                        {
+                            Debug.Log("Desired item found in inventory! Removing now...");
+                            hasItem = true;
+                            break;
+                        }
+
+                    }
+                }
+            }
+
+            if (!hasItem)
+            {
+                inventoryController.AddItem(itemPrefab);
+            }
         }
         
 

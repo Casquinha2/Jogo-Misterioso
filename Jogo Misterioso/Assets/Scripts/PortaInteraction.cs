@@ -5,7 +5,7 @@ using TMPro;
 public class PortaInteraction : MonoBehaviour, IInteractable
 {
     public ObjectInteractionDialogue objDialogueData;
-    public int index; // Determines where to slice the dialogueLines array.
+    public int indexDialogue; // Determines where to slice the dialogueLines array.
     public GameObject objDialoguePanel;
     public TMP_Text objDialogueText; // Single TMP_Text for displaying dialogue.
 
@@ -24,8 +24,8 @@ public class PortaInteraction : MonoBehaviour, IInteractable
         inventoryController = FindFirstObjectByType<InventoryController>();
         
         // Slice dialogueLines into right and wrong sections.
-        rightDialogue = objDialogueData.dialogueLines[..index];   // Elements from 0 to index-1.
-        wrongDialogue = objDialogueData.dialogueLines[index..];    // Elements from index to end.
+        rightDialogue = objDialogueData.dialogueLines[..indexDialogue];   // Elements from 0 to index-1.
+        wrongDialogue = objDialogueData.dialogueLines[indexDialogue..];    // Elements from index to end.
     }
 
     public bool CanInteract()

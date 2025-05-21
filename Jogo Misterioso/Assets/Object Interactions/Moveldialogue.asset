@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 648fa42727b63ae458df6a3968223511, type: 3}
   m_Name: Moveldialogue
   m_EditorClassIdentifier: 
-  objectName: "Mov\xE9l Roupa"
+  objectName: "M\xF3vel Roupa"
   dialogueLines:
   - "Eu lembro-me de ter trocado de roupa. Ser\xE1 que a chave ficou no bolso das
     minhas outras cal\xE7as?"
   - "Pelos vistos n\xE3o, n\xE3o encontro aqui nada."
   typingSpeed: 0.05
   autoProgressLines: 0101
-  autoProgressDelay: 1.5
+  autoProgressDelay: 1

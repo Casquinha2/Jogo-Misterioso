@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: Porta
   dialogueLines:
-  - "Chave est\xE1 no invent\xE1rio"
-  - A porta abriu-se
-  - "A chave n\xE3o est\xE1 no invent\xE1rio"
+  - Deixa pegar na chave e destrancar a porta!
+  - '*A porta abriu-se.*'
+  - "Onde \xE9 que est\xE1 a chave? N\xE3o me lembro onde a deixei..."
   typingSpeed: 0.05
   autoProgressLines: 010101
-  autoProgressDelay: 1.5
+  autoProgressDelay: 1

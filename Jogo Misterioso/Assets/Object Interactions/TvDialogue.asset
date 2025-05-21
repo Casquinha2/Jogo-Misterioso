@@ -18,4 +18,4 @@ MonoBehaviour:
   - "Pelos vistos n\xE3o, n\xE3o encontro aqui nada."
   typingSpeed: 0.05
   autoProgressLines: 0101
-  autoProgressDelay: 1.5
+  autoProgressDelay: 1

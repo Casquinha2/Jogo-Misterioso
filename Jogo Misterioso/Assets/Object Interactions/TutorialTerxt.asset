@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: Tutorial
   dialogueLines:
-  - precione WASD ou as setas para andar
-  - precione E ou ENTER para interagir
-  - precione TAB ou ESCAPE para abrir o menu
-  - Procure a chave do quarto para sair
+  - Precione WASD ou as setas para andar.
+  - Precione E ou ENTER para interagir.
+  - Precione TAB ou ESCAPE para abrir o menu.
+  - Procure a chave do quarto para sair.
   typingSpeed: 0.05
   autoProgressLines: 00000001
-  autoProgressDelay: 2.5
+  autoProgressDelay: 2
