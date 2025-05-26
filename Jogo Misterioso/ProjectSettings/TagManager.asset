@@ -43,11 +43,11 @@ TagManager:
   - name: fundo
     uniqueID: 3456346657
     locked: 0
-  - name: Player
-    uniqueID: 3411412835
-    locked: 0
   - name: colisao
     uniqueID: 2487212485
+    locked: 0
+  - name: Player
+    uniqueID: 3411412835
     locked: 0
   - name: Default
     uniqueID: 0

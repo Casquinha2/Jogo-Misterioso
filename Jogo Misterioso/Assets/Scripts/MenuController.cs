@@ -14,7 +14,11 @@ public class MenuController : MonoBehaviour
     void Start()
     {
         menuCanvas.SetActive(false);
-        tutorialPanel.SetActive(true);
+        if (tutorialPanel)
+        {
+            tutorialPanel.SetActive(true);            
+        }
+
 
     }
 
@@ -25,7 +29,7 @@ public class MenuController : MonoBehaviour
         {
             menuCanvas.SetActive(!menuCanvas.activeSelf);
 
-            if (tutorialText.text != "TUTORIAL ACABADO")
+            if (tutorialPanel && tutorialText.text != "TUTORIAL ACABADO")
             {
                 tutorialPanel.SetActive(!tutorialPanel.activeSelf);
             }
