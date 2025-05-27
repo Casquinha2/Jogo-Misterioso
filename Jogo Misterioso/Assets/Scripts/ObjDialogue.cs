@@ -30,6 +30,8 @@ public class ObjDialogue : MonoBehaviour, IInteractable, ICancelableDialogue
     // This method is called when any dialogue is about to start. 
     public void CancelDialogue()
     {
+        Debug.Log("Cancelling dialogue on: " + gameObject.name);
+
         EndDialogue();
     }
     public bool CanInteract()

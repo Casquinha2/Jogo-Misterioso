@@ -119,6 +119,54 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &20553663
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 20553664}
+  - component: {fileID: 20553665}
+  m_Layer: 5
+  m_Name: DialogueManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &20553664
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 20553663}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1607753220}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &20553665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 20553663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6416d0a397f0c4d44822747f15f613ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &80216818
 GameObject:
   m_ObjectHideFlags: 0
@@ -4343,11 +4391,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objDialogueData: {fileID: 11400000, guid: 7d7224196675e114a929a28bbc1a6ce8, type: 2}
-  indexDialogueCerto: 0
+  indexDialogueCerto: 2
   objDialoguePanel: {fileID: 2100111046}
   objDialogueText: {fileID: 252234689}
   itemPrefab: {fileID: 346904799447055933, guid: 42e35580ae03e6d44834f01f9f9273d4, type: 3}
   inventoryPanel: {fileID: 2027152177}
+  tutorialPanel: {fileID: 0}
 --- !u!1 &1607753216
 GameObject:
   m_ObjectHideFlags: 0
@@ -4446,6 +4495,7 @@ RectTransform:
   - {fileID: 1618931270}
   - {fileID: 2100111047}
   - {fileID: 731770741}
+  - {fileID: 20553664}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -4808,7 +4858,7 @@ MonoBehaviour:
   inventoryPanel: {fileID: 2027152177}
   slotPrefab: {fileID: 4409535044787778341, guid: aca7ccc36fc66da478c8ea89b9373e30, type: 3}
   itemPrefabs:
-  - {fileID: 392913818972287996, guid: c0c457a07796bce468d5193f3f4080fc, type: 3}
+  - {fileID: 346904799447055933, guid: 42e35580ae03e6d44834f01f9f9273d4, type: 3}
 --- !u!1 &1891880504
 GameObject:
   m_ObjectHideFlags: 0

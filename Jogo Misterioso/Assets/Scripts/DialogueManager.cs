@@ -17,16 +17,22 @@ public class DialogueManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+            Debug.Log("DialogueManager Instance initialized: " + Instance);
         }
         else
         {
+            Debug.LogWarning("Duplicate DialogueManager found and destroyed!");
             Destroy(gameObject);
         }
     }
 
+
     // Call this method before starting any new dialogue.
     public void RequestNewDialogue(ICancelableDialogue newDialogue)
     {
+
+        Debug.Log("New dialogue requested: " + newDialogue);
+
         // First, cancel any active dialogue.
         if (ActiveDialogue != null && ActiveDialogue != newDialogue)
         {

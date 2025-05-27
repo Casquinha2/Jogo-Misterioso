@@ -34,8 +34,11 @@ public class PortaInteraction : MonoBehaviour, IInteractable, ICancelableDialogu
     }
     public void CancelDialogue()
     {
+        Debug.Log("Cancelling dialogue on: " + gameObject.name);
+
         EndDialogue();
     }
+
     public bool CanInteract()
     {
         return !objIsDialogueActive;
@@ -72,8 +75,12 @@ public class PortaInteraction : MonoBehaviour, IInteractable, ICancelableDialogu
                 }
             }
         }
+
         // Before starting the door dialogue, cancel other active dialogues. 
-        DialogueManager.Instance?.RequestNewDialogue(this);
+        if (DialogueManager.Instance != null)
+            DialogueManager.Instance.RequestNewDialogue(this);
+
+
 
         selectedDialogueLines = hasItem ? rightDialogue : wrongDialogue;
 
@@ -129,8 +136,10 @@ public class PortaInteraction : MonoBehaviour, IInteractable, ICancelableDialogu
     public void EndDialogue()
     {
         StopAllCoroutines();
-        objIsDialogueActive = false; objDialogueText.SetText("");
+        objIsDialogueActive = false;
+        objDialogueText.SetText("");
         objDialoguePanel.SetActive(false);
+
         if (selectedDialogueLines == rightDialogue)
         {
             Destroy(tutorialPanel);
