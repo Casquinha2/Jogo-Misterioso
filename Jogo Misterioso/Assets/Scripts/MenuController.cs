@@ -16,8 +16,10 @@ public class MenuController : MonoBehaviour
         menuCanvas.SetActive(false);
         if (tutorialPanel)
         {
-            tutorialPanel.SetActive(true);            
+            tutorialPanel.SetActive(true);
         }
+        
+        DontDestroyOnLoad(gameObject);
 
 
     }

@@ -17,6 +17,8 @@ public class InventoryController : MonoBehaviour
     void Start()
     {
 
+        DontDestroyOnLoad(gameObject);
+
         itemDictionary = FindFirstObjectByType<ItemDictionary>();
 
         SetInventoryItems(inventorySaveData);
