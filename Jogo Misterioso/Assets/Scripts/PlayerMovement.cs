@@ -18,8 +18,6 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>(); // Get the Rigidbody2D component attached to the player
         animator = GetComponent<Animator>();
 
-        DontDestroyOnLoad(gameObject);
-
     }
 
     // Update is called once per frame
