@@ -4343,11 +4343,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objDialogueData: {fileID: 11400000, guid: 7d7224196675e114a929a28bbc1a6ce8, type: 2}
-  indexDialogueCerto: 0
+  indexDialogueCerto: 2
   objDialoguePanel: {fileID: 2100111046}
   objDialogueText: {fileID: 252234689}
   itemPrefab: {fileID: 346904799447055933, guid: 42e35580ae03e6d44834f01f9f9273d4, type: 3}
   inventoryPanel: {fileID: 2027152177}
+  tutorialPanel: {fileID: 731770740}
 --- !u!1 &1607753216
 GameObject:
   m_ObjectHideFlags: 0
@@ -4468,6 +4469,7 @@ MonoBehaviour:
   menuCanvas: {fileID: 1618931269}
   tutorialPanel: {fileID: 731770740}
   tutorialText: {fileID: 909641905}
+  objDialoguePanel: {fileID: 0}
 --- !u!1 &1618931269
 GameObject:
   m_ObjectHideFlags: 0
