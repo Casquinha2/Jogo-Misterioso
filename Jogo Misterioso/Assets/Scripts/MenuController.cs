@@ -18,7 +18,7 @@ public class MenuController : MonoBehaviour
         {
             tutorialPanel.SetActive(true);
         }
-        
+
         DontDestroyOnLoad(gameObject);
 
 

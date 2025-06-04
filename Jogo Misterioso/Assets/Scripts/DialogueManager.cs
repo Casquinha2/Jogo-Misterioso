@@ -16,7 +16,6 @@ public class DialogueManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
             Debug.Log("DialogueManager Instance initialized: " + Instance);
         }
         else

@@ -284,6 +284,7 @@ GameObject:
   - component: {fileID: 120488323}
   - component: {fileID: 120488322}
   - component: {fileID: 120488325}
+  - component: {fileID: 120488326}
   m_Layer: 0
   m_Name: CmCam
   m_TagString: Untagged
@@ -400,6 +401,20 @@ MonoBehaviour:
     MaxWindowSize: 0
     Padding: 0
   m_LegacyMaxWindowSize: -2
+--- !u!114 &120488326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 120488321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9761985c243b96344bc54fe83b495cce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainCam: {fileID: 519420028}
+  lightCamera: {fileID: 619394800}
 --- !u!1 &211180329
 GameObject:
   m_ObjectHideFlags: 0
@@ -4396,7 +4411,7 @@ MonoBehaviour:
   objDialogueText: {fileID: 252234689}
   itemPrefab: {fileID: 346904799447055933, guid: 42e35580ae03e6d44834f01f9f9273d4, type: 3}
   inventoryPanel: {fileID: 2027152177}
-  tutorialPanel: {fileID: 0}
+  tutorialPanel: {fileID: 731770740}
 --- !u!1 &1607753216
 GameObject:
   m_ObjectHideFlags: 0

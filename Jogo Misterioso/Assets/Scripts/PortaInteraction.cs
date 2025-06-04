@@ -62,7 +62,6 @@ public class PortaInteraction : MonoBehaviour, IInteractable, ICancelableDialogu
                         slot.currentItem.transform.SetParent(null);
                         Destroy(slot.currentItem);
                         slot.currentItem = null;
-                        Destroy(tutorialPanel);
                         if (objDialoguePanel.activeSelf)
                         {
                             StopAllCoroutines();
