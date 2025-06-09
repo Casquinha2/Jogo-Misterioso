@@ -10,14 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 648fa42727b63ae458df6a3968223511, type: 3}
-  m_Name: PortaDialogue
+  m_Name: Pc 1
   m_EditorClassIdentifier: 
-  objectName: Porta
+  objectName: Pc 1
   dialogueLines:
-  - Deixa pegar na chave e destrancar a porta!
-  - '*A porta abriu-se.*'
-  - "Onde \xE9 que est\xE1 a chave? N\xE3o me lembro onde a deixei..."
-  - teste
+  - "(\xC9 um computador fornecida pela escola para os alunos)"
   typingSpeed: 0.05
-  autoProgressLines: 01010101
+  autoProgressLines: 
   autoProgressDelay: 1
