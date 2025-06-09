@@ -4496,6 +4496,7 @@ MonoBehaviour:
   itemPrefab: {fileID: 346904799447055933, guid: 42e35580ae03e6d44834f01f9f9273d4, type: 3}
   inventoryPanel: {fileID: 2027152177}
   tutorialPanel: {fileID: 731770740}
+  mapBoundry: {fileID: 134460037}
 --- !u!1 &1607753216
 GameObject:
   m_ObjectHideFlags: 0
