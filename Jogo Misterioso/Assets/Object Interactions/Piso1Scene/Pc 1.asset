@@ -17,5 +17,5 @@ MonoBehaviour:
   - "*\xC9 um computador fornecida pela escola para os alunos"
   - "*Est\xE1 desligado"
   typingSpeed: 0.05
-  autoProgressLines: 
+  autoProgressLines: 0101
   autoProgressDelay: 1

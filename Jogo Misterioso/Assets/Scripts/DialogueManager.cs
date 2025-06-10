@@ -11,6 +11,8 @@ public class DialogueManager : MonoBehaviour
     // Static reference to the currently active dialogue (could be set to a common interface)
     public static ICancelableDialogue ActiveDialogue { get; private set; }
 
+
+
     void Awake()
     {
         if (Instance == null)
@@ -35,7 +37,12 @@ public class DialogueManager : MonoBehaviour
         // First, cancel any active dialogue.
         if (ActiveDialogue != null && ActiveDialogue != newDialogue)
         {
-            ActiveDialogue.CancelDialogue();
+            MonoBehaviour mb = ActiveDialogue as MonoBehaviour;
+            if (mb != null && mb.gameObject != null)
+            {
+                ActiveDialogue.CancelDialogue();
+            }
+            ActiveDialogue = newDialogue;
         }
         ActiveDialogue = newDialogue;
         OnNewDialogue?.Invoke();

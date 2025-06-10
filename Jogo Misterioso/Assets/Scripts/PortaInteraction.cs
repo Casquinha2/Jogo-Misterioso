@@ -39,6 +39,7 @@ public class PortaInteraction : MonoBehaviour, IInteractable, ICancelableDialogu
     public void CancelDialogue()
     {
         Debug.Log("Cancelling dialogue on: " + gameObject.name);
+        if (gameObject == null || !this) return;
 
         EndDialogue();
     }
