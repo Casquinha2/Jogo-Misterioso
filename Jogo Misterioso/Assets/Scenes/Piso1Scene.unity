@@ -3186,9 +3186,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90fe3f449296e214eaba868f611206ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objDialogueData: {fileID: 11400000, guid: 90db55de4f223864ba63ef33c08fbea7, type: 2}
-  objDialoguePanel: {fileID: 0}
-  objDialogueText: {fileID: 0}
+  objDialogueData: {fileID: 11400000, guid: 39616116dc161cf4e902cf1e73a6e964, type: 2}
+  objDialoguePanel: {fileID: 2605387684826845047, guid: 200ac2e4ae0e78d48b18d60930be0135, type: 3}
+  objDialogueText: {fileID: 5052439440615538020, guid: 83a4381b050457c4eb5d901e5e3d016d, type: 3}
   itemPrefab: {fileID: 0}
   inventoryPanel: {fileID: 0}
 --- !u!212 &1746179523
