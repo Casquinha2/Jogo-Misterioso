@@ -1,50 +1,36 @@
+// DialogueManager.cs
 using UnityEngine;
 using System;
 
 public class DialogueManager : MonoBehaviour
 {
     public static DialogueManager Instance { get; private set; }
-    
-    // Event used when a dialogue is about to start.
+
+    // Disparado antes de qualquer diálogo novo (para cancelar os em curso)
     public event Action OnNewDialogue;
-
-    // Static reference to the currently active dialogue (could be set to a common interface)
-    public static ICancelableDialogue ActiveDialogue { get; private set; }
-
-
+    // Disparado quando o jogo é pausado (menu aberto)
+    public event Action OnPauseDialogue;
+    // Disparado quando o jogo é retomado (menu fechado)
+    public event Action OnResumeDialogue;
 
     void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-            Debug.Log("DialogueManager Instance initialized: " + Instance);
-        }
-        else
-        {
-            Debug.LogWarning("Duplicate DialogueManager found and destroyed!");
-            Destroy(gameObject);
-        }
+        // garante que o objeto que vai ser preservado é o root
+        var go = this.gameObject.transform.root.gameObject;
+        DontDestroyOnLoad(go);
+        Instance = this;
     }
 
 
-    // Call this method before starting any new dialogue.
-    public void RequestNewDialogue(ICancelableDialogue newDialogue)
+    // Chama-se sempre que um ICancelableDialogue quer começar
+    public void RequestNewDialogue(ICancelableDialogue requester)
     {
-
-        Debug.Log("New dialogue requested: " + newDialogue);
-
-        // First, cancel any active dialogue.
-        if (ActiveDialogue != null && ActiveDialogue != newDialogue)
-        {
-            MonoBehaviour mb = ActiveDialogue as MonoBehaviour;
-            if (mb != null && mb.gameObject != null)
-            {
-                ActiveDialogue.CancelDialogue();
-            }
-            ActiveDialogue = newDialogue;
-        }
-        ActiveDialogue = newDialogue;
+        // cancela todos os diálogos em curso
         OnNewDialogue?.Invoke();
+        // e depois quem pediu arranca o seu diálogo
+        requester.CancelDialogue();  
     }
+
+    public void PauseDialogue()  => OnPauseDialogue?.Invoke();
+    public void ResumeDialogue() => OnResumeDialogue?.Invoke();
 }

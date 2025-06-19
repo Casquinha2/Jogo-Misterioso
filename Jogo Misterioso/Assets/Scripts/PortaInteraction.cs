@@ -6,154 +6,196 @@ using Unity.Cinemachine;
 
 public class PortaInteraction : MonoBehaviour, IInteractable, ICancelableDialogue
 {
+    [Header("Dados de Diálogo")]
     public ObjectInteractionDialogue objDialogueData;
-    public int indexDialogueCerto; // Determines where to slice the dialogueLines array. 
-    public GameObject objDialoguePanel;
-    public TMP_Text objDialogueText; // Single TMP_Text for displaying dialogue. 
-    private string[] selectedDialogueLines;
-    private int objDialogueIndex;
-    private bool objIsTyping, objIsDialogueActive;
-    private string[] wrongDialogue, rightDialogue;
-    private InventoryController inventoryController;
+    public int indexDialogueCerto;   // ponto de corte nas linhas
+
+    [Header("Prefab UI (Panel + TMP_Text)")]
+    public GameObject objDialoguePanelPrefab;
+
+    [Header("Inventário e Outros")]
     public GameObject itemPrefab;
     public GameObject inventoryPanel;
     public GameObject tutorialPanel;
     public GameObject player;
-    [SerializeField] PolygonCollider2D mapBoundry;
+    public PolygonCollider2D mapBoundary;
     public CinemachineConfiner2D confiner;
+
+    // instâncias criadas em runtime
+    private GameObject objDialoguePanelInstance;
+    private TMP_Text objDialogueText;
+
+    private string[] rightDialogue, wrongDialogue, selectedDialogueLines;
+    private int objDialogueIndex;
+    private bool objIsTyping, objIsDialogueActive;
+    private InventoryController inventoryController;
 
     void Start()
     {
-        inventoryController = FindFirstObjectByType<InventoryController>();
+        // 1) Valida prefab
+        if (objDialoguePanelPrefab == null)
+        {
+            Debug.LogError("Arraste o prefab de diálogo em objDialoguePanelPrefab!", this);
+            enabled = false;
+            return;
+        }
+
+        // 2) Instancia o painel dentro do Canvas
+        var canvas = FindFirstObjectByType<Canvas>();
+        if (canvas == null)
+        {
+            Debug.LogError("Não encontrei Canvas na cena.", this);
+            enabled = false;
+            return;
+        }
+
+        objDialoguePanelInstance = Instantiate(
+            objDialoguePanelPrefab,
+            canvas.transform,
+            worldPositionStays: false
+        );
+
+        objDialogueText = objDialoguePanelInstance.GetComponentInChildren<TMP_Text>();
+        if (objDialogueText == null)
+        {
+            Debug.LogError("O prefab não tem TMP_Text em filho!", this);
+            enabled = false;
+            return;
+        }
+
+        objDialoguePanelInstance.SetActive(false);
+        objDialogueText.text = "";
+
+        // 3) Separa as linhas em “errado” e “certo”
         rightDialogue = objDialogueData.dialogueLines[..indexDialogueCerto];
         wrongDialogue = objDialogueData.dialogueLines[indexDialogueCerto..];
+
+        // 4) Inventário
+        inventoryController = FindFirstObjectByType<InventoryController>();
     }
+
     void OnEnable()
     {
-        if (DialogueManager.Instance != null)
-            DialogueManager.Instance.OnNewDialogue += CancelDialogue;
+        if (DialogueManager.Instance == null) return;
+        DialogueManager.Instance.OnNewDialogue   += CancelDialogue;
+        DialogueManager.Instance.OnPauseDialogue += HandlePause;
+        DialogueManager.Instance.OnResumeDialogue += HandleResume;
     }
+
     void OnDisable()
     {
-        if (DialogueManager.Instance != null)
-            DialogueManager.Instance.OnNewDialogue -= CancelDialogue;
-    }
-    public void CancelDialogue()
-    {
-        Debug.Log("Cancelling dialogue on: " + gameObject.name);
-        if (gameObject == null || !this) return;
-
-        EndDialogue();
+        if (DialogueManager.Instance == null) return;
+        DialogueManager.Instance.OnNewDialogue   -= CancelDialogue;
+        DialogueManager.Instance.OnPauseDialogue -= HandlePause;
+        DialogueManager.Instance.OnResumeDialogue -= HandleResume;
     }
 
-    public bool CanInteract()
+    // ICancelableDialogue
+    public void CancelDialogue() => EndDialogue();
+
+    // pausa temporária
+    private void HandlePause()
     {
-        return !objIsDialogueActive;
+        if (!objIsDialogueActive) return;
+        StopAllCoroutines();
+        objDialoguePanelInstance.SetActive(false);
     }
+
+    // retoma o typing
+    private void HandleResume()
+    {
+        if (!objIsDialogueActive) return;
+        objDialoguePanelInstance.SetActive(true);
+        StartCoroutine(TypeLine());
+    }
+
+    // IInteractable
+    public bool CanInteract() => !objIsDialogueActive;
+
     public void Interact()
     {
+        // checa o item no inventário
         bool hasItem = false;
-        // Inventory check 
-        foreach (Transform slotTransform in inventoryPanel.transform)
+        foreach (Transform slotT in inventoryPanel.transform)
         {
-            Slot slot = slotTransform.GetComponent<Slot>();
-            if (slot != null && slot.currentItem != null)
+            var slot = slotT.GetComponent<Slot>();
+            if (slot?.currentItem == null) continue;
+            var invItem = slot.currentItem.GetComponent<Item>();
+            if (invItem != null && invItem.ID == itemPrefab.GetComponent<Item>().ID)
             {
-                Item inventoryItem = slot.currentItem.GetComponent<Item>();
-                if (inventoryItem != null)
-                {
-                    int desiredItemID = itemPrefab.GetComponent<Item>().ID;
-                    if (inventoryItem.ID == desiredItemID)
-                    {
-                        hasItem = true;
-                        slot.currentItem.transform.SetParent(null);
-                        Destroy(slot.currentItem);
-                        slot.currentItem = null;
-                        if (objDialoguePanel.activeSelf)
-                        {
-                            StopAllCoroutines();
-                            objIsDialogueActive = false;
-                            objDialogueText.SetText("");
-                            objDialoguePanel.SetActive(false);
-                        }
-                        break;
-                    }
-                }
+                hasItem = true;
+                Destroy(slot.currentItem);
+                slot.currentItem = null;
+                break;
             }
         }
 
-        // Before starting the door dialogue, cancel other active dialogues. 
-        if (DialogueManager.Instance != null)
-            DialogueManager.Instance.RequestNewDialogue(this);
+        // solicita cancelamento de outros diálogos
+        DialogueManager.Instance?.RequestNewDialogue(this);
 
-
-
+        // escolhe que conjunto de linhas mostrar
         selectedDialogueLines = hasItem ? rightDialogue : wrongDialogue;
 
-        if (objIsDialogueActive)
-        {
-            NextLine(objDialogueText);
-        }
-        else
-        {
-            StartObjDialogue(objDialogueText);
-        }
+        // avança a linha ou inicia diálogo
+        if (objIsDialogueActive) NextLine();
+        else StartObjDialogue();
     }
-    void StartObjDialogue(TMP_Text dialogueText)
+
+    private void StartObjDialogue()
     {
         objIsDialogueActive = true;
         objDialogueIndex = 0;
-        objDialoguePanel.SetActive(true);
-        StartCoroutine(TypeLine(dialogueText));
+        objDialoguePanelInstance.SetActive(true);
+        StartCoroutine(TypeLine());
     }
-    void NextLine(TMP_Text dialogueText)
+
+    private void NextLine()
     {
         if (objIsTyping)
         {
             StopAllCoroutines();
-            dialogueText.SetText(selectedDialogueLines[objDialogueIndex]);
+            objDialogueText.text = selectedDialogueLines[objDialogueIndex];
             objIsTyping = false;
         }
         else if (++objDialogueIndex < selectedDialogueLines.Length)
         {
-            StartCoroutine(TypeLine(dialogueText));
+            StartCoroutine(TypeLine());
         }
-        else
-        {
-            EndDialogue();
-        }
-}
-    IEnumerator TypeLine(TMP_Text dialogueText)
+        else EndDialogue();
+    }
+
+    private IEnumerator TypeLine()
     {
         objIsTyping = true;
-        dialogueText.SetText("");
-        foreach (char letter in selectedDialogueLines[objDialogueIndex])
+        objDialogueText.text = "";
+        foreach (char ch in selectedDialogueLines[objDialogueIndex])
         {
-            dialogueText.text += letter;
+            objDialogueText.text += ch;
             yield return new WaitForSeconds(objDialogueData.typingSpeed);
         }
         objIsTyping = false;
-        if (objDialogueData.autoProgressLines.Length > objDialogueIndex && objDialogueData.autoProgressLines[objDialogueIndex])
+
+        if (objDialogueData.autoProgressLines.Length > objDialogueIndex &&
+            objDialogueData.autoProgressLines[objDialogueIndex])
         {
             yield return new WaitForSeconds(objDialogueData.autoProgressDelay);
-            NextLine(dialogueText);
+            NextLine();
         }
     }
 
-    //[System.Obsolete]
     public void EndDialogue()
     {
         StopAllCoroutines();
         objIsDialogueActive = false;
-        objDialogueText.SetText("");
-        objDialoguePanel.SetActive(false);
+        objDialogueText.text = "";
+        objDialoguePanelInstance.SetActive(false);
 
+        // se passou no teste, destrava e troca de cena
         if (selectedDialogueLines == rightDialogue)
         {
-            confiner.BoundingShape2D = mapBoundry;
+            confiner.BoundingShape2D = mapBoundary;
             Destroy(tutorialPanel);
             player.transform.position = new Vector3(-1.47f, 1.9f, 0f);
-            // Now safely load the scene
             SceneManager.LoadScene("Piso1Scene");
         }
     }

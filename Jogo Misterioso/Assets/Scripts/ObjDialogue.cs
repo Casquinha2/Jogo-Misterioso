@@ -1,131 +1,173 @@
+// ObjDialogue.cs
 using UnityEngine;
 using System.Collections;
 using TMPro;
+
 public class ObjDialogue : MonoBehaviour, IInteractable, ICancelableDialogue
 {
+    [Header("Prefab UI (Panel + TMP_Text)")]
+    public GameObject objDialoguePanelPrefab;
+
     public ObjectInteractionDialogue objDialogueData;
-    public GameObject objDialoguePanel;
-    public TMP_Text objDialogueText;
-    private int objDialogueIndex;
-    private bool objIsTyping, objIsDialogueActive, hasItem;
-    private InventoryController inventoryController;
     public GameObject itemPrefab;
     public GameObject inventoryPanel;
+
+    GameObject objDialoguePanelInstance;
+    TMP_Text objDialogueText;
+
+    int    objDialogueIndex;
+    bool   objIsTyping, objIsDialogueActive;
+    bool   hasItem;
+    InventoryController inventoryController;
+
     void Start()
     {
+        if (objDialoguePanelPrefab == null)
+        {
+            var distributor = FindFirstObjectByType<DialoguePrefabDistributor>();
+            if (distributor != null)
+                objDialoguePanelPrefab = distributor.dialoguePanelPrefab;
+        }
+
+        if (objDialoguePanelPrefab == null)
+        {
+            Debug.LogError("🚫 Prefab de UI não atribuído em ObjDialogue!", this);
+            enabled = false;
+            return;
+        }
+
+        if (objDialoguePanelPrefab == null)
+            Debug.LogError("Arrasta o prefab de UI em objDialoguePanelPrefab!", this);
+
         inventoryController = FindFirstObjectByType<InventoryController>();
-        hasItem = false;
+
+        var canvas = FindFirstObjectByType<Canvas>();
+        if (canvas == null)
+            Debug.LogError("Não encontrei Canvas na cena.", this);
+
+        // instancia o painel no Canvas
+        objDialoguePanelInstance = Instantiate(
+            objDialoguePanelPrefab,
+            canvas.transform,
+            worldPositionStays: false
+        );
+
+        objDialogueText = objDialoguePanelInstance.GetComponentInChildren<TMP_Text>();
+        if (objDialogueText == null)
+            Debug.LogError("O prefab não tem TMP_Text em filho!", this);
+
+        objDialoguePanelInstance.SetActive(false);
+        objDialogueText.text = "";
     }
-    // Subscribe to the global dialogue cancellation event. 
+
     void OnEnable()
     {
-        if (DialogueManager.Instance != null)
-            DialogueManager.Instance.OnNewDialogue += CancelDialogue;
+        if (DialogueManager.Instance == null) return;
+        DialogueManager.Instance.OnNewDialogue   += CancelDialogue;
+        DialogueManager.Instance.OnPauseDialogue += HandlePause;
+        DialogueManager.Instance.OnResumeDialogue+= HandleResume;
     }
+
     void OnDisable()
     {
-        if (DialogueManager.Instance != null)
-            DialogueManager.Instance.OnNewDialogue -= CancelDialogue;
+        if (DialogueManager.Instance == null) return;
+        DialogueManager.Instance.OnNewDialogue   -= CancelDialogue;
+        DialogueManager.Instance.OnPauseDialogue -= HandlePause;
+        DialogueManager.Instance.OnResumeDialogue-= HandleResume;
     }
-    // This method is called when any dialogue is about to start. 
-    public void CancelDialogue()
-    {
-        Debug.Log("Cancelling dialogue on: " + gameObject.name);
 
-        EndDialogue();
-    }
-    public bool CanInteract()
+    public void CancelDialogue() => EndDialogue();
+    public bool CanInteract()   => !objIsDialogueActive;
+
+    void HandlePause()
     {
-        return !objIsDialogueActive;
+        if (!objIsDialogueActive) return;
+        StopAllCoroutines();
+        objDialoguePanelInstance.SetActive(false);
     }
+
+    void HandleResume()
+    {
+        if (!objIsDialogueActive) return;
+        // retoma a typing da linha atual
+        objDialoguePanelInstance.SetActive(true);
+        StartCoroutine(TypeLine());
+    }
+
     public void Interact()
     {
-        // Notify all dialogues (including this one) that a new dialogue is about to start 
-        if (DialogueManager.Instance != null)
-            DialogueManager.Instance.RequestNewDialogue(this);
+        // cancela outros diálogos
+        DialogueManager.Instance?.RequestNewDialogue(this);
 
-        // Check for key/item logic. 
-        if (itemPrefab)
+        // lógica de inventário (opcional)
+        hasItem = false;
+        if (itemPrefab != null)
         {
-            foreach (Transform slotTransform in inventoryPanel.transform)
+            foreach (Transform slotT in inventoryPanel.transform)
             {
-                Slot slot = slotTransform.GetComponent<Slot>();
-                if (slot != null && slot.currentItem != null)
+                var slot = slotT.GetComponent<Slot>();
+                if (slot?.currentItem == null) continue;
+                var invItem = slot.currentItem.GetComponent<Item>();
+                if (invItem != null && invItem.ID == itemPrefab.GetComponent<Item>().ID)
                 {
-                    Item inventoryItem = slot.currentItem.GetComponent<Item>();
-                    if (inventoryItem != null)
-                    {
-                        // Get the desired item ID from the prefab. 
-                        int desiredItemID = itemPrefab.GetComponent<Item>().ID;
-                        // Compare the inventory item's ID with the desired item's ID. 
-                        if (inventoryItem.ID == desiredItemID)
-                        {
-                            hasItem = true;
-                            break;
-                        }
-                    }
+                    hasItem = true;
+                    break;
                 }
             }
-            if (!hasItem)
-            {
-                inventoryController.AddItem(itemPrefab);
-            }
+            if (!hasItem) inventoryController.AddItem(itemPrefab);
         }
-        // Continue with dialogue. 
-        if (objIsDialogueActive)
-        {
-            NextLine();
-        }
-        else
-        {
-            StartObjDialog();
-        }
+
+        if (objIsDialogueActive) NextLine();
+        else                  StartObjDialog();
     }
+
     void StartObjDialog()
     {
         objIsDialogueActive = true;
-        objDialogueIndex = 0;
-        objDialoguePanel.SetActive(true);
+        objDialogueIndex    = 0;
+        objDialoguePanelInstance.SetActive(true);
         StartCoroutine(TypeLine());
     }
+
     void NextLine()
     {
         if (objIsTyping)
         {
             StopAllCoroutines();
-            objDialogueText.SetText(objDialogueData.dialogueLines[objDialogueIndex]);
+            objDialogueText.text = objDialogueData.dialogueLines[objDialogueIndex];
             objIsTyping = false;
         }
         else if (++objDialogueIndex < objDialogueData.dialogueLines.Length)
         {
             StartCoroutine(TypeLine());
         }
-        else
-        {
-            EndDialogue();
-        }
+        else EndDialogue();
     }
+
     IEnumerator TypeLine()
     {
         objIsTyping = true;
-        objDialogueText.SetText("");
-        foreach (char letter in objDialogueData.dialogueLines[objDialogueIndex])
+        objDialogueText.text = "";
+        foreach (var ch in objDialogueData.dialogueLines[objDialogueIndex])
         {
-            objDialogueText.text += letter;
+            objDialogueText.text += ch;
             yield return new WaitForSeconds(objDialogueData.typingSpeed);
         }
         objIsTyping = false;
-        if (objDialogueData.autoProgressLines.Length > objDialogueIndex && objDialogueData.autoProgressLines[objDialogueIndex])
+
+        if (objDialogueData.autoProgressLines.Length > objDialogueIndex &&
+            objDialogueData.autoProgressLines[objDialogueIndex])
         {
             yield return new WaitForSeconds(objDialogueData.autoProgressDelay);
             NextLine();
         }
     }
+
     public void EndDialogue()
     {
         StopAllCoroutines();
         objIsDialogueActive = false;
-        objDialogueText.SetText("");
-        objDialoguePanel.SetActive(false);
+        objDialogueText.text = "";
+        objDialoguePanelInstance.SetActive(false);
     }
 }

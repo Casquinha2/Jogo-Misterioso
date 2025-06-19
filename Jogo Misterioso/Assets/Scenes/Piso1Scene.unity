@@ -294,9 +294,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90fe3f449296e214eaba868f611206ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objDialoguePanelPrefab: {fileID: 6793569825845607584, guid: 78297fdde5a6b7049a476f932a7a2300, type: 3}
   objDialogueData: {fileID: 11400000, guid: 39616116dc161cf4e902cf1e73a6e964, type: 2}
-  objDialoguePanel: {fileID: 6793569825845607584, guid: 78297fdde5a6b7049a476f932a7a2300, type: 3}
-  objDialogueText: {fileID: 9055241431861637578, guid: c9c2af08304b3694ea63082ace22b4fe, type: 3}
   itemPrefab: {fileID: 0}
   inventoryPanel: {fileID: 0}
 --- !u!61 &192936314
@@ -1449,6 +1448,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 985089220}
+  - component: {fileID: 985089221}
   m_Layer: 0
   m_Name: Objetos do Jogo Piso 1
   m_TagString: Untagged
@@ -1473,6 +1473,19 @@ Transform:
   - {fileID: 363672271}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &985089221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 985089219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93403767fd4011c4582a92ac27cc19b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialoguePanelPrefab: {fileID: 6793569825845607584, guid: 78297fdde5a6b7049a476f932a7a2300, type: 3}
 --- !u!1 &1045701852
 GameObject:
   m_ObjectHideFlags: 0
