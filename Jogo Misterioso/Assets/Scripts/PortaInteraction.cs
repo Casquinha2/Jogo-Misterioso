@@ -18,8 +18,10 @@ public class PortaInteraction : MonoBehaviour, IInteractable, ICancelableDialogu
     public GameObject itemPrefab;
     public GameObject inventoryPanel;
     public GameObject tutorialPanel;
+    public GameObject player;
     [SerializeField] PolygonCollider2D mapBoundry;
-    CinemachineConfiner2D confiner;
+    public CinemachineConfiner2D confiner;
+
     void Start()
     {
         inventoryController = FindFirstObjectByType<InventoryController>();
@@ -138,7 +140,7 @@ public class PortaInteraction : MonoBehaviour, IInteractable, ICancelableDialogu
         }
     }
 
-    [System.Obsolete]
+    //[System.Obsolete]
     public void EndDialogue()
     {
         StopAllCoroutines();
@@ -148,9 +150,9 @@ public class PortaInteraction : MonoBehaviour, IInteractable, ICancelableDialogu
 
         if (selectedDialogueLines == rightDialogue)
         {
-            confiner = FindObjectOfType<CinemachineConfiner2D>();
             confiner.BoundingShape2D = mapBoundry;
             Destroy(tutorialPanel);
+            player.transform.position = new Vector3(-1.47f, 1.9f, 0f);
             // Now safely load the scene
             SceneManager.LoadScene("Piso1Scene");
         }

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: Pc 1
   dialogueLines:
-  - "*\xC9 um computador fornecida pela escola para os alunos"
+  - "*\xC9 um computador fornecido pela escola para os alunos"
   - "*Est\xE1 desligado"
   typingSpeed: 0.05
   autoProgressLines: 0101
