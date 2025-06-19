@@ -18,7 +18,7 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>(); // Get the Rigidbody2D component attached to the player
         animator = GetComponent<Animator>();
         DontDestroyOnLoad(gameObject);
-
+        transform.position = new Vector3(-1.76f, -0.12f, 0f);
     }
 
     // Update is called once per frame

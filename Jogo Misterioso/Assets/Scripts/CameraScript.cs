@@ -4,14 +4,14 @@ public class CameraScript : MonoBehaviour
 {
     public GameObject mainCam;
     public GameObject lightCamera;
-    public GameObject Room62Collider;
+    public GameObject mapBounderFolder;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         DontDestroyOnLoad(gameObject);
         DontDestroyOnLoad(mainCam);
         DontDestroyOnLoad(lightCamera);
-        DontDestroyOnLoad(Room62Collider);
+        DontDestroyOnLoad(mapBounderFolder);
     }
 
     // Update is called once per frame

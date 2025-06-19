@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 6a7941e4ae9eb8144bf2d22349a81acb
+guid: 6f6e18e49bce5ca4b99c809266183d8a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 604408113146070943
-    second: Chave quarto_0
+      213: 2191134407482639104
+    second: projetor imagem_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Chave quarto_0
+      name: projetor imagem_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 31
-        width: 256
-        height: 225
+        y: 0
+        width: 1920
+        height: 1080
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f978f630af9436800800000000000000
-      internalID: 604408113146070943
+      spriteID: 003832d6229786e10800000000000000
+      internalID: 2191134407482639104
       vertices: []
       indices: 
       edges: []
@@ -147,8 +147,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Chave quarto_0: 604408113146070943
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

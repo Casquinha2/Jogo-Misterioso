@@ -2,6 +2,8 @@ using UnityEngine;
 using System.Collections;
 using TMPro;
 using UnityEngine.SceneManagement;
+using Unity.Cinemachine;
+
 public class PortaInteraction : MonoBehaviour, IInteractable, ICancelableDialogue
 {
     public ObjectInteractionDialogue objDialogueData;
@@ -16,6 +18,10 @@ public class PortaInteraction : MonoBehaviour, IInteractable, ICancelableDialogu
     public GameObject itemPrefab;
     public GameObject inventoryPanel;
     public GameObject tutorialPanel;
+    public GameObject player;
+    [SerializeField] PolygonCollider2D mapBoundry;
+    public CinemachineConfiner2D confiner;
+
     void Start()
     {
         inventoryController = FindFirstObjectByType<InventoryController>();
@@ -35,6 +41,7 @@ public class PortaInteraction : MonoBehaviour, IInteractable, ICancelableDialogu
     public void CancelDialogue()
     {
         Debug.Log("Cancelling dialogue on: " + gameObject.name);
+        if (gameObject == null || !this) return;
 
         EndDialogue();
     }
@@ -115,7 +122,7 @@ public class PortaInteraction : MonoBehaviour, IInteractable, ICancelableDialogu
         {
             EndDialogue();
         }
-    }
+}
     IEnumerator TypeLine(TMP_Text dialogueText)
     {
         objIsTyping = true;
@@ -132,6 +139,8 @@ public class PortaInteraction : MonoBehaviour, IInteractable, ICancelableDialogu
             NextLine(dialogueText);
         }
     }
+
+    //[System.Obsolete]
     public void EndDialogue()
     {
         StopAllCoroutines();
@@ -141,8 +150,10 @@ public class PortaInteraction : MonoBehaviour, IInteractable, ICancelableDialogu
 
         if (selectedDialogueLines == rightDialogue)
         {
+            confiner.BoundingShape2D = mapBoundry;
             Destroy(tutorialPanel);
-            // Now safely load the scene 
+            player.transform.position = new Vector3(-1.47f, 1.9f, 0f);
+            // Now safely load the scene
             SceneManager.LoadScene("Piso1Scene");
         }
     }

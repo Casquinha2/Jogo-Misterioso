@@ -10,14 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 648fa42727b63ae458df6a3968223511, type: 3}
-  m_Name: TutorialTerxt
+  m_Name: Pc 1
   m_EditorClassIdentifier: 
-  objectName: Tutorial
+  objectName: Pc 1
   dialogueLines:
-  - Precione WASD ou as setas para andar.
-  - Precione E ou ENTER para interagir.
-  - Precione TAB ou ESCAPE para abrir o menu.
-  - Procure a chave do quarto para sair.
+  - "*\xC9 um computador fornecido pela escola para os alunos"
+  - "*Est\xE1 desligado"
   typingSpeed: 0.05
-  autoProgressLines: 00000001
-  autoProgressDelay: 2
+  autoProgressLines: 0101
+  autoProgressDelay: 1

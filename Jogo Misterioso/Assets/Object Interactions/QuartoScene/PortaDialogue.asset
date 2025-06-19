@@ -17,7 +17,6 @@ MonoBehaviour:
   - Deixa pegar na chave e destrancar a porta!
   - '*A porta abriu-se.*'
   - "Onde \xE9 que est\xE1 a chave? N\xE3o me lembro onde a deixei..."
-  - teste
   typingSpeed: 0.05
   autoProgressLines: 01010101
   autoProgressDelay: 1
