@@ -13,6 +13,9 @@ public class PortaInteraction : MonoBehaviour, IInteractable, ICancelableDialogu
     [Header("Prefab UI (Panel + TMP_Text)")]
     public GameObject objDialoguePanelPrefab;
 
+    [Header("UI")]
+    [SerializeField] Transform uiRoot;
+
     [Header("Inventário e Outros")]
     public GameObject itemPrefab;
     public GameObject inventoryPanel;
@@ -77,7 +80,7 @@ public class PortaInteraction : MonoBehaviour, IInteractable, ICancelableDialogu
     void OnEnable()
     {
         if (DialogueManager.Instance == null) return;
-        DialogueManager.Instance.OnNewDialogue   += CancelDialogue;
+        DialogueManager.Instance.OnNewDialogue += CancelDialogue;
         DialogueManager.Instance.OnPauseDialogue += HandlePause;
         DialogueManager.Instance.OnResumeDialogue += HandleResume;
     }
@@ -85,7 +88,7 @@ public class PortaInteraction : MonoBehaviour, IInteractable, ICancelableDialogu
     void OnDisable()
     {
         if (DialogueManager.Instance == null) return;
-        DialogueManager.Instance.OnNewDialogue   -= CancelDialogue;
+        DialogueManager.Instance.OnNewDialogue -= CancelDialogue;
         DialogueManager.Instance.OnPauseDialogue -= HandlePause;
         DialogueManager.Instance.OnResumeDialogue -= HandleResume;
     }
@@ -190,13 +193,29 @@ public class PortaInteraction : MonoBehaviour, IInteractable, ICancelableDialogu
         objDialogueText.text = "";
         objDialoguePanelInstance.SetActive(false);
 
-        // se passou no teste, destrava e troca de cena
+
+        // agora sim, troca de cena
         if (selectedDialogueLines == rightDialogue)
         {
+            ClearAllDialoguePanels();
             confiner.BoundingShape2D = mapBoundary;
             Destroy(tutorialPanel);
             player.transform.position = new Vector3(-1.47f, 1.9f, 0f);
-            SceneManager.LoadScene("Piso1Scene");
+            SceneManager.LoadScene("Piso1Scene");  // modo Single
         }
     }
+
+    void ClearAllDialoguePanels()
+    {
+        // procura recursivamente todos os childs taggeados
+        foreach (var tr in uiRoot.GetComponentsInChildren<Transform>(true))
+        {
+            if (tr.CompareTag("DialoguePanel"))
+            {
+                Destroy(tr.gameObject);
+            }
+        }
+    }
+
+
 }

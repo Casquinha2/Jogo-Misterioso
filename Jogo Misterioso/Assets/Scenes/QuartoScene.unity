@@ -4379,6 +4379,7 @@ MonoBehaviour:
   objDialogueData: {fileID: 11400000, guid: 7d7224196675e114a929a28bbc1a6ce8, type: 2}
   indexDialogueCerto: 2
   objDialoguePanelPrefab: {fileID: 6793569825845607584, guid: 78297fdde5a6b7049a476f932a7a2300, type: 3}
+  uiRoot: {fileID: 1607753220}
   itemPrefab: {fileID: 346904799447055933, guid: 42e35580ae03e6d44834f01f9f9273d4, type: 3}
   inventoryPanel: {fileID: 2027152177}
   tutorialPanel: {fileID: 731770740}
@@ -4796,7 +4797,6 @@ GameObject:
   - component: {fileID: 1872527773}
   - component: {fileID: 1872527775}
   - component: {fileID: 1872527776}
-  - component: {fileID: 1872527777}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -4858,18 +4858,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2c5c28c6c941fe644a85fd89f939cd1e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1872527777
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1872527772}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 997971bda05a1754db1ae92daaa6e623, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1891880504

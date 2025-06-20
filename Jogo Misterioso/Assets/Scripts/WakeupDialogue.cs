@@ -1,18 +1,28 @@
-using NUnit.Framework.Constraints;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class WakeupDialogue : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private bool hasShown = false;
+    private ObjDialogue objDialogue;
+
     void Start()
     {
-        Scene currentScene = SceneManager.GetActiveScene ();
-        string sceneName = currentScene.name;
+        objDialogue = GetComponent<ObjDialogue>();
+        StartCoroutine(DelayedInteract());
+    }
 
-        if (sceneName == "Piso1Scene")
+    IEnumerator DelayedInteract()
+    {
+        // espera um frame para todos os ObjDialogue.Start() acontecerem
+        yield return null;
+
+        // agora dispara de forma segura
+        if (!hasShown)
         {
-            
+            objDialogue.Interact();
+            hasShown = true;
         }
     }
 }

@@ -14,6 +14,7 @@ public class ObjDialogue : MonoBehaviour, IInteractable, ICancelableDialogue
 
     GameObject objDialoguePanelInstance;
     TMP_Text objDialogueText;
+    bool panelInited;
 
     int    objDialogueIndex;
     bool   objIsTyping, objIsDialogueActive;
@@ -41,23 +42,7 @@ public class ObjDialogue : MonoBehaviour, IInteractable, ICancelableDialogue
 
         inventoryController = FindFirstObjectByType<InventoryController>();
 
-        var canvas = FindFirstObjectByType<Canvas>();
-        if (canvas == null)
-            Debug.LogError("Não encontrei Canvas na cena.", this);
-
-        // instancia o painel no Canvas
-        objDialoguePanelInstance = Instantiate(
-            objDialoguePanelPrefab,
-            canvas.transform,
-            worldPositionStays: false
-        );
-
-        objDialogueText = objDialoguePanelInstance.GetComponentInChildren<TMP_Text>();
-        if (objDialogueText == null)
-            Debug.LogError("O prefab não tem TMP_Text em filho!", this);
-
-        objDialoguePanelInstance.SetActive(false);
-        objDialogueText.text = "";
+        
     }
 
     void OnEnable()
@@ -76,7 +61,13 @@ public class ObjDialogue : MonoBehaviour, IInteractable, ICancelableDialogue
         DialogueManager.Instance.OnResumeDialogue-= HandleResume;
     }
 
-    public void CancelDialogue() => EndDialogue();
+    public void CancelDialogue()
+    {
+        if (!panelInited) 
+            return;    // nada a limpar se ainda não inicializaste o painel
+        EndDialogue();
+    }
+
     public bool CanInteract()   => !objIsDialogueActive;
 
     void HandlePause()
@@ -96,6 +87,8 @@ public class ObjDialogue : MonoBehaviour, IInteractable, ICancelableDialogue
 
     public void Interact()
     {
+        if (!panelInited)
+            InitDialoguePanel();
         // cancela outros diálogos
         DialogueManager.Instance?.RequestNewDialogue(this);
 
@@ -119,6 +112,36 @@ public class ObjDialogue : MonoBehaviour, IInteractable, ICancelableDialogue
 
         if (objIsDialogueActive) NextLine();
         else                  StartObjDialog();
+    }
+    void InitDialoguePanel()
+    {
+        // garante que tens um prefab atribuído
+        if (objDialoguePanelPrefab == null)
+            Debug.LogError("🚫 Prefab de UI não atribuído em ObjDialogue!", this);
+
+        // instancia no Canvas
+        var canvas = FindFirstObjectByType<Canvas>();
+        if (canvas == null)
+            Debug.LogError("Não encontrei Canvas na cena.", this);
+
+        objDialoguePanelInstance = Instantiate(
+            objDialoguePanelPrefab,
+            canvas.transform,
+            worldPositionStays: false
+        );
+        
+        Debug.Log($"[InitDialoguePanel] Instanciei painel: {objDialoguePanelInstance.name}, tag = {objDialoguePanelInstance.tag}");
+
+
+        objDialogueText = objDialoguePanelInstance
+            .GetComponentInChildren<TMP_Text>();
+        if (objDialogueText == null)
+            Debug.LogError("O prefab não tem TMP_Text em filho!", this);
+
+        objDialoguePanelInstance.SetActive(false);
+        objDialogueText.text = "";
+
+        panelInited = true;
     }
 
     void StartObjDialog()
