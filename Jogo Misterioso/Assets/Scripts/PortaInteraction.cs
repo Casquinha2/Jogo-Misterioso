@@ -244,6 +244,18 @@ public class PortaInteraction : MonoBehaviour, IInteractable, ICancelableDialogu
         // se acertou → confiner, checkpoint e remove tutorial
         if (selectedDialogueLines == rightDialogue)
         {
+
+
+            
+            /*
+
+                FAZEWWR AQUI TELA FICAR PRETA PARA UPDATE
+
+            */
+
+
+
+
             foreach (var tr in uiRoot.GetComponentsInChildren<Transform>(true))
                 if (tr.CompareTag("DialoguePanel"))
                     Destroy(tr.gameObject);
