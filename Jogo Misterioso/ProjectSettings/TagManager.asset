@@ -10,6 +10,8 @@ TagManager:
   - InventoryPanel
   - TutorialCanvas
   - TutorialPanel
+  - MenuCanvas
+  - UICanvas
   layers:
   - Default
   - TransparentFX
