@@ -1,80 +1,99 @@
 using UnityEngine;
 using System.Collections;
 using TMPro;
-using UnityEngine.SceneManagement;
 using Unity.Cinemachine;
+using UnityEngine.UI;
 
 public class PortaInteraction : MonoBehaviour, IInteractable, ICancelableDialogue
 {
     [Header("Dados de Diálogo")]
     public ObjectInteractionDialogue objDialogueData;
-    public int indexDialogueCerto;   // ponto de corte nas linhas
+    public int indexDialogueCerto;
 
     [Header("Prefab UI (Panel + TMP_Text)")]
     public GameObject objDialoguePanelPrefab;
 
-    [Header("UI")]
-    [SerializeField] Transform uiRoot;
-
-    [Header("Inventário e Outros")]
     public GameObject itemPrefab;
-    public GameObject inventoryPanel;
-    public GameObject tutorialPanel;
-    public GameObject player;
-    public PolygonCollider2D mapBoundary;
-    public CinemachineConfiner2D confiner;
 
-    // instâncias criadas em runtime
+    // Se quiseres podes deixar estes campos públicos mas não pavimentados no Inspector:
+    [Header("Referências Dinâmicas (se não arrastares no Inspector)")]
+    private Transform uiRoot;
+    private GameObject inventoryPanel;
+    private GameObject tutorialPanel;
+
+    // Estes três campos vão ser obtidos por código:
+    private GameObject player;                  
+    private PolygonCollider2D mapBoundary;      
+    private CinemachineConfiner2D confiner;     
+
+    [SerializeField] string checkpointID;
+
+    // estado interno…
     private GameObject objDialoguePanelInstance;
-    private TMP_Text objDialogueText;
+    private TMP_Text   objDialogueText;
+    private string[]   rightDialogue, wrongDialogue, selectedDialogueLines;
+    private int        objDialogueIndex;
+    private bool       objIsTyping, objIsDialogueActive;
 
-    private string[] rightDialogue, wrongDialogue, selectedDialogueLines;
-    private int objDialogueIndex;
-    private bool objIsTyping, objIsDialogueActive;
-    private InventoryController inventoryController;
+    void Awake()
+    {
+        // 1) Player  
+        if (player == null)
+            player = GameObject.FindWithTag("Player");
+
+        // 2) Confiner (assume só um na cena)
+        if (confiner == null)
+            confiner = FindFirstObjectByType<CinemachineConfiner2D>();
+
+        // 3) MapBoundary – vai buscar o MapBounds root e encontra o filho de nome == checkpointID
+        if (mapBoundary == null)
+        {
+            var root = GameObject.Find("MapBounds")?.transform;
+            if (root != null)
+            {
+                var node = root.Find(checkpointID);
+                if (node != null)
+                    mapBoundary = node.GetComponent<PolygonCollider2D>();
+            }
+        }
+
+        // 4) Inventário e Tutorial Panel – procura por tags ou por nome
+        if (inventoryPanel == null)
+            inventoryPanel = GameObject.FindWithTag("InventoryPanel");
+        if (tutorialPanel == null)
+            tutorialPanel = GameObject.FindWithTag("TutorialPanel");
+
+        // 5) UI Root – por defeito, procura o Canvas
+        if (uiRoot == null)
+            uiRoot = FindFirstObjectByType<Canvas>()?.transform;
+
+        // 6) inventário
+        //inventoryController = FindFirstObjectByType<InventoryController>();
+    }
 
     void Start()
     {
-        // 1) Valida prefab
-        if (objDialoguePanelPrefab == null)
+        // 1) Valida prefab e UI root
+        if (objDialoguePanelPrefab == null || uiRoot == null)
         {
-            Debug.LogError("Arraste o prefab de diálogo em objDialoguePanelPrefab!", this);
+            Debug.LogError("Prefab ou UI Root em falta!", this);
             enabled = false;
             return;
         }
 
-        // 2) Instancia o painel dentro do Canvas
-        var canvas = FindFirstObjectByType<Canvas>();
-        if (canvas == null)
-        {
-            Debug.LogError("Não encontrei Canvas na cena.", this);
-            enabled = false;
-            return;
-        }
-
+        // 2) Instancia o painel de diálogo
         objDialoguePanelInstance = Instantiate(
             objDialoguePanelPrefab,
-            canvas.transform,
+            uiRoot,
             worldPositionStays: false
         );
-
         objDialogueText = objDialoguePanelInstance.GetComponentInChildren<TMP_Text>();
-        if (objDialogueText == null)
-        {
-            Debug.LogError("O prefab não tem TMP_Text em filho!", this);
-            enabled = false;
-            return;
-        }
-
         objDialoguePanelInstance.SetActive(false);
         objDialogueText.text = "";
 
-        // 3) Separa as linhas em “errado” e “certo”
+        // 3) Separa as linhas de diálogo
         rightDialogue = objDialogueData.dialogueLines[..indexDialogueCerto];
         wrongDialogue = objDialogueData.dialogueLines[indexDialogueCerto..];
-
-        // 4) Inventário
-        inventoryController = FindFirstObjectByType<InventoryController>();
     }
 
     void OnEnable()
@@ -190,18 +209,21 @@ public class PortaInteraction : MonoBehaviour, IInteractable, ICancelableDialogu
     {
         StopAllCoroutines();
         objIsDialogueActive = false;
-        objDialogueText.text = "";
         objDialoguePanelInstance.SetActive(false);
 
-
-        // agora sim, troca de cena
+        // só dispara a mudança de cena se estiver no diálogo “certo”
         if (selectedDialogueLines == rightDialogue)
         {
             ClearAllDialoguePanels();
+
+            // Aqui já tens o confiner e mapBoundary atribuídos em Awake()
             confiner.BoundingShape2D = mapBoundary;
-            Destroy(tutorialPanel);
-            player.transform.position = new Vector3(-1.47f, 1.9f, 0f);
-            SceneManager.LoadScene("Piso1Scene");  // modo Single
+            CheckpointManager.I.SaveCheckpoint(checkpointID);
+            CheckpointManager.I.LoadCheckpoint(checkpointID);
+
+            // destrói o tutorialPanel se existir na cena
+            if (tutorialPanel != null)
+                Destroy(tutorialPanel);
         }
     }
 

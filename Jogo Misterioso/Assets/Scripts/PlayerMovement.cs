@@ -10,15 +10,22 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 moveInput; // Store the movement input
     private Animator animator;
     private float afktimer = 0f;
-    //private bool isTouchingWall = false;
+    
+    [SerializeField] string checkpointID;
+
+    void Awake()
+    {        
+        DontDestroyOnLoad(gameObject);
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb = GetComponent<Rigidbody2D>(); // Get the Rigidbody2D component attached to the player
         animator = GetComponent<Animator>();
-        DontDestroyOnLoad(gameObject);
         transform.position = new Vector3(-1.76f, -0.12f, 0f);
+
+        CheckpointManager.I?.SaveCheckpoint(checkpointID);
     }
 
     // Update is called once per frame

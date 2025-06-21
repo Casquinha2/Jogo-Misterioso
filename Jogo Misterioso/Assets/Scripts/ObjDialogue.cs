@@ -10,7 +10,7 @@ public class ObjDialogue : MonoBehaviour, IInteractable, ICancelableDialogue
 
     public ObjectInteractionDialogue objDialogueData;
     public GameObject itemPrefab;
-    public GameObject inventoryPanel;
+    private GameObject inventoryPanel;
 
     GameObject objDialoguePanelInstance;
     TMP_Text objDialogueText;
@@ -23,6 +23,16 @@ public class ObjDialogue : MonoBehaviour, IInteractable, ICancelableDialogue
 
     void Start()
     {
+        if (inventoryPanel == null)
+            inventoryPanel = GameObject.FindWithTag("InventoryPanel");
+
+        if (inventoryPanel == null)
+        {
+            Debug.LogError("Não encontrei o InventoryPanel na cena!", this);
+            enabled = false;
+            return;
+        }
+
         if (objDialoguePanelPrefab == null)
         {
             var distributor = FindFirstObjectByType<DialoguePrefabDistributor>();

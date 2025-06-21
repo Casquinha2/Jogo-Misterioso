@@ -6,7 +6,7 @@ public class CameraScript : MonoBehaviour
     public GameObject lightCamera;
     public GameObject mapBounderFolder;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
         DontDestroyOnLoad(gameObject);
         DontDestroyOnLoad(mainCam);

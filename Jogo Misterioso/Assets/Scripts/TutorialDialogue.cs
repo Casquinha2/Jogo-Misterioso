@@ -19,6 +19,7 @@ public class TutorialDialogue : MonoBehaviour
 
     void Start()
     {
+
         tutorialDialoguePanel.SetActive(true);
         StartTutorialDialog();
         wait = false;
@@ -72,6 +73,7 @@ public class TutorialDialogue : MonoBehaviour
 
     void StartTutorialDialog()
     {
+        
         tutorialDialogueIndex = 0;
         inputs.Clear(); // Clear any previous key inputs
         StartCoroutine(TypeLine());
