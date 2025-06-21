@@ -53,11 +53,24 @@ public class PortaInteraction : MonoBehaviour, IInteractable, ICancelableDialogu
 
         // 3) MapBoundary, dentro de "MapBounds"/checkpointID
         var mbRoot = GameObject.Find("MapBounds")?.transform;
-        if (mbRoot != null)
+        if (mbRoot == null)
         {
-            var node = mbRoot.Find(checkpointID);
-            if (node != null)
-                mapBoundary = node.GetComponent<PolygonCollider2D>();
+            Debug.LogError("Não encontrei o GameObject 'MapBounds'!", this);
+            return;
+        }
+
+        var bound62 = mbRoot.Find("62");
+        if (bound62 == null)
+        {
+            Debug.LogError("Não encontrei o child '62' dentro de MapBounds!", this);
+            return;
+        }
+
+        mapBoundary = bound62.GetComponent<PolygonCollider2D>();
+        if (mapBoundary == null)
+        {
+            Debug.LogError("O GameObject '62' não possui PolygonCollider2D!", this);
+            return;
         }
 
         // 4) InventoryPanel (ativo ou inativo)
@@ -65,18 +78,18 @@ public class PortaInteraction : MonoBehaviour, IInteractable, ICancelableDialogu
         if (inventoryPanel == null)
         {
         // vai buscar TODOS os Transforms, inclusive inativos
-            foreach (var t in Resources.FindObjectsOfTypeAll<Transform>())
+        foreach (var t in Resources.FindObjectsOfTypeAll<Transform>())
+        {
+            if (t.gameObject.CompareTag("InventoryPanel"))
             {
-                if (t.gameObject.CompareTag("InventoryPanel"))
-                {
-                inventoryPanel = t.gameObject;
-                break;
-                }
+            inventoryPanel = t.gameObject;
+            break;
             }
+        }
         }
 
         if (inventoryPanel == null)
-            Debug.LogError("❌ InventoryPanel (mesmo inativo) não encontrado!", this);
+        Debug.LogError("❌ InventoryPanel (mesmo inativo) não encontrado!", this);
 
         // 5) TutorialPanel (ativo ou inativo)
         tutorialPanel = GameObject.FindWithTag("TutorialPanel");
@@ -244,18 +257,6 @@ public class PortaInteraction : MonoBehaviour, IInteractable, ICancelableDialogu
         // se acertou → confiner, checkpoint e remove tutorial
         if (selectedDialogueLines == rightDialogue)
         {
-
-
-            
-            /*
-
-                FAZEWWR AQUI TELA FICAR PRETA PARA UPDATE
-
-            */
-
-
-
-
             foreach (var tr in uiRoot.GetComponentsInChildren<Transform>(true))
                 if (tr.CompareTag("DialoguePanel"))
                     Destroy(tr.gameObject);
