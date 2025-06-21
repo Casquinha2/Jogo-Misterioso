@@ -10,13 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 648fa42727b63ae458df6a3968223511, type: 3}
-  m_Name: WakeUpText
+  m_Name: Pc Ligado 1
   m_EditorClassIdentifier: 
-  objectName: 
+  objectName: Pc Ligado 1
   dialogueLines:
-  - Ahn?
-  - Onde estou?
-  - "Parece que ontem \xE0 noite me diverti demasiado..."
+  - "*\xC9 um computador fornecido pela escola para os alunos*"
+  - "*Est\xE1 ligado*"
+  - "*Algu\xE9m deixou ligado no ChatGPT*"
+  - '*Deve ter sido um teste*'
   typingSpeed: 0.05
-  autoProgressLines: 010101
+  autoProgressLines: 01010101
   autoProgressDelay: 1

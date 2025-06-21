@@ -10,13 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 648fa42727b63ae458df6a3968223511, type: 3}
-  m_Name: WakeUpText
+  m_Name: Livro 1
   m_EditorClassIdentifier: 
-  objectName: 
+  objectName: Livro 1
   dialogueLines:
-  - Ahn?
-  - Onde estou?
-  - "Parece que ontem \xE0 noite me diverti demasiado..."
+  - "*\xC9 um livro*"
+  - '*"Linguagem C para iniciantes"*'
   typingSpeed: 0.05
-  autoProgressLines: 010101
+  autoProgressLines: 0101
   autoProgressDelay: 1
