@@ -4,22 +4,27 @@ using TMPro;
 
 public class QReveal : MonoBehaviour
 {
-    public GameObject Qr;
-    public int TotalClicks;
+    public GameObject qr;
+
+    [HideInInspector]
+    public int totalClicks;
+
+    [SerializeField]
+    private int clicksNecessarios = 3;
     void Start()
     {
         Debug.Log("Comecou o start do qr");
-        TotalClicks = 0;
+        totalClicks = 0;
     }
     public void AddClicksQR()
     {
-        TotalClicks++;
-        if (TotalClicks >= 3)
+        totalClicks++;
+        if (totalClicks >= clicksNecessarios)
         {
 
-            Qr.SetActive(false);
+            qr.SetActive(false);
             Debug.Log("Apareceu");
-            TotalClicks = 0;
+            totalClicks = 0;
         }
         Debug.Log("Main um click");
     }

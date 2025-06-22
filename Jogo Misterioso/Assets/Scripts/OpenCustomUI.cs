@@ -32,7 +32,7 @@ public class OpenCustomUI : MonoBehaviour, IInteractable
         Debug.Log("Saio do range");
         if (qr != null)
         {
-            qrRevealScript.TotalClicks = 0;
+            qrRevealScript.totalClicks = 0;
             qr.SetActive(true);
         }
         
