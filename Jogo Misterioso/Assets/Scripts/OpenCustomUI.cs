@@ -1,8 +1,12 @@
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class OpenCustomUI : MonoBehaviour, IInteractable
 {
     public GameObject panel;
+    public GameObject qr;
+
+    public QReveal qrRevealScript;
 
     void Start()
     {
@@ -26,6 +30,12 @@ public class OpenCustomUI : MonoBehaviour, IInteractable
     void OnTriggerExit2D(Collider2D other)
     {
         Debug.Log("Saio do range");
+        if (qr != null)
+        {
+            qrRevealScript.TotalClicks = 0;
+            qr.SetActive(true);
+        }
+        
         panel.SetActive(false);
     }
 

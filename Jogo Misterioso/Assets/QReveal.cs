@@ -4,14 +4,23 @@ using TMPro;
 
 public class QReveal : MonoBehaviour
 {
-    public GameObject QR;
-    float TotalClicks1;
+    public GameObject Qr;
+    public int TotalClicks;
+    void Start()
+    {
+        Debug.Log("Comecou o start do qr");
+        TotalClicks = 0;
+    }
     public void AddClicksQR()
     {
-        TotalClicks1++;
-        if (TotalClicks1 == 3)
+        TotalClicks++;
+        if (TotalClicks >= 3)
         {
-            Destroy(QR);  
+
+            Qr.SetActive(false);
+            Debug.Log("Apareceu");
+            TotalClicks = 0;
         }
+        Debug.Log("Main um click");
     }
 }

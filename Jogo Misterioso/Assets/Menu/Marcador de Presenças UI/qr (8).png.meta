@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 080b5cd5adc4b0f4193aa51ca91ba95f
+guid: 6430547161d2e1845b83f900cbeb0535
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 198538158556077393
-    second: locker_0
+      213: -1841758020746320012
+    second: qr (8)_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: locker_0
+      name: qr (8)_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1920
-        height: 1080
+        width: 336
+        height: 336
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 15d581f376951c200800000000000000
-      internalID: 198538158556077393
+      spriteID: 477603396d2c076e0800000000000000
+      internalID: -1841758020746320012
       vertices: []
       indices: 
       edges: []
@@ -147,8 +147,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      locker_0: 198538158556077393
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
