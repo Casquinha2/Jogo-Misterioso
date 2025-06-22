@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 4a9058bc61f5ea04abbc423c620a1128
+guid: ebdca1f76f846764ca937039bd5cc5b0
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8030962647695264395
-    second: "MarcadorPresen\xE7as_0"
+      213: -3181236602873342583
+    second: QRnum_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "MarcadorPresen\xE7as_0"
+      name: QRnum_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1920
-        height: 1080
+        width: 111
+        height: 109
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b8a8e4c6af5b37f60800000000000000
-      internalID: 8030962647695264395
+      spriteID: 98593432a2af9d3d0800000000000000
+      internalID: -3181236602873342583
       vertices: []
       indices: 
       edges: []
