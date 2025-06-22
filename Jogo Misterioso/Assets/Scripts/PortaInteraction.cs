@@ -270,6 +270,8 @@ public class PortaInteraction : MonoBehaviour, IInteractable, ICancelableDialogu
                 CheckpointManager.I.LoadCheckpoint(checkpointID);
             }
 
+            player.transform.position = new Vector3(-1.47f, 1.90f, 0);
+
             if (tutorialPanel != null)
                 Destroy(tutorialPanel);
         }
