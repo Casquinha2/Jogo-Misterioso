@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class QReveal : MonoBehaviour
+public class QrReveal : MonoBehaviour
 {
     public GameObject qr;
 

@@ -6,7 +6,7 @@ public class OpenCustomUI : MonoBehaviour, IInteractable
     public GameObject panel;
     public GameObject qr;
 
-    public QReveal qrRevealScript;
+    public QrReveal qrRevealScript;
 
     void Start()
     {
