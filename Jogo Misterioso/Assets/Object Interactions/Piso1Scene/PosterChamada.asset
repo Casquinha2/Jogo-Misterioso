@@ -15,7 +15,8 @@ MonoBehaviour:
   objectName: Poster Chamada
   dialogueLines:
   - "*\xC9 um poster*"
-  - "*\"Chamada ao P\xE1tio\"*"
+  - "\"Chamada ao P\xE1tio dia 18 de junho\""
+  - Isto foi ontem!
   typingSpeed: 0.05
   autoProgressLines: 0101
   autoProgressDelay: 1

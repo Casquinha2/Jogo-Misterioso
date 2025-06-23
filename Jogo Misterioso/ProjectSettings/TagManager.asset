@@ -12,6 +12,7 @@ TagManager:
   - TutorialPanel
   - MenuCanvas
   - UICanvas
+  - CmCamera
   layers:
   - Default
   - TransparentFX

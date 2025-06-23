@@ -19,35 +19,42 @@ public class CameraScript : MonoBehaviour
     }
 
 
-    void Start()
+    void Update()
     {
         Camera cam = GetComponent<Camera>();
         float windowAspect = (float)Screen.width / Screen.height;
-        float scaleHeight = windowAspect / targetAspect;
 
-        if (scaleHeight < 1f)
+        float tolerance = 0.01f; // margem de erro pequena
+        if (Mathf.Abs(windowAspect - targetAspect) < tolerance)
         {
-            // letterbox: barras pretas acima/baixo
-            Rect r = cam.rect;
-            r.width  = 1f;
-            r.height = scaleHeight;
-            r.x      = 0;
-            r.y      = (1f - scaleHeight) / 2f;
-            cam.rect = r;
+            // Aspecto já é igual ao desejado — usar tela cheia (sem barras pretas)
+            cam.rect = new Rect(0, 0, 1, 1);
         }
         else
         {
-            // pillarbox: barras pretas laterais
-            float scaleWidth = 1f / scaleHeight;
-            Rect r = cam.rect;
-            r.width  = scaleWidth;
-            r.height = 1f;
-            r.x      = (1f - scaleWidth) / 2f;
-            r.y      = 0;
-            cam.rect = r;
-        }
-    }
-    
+            float scaleHeight = windowAspect / targetAspect;
 
-    
+            if (scaleHeight < 1f)
+            {
+                // letterbox: barras pretas acima/baixo
+                Rect r = new Rect();
+                r.width = 1f;
+                r.height = scaleHeight;
+                r.x = 0;
+                r.y = (1f - scaleHeight) / 2f;
+                cam.rect = r;
+            }
+            else
+            {
+                // pillarbox: barras pretas laterais
+                float scaleWidth = 1f / scaleHeight;
+                Rect r = new Rect();
+                r.width = scaleWidth;
+                r.height = 1f;
+                r.x = (1f - scaleWidth) / 2f;
+                r.y = 0;
+                cam.rect = r;
+            }
+        }
+    }  
 }

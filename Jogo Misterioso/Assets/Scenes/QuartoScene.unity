@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 10480173}
   - component: {fileID: 10480172}
   - component: {fileID: 10480171}
+  - component: {fileID: 10480174}
   m_Layer: 0
   m_Name: TutorialCanvas
   m_TagString: TutorialCanvas
@@ -207,7 +208,7 @@ Canvas:
   m_GameObject: {fileID: 10480169}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -221,6 +222,18 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &10480174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 10480169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35b41187e53f4e946864ed2b3e8c37a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &321201940
 GameObject:
   m_ObjectHideFlags: 0
