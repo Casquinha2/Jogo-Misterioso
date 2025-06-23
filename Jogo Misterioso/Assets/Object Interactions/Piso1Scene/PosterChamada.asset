@@ -10,16 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 648fa42727b63ae458df6a3968223511, type: 3}
-  m_Name: Codigo PC
+  m_Name: PosterChamada
   m_EditorClassIdentifier: 
-  objectName: Codigo Pc
+  objectName: Poster Chamada
   dialogueLines:
-  - "*\xC9 um computador fornecido pela escola para os alunos*"
-  - "*Est\xE1 ligado*"
-  - "Este computador est\xE1 ligado e algu\xE9m deixou o bloco de notas aberto! "
-  - Deixa ver.
-  - '"Q P J"'
-  - "O que \xE9 que isto significa?"
+  - "*\xC9 um poster*"
+  - "*\"Chamada ao P\xE1tio\"*"
   typingSpeed: 0.05
-  autoProgressLines: 010101010101
-  autoProgressDelay: 1.5
+  autoProgressLines: 0101
+  autoProgressDelay: 1

@@ -40,11 +40,11 @@ public class MapTransition : MonoBehaviour
                 break;
 
             case Direction.Left:
-                newPos.x += additivepos;
+                newPos.x -= additivepos;
                 break;
 
             case Direction.Right:
-                newPos.x -= additivepos;
+                newPos.x += additivepos;
                 break;
         }
 
