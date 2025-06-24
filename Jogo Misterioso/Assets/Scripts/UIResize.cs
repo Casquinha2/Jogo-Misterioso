@@ -79,8 +79,8 @@ public class UIResize : MonoBehaviour
         Rect vp = uiCamera.pixelRect;
 
         // ajusta anchors do Canvas root para essa área
-        _rt.anchorMin = new Vector2(vp.xMin / Screen.width, vp.yMin / Screen.height);
-        _rt.anchorMax = new Vector2(vp.xMax / Screen.width, vp.yMax / Screen.height);
+        //_rt.anchorMin = new Vector2(vp.xMin / Screen.width, vp.yMin / Screen.height);
+        //_rt.anchorMax = new Vector2(vp.xMax / Screen.width, vp.yMax / Screen.height);
         _rt.offsetMin = _rt.offsetMax = Vector2.zero;
 
         Debug.Log($"[UIResize] vp: {vp}, anchors: {_rt.anchorMin} - {_rt.anchorMax}");

@@ -19,7 +19,12 @@ public class CameraScript : MonoBehaviour
     }
 
 
-    void Update()
+    void Start()
+    {
+        ApplyLetterBox();
+    }
+
+    public void ApplyLetterBox()
     {
         Camera cam = GetComponent<Camera>();
         float windowAspect = (float)Screen.width / Screen.height;
@@ -56,5 +61,5 @@ public class CameraScript : MonoBehaviour
                 cam.rect = r;
             }
         }
-    }  
+    }
 }

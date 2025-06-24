@@ -1,16 +1,19 @@
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using System.Collections;
 
 public class OpenCustomUI : MonoBehaviour, IInteractable
 {
     public GameObject panel;
+
     public GameObject qr;
 
     public QrReveal qrRevealScript;
 
+
     void Start()
     {
         panel.SetActive(false);
+
     }
 
     public bool CanInteract()
@@ -35,8 +38,19 @@ public class OpenCustomUI : MonoBehaviour, IInteractable
             qrRevealScript.totalClicks = 0;
             qr.SetActive(true);
         }
-        
+
         panel.SetActive(false);
+
+        StartCoroutine(RestartLetterBox());
+        
     }
 
+    IEnumerator RestartLetterBox()
+    {
+        yield return new WaitForEndOfFrame();
+
+        var cam = FindFirstObjectByType<CameraScript>();
+        if (cam != null)
+            cam.ApplyLetterBox();
+    }
 }

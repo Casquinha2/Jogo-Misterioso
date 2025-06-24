@@ -2,6 +2,7 @@ using UnityEngine;
 using Unity.Cinemachine;
 using TMPro;
 using System.Linq;
+using System.Collections;
 
 
 public class Porta62Codes : MonoBehaviour
@@ -10,7 +11,9 @@ public class Porta62Codes : MonoBehaviour
     [SerializeField] private TextMeshProUGUI num2;
     [SerializeField] private TextMeshProUGUI num3;
     [SerializeField] private GameObject panel;
+    [SerializeField] private GameObject blackPanel;
     [SerializeField] private string checkpointID;
+
 
     private int totalClicks1, totalClicks2, totalClicks3;
 
@@ -18,11 +21,17 @@ public class Porta62Codes : MonoBehaviour
     public void AddClicks2() { totalClicks2 = (totalClicks2 + 1) % 10; num2.text = totalClicks2.ToString(); }
     public void AddClicks3() { totalClicks3 = (totalClicks3 + 1) % 10; num3.text = totalClicks3.ToString(); }
 
+
     public void CodeVerification()
     {
         if (num1.text == "8" && num2.text == "4" && num3.text == "7")
         {
             panel.SetActive(false);
+            blackPanel.SetActive(true);
+
+            
+
+            blackPanel.SetActive(false);
 
             // 1) Ache o Player
             var player = GameObject.FindWithTag("Player");
@@ -77,7 +86,6 @@ public class Porta62Codes : MonoBehaviour
             }
 
             player.transform.position = new Vector3(-1.22f, 8f, 0);
-        
         }
     }
 }
