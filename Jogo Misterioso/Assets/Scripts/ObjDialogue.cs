@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using TMPro;
-using UnityEngine.SceneManagement;
+using System;  
 
 public class ObjDialogue : MonoBehaviour, IInteractable, ICancelableDialogue
 {
@@ -25,6 +25,8 @@ public class ObjDialogue : MonoBehaviour, IInteractable, ICancelableDialogue
 
     private int  objDialogueIndex;
     private bool objIsTyping, objIsDialogueActive;
+
+    public static event Action<ObjDialogue> OnDialogueEnded;
 
     void Start()
     {
@@ -205,5 +207,6 @@ public class ObjDialogue : MonoBehaviour, IInteractable, ICancelableDialogue
         StopAllCoroutines();
         objIsDialogueActive = false;
         objDialoguePanelInstance.SetActive(false);
+        OnDialogueEnded?.Invoke(this);
     }
 }

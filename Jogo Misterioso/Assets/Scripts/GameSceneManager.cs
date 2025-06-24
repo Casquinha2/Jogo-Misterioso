@@ -13,6 +13,7 @@ public class GameSceneManager : MonoBehaviour
     [Header("Camera")]
     public CinemachineConfiner2D confiner;
     public Transform            mapBoundsRoot;
+    private Transform boundNode;
 
     // guarda o checkpoint que queremos atingir
     string targetCheckpointId;
@@ -93,22 +94,29 @@ public class GameSceneManager : MonoBehaviour
             return;
         }
 
-        var nodeName = cp.displayName; // “62”
-        var boundNode = mapBoundsRoot.Find(nodeName);
+        var nodeName = cp.displayName;
+
+
+        // "Quarto" é filho direto de MapBounds, então não precisa buscar mais fundo
+        boundNode = mapBoundsRoot
+            .GetComponentsInChildren<Transform>(true) // inclui inativos
+            .FirstOrDefault(t => t.name == nodeName && t != mapBoundsRoot);
+
         if (boundNode == null)
         {
-            Debug.LogError($"[GSM] Não encontrei {nodeName} em MapBounds.");
+            Debug.LogError($"[GSM] Não encontrei '{nodeName}' em MapBounds (mesmo em profundidade).");
             return;
         }
 
         var poly = boundNode.GetComponent<PolygonCollider2D>();
         if (poly == null)
         {
-            Debug.LogError($"[GSM] {nodeName} não tem PolygonCollider2D.");
+            Debug.LogError($"[GSM] '{nodeName}' não tem PolygonCollider2D.");
             return;
         }
 
         confiner.BoundingShape2D = poly;
         Debug.Log($"[GSM] Confiner agora usa o bounding “{nodeName}”.");
     }
+
 }

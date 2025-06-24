@@ -1,28 +1,50 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class WakeupDialogue : MonoBehaviour
 {
-    private bool hasShown = false;
+    [Header("Identificador único deste diálogo")]
+    [SerializeField] private string dialogueKey = "WakeupDialogue1";
+
     private ObjDialogue objDialogue;
 
     void Start()
     {
+        // se já mostramos antes, destrói imediatamente
+        if (WakeUpTracker.Shown.Contains(dialogueKey))
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         objDialogue = GetComponent<ObjDialogue>();
-        StartCoroutine(DelayedInteract());
+        StartCoroutine(DelayedInteractAndSubscribe());
     }
 
-    IEnumerator DelayedInteract()
+    IEnumerator DelayedInteractAndSubscribe()
     {
-        // espera um frame para todos os ObjDialogue.Start() acontecerem
+        // espera um frame para ObjDialogue.Start() rodar e
+        // evitar capturar o cancelamento automático
         yield return null;
 
-        // agora dispara de forma segura
-        if (!hasShown)
-        {
-            objDialogue.Interact();
-            hasShown = true;
-        }
+        objDialogue.Interact();
+
+        // só agora inscreve no evento de fim de diálogo verdadeiro
+        ObjDialogue.OnDialogueEnded += HandleEnd;
+    }
+
+    void OnDisable()
+    {
+        ObjDialogue.OnDialogueEnded -= HandleEnd;
+    }
+
+    private void HandleEnd(ObjDialogue ended)
+    {
+        if (ended != objDialogue) 
+            return;
+
+        // marca como mostrado e destrói
+        WakeUpTracker.Shown.Add(dialogueKey);
+        Destroy(gameObject);
     }
 }

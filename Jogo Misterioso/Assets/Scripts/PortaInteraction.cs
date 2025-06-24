@@ -3,6 +3,8 @@ using System.Collections;
 using TMPro;
 using Unity.Cinemachine;
 using UnityEngine.SceneManagement;
+using System.Linq;
+
 
 public class PortaInteraction : MonoBehaviour, IInteractable, ICancelableDialogue
 {
@@ -59,7 +61,9 @@ public class PortaInteraction : MonoBehaviour, IInteractable, ICancelableDialogu
             return;
         }
 
-        var bound62 = mbRoot.Find("62");
+        var allChildren = mbRoot.GetComponentsInChildren<Transform>(true);
+
+        var bound62 = allChildren.FirstOrDefault(t => t.name == "62");
         if (bound62 == null)
         {
             Debug.LogError("Não encontrei o child '62' dentro de MapBounds!", this);

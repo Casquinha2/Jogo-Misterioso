@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 415033ddb22725e40af1335264c5c5ad, type: 3}
-  m_Name: 62
+  m_Name: 6
   m_EditorClassIdentifier: 
-  id: 2
-  displayName: 62
+  id: 6
+  displayName: Corredor62_70
   sceneName: Piso1Scene
-  playerPosition: {x: -1.47, y: 1.9}
+  playerPosition: {x: -1.41, y: 26.65}
