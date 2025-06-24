@@ -18,5 +18,5 @@ MonoBehaviour:
   - "\"Chamada ao P\xE1tio dia 18 de junho\""
   - Isto foi ontem!
   typingSpeed: 0.05
-  autoProgressLines: 0101
+  autoProgressLines: 010101
   autoProgressDelay: 1

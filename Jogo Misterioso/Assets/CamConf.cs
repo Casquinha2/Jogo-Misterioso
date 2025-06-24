@@ -27,7 +27,7 @@ public class CamConf : MonoBehaviour
     private CinemachineConfiner2D _confiner;
     private CinemachinePositionComposer _composer;
 
-    private void Awake()
+    private void Start()
     {
         // tenta encontrar a vCam se não atribuída
         if (vCam == null)
