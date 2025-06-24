@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: 7
   m_EditorClassIdentifier: 
   id: 7
-  displayName: EEscadaDireita
+  displayName: EscadaDireita
   sceneName: Piso1Scene
   playerPosition: {x: -76.41, y: 50.48}

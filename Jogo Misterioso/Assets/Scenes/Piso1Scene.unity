@@ -1014,8 +1014,8 @@ Transform:
   m_GameObject: {fileID: 104890012}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.0879, y: 16.8875, z: -0.02565066}
-  m_LocalScale: {x: 4.062617, y: 0.5647699, z: 1}
+  m_LocalPosition: {x: -0.6623, y: 21.8464, z: -0.02565066}
+  m_LocalScale: {x: 8.688568, y: 10.482638, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1106656475}
@@ -1038,7 +1038,8 @@ MonoBehaviour:
   fastDamping: 0.1
   normalDamping: 1
   opcao: 0
-  zoomOutOnExit: 0
+  followOffset: {x: 0, y: 0}
+  zoomOutOnExit: 1
 --- !u!61 &104890015
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1130,7 +1131,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 0.43137255}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -15288,6 +15289,7 @@ MonoBehaviour:
   fastDamping: 1
   normalDamping: 1
   opcao: 0
+  followOffset: {x: 0, y: 0}
   zoomOutOnExit: 1
 --- !u!61 &1263428700
 BoxCollider2D:
@@ -15380,7 +15382,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.9339623, g: 0, b: 0, a: 0}
+  m_Color: {r: 0.9339623, g: 0, b: 0, a: 0.48235294}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -22012,7 +22014,7 @@ GameObject:
   - component: {fileID: 1780177187}
   - component: {fileID: 1780177186}
   m_Layer: 0
-  m_Name: Grid
+  m_Name: Cenario
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 415033ddb22725e40af1335264c5c5ad, type: 3}
-  m_Name: 5
+  m_Name: 9
   m_EditorClassIdentifier: 
-  id: 5
-  displayName: Corredor70
-  sceneName: Piso2Scene
-  playerPosition: {x: 54.32, y: 66.39}
+  id: 9
+  displayName: EscadaDireita_PatioSuperior
+  sceneName: Piso1Scene
+  playerPosition: {x: -87.75, y: 72.28}

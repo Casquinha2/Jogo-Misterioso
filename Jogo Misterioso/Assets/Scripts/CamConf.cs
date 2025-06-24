@@ -15,6 +15,8 @@ public class CamConf : MonoBehaviour
     [SerializeField] private float                  normalDamping  = 1f;
     [SerializeField] private Opcao                  opcao          = Opcao.Sim;
 
+    [SerializeField] private Vector2 followOffset = new Vector2(0,0);
+
     [Header("Zoom Out On Exit")]
     [Tooltip("Se marcado, ao sair do trigger faz zoom-out restaurando estado original")]
     [SerializeField] private bool                   zoomOutOnExit  = false;
@@ -22,6 +24,7 @@ public class CamConf : MonoBehaviour
     private float                       _originalSize;
     private CinemachineConfiner2D      _confiner;
     private CinemachinePositionComposer _composer;
+    private Vector3 _originalOffset;
 
     private void Start()
     {
@@ -36,7 +39,7 @@ public class CamConf : MonoBehaviour
         }
 
         // Guarda tamanho original apenas na primeira cena
-        if (ZoomState.OriginalSize < 0f)                
+        if (ZoomState.OriginalSize < 0f)
             ZoomState.OriginalSize = vCam.Lens.OrthographicSize;
         _originalSize = ZoomState.OriginalSize;
 
@@ -44,6 +47,8 @@ public class CamConf : MonoBehaviour
         _composer = vCam
             .GetCinemachineComponent(CinemachineCore.Stage.Body)
             as CinemachinePositionComposer;
+
+        _originalOffset = _composer.TargetOffset;
     }
 
     private void OnTriggerEnter2D(Collider2D col)
@@ -79,12 +84,14 @@ public class CamConf : MonoBehaviour
         }
 
         _confiner?.InvalidateBoundingShapeCache();
+
+        _composer.TargetOffset = new Vector3(followOffset.x, followOffset.y, 0);
     }
 
     private void OnTriggerExit2D(Collider2D col)
     {
         // Se não for Player ou zoomOutOnExit desligado, não faz nada
-        if (!zoomOutOnExit || !col.CompareTag("Player")) 
+        if (!zoomOutOnExit || !col.CompareTag("Player"))
             return;
 
         // Restaura zoom e damping
@@ -96,6 +103,9 @@ public class CamConf : MonoBehaviour
         AjustaDamping(false);
 
         _confiner?.InvalidateBoundingShapeCache();
+
+
+        _composer.TargetOffset = _originalOffset;
     }
 
     private void AjustaDamping(bool zoomed)
