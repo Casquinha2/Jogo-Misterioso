@@ -92,7 +92,6 @@ public class Porta62Codes : MonoBehaviour
             // 5) Salvar e carregar checkpoint
             if (!string.IsNullOrEmpty(checkpointID))
             {
-                CheckpointManager.I.SaveCheckpoint(checkpointID);
                 CheckpointManager.I.LoadCheckpoint(checkpointID);
             }
 

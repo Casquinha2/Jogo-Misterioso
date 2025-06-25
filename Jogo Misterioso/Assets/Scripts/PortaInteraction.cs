@@ -270,7 +270,6 @@ public class PortaInteraction : MonoBehaviour, IInteractable, ICancelableDialogu
 
             if (!string.IsNullOrEmpty(checkpointID))
             {
-                CheckpointManager.I.SaveCheckpoint(checkpointID);
                 CheckpointManager.I.LoadCheckpoint(checkpointID);
             }
 

@@ -1,105 +1,75 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Unity.Cinemachine;
 using System.Collections;
 
-
 public class MapTransitionScenes : MonoBehaviour
 {
-
     public static bool IsTransitioning { get; private set; }
 
-    [Header("Zona de confinamento (não trigger)")]
+    [Header("Bounds da cena atual")]
     [SerializeField] PolygonCollider2D mapBoundary;
-
-    [Header("Confiner da Virtual Camera")]
     [SerializeField] CinemachineConfiner2D confiner;
-
-    [Header("Virtual Camera que segue o Player")]
     [SerializeField] CinemachineCamera virtualCamera;
 
-    [Header("Coordenadas para o tp")]
+    [Header("Teleport local (opcional)")]
     [SerializeField] Vector2 teleportPosition;
 
-
-    [Header("MapBounds das cenas a ativar/Desativar")]
+    [Header("Bounds a ativar/desativar")]
     [SerializeField] GameObject inactivate;
-
     [SerializeField] GameObject activate;
 
-    [Header("Checkpoint ID")]
-    [SerializeField] private string checkpointID;
+    [Header("Cena destino")]
+    [SerializeField] string sceneToLoad;
 
-    [Header("UI de Carregamento")]
-    [SerializeField] GameObject panel;
-    [SerializeField] float seconds = 1.0f;
-
-
+    [Header("UI de carregamento (opcional)")]
+    [SerializeField] GameObject panel;  // se ficar vazio, tudo continua OK
+    [SerializeField] float seconds = 1f;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!collision.CompareTag("Player"))
-            return;
+        if (!collision.CompareTag("Player") || IsTransitioning) return;
 
-
+        // 1) Bloqueia qualquer input
         IsTransitioning = true;
 
-        if (panel != null)
-            panel.SetActive(true);
+        // 2) Avise o usuário (se tiver painel)
+        panel?.SetActive(true);
 
-        activate.SetActive(true);
+        // 3) Liga/desliga bounds locais
+        activate?.SetActive(true);
 
-
-        // 1) Guarda a posição antiga
-        Transform playerT = collision.transform;
-        Vector3 oldPos = playerT.position;
-
-        // 2) Atualiza o confiner e força recálculo
+        // 4) Opcional: warp local no mapa atual
+        var playerT = collision.transform;
+        var oldPos = playerT.position;
         confiner.BoundingShape2D = mapBoundary;
         confiner.InvalidateBoundingShapeCache();
+        playerT.position = new Vector3(teleportPosition.x, teleportPosition.y, oldPos.z);
+        virtualCamera.OnTargetObjectWarped(playerT, playerT.position - oldPos);
 
-        // 3) Calcula a nova posição e teleporta o jogador
-        Vector3 newPos = new Vector3(teleportPosition.x, teleportPosition.y, 0f);
-
-        playerT.position = newPos;
-
-        // 4) Informa a Cinemachine do warp, para ela ajustar imediatamente a câmera
-        Vector3 delta = newPos - oldPos;
-        virtualCamera.OnTargetObjectWarped(playerT, delta);
-
-        if (!string.IsNullOrEmpty(checkpointID))
-        {
-            CheckpointManager.I.SaveCheckpoint(checkpointID);
-            CheckpointManager.I.LoadCheckpoint(checkpointID);
-        }
-
-        if (panel != null)
-        {
-            Debug.Log($"▶️ Iniciando coroutine CloseLoading por {seconds}s");
-            StartCoroutine(CloseLoading());
-        }
-        else
-        {   
-            Debug.Log("⚠️ panel == null, desativando inactivate imediatamente");
-            inactivate.SetActive(false);
-        }
-        
+        // 5) Inicia rotina de load
+        StartCoroutine(DoLoadScene());
     }
 
-    private IEnumerator CloseLoading()
+    private IEnumerator DoLoadScene()
     {
-        // 1) espera o tempo de loading
-        yield return new WaitForSecondsRealtime(seconds);
+        // A) Aguarda um pouco (seleyendo o painel)
+        if (panel != null)
+            yield return new WaitForSecondsRealtime(seconds);
 
-        // 2) manda sumir o painel
-        panel.SetActive(false);
+        // B) Carrega cena de forma assíncrona
+        var loadOp = SceneManager.LoadSceneAsync(sceneToLoad);
+        loadOp.allowSceneActivation = true;
+        yield return loadOp;
+
+        // C) Um frame de buffer para tudo montar
+        yield return null;
+
+        // D) Fecha painel (se existir) e desativa o antigo bound
+        panel?.SetActive(false);
+        inactivate?.SetActive(false);
+
+        // E) Libera input
         IsTransitioning = false;
-
-        // 3) aqui sim, espera a Unity “processar” a desativação do painel
-        //    usando yield, e não um loop bloqueante
-        yield return null;  
-
-        // 4) só depois disso desativa o inactivate
-        inactivate.SetActive(false);
     }
-
 }

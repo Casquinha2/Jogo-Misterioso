@@ -2,14 +2,16 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Linq;
+using Unity.Cinemachine;
 
 public class CheckpointManager : MonoBehaviour
 {
     public static CheckpointManager I { get; private set; }
 
     [SerializeField] CheckpointDatabase database;
+    [SerializeField] Transform mapBoundsRoot;
+    [SerializeField] CinemachineConfiner2D confiner;
 
-    // guarda o checkpoint que queremos carregar
     string targetId;
 
     void Awake()
@@ -20,12 +22,6 @@ public class CheckpointManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
         else Destroy(gameObject);
-    }
-
-    public void SaveCheckpoint(string id)
-    {
-        PlayerPrefs.SetString("LastCheckpoint", id);
-        PlayerPrefs.Save();
     }
 
     public void LoadCheckpoint(string id)
@@ -71,30 +67,33 @@ public class CheckpointManager : MonoBehaviour
         // espera um frame para todos os objetos instanciar
         yield return null;
 
+        // 1) Teleporta o player como já fazia  
         var player = GameObject.FindWithTag("Player");
-        if (player == null)
-        {
-            Debug.LogWarning("[CheckpointManager] Player não encontrado.");
-            yield break;
-        }
+        var rb2d   = player.GetComponent<Rigidbody2D>();
+        rb2d.simulated = false;
+        rb2d.position  = cp.SpawnPos;
+        rb2d.linearVelocity  = Vector2.zero;
+        rb2d.simulated = true;
+        Physics2D.SyncTransforms();
 
-        var rb2d = player.GetComponent<Rigidbody2D>();
-        if (rb2d != null)
-        {
-            // desliga a simulação só neste frame
-            rb2d.simulated = false;
-            rb2d.position       = cp.SpawnPos;
-            rb2d.linearVelocity = Vector2.zero;
-            rb2d.simulated = true;
-
-            // força o motor 2D a reconhecer a posição agora
-            Physics2D.SyncTransforms();
-            Debug.Log($"[CheckpointManager] Player teleportado para {cp.SpawnPos}");
-        }
+        // 2) Atenção: atualiza o confiner para o polígono deste checkpoint
+        //    Assumindo que em MapBounds há um child com o mesmo nome de cp.displayName:
+        var boundTransform = mapBoundsRoot
+            .GetComponentsInChildren<Transform>(true)
+            .FirstOrDefault(t => t.name == cp.displayName);
+        if (boundTransform == null)
+            Debug.LogError($"Não achei MapBounds/{cp.displayName}");
         else
         {
-            player.transform.position = cp.SpawnPos;
-            Debug.Log($"[CheckpointManager] Player movido (sem físico) para {cp.SpawnPos}");
+            var poly = boundTransform.GetComponent<PolygonCollider2D>();
+            if (poly == null)
+                Debug.LogError($"'{cp.displayName}' não tem PolygonCollider2D");
+            else
+            {
+                confiner.BoundingShape2D = poly;
+                confiner.InvalidateBoundingShapeCache();
+                Debug.Log($"Confiner agora em '{cp.displayName}'");
+            }
         }
     }
 
