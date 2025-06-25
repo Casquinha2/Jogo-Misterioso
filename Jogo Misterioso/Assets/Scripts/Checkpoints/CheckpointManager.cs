@@ -1,7 +1,7 @@
+#if UNITY_EDITOR
 using System.Collections;
-using UnityEngine;
-using UnityEngine.SceneManagement;
 using System.Linq;
+using UnityEngine;
 using Unity.Cinemachine;
 
 public class CheckpointManager : MonoBehaviour
@@ -10,9 +10,7 @@ public class CheckpointManager : MonoBehaviour
 
     [SerializeField] CheckpointDatabase database;
     [SerializeField] Transform mapBoundsRoot;
-    [SerializeField] CinemachineConfiner2D confiner;
-
-    string targetId;
+    [SerializeField] CinemachineCamera vcam;
 
     void Awake()
     {
@@ -26,89 +24,79 @@ public class CheckpointManager : MonoBehaviour
 
     public void LoadCheckpoint(string id)
     {
-        var cp = database.checkpoints.FirstOrDefault(c => c.id == id);
-        if (cp == null)
-        {
-            Debug.LogError($"[CPM] Não encontrei checkpoint com id '{id}' no DB!");
-            return;
-        }
-        else
-            Debug.Log($"[CPM] Carreguei checkpoint '{id}' na cena '{cp.sceneName}' em {cp.SpawnPos}");
-
-
-        // guarda o id para usar no callback
-        targetId = id;
-
-        if (SceneManager.GetActiveScene().name == cp.sceneName)
-        {
-            // mesma cena → só faz warp
-            StartCoroutine(DoWarp(cp));
-        }
-        else
-        {
-            // cena diferente → espera carregar
-            SceneManager.sceneLoaded += OnSceneLoaded;
-            SceneManager.LoadScene(cp.sceneName, LoadSceneMode.Single);
-        }
-    }
-
-    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        // desregista já para não chamar várias vezes
-        SceneManager.sceneLoaded -= OnSceneLoaded;
-
-        // recupera o checkpoint pela targetId
-        var cp = database.checkpoints.First(c => c.id == targetId);
+        var cp = database.checkpoints.FirstOrDefault(x => x.id == id);
+        if (cp == null) { Debug.LogError($"Checkpoint '{id}' não existe."); return; }
         StartCoroutine(DoWarp(cp));
     }
 
     IEnumerator DoWarp(Checkpoint cp)
     {
-        // espera um frame para todos os objetos instanciar
+        // 1) espera readiness
+        float t = 0;
+        while (!GameSceneManager.isReady && t < 2f) { t += Time.deltaTime; yield return null; }
+        if (!GameSceneManager.isReady) yield break;
+        yield return null; yield return null;
+
+        var conf = vcam.GetComponent<CinemachineConfiner2D>();
+        if (conf == null) { Debug.LogError("Confiner2D não encontrado"); yield break; }
+
+        conf.gameObject.SetActive(false);
+        
+
+
+        // 2) teleporta o PLAYER
+        var player = GameObject.FindWithTag("Player")?.transform;
+        if (player == null) { Debug.LogError("Player não encontrado"); yield break; }
+
+        Vector3 oldP = player.position;
+        player.position = cp.SpawnPos;
+       
+        var sceneKey = cp.sceneName.Replace("Scene", "");
+        string floor = sceneKey.StartsWith("Piso") && int.TryParse(sceneKey.Substring(4), out var idx)
+            ? $"Piso {idx}"
+            : sceneKey;
+
+        // 1) calcula a posição alvo da câmara
+        var mainCam = Camera.main.transform;
+        float camZ    = mainCam.position.z;                       // normalmente -10
+        Vector3 camP  = new Vector3(cp.SpawnPos.x,
+                                    cp.SpawnPos.y,
+                                    camZ);
+
+        // 2) força a câmara para lá usando o Brain
+        vcam.ForceCameraPosition(camP, Quaternion.identity);
+
+
+
+
+
+        yield return null; // dá um frame pro CineCam
+
+        // 7) atualiza o Confiner2D
+        
+        
+
+
+        var floorTF = mapBoundsRoot
+            .GetComponentsInChildren<Transform>(true)
+            .FirstOrDefault(t => t.name == floor);
+        if (floorTF == null) { Debug.LogError($"Piso '{floor}' não existe"); yield break; }
+
+        // 9) ativa só o collider do checkpoint
+        var polys = floorTF.GetComponentsInChildren<PolygonCollider2D>(true);
+
+        var targetPoly = polys.FirstOrDefault(p => p.name == cp.displayName);
+        if (targetPoly == null) { Debug.LogError($"Poly '{cp.displayName}' não achada"); yield break; }
+
         yield return null;
 
-        // 1) Teleporta o player como já fazia  
-        var player = GameObject.FindWithTag("Player");
-        var rb2d   = player.GetComponent<Rigidbody2D>();
-        rb2d.simulated = false;
-        rb2d.position  = cp.SpawnPos;
-        rb2d.linearVelocity  = Vector2.zero;
-        rb2d.simulated = true;
-        Physics2D.SyncTransforms();
+        conf.gameObject.SetActive(true);
 
-        // 2) Atenção: atualiza o confiner para o polígono deste checkpoint
-        //    Assumindo que em MapBounds há um child com o mesmo nome de cp.displayName:
-        var boundTransform = mapBoundsRoot
-            .GetComponentsInChildren<Transform>(true)
-            .FirstOrDefault(t => t.name == cp.displayName);
-        if (boundTransform == null)
-            Debug.LogError($"Não achei MapBounds/{cp.displayName}");
-        else
-        {
-            var poly = boundTransform.GetComponent<PolygonCollider2D>();
-            if (poly == null)
-                Debug.LogError($"'{cp.displayName}' não tem PolygonCollider2D");
-            else
-            {
-                confiner.BoundingShape2D = poly;
-                confiner.InvalidateBoundingShapeCache();
-                Debug.Log($"Confiner agora em '{cp.displayName}'");
-            }
-        }
+        // 10) aplica shape e invalida cache
+        conf.BoundingShape2D = targetPoly;
+        conf.InvalidateBoundingShapeCache();
+
+        yield return null;
     }
-
-    #if UNITY_EDITOR
-    void OnDrawGizmos()
-    {
-        if (database == null) return;
-        Gizmos.color = Color.magenta;
-        foreach (var cp in database.checkpoints)
-            if (cp.id != "1")
-            {
-                Gizmos.DrawSphere(cp.SpawnPos, 0.1f);
-            }
-            
-
-    }
-    #endif
 }
+#endif

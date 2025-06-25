@@ -14,11 +14,6 @@ public class PlayerMovement : MonoBehaviour
     void Awake()
     {
         DontDestroyOnLoad(gameObject);
-    }
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
         rb = GetComponent<Rigidbody2D>(); // Get the Rigidbody2D component attached to the player
         animator = GetComponent<Animator>();
         transform.position = new Vector3(-1.76f, -0.12f, 0f);

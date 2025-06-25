@@ -12,8 +12,14 @@ EditorBuildSettings:
     path: Assets/Scenes/QuartoScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 0
+    path: Assets/Scenes/Piso0Scene.unity
+    guid: d0099b900f18d4f46b641568fddd8521
+  - enabled: 0
     path: Assets/Scenes/Piso1Scene.unity
     guid: 2e51110348fe580459e5e6138ab56a5b
+  - enabled: 0
+    path: Assets/Scenes/Piso2Scene.unity
+    guid: 1a587f5cf2580d6419a578640c3cfb6c
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

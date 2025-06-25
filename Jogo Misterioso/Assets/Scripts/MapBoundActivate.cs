@@ -16,12 +16,10 @@ public class MapBoundActivate : MonoBehaviour
 
     void Start()
     {
-        // pega nome da cena inicial
         string nomeCena = SceneManager.GetActiveScene().name;
 
         foreach (GameObject child in allChildren)
         {
-            // ativa só o que bate com o nome da cena
             bool deveAtivar = nomeCena switch
             {
                 "QuartoScene" when child.name == "QuartoScene" => true,
@@ -34,7 +32,7 @@ public class MapBoundActivate : MonoBehaviour
             child.SetActive(deveAtivar);
         }
 
-        // desliga este componente — não vai rodar nada depois
         enabled = false;
     }
+
 }
