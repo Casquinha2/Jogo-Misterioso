@@ -31,6 +31,8 @@ public class MapTransition : MonoBehaviour
         if (!collision.CompareTag("Player"))
             return;
 
+        confiner.gameObject.SetActive(false);
+
         IsTransitioning = true;
 
         if (panel != null)
@@ -40,9 +42,7 @@ public class MapTransition : MonoBehaviour
         Transform playerT = collision.transform;
         Vector3 oldPos = playerT.position;
 
-        // 2) Atualiza o confiner e força recálculo
-        confiner.BoundingShape2D = mapBoundary;
-        confiner.InvalidateBoundingShapeCache();
+        
 
         // 3) Calcula a nova posição e teleporta o jogador
         Vector3 newPos = oldPos;
@@ -59,10 +59,21 @@ public class MapTransition : MonoBehaviour
         Vector3 delta = newPos - oldPos;
         virtualCamera.OnTargetObjectWarped(playerT, delta);
 
+
+        confiner.gameObject.SetActive(true);
+
+        // 2) Atualiza o confiner e força recálculo
+        confiner.BoundingShape2D = mapBoundary;
+        confiner.InvalidateBoundingShapeCache();
+
+        
+
         if (panel != null)
             StartCoroutine(CloseLoading());
         else
             IsTransitioning = false;
+
+        
     }
 
     private IEnumerator CloseLoading()

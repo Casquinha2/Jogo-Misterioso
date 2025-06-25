@@ -30,6 +30,8 @@ public class MapTransitionScenes : MonoBehaviour
     {
         if (!collision.CompareTag("Player") || IsTransitioning) return;
 
+        confiner.gameObject.SetActive(false);
+
         // 1) Bloqueia qualquer input
         IsTransitioning = true;
 
@@ -42,10 +44,14 @@ public class MapTransitionScenes : MonoBehaviour
         // 4) Opcional: warp local no mapa atual
         var playerT = collision.transform;
         var oldPos = playerT.position;
-        confiner.BoundingShape2D = mapBoundary;
-        confiner.InvalidateBoundingShapeCache();
+        
         playerT.position = new Vector3(teleportPosition.x, teleportPosition.y, oldPos.z);
         virtualCamera.OnTargetObjectWarped(playerT, playerT.position - oldPos);
+
+        confiner.gameObject.SetActive(true);
+
+        confiner.BoundingShape2D = mapBoundary;
+        confiner.InvalidateBoundingShapeCache();
 
         // 5) Inicia rotina de load
         StartCoroutine(DoLoadScene());

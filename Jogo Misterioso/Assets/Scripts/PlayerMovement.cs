@@ -26,7 +26,6 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.linearVelocity = Vector2.zero;
             animator.SetBool("isWalking", false);
-            return;
         }
         else
             rb.linearVelocity = moveInput * moveSpeed; // Set the velocity of the Rigidbody2D based on input and speed
@@ -42,6 +41,9 @@ public class PlayerMovement : MonoBehaviour
 
     public void Move(InputAction.CallbackContext context)
     {
+        animator.SetBool("isWalking", true);
+        animator.SetBool("isAFK", false);
+
         if (context.canceled)
         {
             moveInput = Vector2.zero;
@@ -51,12 +53,10 @@ public class PlayerMovement : MonoBehaviour
         }
 
         if (MapTransitionScenes.IsTransitioning || MapTransition.IsTransitioning)
+        {
             return;
-
-        animator.SetBool("isWalking", true);
-        animator.SetBool("isAFK", false);
-
-        
+        }
+            
         moveInput = context.ReadValue<Vector2>();
         animator.SetFloat("InputX", moveInput.x);
         animator.SetFloat("InputY", moveInput.y);
