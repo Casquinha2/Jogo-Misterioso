@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      corredor_estatua_0: 3694106694251837924
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

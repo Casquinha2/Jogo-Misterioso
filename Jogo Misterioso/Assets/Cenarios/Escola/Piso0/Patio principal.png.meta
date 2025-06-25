@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Patio principal_0: 6415053723627721004
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
