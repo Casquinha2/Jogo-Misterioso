@@ -5,36 +5,23 @@ using UnityEngine.SceneManagement;
 public class MapBoundActivate : MonoBehaviour
 {
     [SerializeField] Transform mapBounds;
-
-    // Pode usar List em vez de array para não precisar saber o tamanho antes
     private List<GameObject> allChildren = new List<GameObject>();
 
     void Awake()
     {
-        // Pega todos os filhos no Awake (uma vez só)
+        // coleta os filhos UMA vez
         foreach (Transform child in mapBounds)
             allChildren.Add(child.gameObject);
     }
 
-    void OnEnable()
+    void Start()
     {
-        // Assina o evento de cena carregada
-        SceneManager.sceneLoaded += OnSceneLoaded;
-    }
+        // pega nome da cena inicial
+        string nomeCena = SceneManager.GetActiveScene().name;
 
-    void OnDisable()
-    {
-        // Cancela a inscrição ao desativar este componente
-        SceneManager.sceneLoaded -= OnSceneLoaded;
-    }
-
-    // Esse método é chamado toda vez que uma cena é carregada
-    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        string nomeCena = scene.name;
         foreach (GameObject child in allChildren)
         {
-            // Padronize nomes pra evitar espaços/exceções…
+            // ativa só o que bate com o nome da cena
             bool deveAtivar = nomeCena switch
             {
                 "QuartoScene" when child.name == "QuartoScene" => true,
@@ -46,5 +33,8 @@ public class MapBoundActivate : MonoBehaviour
 
             child.SetActive(deveAtivar);
         }
+
+        // desliga este componente — não vai rodar nada depois
+        enabled = false;
     }
 }

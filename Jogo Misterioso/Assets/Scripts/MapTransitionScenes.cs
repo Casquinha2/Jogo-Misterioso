@@ -1,10 +1,13 @@
 using UnityEngine;
 using Unity.Cinemachine;
-using System.ComponentModel.Design;
+using System.Collections;
 
 
 public class MapTransitionScenes : MonoBehaviour
 {
+
+    public static bool IsTransitioning { get; private set; }
+
     [Header("Zona de confinamento (não trigger)")]
     [SerializeField] PolygonCollider2D mapBoundary;
 
@@ -14,7 +17,7 @@ public class MapTransitionScenes : MonoBehaviour
     [Header("Virtual Camera que segue o Player")]
     [SerializeField] CinemachineCamera virtualCamera;
 
-    [Header("Coordenadas para o tp")]   
+    [Header("Coordenadas para o tp")]
     [SerializeField] Vector2 teleportPosition;
 
 
@@ -22,9 +25,13 @@ public class MapTransitionScenes : MonoBehaviour
     [SerializeField] GameObject inactivate;
 
     [SerializeField] GameObject activate;
-    
+
     [Header("Checkpoint ID")]
     [SerializeField] private string checkpointID;
+
+    [Header("UI de Carregamento")]
+    [SerializeField] GameObject panel;
+    [SerializeField] float seconds = 1.0f;
 
 
 
@@ -33,9 +40,14 @@ public class MapTransitionScenes : MonoBehaviour
         if (!collision.CompareTag("Player"))
             return;
 
+
+        IsTransitioning = true;
+
+        if (panel != null)
+            panel.SetActive(true);
+
         activate.SetActive(true);
 
-        inactivate.SetActive(false);
 
         // 1) Guarda a posição antiga
         Transform playerT = collision.transform;
@@ -60,5 +72,34 @@ public class MapTransitionScenes : MonoBehaviour
             CheckpointManager.I.LoadCheckpoint(checkpointID);
         }
 
+        if (panel != null)
+        {
+            Debug.Log($"▶️ Iniciando coroutine CloseLoading por {seconds}s");
+            StartCoroutine(CloseLoading());
+        }
+        else
+        {   
+            Debug.Log("⚠️ panel == null, desativando inactivate imediatamente");
+            inactivate.SetActive(false);
+        }
+        
     }
+
+    private IEnumerator CloseLoading()
+    {
+        // 1) espera o tempo de loading
+        yield return new WaitForSecondsRealtime(seconds);
+
+        // 2) manda sumir o painel
+        panel.SetActive(false);
+        IsTransitioning = false;
+
+        // 3) aqui sim, espera a Unity “processar” a desativação do painel
+        //    usando yield, e não um loop bloqueante
+        yield return null;  
+
+        // 4) só depois disso desativa o inactivate
+        inactivate.SetActive(false);
+    }
+
 }
