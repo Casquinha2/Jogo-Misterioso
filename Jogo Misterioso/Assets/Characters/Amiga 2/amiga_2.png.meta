@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      amiga_2_0: -1875151078622642901
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

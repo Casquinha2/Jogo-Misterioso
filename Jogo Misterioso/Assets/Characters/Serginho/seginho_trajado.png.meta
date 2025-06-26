@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      seginho_trajado_0: 6125819448541755408
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
