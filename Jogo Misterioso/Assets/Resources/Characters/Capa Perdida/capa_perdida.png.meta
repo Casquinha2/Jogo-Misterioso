@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 45e4e18b7f7e9a8408c7c5b157e25364
+guid: 86ff160a2881d5b4d939c79e6588e05d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6125819448541755408
-    second: seginho_trajado_0
+      213: -5040400920363400679
+    second: capa_perdida_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,12 +113,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: seginho_trajado_0
+      name: capa_perdida_0
       rect:
         serializedVersion: 2
-        x: 79
+        x: 95
         y: 0
-        width: 178
+        width: 146
         height: 320
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 018b28c1558430550800000000000000
-      internalID: 6125819448541755408
+      spriteID: 91200307116ec0ab0800000000000000
+      internalID: -5040400920363400679
       vertices: []
       indices: 
       edges: []

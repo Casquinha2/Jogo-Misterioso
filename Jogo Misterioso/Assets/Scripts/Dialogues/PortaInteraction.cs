@@ -1,10 +1,8 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using System.Collections;
 using TMPro;
 using Unity.Cinemachine;
-using System.Collections;
-using System.Linq;
-using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
 
 public class PortaInteraction : MonoBehaviour, IInteractable, ICancelableDialogue
 {
@@ -19,30 +17,36 @@ public class PortaInteraction : MonoBehaviour, IInteractable, ICancelableDialogu
     [Tooltip("Arrasta aqui o prefab do item que será entregue ao jogador")]
     public GameObject itemPrefab;
 
-    // ↓ ↓ ↓ campos resolvidos em Start() via Tags ↓ ↓ ↓
-    private Transform uiRoot;
-    private GameObject inventoryPanel;
-    private GameObject tutorialPanel;
-    private GameObject player;
-    private PolygonCollider2D mapBoundary;
-    private CinemachineConfiner2D confiner;
+    [Header("Checkpoint ID")]
+    [SerializeField] private string checkpointID;
 
-    // Estado interno do diálogo
+    // ↓ ↓ ↓ campos resolvidos em Start() via Tags ↓ ↓ ↓
+    private Transform uiRoot;                     
+    private GameObject inventoryPanel;            
+    private GameObject tutorialPanel;             
+    private GameObject player;                   
+    private PolygonCollider2D mapBoundary;        
+    private CinemachineConfiner2D confiner;       
+
+    // Estado interno
     private GameObject objDialoguePanelInstance;
-    private GameObject blackPanel;
-    private TMP_Text objDialogueText;
+    private TMP_Text   objDialogueText;
     private string[]   rightDialogue, wrongDialogue, selectedDialogueLines;
     private int        objDialogueIndex;
     private bool       objIsTyping, objIsDialogueActive;
 
+<<<<<<<< HEAD:Jogo Misterioso/Assets/Scripts/PortaInteraction.cs
+========
     // Cena fixa de destino
     private const string piso1SceneName = "Piso1Scene";
     private bool shouldSetupAfterLoad = false;
 
-    private Transform piso1, quarto;
+    private Transform piso1;
 
+>>>>>>>> 4856127 (adicionei personagens nas assets e irmao no jogo):Jogo Misterioso/Assets/Scripts/Dialogues/PortaInteraction.cs
     void Start()
     {
+        // ——— Validação obrigatória do itemPrefab ———
         if (itemPrefab == null)
         {
             Debug.LogError("❌ itemPrefab não atribuído em PortaInteraction! Desligando script...", this);
@@ -50,31 +54,30 @@ public class PortaInteraction : MonoBehaviour, IInteractable, ICancelableDialogu
             return;
         }
 
+        // 1) Player
         player = GameObject.FindWithTag("Player");
+
+        // 2) Confiner
         confiner = FindFirstObjectByType<CinemachineConfiner2D>();
 
+        // 3) MapBoundary, dentro de "MapBounds"/checkpointID
         var mbRoot = GameObject.Find("MapBounds")?.transform;
-        if (mbRoot == null)
+        if (mbRoot != null)
         {
-            Debug.LogError("Não encontrei o GameObject 'MapBounds'!", this);
-            return;
+            var node = mbRoot.Find(checkpointID);
+            if (node != null)
+                mapBoundary = node.GetComponent<PolygonCollider2D>();
         }
 
-        quarto = mbRoot
-            .GetComponentsInChildren<Transform>(true)
-            .FirstOrDefault(t => t.name == "Quarto");
-        if (quarto == null)
-        {
-            Debug.LogError("Não encontrei o child 'Quarto' dentro de MapBounds!", this);
-            return;
-        }
-
+<<<<<<<< HEAD:Jogo Misterioso/Assets/Scripts/PortaInteraction.cs
+        // 4) InventoryPanel (ativo ou inativo)
+========
         piso1 = mbRoot
             .GetComponentsInChildren<Transform>(true)
             .FirstOrDefault(t => t.name == "Piso 1");
         if (piso1 == null)
         {
-            Debug.LogError("Não encontrei o child 'Piso 1' dentro de MapBounds!", this);
+            Debug.LogError("Não encontrei o child '62' dentro de MapBounds!", this);
             return;
         }
 
@@ -95,58 +98,46 @@ public class PortaInteraction : MonoBehaviour, IInteractable, ICancelableDialogu
         }
 
         // InventoryPanel (pode estar inativo)
+>>>>>>>> 4856127 (adicionei personagens nas assets e irmao no jogo):Jogo Misterioso/Assets/Scripts/Dialogues/PortaInteraction.cs
         inventoryPanel = GameObject.FindWithTag("InventoryPanel");
         if (inventoryPanel == null)
         {
+        // vai buscar TODOS os Transforms, inclusive inativos
             foreach (var t in Resources.FindObjectsOfTypeAll<Transform>())
             {
                 if (t.gameObject.CompareTag("InventoryPanel"))
                 {
-                    inventoryPanel = t.gameObject;
-                    break;
+                inventoryPanel = t.gameObject;
+                break;
                 }
             }
         }
+
         if (inventoryPanel == null)
             Debug.LogError("❌ InventoryPanel (mesmo inativo) não encontrado!", this);
 
-        // TutorialPanel
+        // 5) TutorialPanel (ativo ou inativo)
         tutorialPanel = GameObject.FindWithTag("TutorialPanel");
         if (tutorialPanel == null)
-        {
             foreach (var go in SceneManager.GetActiveScene().GetRootGameObjects())
                 if (go.CompareTag("TutorialPanel"))
                 {
                     tutorialPanel = go;
                     break;
                 }
-        }
 
-        // UI Root (Canvas)
+        // 6) UI Root → Canvas marcado como "UICanvas"
         GameObject uiGo = GameObject.FindWithTag("UICanvas");
         if (uiGo == null)
-        {
             foreach (var go in SceneManager.GetActiveScene().GetRootGameObjects())
                 if (go.CompareTag("UICanvas"))
                 {
                     uiGo = go;
                     break;
                 }
-        }
         uiRoot = uiGo?.transform;
 
-        // logo após:
-        var allUiTs = uiRoot.GetComponentsInChildren<Transform>(true);
-        var loadT   = allUiTs.FirstOrDefault(t => t.name == "Loading");
-        if (loadT != null)
-        {
-            blackPanel = loadT.gameObject;
-            blackPanel.SetActive(false);
-            LoadingManager.RegisterPanel(blackPanel);
-
-        }
-
-
+        // ——— Validações iniciais ———
         if (objDialoguePanelPrefab == null)
         {
             Debug.LogError("❌ Prefab de diálogo não atribuído!", this);
@@ -160,7 +151,7 @@ public class PortaInteraction : MonoBehaviour, IInteractable, ICancelableDialogu
             return;
         }
 
-        // Instancia painel de diálogo (inativo inicialmente)
+        // 7) instancia o painel de diálogo (o prefab já traz tag "DialoguePanel")
         objDialoguePanelInstance = Instantiate(
             objDialoguePanelPrefab,
             uiRoot,
@@ -170,14 +161,13 @@ public class PortaInteraction : MonoBehaviour, IInteractable, ICancelableDialogu
         objDialoguePanelInstance.SetActive(false);
         objDialogueText.text = "";
 
-        // Separa linhas de diálogo
+        // 8) separa linhas de diálogo certo/errado
         rightDialogue = objDialogueData.dialogueLines[..indexDialogueCerto];
         wrongDialogue = objDialogueData.dialogueLines[indexDialogueCerto..];
     }
 
-     void OnEnable()
+    void OnEnable()
     {
-        SceneManager.sceneLoaded += OnSceneLoaded;
         if (DialogueManager.Instance == null) return;
         DialogueManager.Instance.OnNewDialogue   += CancelDialogue;
         DialogueManager.Instance.OnPauseDialogue += HandlePause;
@@ -186,7 +176,6 @@ public class PortaInteraction : MonoBehaviour, IInteractable, ICancelableDialogu
 
     void OnDisable()
     {
-        SceneManager.sceneLoaded -= OnSceneLoaded;
         if (DialogueManager.Instance == null) return;
         DialogueManager.Instance.OnNewDialogue   -= CancelDialogue;
         DialogueManager.Instance.OnPauseDialogue -= HandlePause;
@@ -197,6 +186,7 @@ public class PortaInteraction : MonoBehaviour, IInteractable, ICancelableDialogu
 
     public void Interact()
     {
+        // 1) verifica se o jogador tem o item (sempre obrigatório)
         bool hasItem = false;
         if (inventoryPanel != null)
         {
@@ -215,9 +205,13 @@ public class PortaInteraction : MonoBehaviour, IInteractable, ICancelableDialogu
             }
         }
 
+        // 2) cancela outros diálogos e limpa painéis
         DialogueManager.Instance.RequestNewDialogue(this);
+
+        // 3) escolhe as linhas
         selectedDialogueLines = hasItem ? rightDialogue : wrongDialogue;
 
+        // 4) inicia ou avança
         if (objIsDialogueActive) NextLine();
         else                     StartObjDialogue();
     }
@@ -239,13 +233,9 @@ public class PortaInteraction : MonoBehaviour, IInteractable, ICancelableDialogu
             objIsTyping = false;
         }
         else if (++objDialogueIndex < selectedDialogueLines.Length)
-        {
             StartCoroutine(TypeLine());
-        }
         else
-        {
             EndDialogue();
-        }
     }
 
     private IEnumerator TypeLine()
@@ -267,13 +257,7 @@ public class PortaInteraction : MonoBehaviour, IInteractable, ICancelableDialogu
         }
     }
 
-    public void CancelDialogue()
-    {
-        if (!objIsDialogueActive || objDialoguePanelInstance == null)
-        return;
-
-        EndDialogue();
-    }
+    public void CancelDialogue() => EndDialogue();
 
     private void HandlePause()
     {
@@ -295,18 +279,40 @@ public class PortaInteraction : MonoBehaviour, IInteractable, ICancelableDialogu
         objIsDialogueActive = false;
         objDialoguePanelInstance.SetActive(false);
 
-        // Se acertou, dispara a transição
+        // se acertou → confiner, checkpoint e remove tutorial
         if (selectedDialogueLines == rightDialogue)
         {
-            // limpa diálogos antigos
+
+
+            
+            /*
+
+                FAZEWWR AQUI TELA FICAR PRETA PARA UPDATE
+
+            */
+
+
+
+
             foreach (var tr in uiRoot.GetComponentsInChildren<Transform>(true))
                 if (tr.CompareTag("DialoguePanel"))
                     Destroy(tr.gameObject);
 
-            // inicia o processo de loading + reposição + troca de cena
-            StartCoroutine(DoTransitionToPiso1());
+            if (confiner != null && mapBoundary != null)
+                confiner.BoundingShape2D = mapBoundary;
+
+            if (!string.IsNullOrEmpty(checkpointID))
+            {
+                CheckpointManager.I.SaveCheckpoint(checkpointID);
+                CheckpointManager.I.LoadCheckpoint(checkpointID);
+            }
+
+            if (tutorialPanel != null)
+                Destroy(tutorialPanel);
         }
     }
+<<<<<<<< HEAD:Jogo Misterioso/Assets/Scripts/PortaInteraction.cs
+========
 
     private IEnumerator DoTransitionToPiso1()
     {
@@ -316,12 +322,6 @@ public class PortaInteraction : MonoBehaviour, IInteractable, ICancelableDialogu
 
 
         piso1.gameObject.SetActive(true);
-
-        quarto.gameObject.SetActive(false);
-
-
-        confiner.BoundingShape2D = mapBoundary;
-        confiner.InvalidateBoundingShapeCache();
 
         // 2) espera um frame pra garantir que o UI realmente apareça
         yield return null;
@@ -346,6 +346,18 @@ public class PortaInteraction : MonoBehaviour, IInteractable, ICancelableDialogu
         if (!shouldSetupAfterLoad || scene.name != piso1SceneName) return;
         shouldSetupAfterLoad = false;
 
+        // ajusta confiner
+        confiner = FindFirstObjectByType<CinemachineConfiner2D>();
+        var bound62 = GameObject
+            .Find("MapBounds")?
+            .GetComponentsInChildren<PolygonCollider2D>(true)
+            .FirstOrDefault(c => c.gameObject.name == "62");
+        if (confiner != null && bound62 != null)
+        {
+            confiner.BoundingShape2D = bound62;
+            confiner.InvalidateBoundingShapeCache();
+        }
+
         // warpa a câmera
         var vcam = FindFirstObjectByType<CinemachineCamera>();
         player = GameObject.FindWithTag("Player");
@@ -367,4 +379,5 @@ public class PortaInteraction : MonoBehaviour, IInteractable, ICancelableDialogu
             blackPanel.SetActive(false);
 
     }
+>>>>>>>> 4856127 (adicionei personagens nas assets e irmao no jogo):Jogo Misterioso/Assets/Scripts/Dialogues/PortaInteraction.cs
 }
