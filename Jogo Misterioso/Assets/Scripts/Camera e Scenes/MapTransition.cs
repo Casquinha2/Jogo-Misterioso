@@ -24,7 +24,7 @@ public class MapTransition : MonoBehaviour
 
     [Header("UI de Carregamento")]
     [SerializeField] GameObject panel;
-    [SerializeField] float seconds = 1f;
+    [SerializeField] float seconds = 0.5f;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

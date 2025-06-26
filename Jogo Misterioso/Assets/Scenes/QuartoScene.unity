@@ -234,6 +234,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35b41187e53f4e946864ed2b3e8c37a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mode: 0
+  uiCamera: {fileID: 0}
+  planeDistance: 100
+  sortingLayer: UI
 --- !u!1 &321201940
 GameObject:
   m_ObjectHideFlags: 0
@@ -285,6 +289,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialoguePanelPrefab: {fileID: 6793569825845607584, guid: 78297fdde5a6b7049a476f932a7a2300, type: 3}
+  npcDialoguePanelPrefab: {fileID: 0}
 --- !u!1 &324819536
 GameObject:
   m_ObjectHideFlags: 0
@@ -406,8 +411,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -883554461
-  m_SortingLayer: -1
+  m_SortingLayerID: -1807754811
+  m_SortingLayer: -2
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.12152922, g: 1, b: 0, a: 0}
@@ -1007,8 +1012,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -883554461
-  m_SortingLayer: -1
+  m_SortingLayerID: -1807754811
+  m_SortingLayer: -2
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.12152922, g: 1, b: 0, a: 0}
@@ -1570,8 +1575,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -883554461
-  m_SortingLayer: -1
+  m_SortingLayerID: -1807754811
+  m_SortingLayer: -2
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.12152922, g: 1, b: 0, a: 0}
@@ -2168,8 +2173,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -883554461
-  m_SortingLayer: -1
+  m_SortingLayerID: -1807754811
+  m_SortingLayer: -2
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.12152922, g: 1, b: 0, a: 0}
@@ -2353,8 +2358,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -883554461
-  m_SortingLayer: -1
+  m_SortingLayerID: -1807754811
+  m_SortingLayer: -2
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.12152922, g: 1, b: 0, a: 0}
@@ -2398,7 +2403,6 @@ MonoBehaviour:
   indexDialogueCerto: 2
   objDialoguePanelPrefab: {fileID: 6793569825845607584, guid: 78297fdde5a6b7049a476f932a7a2300, type: 3}
   itemPrefab: {fileID: 346904799447055933, guid: 42e35580ae03e6d44834f01f9f9273d4, type: 3}
-  checkpointID: 2
 --- !u!1 &2068836619
 GameObject:
   m_ObjectHideFlags: 0
@@ -2827,8 +2831,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -883554461
-  m_SortingLayer: -1
+  m_SortingLayerID: -1807754811
+  m_SortingLayer: -2
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.12152922, g: 1, b: 0, a: 0}

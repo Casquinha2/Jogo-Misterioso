@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewObjectInteraction", menuName = "Object Interaction")]
+[CreateAssetMenu(fileName = "NewObjectInteraction", menuName = "Dialogue/Object Interaction")]
 public class ObjectInteractionDialogue : ScriptableObject
 {
     public string objectName;

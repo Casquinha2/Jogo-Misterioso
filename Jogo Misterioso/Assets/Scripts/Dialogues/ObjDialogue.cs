@@ -104,6 +104,10 @@ public class ObjDialogue : MonoBehaviour, IInteractable, ICancelableDialogue
 
     public void Interact()
     {
+        if (objDialogueData == null || (PauseController.IsGamePaused && !objIsDialogueActive))
+            return;
+
+
         // 1) Lógica de inventário (se itemPrefab definido)
         bool hasItem = false;
         if (itemPrefab != null && inventoryPanel != null && inventoryController != null)
@@ -134,16 +138,12 @@ public class ObjDialogue : MonoBehaviour, IInteractable, ICancelableDialogue
         else                     StartObjDialog();
     }
 
-    void InitDialoguePanel()
-    {
-        // (não usado aqui, pois já instanciámos no Start)
-    }
-
     void StartObjDialog()
     {
         objIsDialogueActive = true;
         objDialogueIndex    = 0;
         objDialoguePanelInstance.SetActive(true);
+
         StartCoroutine(TypeLine());
     }
 
@@ -152,7 +152,7 @@ public class ObjDialogue : MonoBehaviour, IInteractable, ICancelableDialogue
         if (objIsTyping)
         {
             StopAllCoroutines();
-            objDialogueText.text = objDialogueData.dialogueLines[objDialogueIndex];
+            objDialogueText.SetText(objDialogueData.dialogueLines[objDialogueIndex]);
             objIsTyping = false;
             return;
         }

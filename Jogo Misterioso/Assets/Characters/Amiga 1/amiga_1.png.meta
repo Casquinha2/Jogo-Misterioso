@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 7749c3cb66d311a4ab6fcb98295135fb
+guid: f3f71d0ef03f5d54cb954061432a4cbf
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3645400112817110195
-    second: corredor_biblioteca_0
+      213: -525049879269834315
+    second: amiga_1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: corredor_biblioteca_0
+      name: amiga_1_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 95
         y: 0
-        width: 1050
-        height: 450
+        width: 146
+        height: 320
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d430e5b59efe86dc0800000000000000
-      internalID: -3645400112817110195
+      spriteID: 5b182c8aae5a6b8f0800000000000000
+      internalID: -525049879269834315
       vertices: []
       indices: 
       edges: []
@@ -147,8 +147,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      corredor_biblioteca_0: -3645400112817110195
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
