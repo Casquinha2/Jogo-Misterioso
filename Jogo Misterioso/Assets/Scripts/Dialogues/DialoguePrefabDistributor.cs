@@ -7,12 +7,16 @@ public class DialoguePrefabDistributor : MonoBehaviour
     [Tooltip("Arrasta aqui o prefab de painel de diálogo (Panel + TMP_Text)")]
     public GameObject dialoguePanelPrefab;
 
+    [Tooltip("Arrasta aqui o prefab de painel de diálogo específico para NPCs")]
+    public GameObject npcDialoguePanelPrefab;
+
     void Awake()   => Distribute();
     void OnValidate()  => Distribute();  // dispara no Editor sempre que mudar algo
 
     private void Distribute()
     {
-        if (dialoguePanelPrefab == null) return;
+        if (dialoguePanelPrefab == null && npcDialoguePanelPrefab == null)
+            return;
 
         // percorre todos os filhos diretos
         foreach (Transform child in transform)
@@ -26,6 +30,10 @@ public class DialoguePrefabDistributor : MonoBehaviour
             var pi = child.GetComponent<PortaInteraction>();
             if (pi != null)
                 pi.objDialoguePanelPrefab = dialoguePanelPrefab;
+
+            var npc = child.GetComponent<NpcDialogue>();
+            if (npc != null && npcDialoguePanelPrefab != null)
+                npc.npcDialoguePanelPrefab = npcDialoguePanelPrefab;
         }
     }
 }

@@ -39,6 +39,8 @@ public class PortaInteraction : MonoBehaviour, IInteractable, ICancelableDialogu
     private const string piso1SceneName = "Piso1Scene";
     private bool shouldSetupAfterLoad = false;
 
+    private Transform piso1;
+
     void Start()
     {
         if (itemPrefab == null)
@@ -58,7 +60,16 @@ public class PortaInteraction : MonoBehaviour, IInteractable, ICancelableDialogu
             return;
         }
 
-        var bound62 = mbRoot
+        piso1 = mbRoot
+            .GetComponentsInChildren<Transform>(true)
+            .FirstOrDefault(t => t.name == "Piso 1");
+        if (piso1 == null)
+        {
+            Debug.LogError("Não encontrei o child '62' dentro de MapBounds!", this);
+            return;
+        }
+
+        var bound62 = piso1
             .GetComponentsInChildren<Transform>(true)
             .FirstOrDefault(t => t.name == "62");
         if (bound62 == null)
@@ -295,6 +306,7 @@ public class PortaInteraction : MonoBehaviour, IInteractable, ICancelableDialogu
             LoadingManager.ShowLoading();
 
 
+        piso1.gameObject.SetActive(true);
 
         // 2) espera um frame pra garantir que o UI realmente apareça
         yield return null;

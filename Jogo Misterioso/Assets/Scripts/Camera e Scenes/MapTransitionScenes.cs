@@ -24,7 +24,7 @@ public class MapTransitionScenes : MonoBehaviour
 
     [Header("UI de carregamento (opcional)")]
     [SerializeField] GameObject panel;  // se ficar vazio, tudo continua OK
-    [SerializeField] float seconds = 1f;
+    [SerializeField] float seconds = 0.5f;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

@@ -9,11 +9,14 @@ public class PlayerMovement : MonoBehaviour
     private Animator animator;
     private float afktimer = 0f;
 
+    [SerializeField] GameObject personagens;
     [SerializeField] string checkpointID;
 
     void Awake()
     {
         DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(personagens);
+
         rb = GetComponent<Rigidbody2D>(); // Get the Rigidbody2D component attached to the player
         animator = GetComponent<Animator>();
         transform.position = new Vector3(-1.76f, -0.12f, 0f);
@@ -22,13 +25,17 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (MapTransitionScenes.IsTransitioning || MapTransition.IsTransitioning)
+        if (MapTransitionScenes.IsTransitioning || MapTransition.IsTransitioning
+            || PauseController.IsGamePaused)
         {
             rb.linearVelocity = Vector2.zero;
             animator.SetBool("isWalking", false);
+            return;
         }
-        else
-            rb.linearVelocity = moveInput * moveSpeed; // Set the velocity of the Rigidbody2D based on input and speed
+
+        rb.linearVelocity = moveInput * moveSpeed; // Set the velocity of the Rigidbody2D based on input and speed
+        animator.SetBool("isWalking", rb.linearVelocity.magnitude > 0);
+        animator.SetBool("isAFK", rb.linearVelocity.magnitude == 0);
 
         if (afktimer >= 5f)
         {
@@ -41,8 +48,8 @@ public class PlayerMovement : MonoBehaviour
 
     public void Move(InputAction.CallbackContext context)
     {
-        animator.SetBool("isWalking", true);
-        animator.SetBool("isAFK", false);
+        
+        
 
         if (context.canceled)
         {
@@ -61,13 +68,5 @@ public class PlayerMovement : MonoBehaviour
         animator.SetFloat("InputX", moveInput.x);
         animator.SetFloat("InputY", moveInput.y);
         afktimer = 0f;
-    }
-    
-    public void ForceStop()
-    {
-        moveInput = Vector2.zero;
-        rb.linearVelocity = Vector2.zero;
-        animator.SetBool("isWalking", false);
-        // zera quaisquer estados pendentes
     }
 }

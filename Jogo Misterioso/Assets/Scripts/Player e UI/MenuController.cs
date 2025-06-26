@@ -75,13 +75,19 @@ public class MenuController : MonoBehaviour
             // 1) Toggle do menu
             if (menuCanvas != null)
             {
+                if (!menuCanvas.activeSelf && PauseController.IsGamePaused)
+                {
+                    return;
+                }
+                
                 bool open = !menuCanvas.activeSelf;
                 menuCanvas.SetActive(open);
 
                 // 2) pausar / retomar jogo
-                Time.timeScale = open ? 0f : 1f;
+                PauseController.SetPause(menuCanvas.activeSelf);
+                
                 if (open) DialogueManager.Instance?.PauseDialogue();
-                else     DialogueManager.Instance?.ResumeDialogue();
+                else DialogueManager.Instance?.ResumeDialogue();
             }
 
             // 3) Toggle do tutorial (caso este exista na cena)
