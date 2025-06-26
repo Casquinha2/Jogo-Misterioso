@@ -16,7 +16,7 @@ MonoBehaviour:
   dialogueLines:
   - Ahn?
   - Onde estou?
-  - "Parece que ontem \xE0 noite me diverti demasiado..."
+  - "Parece que ontem \xE0 noite diverti-me demasiado..."
   typingSpeed: 0.05
   autoProgressLines: 010101
   autoProgressDelay: 1

@@ -25,11 +25,17 @@ public class DialogueManager : MonoBehaviour
     // Chama-se sempre que um ICancelableDialogue quer começar
     public void RequestNewDialogue(ICancelableDialogue requester)
     {
-        // cancela todos os diálogos em curso
+        // 1) limpa todos os painéis antigos com tag “DialoguePanel”
+        
+
+        // 2) avisa listeners para limpar estado interno
         OnNewDialogue?.Invoke();
-        // e depois quem pediu arranca o seu diálogo
-        requester.CancelDialogue();  
+
+        var panels = GameObject.FindGameObjectsWithTag("DialoguePanel");
+        for (int i = 0; i < panels.Length; i++)
+            Destroy(panels[i]);
     }
+
 
     public void PauseDialogue()  => OnPauseDialogue?.Invoke();
     public void ResumeDialogue() => OnResumeDialogue?.Invoke();

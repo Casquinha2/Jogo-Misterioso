@@ -27,7 +27,7 @@ public class SaveController : MonoBehaviour
 
             };
 
-            
+
             File.WriteAllText(saveLocation, JsonUtility.ToJson(saveData));
             Debug.Log($"Game saved successfully to {saveLocation}");
 
@@ -41,7 +41,7 @@ public class SaveController : MonoBehaviour
 
     public void LoadGame()
     {
-        if(File.Exists(saveLocation))
+        if (File.Exists(saveLocation))
         {
             SaveData saveData = JsonUtility.FromJson<SaveData>(File.ReadAllText(saveLocation));
 
@@ -56,4 +56,6 @@ public class SaveController : MonoBehaviour
             SaveGame();
         }
     }
+    
+
 }
