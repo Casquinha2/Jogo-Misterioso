@@ -10,8 +10,7 @@ public class NpcDialogue : MonoBehaviour, IInteractable, ICancelableDialogue
     public GameObject npcDialoguePanelPrefab;
 
     [Header("Dados de Diálogo")]
-    public NpcInteractionDialogue npcDialogueData;
-
+    public NpcInteractionDialogue[] npcDialogueSequence;
     [Header("Item (opcional)")]
     [Tooltip("Se definido, este item será dado ao jogador")]
     public GameObject itemPrefab;
@@ -28,6 +27,9 @@ public class NpcDialogue : MonoBehaviour, IInteractable, ICancelableDialogue
     private bool npcIsTyping, npcIsDialogueActive;
     private Image npcPortraitImage;
     private Button npcCloseButton;
+
+    //rastreador do bloco de diálogo atual
+    private int currentDialogueDataIndex = 0;
 
     public static event Action<NpcDialogue> OnDialogueEnded;
 
@@ -125,7 +127,7 @@ public class NpcDialogue : MonoBehaviour, IInteractable, ICancelableDialogue
 
     public void Interact()
     {
-        if (npcDialogueData == null || (PauseController.IsGamePaused && !npcIsDialogueActive))
+        if (npcDialogueSequence == null || (PauseController.IsGamePaused && !npcIsDialogueActive))
             return;
 
         // 1) Lógica de inventário (se itemPrefab definido)
@@ -162,10 +164,12 @@ public class NpcDialogue : MonoBehaviour, IInteractable, ICancelableDialogue
     void StartNPCDialog()
     {
         npcIsDialogueActive = true;
-        npcDialogueIndex    = 0;
+        npcDialogueIndex = 0;
 
-        npcNameText.SetText(npcDialogueData.npcName);
-        npcPortraitImage.sprite = npcDialogueData.npcPortrait;
+        var currentDialogue = npcDialogueSequence[currentDialogueDataIndex];
+
+        npcNameText.SetText(currentDialogue.npcName);
+        npcPortraitImage.sprite = currentDialogue.npcPortrait;
 
         npcDialoguePanelInstance.SetActive(true);
 
@@ -176,38 +180,60 @@ public class NpcDialogue : MonoBehaviour, IInteractable, ICancelableDialogue
 
     void NextLine()
     {
+        var currentDialogue = npcDialogueSequence[currentDialogueDataIndex];
+
         if (npcIsTyping)
         {
             StopAllCoroutines();
-            npcDialogueText.SetText(npcDialogueData.dialogueLines[npcDialogueIndex]);
+            npcDialogueText.SetText(currentDialogue.dialogueLines[npcDialogueIndex]);
             npcIsTyping = false;
             return;
         }
 
-        if (++npcDialogueIndex < npcDialogueData.dialogueLines.Length)
+        npcDialogueIndex++;
+
+        if (npcDialogueIndex < currentDialogue.dialogueLines.Length)
+        {
             StartCoroutine(TypeLine());
+        }
         else
-            EndDialogue();
+        {
+            currentDialogueDataIndex++;
+            if (currentDialogueDataIndex < npcDialogueSequence.Length)
+            {
+                npcDialogueIndex = 0;
+                StartNPCDialog();  // começa o próximo bloco
+            }
+            else
+            {
+                EndDialogue(); // terminou todos os blocos
+            }
+        }
     }
 
     IEnumerator TypeLine()
     {
         npcIsTyping = true;
         npcDialogueText.text = "";
-        foreach (var ch in npcDialogueData.dialogueLines[npcDialogueIndex])
+
+        var currentDialogue = npcDialogueSequence[currentDialogueDataIndex];
+
+        foreach (var ch in currentDialogue.dialogueLines[npcDialogueIndex])
         {
             npcDialogueText.text += ch;
-            yield return new WaitForSeconds(npcDialogueData.typingSpeed);
+            yield return new WaitForSeconds(currentDialogue.typingSpeed);
         }
+
         npcIsTyping = false;
 
-        if (npcDialogueData.autoProgressLines.Length > npcDialogueIndex &&
-            npcDialogueData.autoProgressLines[npcDialogueIndex])
+        if (currentDialogue.autoProgressLines.Length > npcDialogueIndex &&
+            currentDialogue.autoProgressLines[npcDialogueIndex])
         {
-            yield return new WaitForSeconds(npcDialogueData.autoProgressDelay);
+            yield return new WaitForSeconds(currentDialogue.autoProgressDelay);
             NextLine();
         }
     }
+
 
     public void CancelDialogue()
     {
