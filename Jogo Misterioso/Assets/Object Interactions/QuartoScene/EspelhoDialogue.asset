@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: Espelho
   dialogueLines:
-  - FUNCIONA
+  - Teste
   typingSpeed: 0.05
   autoProgressLines: 01
   autoProgressDelay: 1
