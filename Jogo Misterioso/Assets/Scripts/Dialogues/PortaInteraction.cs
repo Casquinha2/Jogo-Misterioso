@@ -39,7 +39,7 @@ public class PortaInteraction : MonoBehaviour, IInteractable, ICancelableDialogu
     private const string piso1SceneName = "Piso1Scene";
     private bool shouldSetupAfterLoad = false;
 
-    private Transform piso1;
+    private Transform piso1, quarto;
 
     void Start()
     {
@@ -60,12 +60,21 @@ public class PortaInteraction : MonoBehaviour, IInteractable, ICancelableDialogu
             return;
         }
 
+        quarto = mbRoot
+            .GetComponentsInChildren<Transform>(true)
+            .FirstOrDefault(t => t.name == "Quarto");
+        if (quarto == null)
+        {
+            Debug.LogError("Não encontrei o child 'Quarto' dentro de MapBounds!", this);
+            return;
+        }
+
         piso1 = mbRoot
             .GetComponentsInChildren<Transform>(true)
             .FirstOrDefault(t => t.name == "Piso 1");
         if (piso1 == null)
         {
-            Debug.LogError("Não encontrei o child '62' dentro de MapBounds!", this);
+            Debug.LogError("Não encontrei o child 'Piso 1' dentro de MapBounds!", this);
             return;
         }
 
@@ -308,6 +317,12 @@ public class PortaInteraction : MonoBehaviour, IInteractable, ICancelableDialogu
 
         piso1.gameObject.SetActive(true);
 
+        quarto.gameObject.SetActive(false);
+
+
+        confiner.BoundingShape2D = mapBoundary;
+        confiner.InvalidateBoundingShapeCache();
+
         // 2) espera um frame pra garantir que o UI realmente apareça
         yield return null;
 
@@ -330,18 +345,6 @@ public class PortaInteraction : MonoBehaviour, IInteractable, ICancelableDialogu
     {
         if (!shouldSetupAfterLoad || scene.name != piso1SceneName) return;
         shouldSetupAfterLoad = false;
-
-        // ajusta confiner
-        confiner = FindFirstObjectByType<CinemachineConfiner2D>();
-        var bound62 = GameObject
-            .Find("MapBounds")?
-            .GetComponentsInChildren<PolygonCollider2D>(true)
-            .FirstOrDefault(c => c.gameObject.name == "62");
-        if (confiner != null && bound62 != null)
-        {
-            confiner.BoundingShape2D = bound62;
-            confiner.InvalidateBoundingShapeCache();
-        }
 
         // warpa a câmera
         var vcam = FindFirstObjectByType<CinemachineCamera>();

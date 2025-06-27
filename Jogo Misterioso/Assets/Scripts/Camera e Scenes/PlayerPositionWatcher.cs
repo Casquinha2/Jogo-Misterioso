@@ -33,6 +33,8 @@ public class PositionWatcher : MonoBehaviour
             Debug.LogWarning("[Watcher] não achei Camera.main; arraste no Inspector");
     }
 
+
+/*
     void Update()
     {
         // PLAYER
@@ -65,4 +67,6 @@ public class PositionWatcher : MonoBehaviour
         var st = new StackTrace(2, true);  
         Debug.Log(st.ToString());
     }
+
+    */
 }

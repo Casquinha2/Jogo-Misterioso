@@ -2,8 +2,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using TMPro;
-using System;  
-
+using System;
+using UnityEngine.Analytics;
+using System.Collections.Generic;
+using Unity.VisualScripting;
 public class NpcDialogue : MonoBehaviour, IInteractable, ICancelableDialogue
 {
     [Header("Prefab UI (Panel + TMP_Text)")]
@@ -11,9 +13,17 @@ public class NpcDialogue : MonoBehaviour, IInteractable, ICancelableDialogue
 
     [Header("Dados de Diálogo")]
     public NpcInteractionDialogue[] npcDialogueSequence;
+
     [Header("Item (opcional)")]
     [Tooltip("Se definido, este item será dado ao jogador")]
     public GameObject itemPrefab;
+
+    [Header("Adiciona progresso?")]
+    public bool adicionar = false;
+
+    public bool manyInteractions = false;
+
+    public bool moonTalks = true;
 
     // — campos internos —
     private GameObject inventoryPanel;
@@ -32,6 +42,8 @@ public class NpcDialogue : MonoBehaviour, IInteractable, ICancelableDialogue
     private int currentDialogueDataIndex = 0;
 
     public static event Action<NpcDialogue> OnDialogueEnded;
+
+    public Progress progress;
 
     void Start()
     {
@@ -130,6 +142,9 @@ public class NpcDialogue : MonoBehaviour, IInteractable, ICancelableDialogue
         if (npcDialogueSequence == null || (PauseController.IsGamePaused && !npcIsDialogueActive))
             return;
 
+        if (npcIsDialogueActive) 
+            return;
+
         // 1) Lógica de inventário (se itemPrefab definido)
         bool hasItem = false;
         if (itemPrefab != null && inventoryPanel != null && inventoryController != null)
@@ -154,17 +169,21 @@ public class NpcDialogue : MonoBehaviour, IInteractable, ICancelableDialogue
 
         // 2) Cancela diálogos em curso
         DialogueManager.Instance.RequestNewDialogue(this);
-
+        
         // 3) Inicia ou avança no diálogo
         if (npcIsDialogueActive) NextLine();
-        else                     StartNPCDialog();
+        else StartNPCDialog();
     }
 
 
     void StartNPCDialog()
     {
+        if (manyInteractions)
+            GetDialoguesSequence(progress.GetProgress());
+
         npcIsDialogueActive = true;
-        npcDialogueIndex = 0;
+        npcDialogueIndex      = 0;
+        currentDialogueDataIndex = 0;
 
         var currentDialogue = npcDialogueSequence[currentDialogueDataIndex];
 
@@ -176,6 +195,59 @@ public class NpcDialogue : MonoBehaviour, IInteractable, ICancelableDialogue
         PauseController.SetPause(true);
 
         StartCoroutine(TypeLine());
+    }
+
+    void ShowCurrentBlock()
+    {
+        var data = npcDialogueSequence[currentDialogueDataIndex];
+
+        npcDialogueIndex   = 0;
+        npcNameText.text   = data.npcName;
+        npcPortraitImage.sprite = data.npcPortrait;
+        npcDialoguePanelInstance.SetActive(true);
+        StartCoroutine(TypeLine());
+    }
+
+
+    void GetDialoguesSequence(int maxIndex)
+    {
+        var list = new List<NpcInteractionDialogue>();
+
+        string npcName = gameObject.name;
+
+        // 1) Lógica para pasta do NPC
+        for (int i = maxIndex; i >= 0; i--)
+        {
+            var entries = Resources.LoadAll<NpcInteractionDialogue>(
+                $"Characters/{npcName}/{i} Interacao"
+            );
+            if (entries != null && entries.Length > 0)
+            {
+                list.AddRange(entries);
+                break;  // achou o maior i, sai do loop
+            }
+        }
+
+        if (moonTalks)
+        {
+            // 2) Lógica para pasta "Moon"
+            for (int i = maxIndex; i >= 0; i--)
+            {
+                var entries = Resources.LoadAll<NpcInteractionDialogue>(
+                    $"Characters/Moon/Moon Interacao/{npcName}/{i} Interacao"
+                );
+                if (entries != null && entries.Length > 0)
+                {
+                    list.AddRange(entries);
+                    break;  // achou o maior i em Moon, sai
+                }
+            }
+        }
+
+        // 3) (Opcional) ordena por nome do asset ou outra regra
+        list.Sort((a, b) => a.name.CompareTo(b.name));
+
+        npcDialogueSequence = list.ToArray();
     }
 
     void NextLine()
@@ -201,8 +273,7 @@ public class NpcDialogue : MonoBehaviour, IInteractable, ICancelableDialogue
             currentDialogueDataIndex++;
             if (currentDialogueDataIndex < npcDialogueSequence.Length)
             {
-                npcDialogueIndex = 0;
-                StartNPCDialog();  // começa o próximo bloco
+                ShowCurrentBlock();  // começa o próximo bloco
             }
             else
             {
@@ -237,7 +308,7 @@ public class NpcDialogue : MonoBehaviour, IInteractable, ICancelableDialogue
 
     public void CancelDialogue()
     {
-        if (!panelInited) return;
+        if (!panelInited || !npcIsDialogueActive) return;
         EndDialogue();
     }
 
@@ -262,5 +333,13 @@ public class NpcDialogue : MonoBehaviour, IInteractable, ICancelableDialogue
         npcDialoguePanelInstance.SetActive(false);
         OnDialogueEnded?.Invoke(this);
         PauseController.SetPause(false);
+
+        //npcDialogueSequence = new NpcInteractionDialogue[0];
+
+        if (adicionar && progress != null)
+        {
+            progress.AddProgress();
+        }
+            
     }
 }

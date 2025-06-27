@@ -821,7 +821,7 @@ GameObject:
   - component: {fileID: 206474578}
   - component: {fileID: 206474577}
   m_Layer: 0
-  m_Name: Capa Perdida
+  m_Name: Pato Guilherme
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -864,6 +864,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4ca16e9b6416ee9498454b8b838b955b, type: 2}
   - {fileID: 11400000, guid: 6d8439c094e0c78419f902cb41e6f2fd, type: 2}
   itemPrefab: {fileID: 0}
+  adicionar: 0
+  manyInteractions: 0
+  moonTalks: 1
+  progress: {fileID: 254046946}
 --- !u!61 &206474578
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1510,6 +1514,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 254046945}
+  - component: {fileID: 254046946}
   m_Layer: 0
   m_Name: Personagens
   m_TagString: Untagged
@@ -1536,6 +1541,18 @@ Transform:
   - {fileID: 626840270}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &254046946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 254046944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55aec7ad5795dc84c893d9459d7b9d51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &255116901
 GameObject:
   m_ObjectHideFlags: 0
@@ -2649,6 +2666,10 @@ MonoBehaviour:
   npcDialogueSequence:
   - {fileID: 11400000, guid: 2d928df65a526c74998ccde3a71d0e17, type: 2}
   itemPrefab: {fileID: 0}
+  adicionar: 0
+  manyInteractions: 0
+  moonTalks: 1
+  progress: {fileID: 254046946}
 --- !u!61 &626840273
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5498,6 +5519,10 @@ MonoBehaviour:
   npcDialogueSequence:
   - {fileID: 11400000, guid: 2d928df65a526c74998ccde3a71d0e17, type: 2}
   itemPrefab: {fileID: 0}
+  adicionar: 0
+  manyInteractions: 0
+  moonTalks: 0
+  progress: {fileID: 254046946}
 --- !u!61 &1528256178
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7990,7 +8015,7 @@ GameObject:
   - component: {fileID: 1963506545}
   - component: {fileID: 1963506548}
   m_Layer: 0
-  m_Name: IrmaoDePraxe
+  m_Name: Irmao De Praxe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8152,16 +8177,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   npcDialoguePanelPrefab: {fileID: 5968444231653881824, guid: bb7d2de5b00a2134e82e729237ee5d10, type: 3}
-  npcDialogueSequence:
-  - {fileID: 11400000, guid: 0332875e7f5280147a40796d7a5cf1c4, type: 2}
-  - {fileID: 11400000, guid: 481c1685e350df24898f6d178c81557c, type: 2}
-  - {fileID: 11400000, guid: 5e574efe860ade84d9b7a067ae8abad3, type: 2}
-  - {fileID: 11400000, guid: a15d959a0d5aaa0488450a5aa1036bb7, type: 2}
-  - {fileID: 11400000, guid: ce78a326cc846bc42a11fa8c33ca95a1, type: 2}
-  - {fileID: 11400000, guid: f508bbbf4d90a4f4c93c509d15d56cad, type: 2}
-  - {fileID: 11400000, guid: ce306b627ab03e34fa88b66663592ce8, type: 2}
-  - {fileID: 11400000, guid: 4b8a05e5fa824c249b9b05bf84a14031, type: 2}
+  npcDialogueSequence: []
   itemPrefab: {fileID: 0}
+  adicionar: 1
+  manyInteractions: 1
+  moonTalks: 1
+  progress: {fileID: 254046946}
 --- !u!1 &1986756898
 GameObject:
   m_ObjectHideFlags: 0
