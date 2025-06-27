@@ -13,6 +13,8 @@ public class CamConf : MonoBehaviour
     [SerializeField] private ZoomDirection          zoomDirection  = ZoomDirection.In;
     [SerializeField] private float                  fastDamping    = 0.1f;
     [SerializeField] private float                  normalDamping  = 1f;
+
+    [Header ("e independente?")]
     [SerializeField] private Opcao                  opcao          = Opcao.Sim;
 
     [SerializeField] private Vector2 followOffset = new Vector2(0,0);

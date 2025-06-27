@@ -20,3 +20,4 @@ MonoBehaviour:
   typingSpeed: 0.05
   autoProgressLines: 0101
   autoProgressDelay: 1.2
+  adicionarProgresso: 1

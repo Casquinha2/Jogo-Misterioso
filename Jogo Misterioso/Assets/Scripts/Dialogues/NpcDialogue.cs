@@ -18,12 +18,13 @@ public class NpcDialogue : MonoBehaviour, IInteractable, ICancelableDialogue
     [Tooltip("Se definido, este item será dado ao jogador")]
     public GameObject itemPrefab;
 
-    [Header("Adiciona progresso?")]
-    public bool adicionar = false;
-
+    [Header("Mais opcoes")]
     public bool manyInteractions = false;
 
     public bool moonTalks = true;
+
+    
+    private bool adicionar;
 
     // — campos internos —
     private GameObject inventoryPanel;
@@ -246,6 +247,15 @@ public class NpcDialogue : MonoBehaviour, IInteractable, ICancelableDialogue
 
         // 3) (Opcional) ordena por nome do asset ou outra regra
         list.Sort((a, b) => a.name.CompareTo(b.name));
+
+        foreach (NpcInteractionDialogue i in list)
+        {
+            if (i.adicionarProgresso)
+            {
+                adicionar = true;
+                break;
+            }
+        }
 
         npcDialogueSequence = list.ToArray();
     }

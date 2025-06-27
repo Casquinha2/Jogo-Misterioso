@@ -835,12 +835,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 206474575}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -28.15, y: 5.47, z: 0.116097815}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.0743065, y: 2.3803082, z: 0.051300436}
   m_LocalScale: {x: 0.6301246, y: 0.6301246, z: 0.6301246}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 254046945}
+  m_Father: {fileID: 626306572}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &206474577
 MonoBehaviour:
@@ -864,7 +864,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4ca16e9b6416ee9498454b8b838b955b, type: 2}
   - {fileID: 11400000, guid: 6d8439c094e0c78419f902cb41e6f2fd, type: 2}
   itemPrefab: {fileID: 0}
-  adicionar: 0
   manyInteractions: 1
   moonTalks: 1
   progress: {fileID: 254046946}
@@ -922,7 +921,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 206474575}
-  m_BodyType: 2
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -1535,13 +1534,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1963506544}
-  - {fileID: 206474576}
-  - {fileID: 1528256175}
-  - {fileID: 626840270}
-  - {fileID: 673448332}
-  - {fileID: 1550523652}
-  - {fileID: 950388348}
+  - {fileID: 626306572}
+  - {fileID: 1371523737}
+  - {fileID: 1727123262}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &254046946
@@ -1556,6 +1551,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55aec7ad5795dc84c893d9459d7b9d51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  principais: {fileID: 626306572}
+  secundarias: {fileID: 1371523737}
 --- !u!1 &255116901
 GameObject:
   m_ObjectHideFlags: 0
@@ -2595,6 +2592,39 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &626306571
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 626306572}
+  m_Layer: 0
+  m_Name: Principais
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &626306572
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 626306571}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -29.224304, y: 3.089693, z: 0.06479738}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1963506544}
+  - {fileID: 206474576}
+  m_Father: {fileID: 254046945}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &626840269
 GameObject:
   m_ObjectHideFlags: 0
@@ -2624,12 +2654,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 626840269}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 69.48, y: -24.71, z: 0.116097815}
   m_LocalScale: {x: 0.6301246, y: 0.6301246, z: 0.6301246}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 254046945}
+  m_Father: {fileID: 1727123262}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &626840272
 MonoBehaviour:
@@ -2647,7 +2677,6 @@ MonoBehaviour:
   npcDialogueSequence:
   - {fileID: 11400000, guid: 21ef9430c970c3e4198ba19c7e9e7578, type: 2}
   itemPrefab: {fileID: 0}
-  adicionar: 0
   manyInteractions: 0
   moonTalks: 0
   progress: {fileID: 254046946}
@@ -2705,7 +2734,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 626840269}
-  m_BodyType: 2
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -3137,12 +3166,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 673448331}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 80.808, y: -14.84, z: 0.116097815}
   m_LocalScale: {x: 0.6301246, y: 0.6301246, z: 0.6301246}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 254046945}
+  m_Father: {fileID: 1727123262}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &673448333
 MonoBehaviour:
@@ -3161,7 +3190,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f1d88063a6a76b0439a59b42acee99bb, type: 2}
   - {fileID: 11400000, guid: 8efc584969b20114d8c8a778ff028bfe, type: 2}
   itemPrefab: {fileID: 0}
-  adicionar: 0
   manyInteractions: 0
   moonTalks: 0
   progress: {fileID: 254046946}
@@ -3219,7 +3247,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 673448331}
-  m_BodyType: 2
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -4027,12 +4055,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 950388347}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -161.654, y: 36.39, z: 0.116097815}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -132.42969, y: 33.30031, z: 0.051300436}
   m_LocalScale: {x: 0.6301246, y: 0.6301246, z: 0.6301246}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 254046945}
+  m_Father: {fileID: 1371523737}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &950388349
 BoxCollider2D:
@@ -4088,7 +4116,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 950388347}
-  m_BodyType: 2
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -5560,6 +5588,39 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!1 &1371523736
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1371523737}
+  m_Layer: 0
+  m_Name: Secundarias
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1371523737
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1371523736}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -29.224304, y: 3.089693, z: 0.06479738}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1550523652}
+  - {fileID: 950388348}
+  m_Father: {fileID: 254046945}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1400176367
 GameObject:
   m_ObjectHideFlags: 0
@@ -5823,12 +5884,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1528256174}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 81.43, y: -22.39, z: 0.116097815}
   m_LocalScale: {x: 0.6301246, y: 0.6301246, z: 0.6301246}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 254046945}
+  m_Father: {fileID: 1727123262}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &1528256176
 Animator:
@@ -5868,7 +5929,6 @@ MonoBehaviour:
   npcDialogueSequence:
   - {fileID: 11400000, guid: 2d928df65a526c74998ccde3a71d0e17, type: 2}
   itemPrefab: {fileID: 0}
-  adicionar: 0
   manyInteractions: 0
   moonTalks: 0
   progress: {fileID: 254046946}
@@ -5926,7 +5986,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1528256174}
-  m_BodyType: 2
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -6286,12 +6346,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1550523651}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -162.78, y: 36.39, z: 0.116097815}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -133.5557, y: 33.30031, z: 0.051300436}
   m_LocalScale: {x: 0.6301246, y: 0.6301246, z: 0.6301246}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 254046945}
+  m_Father: {fileID: 1371523737}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1550523653
 MonoBehaviour:
@@ -6333,7 +6393,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f2b7a62c58b514647aa69800cc24610e, type: 2}
   - {fileID: 11400000, guid: 263a1a9391e3a434884b4d56a39ec125, type: 2}
   itemPrefab: {fileID: 0}
-  adicionar: 0
   manyInteractions: 0
   moonTalks: 1
   progress: {fileID: 254046946}
@@ -6391,7 +6450,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1550523651}
-  m_BodyType: 2
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -7534,6 +7593,40 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1727123261
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1727123262}
+  m_Layer: 0
+  m_Name: Fundo
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1727123262
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1727123261}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1528256175}
+  - {fileID: 626840270}
+  - {fileID: 673448332}
+  m_Father: {fileID: 254046945}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1760809966
 GameObject:
   m_ObjectHideFlags: 0
@@ -8585,12 +8678,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1963506543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 69.15, y: -18.37, z: 0.116097815}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 98.37, y: -21.46, z: 0}
   m_LocalScale: {x: 0.6301246, y: 0.6301246, z: 0.6301246}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 254046945}
+  m_Father: {fileID: 626306572}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1963506545
 BoxCollider2D:
@@ -8646,7 +8739,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1963506543}
-  m_BodyType: 2
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -8735,7 +8828,6 @@ MonoBehaviour:
   npcDialoguePanelPrefab: {fileID: 5968444231653881824, guid: bb7d2de5b00a2134e82e729237ee5d10, type: 3}
   npcDialogueSequence: []
   itemPrefab: {fileID: 0}
-  adicionar: 1
   manyInteractions: 1
   moonTalks: 1
   progress: {fileID: 254046946}
