@@ -10,12 +10,14 @@ public class PlayerMovement : MonoBehaviour
     private float afktimer = 0f;
 
     [SerializeField] GameObject interacoes;
+    [SerializeField] GameObject finais;
     [SerializeField] string checkpointID;
 
     void Awake()
     {
         DontDestroyOnLoad(gameObject);
         DontDestroyOnLoad(interacoes);
+        DontDestroyOnLoad(finais);
 
         rb = GetComponent<Rigidbody2D>(); // Get the Rigidbody2D component attached to the player
         animator = GetComponent<Animator>();
