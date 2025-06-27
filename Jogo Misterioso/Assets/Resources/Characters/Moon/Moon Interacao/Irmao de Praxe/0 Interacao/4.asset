@@ -15,9 +15,10 @@ MonoBehaviour:
   npcName: Moon
   npcPortrait: {fileID: 6236947385317395335, guid: 1cd77f180d2095c4ebf5180eef1252f2, type: 3}
   dialogueLines:
-  - Isso percebi logo
-  - Especialmente porque acordei trancada na Sala 62
+  - Isso percebi logo.
+  - Especialmente porque acordei trancada na Sala 62.
   - "Sabes como \xE9 que isso aconteceu?"
   typingSpeed: 0.05
   autoProgressLines: 010101
   autoProgressDelay: 1.3
+  adicionarProgresso: 0

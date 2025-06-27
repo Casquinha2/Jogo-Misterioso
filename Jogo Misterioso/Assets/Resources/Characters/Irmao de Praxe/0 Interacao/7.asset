@@ -15,14 +15,15 @@ MonoBehaviour:
   npcName: "Irm\xE3o de Praxe"
   npcPortrait: {fileID: -6473754693587996750, guid: e0773708e851ebd4d88762f0e8a7474c, type: 3}
   dialogueLines:
-  - Nem por isso
-  - "Eu tamb\xE9m j\xE1 estava um pouco divertido"
-  - "Mas em minha defesa, a chamada ao p\xE1tio de ontem estava ca\xF3tica"
-  - Mas agora que falas nisso
-  - Lembro-me de ter visto uma capa perto do mural
-  - "Por isso, deve ter sido algu\xE9m da praxe"
-  - "Mas isto \xE9 tudo o que sei"
-  - Espero ter ajudado
+  - Nem por isso.
+  - "Eu tamb\xE9m j\xE1 estava um pouco divertido."
+  - "Mas em minha defesa, a chamada ao p\xE1tio de ontem estava ca\xF3tica."
+  - Mas agora que falas nisso...
+  - Lembro-me de ter visto uma capa perto do mural.
+  - "Por isso, deve ter sido algu\xE9m da praxe."
+  - "Mas isto \xE9 tudo o que sei."
+  - Espero ter ajudado!
   typingSpeed: 0.05
   autoProgressLines: 0101010101010101
   autoProgressDelay: 1.5
+  adicionarProgresso: 0

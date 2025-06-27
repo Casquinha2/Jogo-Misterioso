@@ -82,14 +82,14 @@ public class Progress : MonoBehaviour
                         i.transform.localPosition = new Vector3(-14.39f, 79.39f, 0f);
                         break;
                     case 1:
-                        i.SetActive(true);
+                        
                         Debug.Log("Teste nos tps dos personagens");
                         break;
                         
                     case 2:
-                    i.SetActive(false);
-                    Debug.Log("Teste nos tps dos personagens");
-                    break;
+                        i.SetActive(true);
+                        Debug.Log("Teste nos tps dos personagens");
+                        break;
                 }
             }
         }

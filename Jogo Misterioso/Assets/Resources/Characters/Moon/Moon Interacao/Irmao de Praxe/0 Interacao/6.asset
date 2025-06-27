@@ -15,8 +15,9 @@ MonoBehaviour:
   npcName: Moon
   npcPortrait: {fileID: 6236947385317395335, guid: 1cd77f180d2095c4ebf5180eef1252f2, type: 3}
   dialogueLines:
-  - Oh, isso explica muito
+  - Oh, isso explica muito.
   - "J\xE1 agora, sabes o que se passou com a est\xE1tua do Cam\xF5es?"
   typingSpeed: 0.05
   autoProgressLines: 0101
   autoProgressDelay: 1.2
+  adicionarProgresso: 0

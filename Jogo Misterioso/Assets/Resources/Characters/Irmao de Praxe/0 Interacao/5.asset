@@ -15,12 +15,13 @@ MonoBehaviour:
   npcName: "Irm\xE3o de Praxe"
   npcPortrait: {fileID: -6473754693587996750, guid: e0773708e851ebd4d88762f0e8a7474c, type: 3}
   dialogueLines:
-  - Claro que sei
-  - "O Diretor de Curso Serginho j\xE1 estava um pouco b\xEAbado tamb\xE9m"
+  - Claro que sei!
+  - "O Diretor de Curso Serginho j\xE1 estava um pouco b\xEAbado tamb\xE9m..."
   - "Logo, teve a brilhante ideia de te praxar, porque tamb\xE9m j\xE1 estavas com
-    os copos"
+    os copos."
   - "E a solu\xE7\xE3o que ele achou na altura foi trancar-te com a ajuda de alguns
-    engenheiros"
+    engenheiros."
   typingSpeed: 0.05
   autoProgressLines: 01010101
   autoProgressDelay: 1.5
+  adicionarProgresso: 0

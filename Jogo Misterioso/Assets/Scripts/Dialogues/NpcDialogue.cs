@@ -42,6 +42,8 @@ public class NpcDialogue : MonoBehaviour, IInteractable, ICancelableDialogue
     //rastreador do bloco de diálogo atual
     private int currentDialogueDataIndex = 0;
 
+    private int lastInteraction;
+
     public static event Action<NpcDialogue> OnDialogueEnded;
 
     public Progress progress;
@@ -225,6 +227,7 @@ public class NpcDialogue : MonoBehaviour, IInteractable, ICancelableDialogue
             if (entries != null && entries.Length > 0)
             {
                 list.AddRange(entries);
+                lastInteraction = i;
                 break;  // achou o maior i, sai do loop
             }
         }
@@ -346,7 +349,7 @@ public class NpcDialogue : MonoBehaviour, IInteractable, ICancelableDialogue
 
         //npcDialogueSequence = new NpcInteractionDialogue[0];
 
-        if (adicionarProgresso && progress != null)
+        if (adicionarProgresso && progress != null && (lastInteraction == progress.GetProgress()))
         {
             progress.AddProgress();
         }

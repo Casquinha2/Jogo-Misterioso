@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 43841994882913c4d9bc9c84bd9e2a40, type: 3}
-  m_Name: 2
+  m_Name: 6
   m_EditorClassIdentifier: 
-  npcName: Moon
-  npcPortrait: {fileID: 6236947385317395335, guid: 1cd77f180d2095c4ebf5180eef1252f2, type: 3}
+  npcName: Sab
+  npcPortrait: {fileID: -4087941685704942316, guid: fa2120bdfcc338a4c82b9ef3f6e3f0b7, type: 3}
   dialogueLines:
-  - "N\xE3o, n\xE3o vi a sua capa Pato Guilherme."
+  - Pois estavas amiga!
   typingSpeed: 0.05
   autoProgressLines: 01
-  autoProgressDelay: 1.1
-  adicionarProgresso: 1
+  autoProgressDelay: 1.3
+  adicionarProgresso: 0

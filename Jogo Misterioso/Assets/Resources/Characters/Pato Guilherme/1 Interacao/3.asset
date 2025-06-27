@@ -15,10 +15,9 @@ MonoBehaviour:
   npcName: Pato Guilherme
   npcPortrait: {fileID: -3401815986352629659, guid: c08f7baa3df4ca242adcfaf9ab245f4f, type: 3}
   dialogueLines:
-  - "N\xF3s n\xE3o podemos estar a mais de 7 passos das nossas capas"
-  - "Porque sen\xE3o somos punidos pelo Diretor de Curso Serginho"
-  - Nem quero imaginar o que ele me vai fazer desta vez, quando descobrir que perdi
-    a capa
+  - Se a encontrares, por favor, vem logo ter comigo.
+  - "N\xE3o posso ser punido outra vez..."
   typingSpeed: 0.05
-  autoProgressLines: 010101
-  autoProgressDelay: 1.4
+  autoProgressLines: 0101
+  autoProgressDelay: 1.2
+  adicionarProgresso: 0

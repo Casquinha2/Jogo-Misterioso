@@ -1678,6 +1678,8 @@ MonoBehaviour:
   objDialoguePanelPrefab: {fileID: 6793569825845607584, guid: 78297fdde5a6b7049a476f932a7a2300, type: 3}
   objDialogueData: {fileID: 11400000, guid: 39616116dc161cf4e902cf1e73a6e964, type: 2}
   itemPrefab: {fileID: 0}
+  adicionarProgresso: 0
+  progress: {fileID: 0}
 --- !u!61 &192936314
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4246,7 +4248,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -838620639
-  m_SortingLayer: -3
+  m_SortingLayer: -4
   m_SortingOrder: 0
   m_Sprite: {fileID: 5965406163256464696, guid: 5ad0baaee80fc0c4fa731e87d785927b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -5146,6 +5148,8 @@ MonoBehaviour:
   objDialoguePanelPrefab: {fileID: 6793569825845607584, guid: 78297fdde5a6b7049a476f932a7a2300, type: 3}
   objDialogueData: {fileID: 11400000, guid: 39616116dc161cf4e902cf1e73a6e964, type: 2}
   itemPrefab: {fileID: 0}
+  adicionarProgresso: 0
+  progress: {fileID: 0}
 --- !u!61 &455280736
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5432,6 +5436,8 @@ MonoBehaviour:
   objDialoguePanelPrefab: {fileID: 6793569825845607584, guid: 78297fdde5a6b7049a476f932a7a2300, type: 3}
   objDialogueData: {fileID: 11400000, guid: cadcbaf864b0477488cb53703eab5541, type: 2}
   itemPrefab: {fileID: 0}
+  adicionarProgresso: 0
+  progress: {fileID: 0}
 --- !u!61 &460859022
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6047,6 +6053,8 @@ MonoBehaviour:
   objDialoguePanelPrefab: {fileID: 6793569825845607584, guid: 78297fdde5a6b7049a476f932a7a2300, type: 3}
   objDialogueData: {fileID: 11400000, guid: 179ed8bdcce215a4ab72f8963a3a69fa, type: 2}
   itemPrefab: {fileID: 0}
+  adicionarProgresso: 0
+  progress: {fileID: 0}
 --- !u!114 &490672544
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6302,7 +6310,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -838620639
-  m_SortingLayer: -3
+  m_SortingLayer: -4
   m_SortingOrder: 0
   m_Sprite: {fileID: -4509268692460629612, guid: b5a58090e3930f948b7d7bef8c26a1d2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -6856,6 +6864,8 @@ MonoBehaviour:
   objDialoguePanelPrefab: {fileID: 6793569825845607584, guid: 78297fdde5a6b7049a476f932a7a2300, type: 3}
   objDialogueData: {fileID: 11400000, guid: 39616116dc161cf4e902cf1e73a6e964, type: 2}
   itemPrefab: {fileID: 0}
+  adicionarProgresso: 0
+  progress: {fileID: 0}
 --- !u!61 &559882548
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7168,6 +7178,8 @@ MonoBehaviour:
   objDialoguePanelPrefab: {fileID: 6793569825845607584, guid: 78297fdde5a6b7049a476f932a7a2300, type: 3}
   objDialogueData: {fileID: 11400000, guid: 3a0fec8c03b550e46be1164f79f56e8d, type: 2}
   itemPrefab: {fileID: 0}
+  adicionarProgresso: 0
+  progress: {fileID: 0}
 --- !u!61 &574469326
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8012,6 +8024,8 @@ MonoBehaviour:
   objDialoguePanelPrefab: {fileID: 6793569825845607584, guid: 78297fdde5a6b7049a476f932a7a2300, type: 3}
   objDialogueData: {fileID: 11400000, guid: a0a21e2cd2f886e4aa15d242b405e76c, type: 2}
   itemPrefab: {fileID: 0}
+  adicionarProgresso: 0
+  progress: {fileID: 0}
 --- !u!61 &627874188
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10431,6 +10445,8 @@ MonoBehaviour:
   objDialoguePanelPrefab: {fileID: 6793569825845607584, guid: 78297fdde5a6b7049a476f932a7a2300, type: 3}
   objDialogueData: {fileID: 11400000, guid: c2ff8a5e828ba6f4c9479f2e92be8e1e, type: 2}
   itemPrefab: {fileID: 0}
+  adicionarProgresso: 0
+  progress: {fileID: 0}
 --- !u!61 &859684143
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -11071,6 +11087,8 @@ MonoBehaviour:
   objDialoguePanelPrefab: {fileID: 6793569825845607584, guid: 78297fdde5a6b7049a476f932a7a2300, type: 3}
   objDialogueData: {fileID: 11400000, guid: c2ff8a5e828ba6f4c9479f2e92be8e1e, type: 2}
   itemPrefab: {fileID: 0}
+  adicionarProgresso: 0
+  progress: {fileID: 0}
 --- !u!61 &890515676
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -11221,6 +11239,8 @@ MonoBehaviour:
   objDialoguePanelPrefab: {fileID: 6793569825845607584, guid: 78297fdde5a6b7049a476f932a7a2300, type: 3}
   objDialogueData: {fileID: 11400000, guid: 39616116dc161cf4e902cf1e73a6e964, type: 2}
   itemPrefab: {fileID: 0}
+  adicionarProgresso: 0
+  progress: {fileID: 0}
 --- !u!61 &895382681
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -11371,6 +11391,8 @@ MonoBehaviour:
   objDialoguePanelPrefab: {fileID: 6793569825845607584, guid: 78297fdde5a6b7049a476f932a7a2300, type: 3}
   objDialogueData: {fileID: 11400000, guid: c2ff8a5e828ba6f4c9479f2e92be8e1e, type: 2}
   itemPrefab: {fileID: 0}
+  adicionarProgresso: 0
+  progress: {fileID: 0}
 --- !u!61 &898908174
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -13641,6 +13663,8 @@ MonoBehaviour:
   objDialoguePanelPrefab: {fileID: 6793569825845607584, guid: 78297fdde5a6b7049a476f932a7a2300, type: 3}
   objDialogueData: {fileID: 11400000, guid: aa6ac1498d6e24946a810ab2c0887011, type: 2}
   itemPrefab: {fileID: 0}
+  adicionarProgresso: 0
+  progress: {fileID: 0}
 --- !u!61 &1051188878
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -14277,6 +14301,8 @@ MonoBehaviour:
   objDialoguePanelPrefab: {fileID: 6793569825845607584, guid: 78297fdde5a6b7049a476f932a7a2300, type: 3}
   objDialogueData: {fileID: 11400000, guid: c2ff8a5e828ba6f4c9479f2e92be8e1e, type: 2}
   itemPrefab: {fileID: 0}
+  adicionarProgresso: 0
+  progress: {fileID: 0}
 --- !u!61 &1059396871
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -14944,7 +14970,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -838620639
-  m_SortingLayer: -3
+  m_SortingLayer: -4
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 5.5, y: 2.2, z: 0}
@@ -16152,6 +16178,8 @@ MonoBehaviour:
   objDialoguePanelPrefab: {fileID: 6793569825845607584, guid: 78297fdde5a6b7049a476f932a7a2300, type: 3}
   objDialogueData: {fileID: 11400000, guid: 39616116dc161cf4e902cf1e73a6e964, type: 2}
   itemPrefab: {fileID: 0}
+  adicionarProgresso: 0
+  progress: {fileID: 0}
 --- !u!61 &1237492576
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -16626,6 +16654,8 @@ MonoBehaviour:
   objDialoguePanelPrefab: {fileID: 6793569825845607584, guid: 78297fdde5a6b7049a476f932a7a2300, type: 3}
   objDialogueData: {fileID: 11400000, guid: 07a40539aa9636e439e80a369d5c8957, type: 2}
   itemPrefab: {fileID: 0}
+  adicionarProgresso: 0
+  progress: {fileID: 0}
 --- !u!61 &1262623498
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -17246,6 +17276,8 @@ MonoBehaviour:
   objDialoguePanelPrefab: {fileID: 6793569825845607584, guid: 78297fdde5a6b7049a476f932a7a2300, type: 3}
   objDialogueData: {fileID: 11400000, guid: 39616116dc161cf4e902cf1e73a6e964, type: 2}
   itemPrefab: {fileID: 0}
+  adicionarProgresso: 0
+  progress: {fileID: 0}
 --- !u!61 &1305235340
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -17396,6 +17428,8 @@ MonoBehaviour:
   objDialoguePanelPrefab: {fileID: 6793569825845607584, guid: 78297fdde5a6b7049a476f932a7a2300, type: 3}
   objDialogueData: {fileID: 11400000, guid: aa6ac1498d6e24946a810ab2c0887011, type: 2}
   itemPrefab: {fileID: 0}
+  adicionarProgresso: 0
+  progress: {fileID: 0}
 --- !u!61 &1316198196
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -19221,6 +19255,8 @@ MonoBehaviour:
   objDialoguePanelPrefab: {fileID: 6793569825845607584, guid: 78297fdde5a6b7049a476f932a7a2300, type: 3}
   objDialogueData: {fileID: 11400000, guid: 39616116dc161cf4e902cf1e73a6e964, type: 2}
   itemPrefab: {fileID: 0}
+  adicionarProgresso: 0
+  progress: {fileID: 0}
 --- !u!61 &1431778585
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -19964,6 +20000,8 @@ MonoBehaviour:
   objDialoguePanelPrefab: {fileID: 6793569825845607584, guid: 78297fdde5a6b7049a476f932a7a2300, type: 3}
   objDialogueData: {fileID: 11400000, guid: 1bf92df3a641e6e4eb3d55d0fc4534e9, type: 2}
   itemPrefab: {fileID: 0}
+  adicionarProgresso: 0
+  progress: {fileID: 0}
 --- !u!61 &1488482646
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -21044,7 +21082,7 @@ GameObject:
   - component: {fileID: 1535479492}
   - component: {fileID: 1535479491}
   m_Layer: 0
-  m_Name: CorredorBiblioeteca
+  m_Name: CorredorBiblioteca
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22457,7 +22495,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -838620639
-  m_SortingLayer: -3
+  m_SortingLayer: -4
   m_SortingOrder: 0
   m_Sprite: {fileID: -98151278595083402, guid: 1047f3ac8e2a70644bd18b131b8fd537, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -23123,6 +23161,8 @@ MonoBehaviour:
   objDialoguePanelPrefab: {fileID: 6793569825845607584, guid: 78297fdde5a6b7049a476f932a7a2300, type: 3}
   objDialogueData: {fileID: 11400000, guid: c2ff8a5e828ba6f4c9479f2e92be8e1e, type: 2}
   itemPrefab: {fileID: 0}
+  adicionarProgresso: 0
+  progress: {fileID: 0}
 --- !u!61 &1617202511
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -23298,7 +23338,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -838620639
-  m_SortingLayer: -3
+  m_SortingLayer: -4
   m_SortingOrder: 0
   m_Sprite: {fileID: -3645400112817110195, guid: 7749c3cb66d311a4ab6fcb98295135fb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -24778,6 +24818,8 @@ MonoBehaviour:
   objDialoguePanelPrefab: {fileID: 6793569825845607584, guid: 78297fdde5a6b7049a476f932a7a2300, type: 3}
   objDialogueData: {fileID: 11400000, guid: 39616116dc161cf4e902cf1e73a6e964, type: 2}
   itemPrefab: {fileID: 0}
+  adicionarProgresso: 0
+  progress: {fileID: 0}
 --- !u!61 &1757688689
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -25143,6 +25185,8 @@ MonoBehaviour:
   objDialoguePanelPrefab: {fileID: 6793569825845607584, guid: 78297fdde5a6b7049a476f932a7a2300, type: 3}
   objDialogueData: {fileID: 11400000, guid: 603c316678b7f3c4f9e27f63819eb811, type: 2}
   itemPrefab: {fileID: 0}
+  adicionarProgresso: 0
+  progress: {fileID: 0}
 --- !u!61 &1790304617
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -25617,6 +25661,8 @@ MonoBehaviour:
   objDialoguePanelPrefab: {fileID: 6793569825845607584, guid: 78297fdde5a6b7049a476f932a7a2300, type: 3}
   objDialogueData: {fileID: 11400000, guid: 39616116dc161cf4e902cf1e73a6e964, type: 2}
   itemPrefab: {fileID: 0}
+  adicionarProgresso: 0
+  progress: {fileID: 0}
 --- !u!61 &1836809811
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -25767,6 +25813,8 @@ MonoBehaviour:
   objDialoguePanelPrefab: {fileID: 6793569825845607584, guid: 78297fdde5a6b7049a476f932a7a2300, type: 3}
   objDialogueData: {fileID: 11400000, guid: 39616116dc161cf4e902cf1e73a6e964, type: 2}
   itemPrefab: {fileID: 0}
+  adicionarProgresso: 0
+  progress: {fileID: 0}
 --- !u!61 &1852405913
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -29655,6 +29703,8 @@ MonoBehaviour:
   objDialoguePanelPrefab: {fileID: 6793569825845607584, guid: 78297fdde5a6b7049a476f932a7a2300, type: 3}
   objDialogueData: {fileID: 11400000, guid: 450c309f665b82b47b324c932ed953ce, type: 2}
   itemPrefab: {fileID: 0}
+  adicionarProgresso: 0
+  progress: {fileID: 0}
 --- !u!61 &2062298508
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -15,7 +15,8 @@ MonoBehaviour:
   npcName: "Irm\xE3o de Praxe"
   npcPortrait: {fileID: -6473754693587996750, guid: e0773708e851ebd4d88762f0e8a7474c, type: 3}
   dialogueLines:
-  - Estavas um pouco divertida demais para o habitual
+  - Estavas um pouco divertida demais para o habitual.
   typingSpeed: 0.05
   autoProgressLines: 01
   autoProgressDelay: 1.1
+  adicionarProgresso: 0

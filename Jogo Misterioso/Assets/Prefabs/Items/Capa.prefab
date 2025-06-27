@@ -16,6 +16,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Capa
       objectReference: {fileID: 0}
+    - target: {fileID: 7304592225190452925, guid: adffe0da600c07945a8d6133c8d2aa99, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7304592225190452925, guid: adffe0da600c07945a8d6133c8d2aa99, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7304592225190452925, guid: adffe0da600c07945a8d6133c8d2aa99, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8106938933684603449, guid: adffe0da600c07945a8d6133c8d2aa99, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
