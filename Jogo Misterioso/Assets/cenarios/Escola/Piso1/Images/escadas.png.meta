@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: fa2120bdfcc338a4c82b9ef3f6e3f0b7
+guid: b5567e26a885a7445ad94b2680f89cbe
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4087941685704942316
-    second: amiga_2_portrait_0
+      213: 8882497859684753688
+    second: escadas_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,30 +96,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: amiga_2_portrait_0
+      name: escadas_0
       rect:
         serializedVersion: 2
-        x: 2
-        y: 4
-        width: 28
-        height: 24
+        x: 0
+        y: 0
+        width: 1200
+        height: 600
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 41d9b0912b6b447c0800000000000000
-      internalID: -4087941685704942316
+      spriteID: 8116dacedb8f44b70800000000000000
+      internalID: 8882497859684753688
       vertices: []
       indices: 
       edges: []
@@ -147,8 +134,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      amiga_2_portrait_0: -4087941685704942316
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
