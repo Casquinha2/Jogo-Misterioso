@@ -8,6 +8,9 @@ public class Progress : MonoBehaviour
     [Header("Personagens Secundarias")]
     public Transform secundarias;
 
+    [Header("Objetos importantes")]
+    public Transform objetos;
+
     private int progress;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -33,35 +36,60 @@ public class Progress : MonoBehaviour
     {
         foreach (Transform child in principais)
         {
-            GameObject npc = child.gameObject;
+            GameObject i = child.gameObject;
 
-            if (npc.name == "Irmao De Praxe")
+            if (i.name == "Irmao De Praxe")
             {
                 switch (progress)
                 {
                     case 0:
-                        npc.SetActive(true);
-                        npc.transform.localPosition = new Vector3(98.37f, -21.46f, 0f);
+                        i.SetActive(true);
+                        i.transform.localPosition = new Vector3(59.86f, 8.74f, 0f);
                         break;
                     case 1:
                         Debug.Log("Teste nos tps dos personagens");
                         break;
                 }
             }
-            else if (npc.name == "Pato Guilherme")
+            else if (i.name == "Pato Guilherme")
             {
                 switch (progress)
                 {
                     case 0:
-                        npc.SetActive(false);
+                        i.SetActive(false);
                         break;
                     case 1:
-                        npc.SetActive(true);
-                        npc.transform.localPosition = new Vector3(1.07f, 2.38f, 0f);
+                        i.SetActive(true);
+                        i.transform.localPosition = new Vector3(-37.19f, 33.13f, 0f);
                         break;
                     case 3:
                         Debug.Log("Teste nos tps dos personagens");
                         break;
+                }
+            }
+        }
+
+        foreach (Transform child in objetos)
+        {
+            GameObject i = child.gameObject;
+
+            if (i.name == "Capa")
+            {
+                switch (progress)
+                {
+                    case 0:
+                        i.SetActive(false);
+                        i.transform.localPosition = new Vector3(-14.39f, 79.39f, 0f);
+                        break;
+                    case 1:
+                        i.SetActive(true);
+                        Debug.Log("Teste nos tps dos personagens");
+                        break;
+                        
+                    case 2:
+                    i.SetActive(false);
+                    Debug.Log("Teste nos tps dos personagens");
+                    break;
                 }
             }
         }

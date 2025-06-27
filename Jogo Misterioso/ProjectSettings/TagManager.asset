@@ -50,6 +50,9 @@ TagManager:
   - name: fundo
     uniqueID: 3456346657
     locked: 0
+  - name: objetos_sem_colisao
+    uniqueID: 1980954209
+    locked: 0
   - name: colisao
     uniqueID: 2487212485
     locked: 0

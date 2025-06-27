@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using TMPro;
-using System;  
+using System;
 
 public class ObjDialogue : MonoBehaviour, IInteractable, ICancelableDialogue
 {
@@ -12,25 +12,29 @@ public class ObjDialogue : MonoBehaviour, IInteractable, ICancelableDialogue
     public ObjectInteractionDialogue objDialogueData;
 
     [Header("Item (opcional)")]
-    [Tooltip("Se definido, este item será dado ao jogador")]
     public GameObject itemPrefab;
 
-    // — campos internos —
+    [Header("Adicionar progresso?")]
+    public bool adicionarProgresso = false;
+
+    [Header("Se o adicionarProgresso for true, adicionar o Personagens gameobject")]
+    public Progress progress;
+
+    // Internos
     private GameObject inventoryPanel;
     private InventoryController inventoryController;
 
     private GameObject objDialoguePanelInstance;
-    private TMP_Text   objDialogueText;
-    private bool       panelInited;
+    private TMP_Text objDialogueText;
+    private bool panelInited;
 
-    private int  objDialogueIndex;
+    private int objDialogueIndex;
     private bool objIsTyping, objIsDialogueActive;
 
     public static event Action<ObjDialogue> OnDialogueEnded;
 
     void Start()
     {
-        // 1) Valida prefab de UI
         if (objDialoguePanelPrefab == null)
         {
             Debug.LogError("🚫 Prefab de UI não atribuído em ObjDialogue!", this);
@@ -38,18 +42,14 @@ public class ObjDialogue : MonoBehaviour, IInteractable, ICancelableDialogue
             return;
         }
 
-        // 2) Se houver um itemPrefab, resolve InventoryController e InventoryPanel
         if (itemPrefab != null)
         {
-            // 2a) InventoryController
             inventoryController = FindFirstObjectByType<InventoryController>();
             if (inventoryController == null)
                 Debug.LogError("❌ InventoryController não encontrado!", this);
 
-            // 2b) InventoryPanel ativo
             inventoryPanel = GameObject.FindWithTag("InventoryPanel");
 
-            // 2c) InventoryPanel inativo? procura entre todos os Transforms
             if (inventoryPanel == null)
             {
                 foreach (var t in Resources.FindObjectsOfTypeAll<Transform>())
@@ -66,37 +66,31 @@ public class ObjDialogue : MonoBehaviour, IInteractable, ICancelableDialogue
                 Debug.LogError("❌ InventoryPanel não encontrado (nem inativo)!", this);
         }
 
-        // 3) Instancia e configura o painel de diálogo
         var canvas = GameObject.FindWithTag("UICanvas");
         if (canvas == null)
         {
-            Debug.LogError("🚫 Não encontrei nenhum Canvas na cena!", this);
+            Debug.LogError("🚫 Canvas não encontrado!", this);
             enabled = false;
             return;
         }
 
-        objDialoguePanelInstance = Instantiate(
-            objDialoguePanelPrefab,
-            canvas.transform,
-            worldPositionStays: false
-        );
-        objDialogueText    = objDialoguePanelInstance.GetComponentInChildren<TMP_Text>();
+        objDialoguePanelInstance = Instantiate(objDialoguePanelPrefab, canvas.transform, false);
+        objDialogueText = objDialoguePanelInstance.GetComponentInChildren<TMP_Text>();
         objDialoguePanelInstance.SetActive(false);
-        panelInited        = true;
+        panelInited = true;
 
-        // 4) Subscreve eventos
-        DialogueManager.Instance.OnNewDialogue   += CancelDialogue;
+        DialogueManager.Instance.OnNewDialogue += CancelDialogue;
         DialogueManager.Instance.OnPauseDialogue += HandlePause;
-        DialogueManager.Instance.OnResumeDialogue+= HandleResume;
+        DialogueManager.Instance.OnResumeDialogue += HandleResume;
     }
 
     void OnDestroy()
     {
         if (DialogueManager.Instance != null)
         {
-            DialogueManager.Instance.OnNewDialogue   -= CancelDialogue;
+            DialogueManager.Instance.OnNewDialogue -= CancelDialogue;
             DialogueManager.Instance.OnPauseDialogue -= HandlePause;
-            DialogueManager.Instance.OnResumeDialogue-= HandleResume;
+            DialogueManager.Instance.OnResumeDialogue -= HandleResume;
         }
     }
 
@@ -107,8 +101,6 @@ public class ObjDialogue : MonoBehaviour, IInteractable, ICancelableDialogue
         if (objDialogueData == null || (PauseController.IsGamePaused && !objIsDialogueActive))
             return;
 
-
-        // 1) Lógica de inventário (se itemPrefab definido)
         bool hasItem = false;
         if (itemPrefab != null && inventoryPanel != null && inventoryController != null)
         {
@@ -130,20 +122,17 @@ public class ObjDialogue : MonoBehaviour, IInteractable, ICancelableDialogue
                 inventoryController.AddItem(itemPrefab);
         }
 
-        // 2) Cancela diálogos em curso
         DialogueManager.Instance.RequestNewDialogue(this);
 
-        // 3) Inicia ou avança no diálogo
         if (objIsDialogueActive) NextLine();
-        else                     StartObjDialog();
+        else StartObjDialog();
     }
 
     void StartObjDialog()
     {
         objIsDialogueActive = true;
-        objDialogueIndex    = 0;
+        objDialogueIndex = 0;
         objDialoguePanelInstance.SetActive(true);
-
         StartCoroutine(TypeLine());
     }
 
@@ -157,21 +146,29 @@ public class ObjDialogue : MonoBehaviour, IInteractable, ICancelableDialogue
             return;
         }
 
-        if (++objDialogueIndex < objDialogueData.dialogueLines.Length)
+        objDialogueIndex++;
+
+        if (objDialogueIndex < objDialogueData.dialogueLines.Length)
+        {
             StartCoroutine(TypeLine());
+        }
         else
-            EndDialogue();
+        {
+            EndDialogue(); // só aqui adiciona progresso
+        }
     }
 
     IEnumerator TypeLine()
     {
         objIsTyping = true;
         objDialogueText.text = "";
+
         foreach (var ch in objDialogueData.dialogueLines[objDialogueIndex])
         {
             objDialogueText.text += ch;
             yield return new WaitForSeconds(objDialogueData.typingSpeed);
         }
+
         objIsTyping = false;
 
         if (objDialogueData.autoProgressLines.Length > objDialogueIndex &&
@@ -184,9 +181,12 @@ public class ObjDialogue : MonoBehaviour, IInteractable, ICancelableDialogue
 
     public void CancelDialogue()
     {
-        if (!panelInited) return;
-        EndDialogue();
+        if (!panelInited || !objIsDialogueActive) return;
+        StopAllCoroutines();
+        objIsDialogueActive = false;
+        objDialoguePanelInstance.SetActive(false);
     }
+
 
     void HandlePause()
     {
@@ -208,5 +208,10 @@ public class ObjDialogue : MonoBehaviour, IInteractable, ICancelableDialogue
         objIsDialogueActive = false;
         objDialoguePanelInstance.SetActive(false);
         OnDialogueEnded?.Invoke(this);
+
+        if (adicionarProgresso && progress != null)
+        {
+            progress.AddProgress(); // ✅ só aqui, no fim de tudo
+        }
     }
 }

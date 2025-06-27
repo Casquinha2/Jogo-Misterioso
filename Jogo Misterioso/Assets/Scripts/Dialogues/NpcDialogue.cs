@@ -24,7 +24,7 @@ public class NpcDialogue : MonoBehaviour, IInteractable, ICancelableDialogue
     public bool moonTalks = true;
 
     
-    private bool adicionar;
+    private bool adicionarProgresso;
 
     // — campos internos —
     private GameObject inventoryPanel;
@@ -252,7 +252,7 @@ public class NpcDialogue : MonoBehaviour, IInteractable, ICancelableDialogue
         {
             if (i.adicionarProgresso)
             {
-                adicionar = true;
+                adicionarProgresso = true;
                 break;
             }
         }
@@ -346,7 +346,7 @@ public class NpcDialogue : MonoBehaviour, IInteractable, ICancelableDialogue
 
         //npcDialogueSequence = new NpcInteractionDialogue[0];
 
-        if (adicionar && progress != null)
+        if (adicionarProgresso && progress != null)
         {
             progress.AddProgress();
         }
