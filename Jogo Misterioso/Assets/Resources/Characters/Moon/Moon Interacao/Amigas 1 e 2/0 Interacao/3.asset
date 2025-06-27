@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 43841994882913c4d9bc9c84bd9e2a40, type: 3}
-  m_Name: 1
+  m_Name: 3
   m_EditorClassIdentifier: 
-  npcName: Bruno
-  npcPortrait: {fileID: 497514251989754831, guid: 45af646f07d24ac4793d4f292dfc0027, type: 3}
+  npcName: Moon
+  npcPortrait: {fileID: 6236947385317395335, guid: 1cd77f180d2095c4ebf5180eef1252f2, type: 3}
   dialogueLines:
-  - Eu nem sou desta faculdade, porque estou a varrer?
+  - "Oh meu deus, que fiz eu ontem \xE0 noite?"
   typingSpeed: 0.05
-  autoProgressLines: 00
-  autoProgressDelay: 1
+  autoProgressLines: 01
+  autoProgressDelay: 1.3

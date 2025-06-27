@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43841994882913c4d9bc9c84bd9e2a40, type: 3}
   m_Name: 1
   m_EditorClassIdentifier: 
-  npcName: Bruno
-  npcPortrait: {fileID: 497514251989754831, guid: 45af646f07d24ac4793d4f292dfc0027, type: 3}
+  npcName: Aluno Dorminhoco
+  npcPortrait: {fileID: 4494830624452073118, guid: 6e7e08d8566ca9c4181b394ebe63ae7f, type: 3}
   dialogueLines:
-  - Eu nem sou desta faculdade, porque estou a varrer?
+  - ZZZZZZZZZZZ
   typingSpeed: 0.05
-  autoProgressLines: 00
+  autoProgressLines: 01
   autoProgressDelay: 1
