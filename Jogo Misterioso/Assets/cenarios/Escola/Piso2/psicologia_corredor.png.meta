@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: b5567e26a885a7445ad94b2680f89cbe
+guid: c3d36b0667a29b9448a6ae96b9dace34
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8882497859684753688
-    second: escadas_0
+      213: -5441758942298202090
+    second: psicologia_corredor_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: escadas_0
+      name: psicologia_corredor_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1200
-        height: 600
+        width: 1120
+        height: 400
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8116dacedb8f44b70800000000000000
-      internalID: 8882497859684753688
+      spriteID: 610a20bd21dfa74b0800000000000000
+      internalID: -5441758942298202090
       vertices: []
       indices: 
       edges: []
@@ -134,8 +134,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      escadas_0: 8882497859684753688
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
