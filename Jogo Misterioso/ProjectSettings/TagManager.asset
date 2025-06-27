@@ -47,6 +47,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: fundo atras
+    uniqueID: 4068136637
+    locked: 0
   - name: fundo
     uniqueID: 3456346657
     locked: 0
