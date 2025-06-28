@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &5087037261460601524
+--- !u!1001 &7018648333172177111
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,16 +10,20 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1310431425736053669, guid: adffe0da600c07945a8d6133c8d2aa99, type: 3}
       propertyPath: ID
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6285964433250669323, guid: adffe0da600c07945a8d6133c8d2aa99, type: 3}
       propertyPath: m_Name
-      value: Capa
+      value: Chave82
       objectReference: {fileID: 0}
     - target: {fileID: 7304592225190452925, guid: adffe0da600c07945a8d6133c8d2aa99, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 1208040086343421634, guid: 038bc98388310c848bc34ba30b9fdd62, type: 3}
+      objectReference: {fileID: 604408113146070943, guid: 6a7941e4ae9eb8144bf2d22349a81acb, type: 3}
+    - target: {fileID: 7304592225190452925, guid: adffe0da600c07945a8d6133c8d2aa99, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7304592225190452925, guid: adffe0da600c07945a8d6133c8d2aa99, type: 3}
       propertyPath: m_Color.b
       value: 0
@@ -30,7 +34,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7304592225190452925, guid: adffe0da600c07945a8d6133c8d2aa99, type: 3}
       propertyPath: m_Color.r
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8106938933684603449, guid: adffe0da600c07945a8d6133c8d2aa99, type: 3}
       propertyPath: m_Pivot.x

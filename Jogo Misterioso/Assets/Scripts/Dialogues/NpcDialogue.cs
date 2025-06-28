@@ -142,7 +142,12 @@ public class NpcDialogue : MonoBehaviour, IInteractable, ICancelableDialogue
 
     public void Interact()
     {
-        if (npcDialogueSequence == null || (PauseController.IsGamePaused && !npcIsDialogueActive))
+        if (npcDialogueSequence == null)
+        {
+            GetDialoguesSequence(progress.GetProgress());
+        }
+        
+        if (PauseController.IsGamePaused && !npcIsDialogueActive)
             return;
 
         if (npcIsDialogueActive) 

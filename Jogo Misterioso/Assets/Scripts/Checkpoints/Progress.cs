@@ -46,9 +46,6 @@ public class Progress : MonoBehaviour
                         i.SetActive(true);
                         i.transform.localPosition = new Vector3(59.86f, 8.74f, 0f);
                         break;
-                    case 1:
-                        Debug.Log("Teste nos tps dos personagens");
-                        break;
                 }
             }
             else if (i.name == "Pato Guilherme")
@@ -62,8 +59,23 @@ public class Progress : MonoBehaviour
                         i.SetActive(true);
                         i.transform.localPosition = new Vector3(-37.19f, 33.13f, 0f);
                         break;
-                    case 3:
-                        Debug.Log("Teste nos tps dos personagens");
+                    case 4:
+                        Debug.Log("FAZ NADA");
+                        break;
+                }
+            }
+            else if (i.name == "Praxe Psicologia")
+            {
+                var interaction = i.GetComponent<NpcDialogue>();
+                switch (progress)
+                {
+                    case 0:
+
+                        interaction.enabled = false;
+                        break;
+
+                    case 4:
+                        interaction.enabled = true;
                         break;
                 }
             }
@@ -81,14 +93,13 @@ public class Progress : MonoBehaviour
                         i.SetActive(false);
                         i.transform.localPosition = new Vector3(-14.39f, 79.39f, 0f);
                         break;
-                    case 1:
-                        
-                        Debug.Log("Teste nos tps dos personagens");
-                        break;
-                        
+
                     case 2:
                         i.SetActive(true);
-                        Debug.Log("Teste nos tps dos personagens");
+                        break;
+
+                    case 3:
+                        Destroy(i);
                         break;
                 }
             }

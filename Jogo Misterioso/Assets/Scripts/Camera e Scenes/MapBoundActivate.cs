@@ -6,6 +6,7 @@ public class MapBoundActivate : MonoBehaviour
 {
     [SerializeField] Transform mapBounds;
     private List<GameObject> allChildren = new List<GameObject>();
+    public List<GameObject> deactivate = new List<GameObject>();
 
     void Awake()
     {
@@ -16,6 +17,13 @@ public class MapBoundActivate : MonoBehaviour
 
     void Start()
     {
+        foreach (GameObject i in deactivate)
+        {
+            i.SetActive(false);
+        }
+
+
+
         string nomeCena = SceneManager.GetActiveScene().name;
 
         foreach (GameObject child in allChildren)
