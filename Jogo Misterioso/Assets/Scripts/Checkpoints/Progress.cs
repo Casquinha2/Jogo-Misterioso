@@ -66,16 +66,15 @@ public class Progress : MonoBehaviour
             }
             else if (i.name == "Praxe Psicologia")
             {
-                var interaction = i.GetComponent<NpcDialogue>();
                 switch (progress)
                 {
                     case 0:
 
-                        interaction.enabled = false;
+                        i.gameObject.SetActive(false);
                         break;
 
                     case 4:
-                        interaction.enabled = true;
+                        i.gameObject.SetActive(true);
                         break;
                 }
             }

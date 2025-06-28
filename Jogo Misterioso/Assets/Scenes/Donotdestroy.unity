@@ -10218,7 +10218,7 @@ GameObject:
   - component: {fileID: 1712686611}
   - component: {fileID: 1712686610}
   - component: {fileID: 1712686609}
-  - component: {fileID: 1712686608}
+  - component: {fileID: 1712686612}
   m_Layer: 0
   m_Name: Praxe Psicologia
   m_TagString: Untagged
@@ -10241,26 +10241,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 626306572}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1712686608
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1712686606}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06af832525f45304784fa55522a8377f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  npcDialoguePanelPrefab: {fileID: 5968444231653881824, guid: bb7d2de5b00a2134e82e729237ee5d10, type: 3}
-  npcDialogueSequence:
-  - {fileID: 11400000, guid: 8bac4b16fa0072342b25a017f65ab8aa, type: 2}
-  - {fileID: 11400000, guid: 8482aa2eb653dcd46b1334b89c77d0e9, type: 2}
-  itemPrefab: {fileID: 3916728836493421532, guid: 37eef78000562054ab6fc3f1f2989fbc, type: 3}
-  manyInteractions: 0
-  moonTalks: 1
-  progress: {fileID: 254046946}
 --- !u!61 &1712686609
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10389,6 +10369,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1712686612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1712686606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06af832525f45304784fa55522a8377f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  npcDialoguePanelPrefab: {fileID: 5968444231653881824, guid: bb7d2de5b00a2134e82e729237ee5d10, type: 3}
+  npcDialogueSequence:
+  - {fileID: 11400000, guid: 8bac4b16fa0072342b25a017f65ab8aa, type: 2}
+  - {fileID: 11400000, guid: 8482aa2eb653dcd46b1334b89c77d0e9, type: 2}
+  itemPrefab: {fileID: 3916728836493421532, guid: 37eef78000562054ab6fc3f1f2989fbc, type: 3}
+  manyInteractions: 0
+  moonTalks: 1
+  progress: {fileID: 254046946}
 --- !u!1 &1727123261
 GameObject:
   m_ObjectHideFlags: 0
