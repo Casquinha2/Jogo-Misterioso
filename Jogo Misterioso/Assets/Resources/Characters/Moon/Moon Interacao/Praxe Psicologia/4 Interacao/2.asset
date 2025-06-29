@@ -15,8 +15,10 @@ MonoBehaviour:
   npcName: Moon
   npcPortrait: {fileID: 6236947385317395335, guid: 1cd77f180d2095c4ebf5180eef1252f2, type: 3}
   dialogueLines:
-  - Obrigado
+  - "Sim, eu ando \xE0 procura da capa do meu pato."
+  - "Ele disse que voc\xEAs possivelmente podem ter roubado a capa!"
+  - Por causa da rivalidade entre cursos.
   typingSpeed: 0.05
-  autoProgressLines: 00
+  autoProgressLines: 010101
   autoProgressDelay: 1.1
   adicionarProgresso: 1

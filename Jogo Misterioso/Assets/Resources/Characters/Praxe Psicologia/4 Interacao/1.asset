@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43841994882913c4d9bc9c84bd9e2a40, type: 3}
   m_Name: 1
   m_EditorClassIdentifier: 
-  npcName: Praxe Psicologia
+  npcName: Diretor de Curso Psicologia
   npcPortrait: {fileID: 1208040086343421634, guid: 038bc98388310c848bc34ba30b9fdd62, type: 3}
   dialogueLines:
-  - Aqui a chave para a 82
+  - Precisa de alguma coisa caloira?
   typingSpeed: 0.05
   autoProgressLines: 01
-  autoProgressDelay: 1
+  autoProgressDelay: 1.1
   adicionarProgresso: 0

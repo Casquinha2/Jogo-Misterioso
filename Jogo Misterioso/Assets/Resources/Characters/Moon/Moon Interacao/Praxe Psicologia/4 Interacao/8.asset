@@ -10,14 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 43841994882913c4d9bc9c84bd9e2a40, type: 3}
-  m_Name: 1
+  m_Name: 8
   m_EditorClassIdentifier: 
-  npcName: Pato Guilherme
-  npcPortrait: {fileID: -3401815986352629659, guid: c08f7baa3df4ca242adcfaf9ab245f4f, type: 3}
+  npcName: Moon
+  npcPortrait: {fileID: 0}
   dialogueLines:
-  - "Ent\xE3o caloira Moon."
-  - Conseguiu encontrar a minha capa?
+  - Muito Obrigada, Diretor de Curso de Psicologia
   typingSpeed: 0.05
-  autoProgressLines: 0101
-  autoProgressDelay: 1.1
+  autoProgressLines: 01
+  autoProgressDelay: 1.2
   adicionarProgresso: 0
