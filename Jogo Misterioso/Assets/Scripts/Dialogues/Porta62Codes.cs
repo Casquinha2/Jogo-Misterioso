@@ -111,7 +111,7 @@ public class Porta62Codes : MonoBehaviour
             {
                 Vector3 offset = newPos - oldPos;
                 virtualCamera.OnTargetObjectWarped(player.transform, offset);
-    }
+            }
         }
     }
 }

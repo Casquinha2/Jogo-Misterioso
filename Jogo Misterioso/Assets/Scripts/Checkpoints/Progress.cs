@@ -12,9 +12,14 @@ public class Progress : MonoBehaviour
     public Transform objetos;
 
     private int progress;
+    private MapBoundActivate mapBoundScript;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        mapBoundScript = FindFirstObjectByType<MapBoundActivate>();
+        if (mapBoundScript == null)
+            Debug.LogError("Não encontrei MapBoundActivate na cena!");
+
         progress = 0;
         AtualizarProgress();
     }
@@ -25,6 +30,11 @@ public class Progress : MonoBehaviour
         progress++;
         Debug.Log($"[Progress] novo valor = {progress}");
         AtualizarProgress();
+
+        if (progress == 6)
+        {
+            mapBoundScript.AfterProgress(progress);
+        }
     }
 
     public int GetProgress()
@@ -75,6 +85,25 @@ public class Progress : MonoBehaviour
 
                     case 4:
                         i.gameObject.SetActive(true);
+                        break;
+                }
+            }
+        }
+
+        foreach (Transform child in secundarias)
+        {
+            GameObject i = child.gameObject;
+
+            if (i.name == "Psicologia Homem")
+            {
+                switch (progress)
+                {
+                    case 0:
+                        i.SetActive(false);
+                        i.transform.localPosition = new Vector3(88.69f, 70.33f, 0f);
+                        break;
+                    case 6:
+                        i.SetActive(true);
                         break;
                 }
             }
