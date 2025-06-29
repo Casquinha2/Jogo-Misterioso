@@ -254,7 +254,17 @@ public class NpcDialogue : MonoBehaviour, IInteractable, ICancelableDialogue
         }
 
         // 3) (Opcional) ordena por nome do asset ou outra regra
-        list.Sort((a, b) => a.name.CompareTo(b.name));
+        list.Sort((a, b) =>
+        {
+            int GetNumberFromName(string name)
+            {
+                // Tenta extrair o número inicial do nome do asset (ex: "1 - Ola", "10 - Adeus")
+                var match = System.Text.RegularExpressions.Regex.Match(name, @"^\d+");
+                return match.Success ? int.Parse(match.Value) : int.MaxValue;
+            }
+
+            return GetNumberFromName(a.name).CompareTo(GetNumberFromName(b.name));
+        });
 
         foreach (NpcInteractionDialogue i in list)
         {

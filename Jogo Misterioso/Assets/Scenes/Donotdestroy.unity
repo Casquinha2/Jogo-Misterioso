@@ -9005,15 +9005,15 @@ MonoBehaviour:
   npcDialoguePanelPrefab: {fileID: 5968444231653881824, guid: bb7d2de5b00a2134e82e729237ee5d10, type: 3}
   npcDialogueSequence:
   - {fileID: 11400000, guid: 1d9de270eeb21b04189ca181cf501d8e, type: 2}
-  - {fileID: 11400000, guid: 369bd8b816582fd45b74fd4d126e7d20, type: 2}
-  - {fileID: 11400000, guid: 6b3ccbfb1f78c69408ed8892b93b94c5, type: 2}
   - {fileID: 11400000, guid: b3d05838321cedb4db32210e6617f3ac, type: 2}
+  - {fileID: 11400000, guid: 6b3ccbfb1f78c69408ed8892b93b94c5, type: 2}
+  - {fileID: 11400000, guid: 986549104f6451446bae6d33d2d2c627, type: 2}
   - {fileID: 11400000, guid: 96d3480a77cfde5429e910df82688160, type: 2}
   - {fileID: 11400000, guid: 0cf2862706651c6448363b494d5a0248, type: 2}
-  - {fileID: 11400000, guid: f2abd8113868ac94192b860e21d91f65, type: 2}
+  - {fileID: 11400000, guid: 21624b4c4d6e7c24c9797a3bb48e5eb7, type: 2}
   - {fileID: 11400000, guid: 4ac81b1ab4a2e0548963fed8d1dfda32, type: 2}
   - {fileID: 11400000, guid: 54a6ae2e62877c1478b8e93b8bf60ec0, type: 2}
-  - {fileID: 11400000, guid: 986549104f6451446bae6d33d2d2c627, type: 2}
+  - {fileID: 11400000, guid: 263a1a9391e3a434884b4d56a39ec125, type: 2}
   - {fileID: 11400000, guid: fbf9ac67aec0f9e4691537a3df8c4006, type: 2}
   - {fileID: 11400000, guid: fdbd253435f7d3b46b61e7795c5b8da3, type: 2}
   - {fileID: 11400000, guid: 3549322e9127a3147bdd8fb353cfee5d, type: 2}
@@ -9021,14 +9021,14 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c297bdc2da11a894b917a87ab29dfc77, type: 2}
   - {fileID: 11400000, guid: c22cf9adf73f12a4ab73ac009864d015, type: 2}
   - {fileID: 11400000, guid: 0dc0080fe2039cf4ca11ee3c368c85ae, type: 2}
-  - {fileID: 11400000, guid: 21624b4c4d6e7c24c9797a3bb48e5eb7, type: 2}
+  - {fileID: 11400000, guid: 787cd28a1f78c8349b54db0cead61b5b, type: 2}
   - {fileID: 11400000, guid: 23bebc1c4bde2764ebf76ac3d11bc32b, type: 2}
   - {fileID: 11400000, guid: 6b9091a0e511efb42bfffcf589c873ac, type: 2}
   - {fileID: 11400000, guid: 8ad98a7cf572a5840bc2754c00f700e4, type: 2}
   - {fileID: 11400000, guid: 44fc987d81c5e364e875c400680da188, type: 2}
   - {fileID: 11400000, guid: bd5fe084daf49ca408d799cfa46f3173, type: 2}
   - {fileID: 11400000, guid: f2b7a62c58b514647aa69800cc24610e, type: 2}
-  - {fileID: 11400000, guid: 263a1a9391e3a434884b4d56a39ec125, type: 2}
+  - {fileID: 11400000, guid: a26ca6dcb45d6654ea083094bdf9477d, type: 2}
   itemPrefab: {fileID: 0}
   manyInteractions: 0
   moonTalks: 1
