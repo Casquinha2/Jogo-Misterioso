@@ -7,7 +7,8 @@ public class DialogueManager : MonoBehaviour
     public static DialogueManager Instance { get; private set; }
 
     // Disparado antes de qualquer diálogo novo (para cancelar os em curso)
-    public event Action OnNewDialogue;
+    public event Action<ICancelableDialogue> OnNewDialogue;
+
     // Disparado quando o jogo é pausado (menu aberto)
     public event Action OnPauseDialogue;
     // Disparado quando o jogo é retomado (menu fechado)
@@ -25,12 +26,10 @@ public class DialogueManager : MonoBehaviour
     // Chama-se sempre que um ICancelableDialogue quer começar
     public void RequestNewDialogue(ICancelableDialogue requester)
     {
-        // 1) limpa todos os painéis antigos com tag “DialoguePanel”
-        
+        // avisa listeners, informando quem solicitou
+        OnNewDialogue?.Invoke(requester);
 
-        // 2) avisa listeners para limpar estado interno
-        OnNewDialogue?.Invoke();
-
+        // destrói antigos panels...
         var panels = GameObject.FindGameObjectsWithTag("DialoguePanel");
         for (int i = 0; i < panels.Length; i++)
             Destroy(panels[i]);

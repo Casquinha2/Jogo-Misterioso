@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 648fa42727b63ae458df6a3968223511, type: 3}
+  m_Name: Mesa professor
+  m_EditorClassIdentifier: 
+  objectName: Mesa professor
+  dialogueLines:
+  - "*O computador est\xE1 ligado*"
+  - "Uma vers\xE3o em PDF do C\xF3digo Penal aqui?"
+  - "Ser\xE1 que isto significa algo?"
+  typingSpeed: 0.05
+  autoProgressLines: 010101
+  autoProgressDelay: 1.5
