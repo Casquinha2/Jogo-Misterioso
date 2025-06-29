@@ -20,28 +20,21 @@ public class ObjDialogue : MonoBehaviour, IInteractable, ICancelableDialogue
     [Header("Se o adicionarProgresso for true, adicionar o Personagens gameobject")]
     public Progress progress;
 
-    // Internos
     private GameObject inventoryPanel;
     private InventoryController inventoryController;
 
     private GameObject objDialoguePanelInstance;
     private TMP_Text objDialogueText;
-    private bool panelInited;
 
     private int objDialogueIndex;
     private bool objIsTyping, objIsDialogueActive;
 
     public static event Action<ObjDialogue> OnDialogueEnded;
 
+    private static ObjDialogue currentActiveDialogue;
+
     void Start()
     {
-        if (objDialoguePanelPrefab == null)
-        {
-            Debug.LogError("🚫 Prefab de UI não atribuído em ObjDialogue!", this);
-            enabled = false;
-            return;
-        }
-
         if (itemPrefab != null)
         {
             inventoryController = FindFirstObjectByType<InventoryController>();
@@ -49,7 +42,6 @@ public class ObjDialogue : MonoBehaviour, IInteractable, ICancelableDialogue
                 Debug.LogError("❌ InventoryController não encontrado!", this);
 
             inventoryPanel = GameObject.FindWithTag("InventoryPanel");
-
             if (inventoryPanel == null)
             {
                 foreach (var t in Resources.FindObjectsOfTypeAll<Transform>())
@@ -65,19 +57,6 @@ public class ObjDialogue : MonoBehaviour, IInteractable, ICancelableDialogue
             if (inventoryPanel == null)
                 Debug.LogError("❌ InventoryPanel não encontrado (nem inativo)!", this);
         }
-
-        var canvas = GameObject.FindWithTag("UICanvas");
-        if (canvas == null)
-        {
-            Debug.LogError("🚫 Canvas não encontrado!", this);
-            enabled = false;
-            return;
-        }
-
-        objDialoguePanelInstance = Instantiate(objDialoguePanelPrefab, canvas.transform, false);
-        objDialogueText = objDialoguePanelInstance.GetComponentInChildren<TMP_Text>();
-        objDialoguePanelInstance.SetActive(false);
-        panelInited = true;
 
         DialogueManager.Instance.OnNewDialogue += CancelDialogue;
         DialogueManager.Instance.OnPauseDialogue += HandlePause;
@@ -124,6 +103,14 @@ public class ObjDialogue : MonoBehaviour, IInteractable, ICancelableDialogue
 
         DialogueManager.Instance.RequestNewDialogue(this);
 
+        // Cancela o diálogo anterior se estiver ativo
+        if (currentActiveDialogue != null && currentActiveDialogue != this)
+        {
+            currentActiveDialogue.CancelDialogue();
+        }
+
+        currentActiveDialogue = this;
+
         if (objIsDialogueActive) NextLine();
         else StartObjDialog();
     }
@@ -132,8 +119,36 @@ public class ObjDialogue : MonoBehaviour, IInteractable, ICancelableDialogue
     {
         objIsDialogueActive = true;
         objDialogueIndex = 0;
-        objDialoguePanelInstance.SetActive(true);
+
+        CreateDialoguePanel();
+
         StartCoroutine(TypeLine());
+    }
+
+    void CreateDialoguePanel()
+    {
+        if (objDialoguePanelInstance != null) return;
+
+        var canvas = GameObject.FindWithTag("UICanvas");
+        if (canvas == null)
+        {
+            Debug.LogError("🚫 Canvas não encontrado!", this);
+            return;
+        }
+
+        objDialoguePanelInstance = Instantiate(objDialoguePanelPrefab, canvas.transform, false);
+        objDialogueText = objDialoguePanelInstance.GetComponentInChildren<TMP_Text>();
+        objDialoguePanelInstance.SetActive(true);
+    }
+
+    void DestroyDialoguePanel()
+    {
+        if (objDialoguePanelInstance != null)
+        {
+            Destroy(objDialoguePanelInstance);
+            objDialoguePanelInstance = null;
+            objDialogueText = null;
+        }
     }
 
     void NextLine()
@@ -141,7 +156,7 @@ public class ObjDialogue : MonoBehaviour, IInteractable, ICancelableDialogue
         if (objIsTyping)
         {
             StopAllCoroutines();
-            objDialogueText.SetText(objDialogueData.dialogueLines[objDialogueIndex]);
+            objDialogueText?.SetText(objDialogueData.dialogueLines[objDialogueIndex]);
             objIsTyping = false;
             return;
         }
@@ -154,7 +169,7 @@ public class ObjDialogue : MonoBehaviour, IInteractable, ICancelableDialogue
         }
         else
         {
-            EndDialogue(); // só aqui adiciona progresso
+            EndDialogue();
         }
     }
 
@@ -181,16 +196,20 @@ public class ObjDialogue : MonoBehaviour, IInteractable, ICancelableDialogue
 
     public void CancelDialogue()
     {
-        if (!panelInited || !objIsDialogueActive) return;
+        if (!objIsDialogueActive) return;
+
         StopAllCoroutines();
         objIsDialogueActive = false;
-        objDialoguePanelInstance.SetActive(false);
-    }
 
+        DestroyDialoguePanel();
+
+        if (currentActiveDialogue == this)
+            currentActiveDialogue = null;
+    }
 
     void HandlePause()
     {
-        if (!objIsDialogueActive) return;
+        if (!objIsDialogueActive || objDialoguePanelInstance == null) return;
         StopAllCoroutines();
         objDialoguePanelInstance.SetActive(false);
     }
@@ -198,20 +217,29 @@ public class ObjDialogue : MonoBehaviour, IInteractable, ICancelableDialogue
     void HandleResume()
     {
         if (!objIsDialogueActive) return;
-        objDialoguePanelInstance.SetActive(true);
-        StartCoroutine(TypeLine());
+
+        if (objDialoguePanelInstance != null)
+        {
+            objDialoguePanelInstance.SetActive(true);
+            StartCoroutine(TypeLine());
+        }
     }
 
     public void EndDialogue()
     {
         StopAllCoroutines();
         objIsDialogueActive = false;
-        objDialoguePanelInstance.SetActive(false);
+
+        DestroyDialoguePanel();
+
+        if (currentActiveDialogue == this)
+            currentActiveDialogue = null;
+
         OnDialogueEnded?.Invoke(this);
 
         if (adicionarProgresso && progress != null)
         {
-            progress.AddProgress(); // ✅ só aqui, no fim de tudo
+            progress.AddProgress();
         }
     }
 }

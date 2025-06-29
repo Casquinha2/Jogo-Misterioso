@@ -3,9 +3,8 @@ using UnityEngine.UI;
 using System.Collections;
 using TMPro;
 using System;
-using UnityEngine.Analytics;
 using System.Collections.Generic;
-using Unity.VisualScripting;
+
 public class NpcDialogue : MonoBehaviour, IInteractable, ICancelableDialogue
 {
     [Header("Prefab UI (Panel + TMP_Text)")]
@@ -15,61 +14,43 @@ public class NpcDialogue : MonoBehaviour, IInteractable, ICancelableDialogue
     public NpcInteractionDialogue[] npcDialogueSequence;
 
     [Header("Item (opcional)")]
-    [Tooltip("Se definido, este item será dado ao jogador")]
     public GameObject itemPrefab;
 
     [Header("Mais opcoes")]
     public bool manyInteractions = false;
-
     public bool moonTalks = true;
 
-    
     private bool adicionarProgresso;
 
-    // — campos internos —
     private GameObject inventoryPanel;
     private InventoryController inventoryController;
 
     private GameObject npcDialoguePanelInstance;
-    private TMP_Text   npcDialogueText, npcNameText;
-    private bool       panelInited;
-
-    private int  npcDialogueIndex;
-    private bool npcIsTyping, npcIsDialogueActive;
+    private TMP_Text npcDialogueText, npcNameText;
     private Image npcPortraitImage;
     private Button npcCloseButton;
 
-    //rastreador do bloco de diálogo atual
-    private int currentDialogueDataIndex = 0;
+    private int npcDialogueIndex;
+    private bool npcIsTyping, npcIsDialogueActive;
 
+    private int currentDialogueDataIndex = 0;
     private int lastInteraction;
 
     public static event Action<NpcDialogue> OnDialogueEnded;
 
     public Progress progress;
 
+    private static NpcDialogue currentActiveDialogue;
+
     void Start()
     {
-        // 1) Valida prefab de UI
-        if (npcDialoguePanelPrefab == null)
-        {
-            Debug.LogError("🚫 Prefab de UI não atribuído em npcDialogue!", this);
-            enabled = false;
-            return;
-        }
-
-        // 2) Se houver um itemPrefab, resolve InventoryController e InventoryPanel
         if (itemPrefab != null)
         {
-            // 2a) InventoryController
             inventoryController = FindFirstObjectByType<InventoryController>();
             if (inventoryController == null)
                 Debug.LogError("❌ InventoryController não encontrado!", this);
 
-            // 2b) InventoryPanel ativo
             inventoryPanel = GameObject.FindWithTag("InventoryPanel");
-
-            // 2c) InventoryPanel inativo? procura entre todos os Transforms
             if (inventoryPanel == null)
             {
                 foreach (var t in Resources.FindObjectsOfTypeAll<Transform>())
@@ -86,55 +67,18 @@ public class NpcDialogue : MonoBehaviour, IInteractable, ICancelableDialogue
                 Debug.LogError("❌ InventoryPanel não encontrado (nem inativo)!", this);
         }
 
-        // 3) Instancia e configura o painel de diálogo
-        var canvas = GameObject.FindWithTag("UICanvas");
-        if (canvas == null)
-        {
-            Debug.LogError("🚫 Não encontrei nenhum Canvas na cena!", this);
-            enabled = false;
-            return;
-        }
-
-        npcDialoguePanelInstance = Instantiate(
-            npcDialoguePanelPrefab,
-            canvas.transform,
-            worldPositionStays: false
-        );
-
-        // assume que dentro do prefab existem exactamente estes GameObject names
-        var dialogueGO = npcDialoguePanelInstance.transform.Find("Dialogue Text");
-        var nameGO     = npcDialoguePanelInstance.transform.Find("Name Text");
-        var imageGO = npcDialoguePanelInstance.transform.Find("Image");
-        var buttonGO = npcDialoguePanelInstance.transform.Find("CloseButton");
-
-        if (dialogueGO != null)
-            npcDialogueText = dialogueGO.GetComponent<TMP_Text>();
-        if (nameGO != null)
-            npcNameText = nameGO.GetComponent<TMP_Text>();
-        if (imageGO != null)
-            npcPortraitImage = imageGO.GetComponent<Image>();
-        if (buttonGO != null)
-            npcCloseButton = buttonGO.GetComponent<Button>();
-
-        npcCloseButton.onClick.AddListener(EndDialogue);
-
-
-        npcDialoguePanelInstance.SetActive(false);
-        panelInited        = true;
-
-        // 4) Subscreve eventos
-        DialogueManager.Instance.OnNewDialogue   += CancelDialogue;
+        DialogueManager.Instance.OnNewDialogue += CancelDialogue;
         DialogueManager.Instance.OnPauseDialogue += HandlePause;
-        DialogueManager.Instance.OnResumeDialogue+= HandleResume;
+        DialogueManager.Instance.OnResumeDialogue += HandleResume;
     }
 
     void OnDestroy()
     {
         if (DialogueManager.Instance != null)
         {
-            DialogueManager.Instance.OnNewDialogue   -= CancelDialogue;
+            DialogueManager.Instance.OnNewDialogue -= CancelDialogue;
             DialogueManager.Instance.OnPauseDialogue -= HandlePause;
-            DialogueManager.Instance.OnResumeDialogue-= HandleResume;
+            DialogueManager.Instance.OnResumeDialogue -= HandleResume;
         }
     }
 
@@ -142,18 +86,17 @@ public class NpcDialogue : MonoBehaviour, IInteractable, ICancelableDialogue
 
     public void Interact()
     {
-        if (npcDialogueSequence == null)
+        if (npcDialogueSequence.Length == 0)
         {
             GetDialoguesSequence(progress.GetProgress());
         }
-        
+
         if (PauseController.IsGamePaused && !npcIsDialogueActive)
             return;
 
-        if (npcIsDialogueActive) 
+        if (npcIsDialogueActive)
             return;
 
-        // 1) Lógica de inventário (se itemPrefab definido)
         bool hasItem = false;
         if (itemPrefab != null && inventoryPanel != null && inventoryController != null)
         {
@@ -175,14 +118,17 @@ public class NpcDialogue : MonoBehaviour, IInteractable, ICancelableDialogue
                 inventoryController.AddItem(itemPrefab);
         }
 
-        // 2) Cancela diálogos em curso
         DialogueManager.Instance.RequestNewDialogue(this);
-        
-        // 3) Inicia ou avança no diálogo
-        if (npcIsDialogueActive) NextLine();
-        else StartNPCDialog();
-    }
 
+        if (currentActiveDialogue != null && currentActiveDialogue != this)
+        {
+            currentActiveDialogue.CancelDialogue();
+        }
+
+        currentActiveDialogue = this;
+
+        StartNPCDialog();
+    }
 
     void StartNPCDialog()
     {
@@ -190,8 +136,10 @@ public class NpcDialogue : MonoBehaviour, IInteractable, ICancelableDialogue
             GetDialoguesSequence(progress.GetProgress());
 
         npcIsDialogueActive = true;
-        npcDialogueIndex      = 0;
+        npcDialogueIndex = 0;
         currentDialogueDataIndex = 0;
+
+        CreateDialoguePanel();
 
         var currentDialogue = npcDialogueSequence[currentDialogueDataIndex];
 
@@ -199,74 +147,96 @@ public class NpcDialogue : MonoBehaviour, IInteractable, ICancelableDialogue
         npcPortraitImage.sprite = currentDialogue.npcPortrait;
 
         npcDialoguePanelInstance.SetActive(true);
-
         PauseController.SetPause(true);
 
         StartCoroutine(TypeLine());
     }
 
+    void CreateDialoguePanel()
+    {
+        if (npcDialoguePanelInstance != null) return;
+
+        var canvas = GameObject.FindWithTag("UICanvas");
+        if (canvas == null)
+        {
+            Debug.LogError("🚫 Canvas não encontrado!", this);
+            return;
+        }
+
+        npcDialoguePanelInstance = Instantiate(npcDialoguePanelPrefab, canvas.transform, false);
+
+        npcDialogueText = npcDialoguePanelInstance.transform.Find("Dialogue Text")?.GetComponent<TMP_Text>();
+        npcNameText = npcDialoguePanelInstance.transform.Find("Name Text")?.GetComponent<TMP_Text>();
+        npcPortraitImage = npcDialoguePanelInstance.transform.Find("Image")?.GetComponent<Image>();
+        npcCloseButton = npcDialoguePanelInstance.transform.Find("CloseButton")?.GetComponent<Button>();
+
+        if (npcCloseButton != null)
+            npcCloseButton.onClick.AddListener(EndDialogue);
+    }
+
+    void DestroyDialoguePanel()
+    {
+        if (npcDialoguePanelInstance != null)
+        {
+            Destroy(npcDialoguePanelInstance);
+            npcDialoguePanelInstance = null;
+            npcDialogueText = null;
+            npcNameText = null;
+            npcPortraitImage = null;
+            npcCloseButton = null;
+        }
+    }
+
     void ShowCurrentBlock()
     {
         var data = npcDialogueSequence[currentDialogueDataIndex];
-
-        npcDialogueIndex   = 0;
-        npcNameText.text   = data.npcName;
+        npcDialogueIndex = 0;
+        npcNameText.text = data.npcName;
         npcPortraitImage.sprite = data.npcPortrait;
         npcDialoguePanelInstance.SetActive(true);
         StartCoroutine(TypeLine());
     }
 
-
     void GetDialoguesSequence(int maxIndex)
     {
         var list = new List<NpcInteractionDialogue>();
-
         string npcName = gameObject.name;
 
-        // 1) Lógica para pasta do NPC
         for (int i = maxIndex; i >= 0; i--)
         {
-            var entries = Resources.LoadAll<NpcInteractionDialogue>(
-                $"Characters/{npcName}/{i} Interacao"
-            );
-            if (entries != null && entries.Length > 0)
+            var entries = Resources.LoadAll<NpcInteractionDialogue>($"Characters/{npcName}/{i} Interacao");
+            if (entries.Length > 0)
             {
                 list.AddRange(entries);
                 lastInteraction = i;
-                break;  // achou o maior i, sai do loop
+                break;
             }
         }
 
         if (moonTalks)
         {
-            // 2) Lógica para pasta "Moon"
             for (int i = maxIndex; i >= 0; i--)
             {
-                var entries = Resources.LoadAll<NpcInteractionDialogue>(
-                    $"Characters/Moon/Moon Interacao/{npcName}/{i} Interacao"
-                );
-                if (entries != null && entries.Length > 0)
+                var entries = Resources.LoadAll<NpcInteractionDialogue>($"Characters/Moon/Moon Interacao/{npcName}/{i} Interacao");
+                if (entries.Length > 0)
                 {
                     list.AddRange(entries);
-                    break;  // achou o maior i em Moon, sai
+                    break;
                 }
             }
         }
 
-        // 3) (Opcional) ordena por nome do asset ou outra regra
         list.Sort((a, b) =>
         {
-            int GetNumberFromName(string name)
+            int ExtractNumber(string name)
             {
-                // Tenta extrair o número inicial do nome do asset (ex: "1 - Ola", "10 - Adeus")
                 var match = System.Text.RegularExpressions.Regex.Match(name, @"^\d+");
                 return match.Success ? int.Parse(match.Value) : int.MaxValue;
             }
-
-            return GetNumberFromName(a.name).CompareTo(GetNumberFromName(b.name));
+            return ExtractNumber(a.name).CompareTo(ExtractNumber(b.name));
         });
 
-        foreach (NpcInteractionDialogue i in list)
+        foreach (var i in list)
         {
             if (i.adicionarProgresso)
             {
@@ -301,11 +271,11 @@ public class NpcDialogue : MonoBehaviour, IInteractable, ICancelableDialogue
             currentDialogueDataIndex++;
             if (currentDialogueDataIndex < npcDialogueSequence.Length)
             {
-                ShowCurrentBlock();  // começa o próximo bloco
+                ShowCurrentBlock();
             }
             else
             {
-                EndDialogue(); // terminou todos os blocos
+                EndDialogue();
             }
         }
     }
@@ -333,23 +303,22 @@ public class NpcDialogue : MonoBehaviour, IInteractable, ICancelableDialogue
         }
     }
 
-
     public void CancelDialogue()
     {
-        if (!panelInited || !npcIsDialogueActive) return;
+        if (!npcIsDialogueActive) return;
         EndDialogue();
     }
 
     void HandlePause()
     {
-        if (!npcIsDialogueActive) return;
+        if (!npcIsDialogueActive || npcDialoguePanelInstance == null) return;
         StopAllCoroutines();
         npcDialoguePanelInstance.SetActive(false);
     }
 
     void HandleResume()
     {
-        if (!npcIsDialogueActive) return;
+        if (!npcIsDialogueActive || npcDialoguePanelInstance == null) return;
         npcDialoguePanelInstance.SetActive(true);
         StartCoroutine(TypeLine());
     }
@@ -358,16 +327,18 @@ public class NpcDialogue : MonoBehaviour, IInteractable, ICancelableDialogue
     {
         StopAllCoroutines();
         npcIsDialogueActive = false;
-        npcDialoguePanelInstance.SetActive(false);
-        OnDialogueEnded?.Invoke(this);
         PauseController.SetPause(false);
 
-        //npcDialogueSequence = new NpcInteractionDialogue[0];
+        DestroyDialoguePanel();
 
-        if (adicionarProgresso && progress != null && (lastInteraction == progress.GetProgress()))
+        if (currentActiveDialogue == this)
+            currentActiveDialogue = null;
+
+        OnDialogueEnded?.Invoke(this);
+
+        if (adicionarProgresso && progress != null && lastInteraction == progress.GetProgress())
         {
             progress.AddProgress();
         }
-            
     }
 }

@@ -28,7 +28,6 @@ public class PortaCorredorPsicologia : MonoBehaviour, IInteractable, ICancelable
     // ↓ ↓ ↓ campos resolvidos em Start() via Tags ↓ ↓ ↓
     private Transform uiRoot;
     private GameObject inventoryPanel;
-    private GameObject tutorialPanel;
     private GameObject player;
     private PolygonCollider2D mapBoundary;
     private CinemachineConfiner2D confiner;
