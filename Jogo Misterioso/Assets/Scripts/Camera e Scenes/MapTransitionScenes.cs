@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Unity.Cinemachine;
 using System.Collections;
+using System.ComponentModel.Design;
 
 public class MapTransitionScenes : MonoBehaviour
 {
@@ -26,6 +27,7 @@ public class MapTransitionScenes : MonoBehaviour
     [SerializeField] GameObject panel;  // se ficar vazio, tudo continua OK
     [SerializeField] float seconds = 0.5f;
 
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (!collision.CompareTag("Player") || IsTransitioning) return;
@@ -39,12 +41,16 @@ public class MapTransitionScenes : MonoBehaviour
         panel?.SetActive(true);
 
         // 3) Liga/desliga bounds locais
-        activate?.SetActive(true);
+        if (activate != null)
+        {
+            activate.SetActive(true);
+        }
+        
 
         // 4) Opcional: warp local no mapa atual
         var playerT = collision.transform;
         var oldPos = playerT.position;
-        
+
         playerT.position = new Vector3(teleportPosition.x, teleportPosition.y, oldPos.z);
         virtualCamera.OnTargetObjectWarped(playerT, playerT.position - oldPos);
 
@@ -73,7 +79,8 @@ public class MapTransitionScenes : MonoBehaviour
 
         // D) Fecha painel (se existir) e desativa o antigo bound
         panel?.SetActive(false);
-        inactivate?.SetActive(false);
+        if (inactivate != null)
+            inactivate?.SetActive(false);
 
         // E) Libera input
         IsTransitioning = false;
