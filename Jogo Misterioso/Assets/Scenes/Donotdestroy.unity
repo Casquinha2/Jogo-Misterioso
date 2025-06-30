@@ -698,7 +698,7 @@ Transform:
   m_GameObject: {fileID: 120488321}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 126.87, y: -1.57, z: -10}
+  m_LocalPosition: {x: -143.65, y: 66.77, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1646,7 +1646,7 @@ Transform:
   m_GameObject: {fileID: 211180329}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 126.87, y: -1.57, z: 0}
+  m_LocalPosition: {x: -143.65, y: 66.77, z: 0}
   m_LocalScale: {x: 0.6301246, y: 0.6301246, z: 0.6301246}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3546,8 +3546,8 @@ MonoBehaviour:
   confiner: {fileID: 120488325}
   virtualCamera: {fileID: 120488323}
   teleportPosition: {x: 143.39, y: 5.19}
-  inactivate: {fileID: 754160197}
-  activate: {fileID: 754160197}
+  inactivate: {fileID: 0}
+  activate: {fileID: 0}
   sceneToLoad: Piso0Scene
   panel: {fileID: 1760809966}
   seconds: 0.5
@@ -3935,7 +3935,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.290863, y: 0.48468998, z: -10}
+  m_LocalPosition: {x: -2.3186293, y: 1.4272594, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
