@@ -15,7 +15,7 @@ MonoBehaviour:
   objectName: Esqueleto
   dialogueLines:
   - "\xC9 s\xF3 um esqueleto..."
-  - "Mas porque \xE9 que o lado direito do esquele est\xE1 pintado de laranja?!?!"
+  - "Mas porque \xE9 que o lado direito do esqueleto est\xE1 pintado de laranja?!?!"
   - "A praxe de Psicologia \xE9 estranha..."
   typingSpeed: 0.05
   autoProgressLines: 010101
