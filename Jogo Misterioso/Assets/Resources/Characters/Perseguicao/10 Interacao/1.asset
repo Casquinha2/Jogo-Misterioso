@@ -9,12 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 648fa42727b63ae458df6a3968223511, type: 3}
-  m_Name: Capa
+  m_Script: {fileID: 11500000, guid: 43841994882913c4d9bc9c84bd9e2a40, type: 3}
+  m_Name: 1
   m_EditorClassIdentifier: 
-  objectName: Capa
+  npcName: Trajado
+  npcPortrait: {fileID: 7616922701797950536, guid: f433df46e898afd44b9ddf0d5f4cd628, type: 3}
   dialogueLines:
-  - Encontrei a capa!
+  - FOSTE APANHADOOOO
   typingSpeed: 0.05
   autoProgressLines: 01
   autoProgressDelay: 1
+  adicionarProgresso: 0

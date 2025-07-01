@@ -8,6 +8,9 @@ public class Progress : MonoBehaviour
     [Header("Personagens Secundarias")]
     public Transform secundarias;
 
+    [Header("Personagens Perseguicao")]
+    public GameObject perseguicao;
+
     [Header("Objetos importantes")]
     public Transform objetos;
 
@@ -21,13 +24,15 @@ public class Progress : MonoBehaviour
         mapBoundScript = FindFirstObjectByType<MapBoundActivate>();
         if (mapBoundScript == null)
             Debug.LogError("Não encontrei MapBoundActivate na cena!");
-        
-         inventoryController = FindFirstObjectByType<InventoryController>();
-    if (inventoryController == null)
-        Debug.LogError("[Progress] InventoryController não encontrado na cena!");
+
+        inventoryController = FindFirstObjectByType<InventoryController>();
+        if (inventoryController == null)
+            Debug.LogError("[Progress] InventoryController não encontrado na cena!");
 
         progress = 0;
         AtualizarProgress();
+        
+        perseguicao.SetActive(false);
     }
 
     // Update is called once per frame
@@ -124,62 +129,101 @@ public class Progress : MonoBehaviour
                         break;
                 }
             }
-        }
-
-        foreach (Transform child in objetos)
-        {
-            GameObject i = child.gameObject;
-
-            if (i.name == "Capa")
+            else if (i.name == "Trajado 1")
             {
+                GameObject filho = i.transform.GetChild(0).gameObject;
                 switch (progress)
                 {
                     case 0:
                         i.SetActive(false);
-                        i.transform.localPosition = new Vector3(-14.39f, 79.39f, 0f);
-                        break;
-
-                    case 2:
-                        i.SetActive(true);
+                        filho.SetActive(false);
                         break;
 
                     case 3:
-                        Destroy(i);
-                        break;
-                }
-            }
-            if (i.name == "PapeisDireito")
-            {
-                switch (progress)
-                {
-                    case 0:
-                        i.SetActive(false);
-                        break;
-                    case 6:
                         i.SetActive(true);
+                        filho.SetActive(true);
                         break;
-                    case 7:
-                        i.SetActive(false);
+                    case 4:
+                        filho.SetActive(false);
                         break;
                 }
             }
-            if (i.name == "Livros")
+        }
+
+        foreach (Transform child in objetos)
             {
-                switch (progress)
+                GameObject i = child.gameObject;
+
+                if (i.name == "Capa")
                 {
-                    case 0:
-                        i.SetActive(false);
-                        break;
+                    switch (progress)
+                    {
+                        case 0:
+                            i.SetActive(false);
+                            i.transform.localPosition = new Vector3(-14.39f, 79.39f, 0f);
+                            break;
 
-                    case 7:
-                        i.SetActive(true);
-                        break;
+                        case 2:
+                            i.SetActive(true);
+                            break;
 
-                    case 8:
-                        i.SetActive(false);
-                        break;
+                        case 3:
+                            i.SetActive(false);
+                            break;
+
+                        case 9:
+                            i.SetActive(true);
+                            i.transform.localPosition = new Vector3(131.61f, -142.43f, 0f);
+                            break;
+
+                        case 10:
+                            i.SetActive(false);
+                            break;
+
+
+                    }
+                }
+                if (i.name == "PapeisDireito")
+                {
+                    switch (progress)
+                    {
+                        case 0:
+                            i.SetActive(false);
+                            break;
+                        case 6:
+                            i.SetActive(true);
+                            break;
+                        case 7:
+                            i.SetActive(false);
+                            break;
+                    }
+                }
+                if (i.name == "Livros")
+                {
+                    switch (progress)
+                    {
+                        case 0:
+                            i.SetActive(false);
+                            break;
+
+                        case 7:
+                            i.SetActive(true);
+                            break;
+
+                        case 8:
+                            i.SetActive(false);
+                            break;
+                    }
                 }
             }
+
+        if (progress == 10)
+        {
+            perseguicao.SetActive(true);
+        }
+        else
+        {
+            perseguicao.SetActive(false);
         }
 
         if (progress == 4 || progress == 11)
