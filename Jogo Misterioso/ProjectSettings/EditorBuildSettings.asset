@@ -20,6 +20,9 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Piso2Scene.unity
     guid: 1a587f5cf2580d6419a578640c3cfb6c
+  - enabled: 0
+    path: Assets/Scenes/Piso-1Scene.unity
+    guid: bd7502a17093d1c4ba50a5db153eed07
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

@@ -37,6 +37,7 @@ public class MapBoundActivate : MonoBehaviour
             bool deveAtivar = nomeCena switch
             {
                 "QuartoScene" when child.name == "Quarto" => true,
+                "Piso-1Scene" when child.name == "Piso -1" => true,
                 "Piso0Scene" when child.name == "Piso 0" => true,
                 "Piso1Scene" when child.name == "Piso 1" => true,
                 "Piso2Scene" when child.name == "Piso 2" => true,
