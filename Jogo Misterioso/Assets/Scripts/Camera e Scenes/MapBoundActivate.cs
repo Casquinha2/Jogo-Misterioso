@@ -20,10 +20,15 @@ public class MapBoundActivate : MonoBehaviour
     {
         foreach (GameObject i in deactivate)
         {
-            i.SetActive(false);
+            if (i.name == "CorredorBiblioteca_Waypoint")
+            {
+                i.SetActive(true);
+            }
+            else
+            {
+                i.SetActive(false);
+            }
         }
-
-
 
         string nomeCena = SceneManager.GetActiveScene().name;
 
@@ -40,22 +45,25 @@ public class MapBoundActivate : MonoBehaviour
 
             child.SetActive(deveAtivar);
         }
-
         enabled = false;
     }
 
     public void AfterProgress(int progress)
     {
-        if (progress == 6)
+        foreach (GameObject child in deactivate)
         {
-            foreach (GameObject child in deactivate)
+            if ((child.name == "CorredorPsicologia_Waypoint" || child.name == "82_Waypoint") && progress == 6)
             {
-                if (child.name == "CorredorPsicologia_Waypoint" || child.name == "82_Waypoint")
-                {
-                    child.SetActive(true);
-                }
+                child.SetActive(true);
+            }
+            else if (child.name == "CorredorBiblioteca_Waypoint" && progress == 7)
+            {
+                child.SetActive(false);
+            }
+            else if (child.name == "CorredorBiblioteca_Waypoint" && progress == 8)
+            {
+                child.SetActive(true);
             }
         }
     }
-
 }

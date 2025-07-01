@@ -13,6 +13,7 @@ public class LivrosPuzzle : MonoBehaviour
     ObjectInteractionDialogue[] current; // array selecionada
     int currentIndex;                    // posição dentro do array
     bool isRunning;
+    private bool adicionarprogress;
 
     private int sequenceNum;
     private bool verde, vermelho, azul, amarelo, roxo;
@@ -82,11 +83,11 @@ public class LivrosPuzzle : MonoBehaviour
 
         switch (sequenceNum)
         {
-            case 1: current = sequenceFirst; break;
-            case 2: current = sequenceSecond; break;
-            case 3: current = sequenceTirth; break;
-            case 4: current = sequenceFourth; break;
-            case 5: current = sequenceFifth; break;
+            case 1: current = sequenceFirst; adicionarprogress = false; break;
+            case 2: current = sequenceSecond; adicionarprogress = false; break;
+            case 3: current = sequenceTirth; adicionarprogress = false; break;
+            case 4: current = sequenceFourth; adicionarprogress = false; break;
+            case 5: current = sequenceFifth; adicionarprogress = true; break;
         }
 
         if (current == null || current.Length == 0) return;
@@ -100,6 +101,7 @@ public class LivrosPuzzle : MonoBehaviour
     {
         // injeta o dialogueData no ObjDialogue
         dialogueScript.objDialogueData = current[currentIndex];
+        dialogueScript.adicionarProgresso = adicionarprogress;
         dialogueScript.Interact();
     }
 
