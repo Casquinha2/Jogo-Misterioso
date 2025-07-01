@@ -1,6 +1,7 @@
 using UnityEngine;
 using Unity.Cinemachine;
 using System.Collections;
+using Unity.VisualScripting;
 
 
 public class MapTransition : MonoBehaviour
@@ -26,6 +27,10 @@ public class MapTransition : MonoBehaviour
     [SerializeField] GameObject panel;
     [SerializeField] float seconds = 0.5f;
 
+    private Transform playerT;
+    private Vector3 oldPos, newPos;
+
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (!collision.CompareTag("Player"))
@@ -42,7 +47,7 @@ public class MapTransition : MonoBehaviour
         Transform playerT = collision.transform;
         Vector3 oldPos = playerT.position;
 
-        
+
 
         // 3) Calcula a nova posição e teleporta o jogador
         Vector3 newPos = oldPos;
@@ -56,24 +61,30 @@ public class MapTransition : MonoBehaviour
         playerT.position = newPos;
 
         // 4) Informa a Cinemachine do warp, para ela ajustar imediatamente a câmera
-        Vector3 delta = newPos - oldPos;
-        virtualCamera.OnTargetObjectWarped(playerT, delta);
 
+        StartCoroutine(ConfinerCamera());
 
-        confiner.gameObject.SetActive(true);
-
-        // 2) Atualiza o confiner e força recálculo
-        confiner.BoundingShape2D = mapBoundary;
-        confiner.InvalidateBoundingShapeCache();
-
-        
 
         if (panel != null)
             StartCoroutine(CloseLoading());
         else
             IsTransitioning = false;
+    }
 
-        
+    private IEnumerator ConfinerCamera()
+    {
+        Vector3 delta = newPos - oldPos;
+        virtualCamera.OnTargetObjectWarped(playerT, delta);
+
+        yield return null;
+
+        confiner.gameObject.SetActive(true);
+
+        yield return null;
+
+        // 2) Atualiza o confiner e força recálculo
+        confiner.BoundingShape2D = mapBoundary;
+        confiner.InvalidateBoundingShapeCache();
     }
 
     private IEnumerator CloseLoading()
