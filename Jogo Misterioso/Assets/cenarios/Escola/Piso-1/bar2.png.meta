@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: b3aeda037a253b74dbfcff6da3304560
+guid: b9cd10b4f70a258438e4172a6569f5d6
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5385536641072663933
-    second: azul_0
+      213: 8408372267052304445
+    second: bar2_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,30 +96,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: azul_0
+      name: bar2_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 48
-        height: 80
+        width: 1280
+        height: 1600
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 382730075fab245b0800000000000000
-      internalID: -5385536641072663933
+      spriteID: d3806e4070a80b470800000000000000
+      internalID: 8408372267052304445
       vertices: []
       indices: 
       edges: []
@@ -147,8 +134,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      azul_0: -5385536641072663933
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
