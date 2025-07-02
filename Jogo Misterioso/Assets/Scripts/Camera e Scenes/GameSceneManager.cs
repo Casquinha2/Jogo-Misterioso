@@ -43,7 +43,7 @@ public class GameSceneManager : MonoBehaviour
             // Se já está na cena correta, já avisa que está pronto
             isReady = true;
             // Dispara o warp direto no checkpoint atual
-            CheckpointManager.I.LoadCheckpoint(targetCheckpointId);
+            //CheckpointManager.I.LoadCheckpoint(targetCheckpointId);
         }
     }
 
@@ -65,6 +65,6 @@ public class GameSceneManager : MonoBehaviour
 
         // Sinaliza ready e dispara warp no CheckpointManager
         isReady = true;
-        CheckpointManager.I.LoadCheckpoint(targetCheckpointId);
+        //CheckpointManager.I.LoadCheckpoint(targetCheckpointId);
     }
 }

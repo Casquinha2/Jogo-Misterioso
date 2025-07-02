@@ -92,7 +92,7 @@ public class Porta62Codes : MonoBehaviour
             // 5) Salvar e carregar checkpoint
             if (!string.IsNullOrEmpty(checkpointID))
             {
-                CheckpointManager.I.LoadCheckpoint(checkpointID);
+                //CheckpointManager.I.LoadCheckpoint(checkpointID);
             }
 
             // 6) Mover o Player
