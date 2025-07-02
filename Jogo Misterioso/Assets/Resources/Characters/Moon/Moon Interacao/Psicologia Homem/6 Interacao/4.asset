@@ -15,7 +15,7 @@ MonoBehaviour:
   npcName: Moon
   npcPortrait: {fileID: 6236947385317395335, guid: 1cd77f180d2095c4ebf5180eef1252f2, type: 3}
   dialogueLines:
-  - Conta conta, o que e que tu sabes?
+  - Deve ter sido o maldito Diretor de Curso de psicologia!
   typingSpeed: 0.05
   autoProgressLines: 01
   autoProgressDelay: 1.1

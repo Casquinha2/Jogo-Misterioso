@@ -10,16 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 43841994882913c4d9bc9c84bd9e2a40, type: 3}
-  m_Name: 3
+  m_Name: 8
   m_EditorClassIdentifier: 
-  npcName: Homemzinho
-  npcPortrait: {fileID: 604408113146070943, guid: 6a7941e4ae9eb8144bf2d22349a81acb, type: 3}
+  npcName: Moon
+  npcPortrait: {fileID: 0}
   dialogueLines:
-  - Nem por isso.
-  - "Deve ter sido algu\xE9m de psicologia ou assim.Deve ter sido algu\xE9m de psicologia
-    ou assim."
-  - "Afinal, est\xE1s na ala deles."
+  - Sim, como sabes?
   typingSpeed: 0.05
-  autoProgressLines: 010101
-  autoProgressDelay: 1.2
+  autoProgressLines: 
+  autoProgressDelay: 1.1
   adicionarProgresso: 0
