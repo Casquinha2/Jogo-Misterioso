@@ -8,11 +8,19 @@ public class Progress : MonoBehaviour
     [Header("Personagens Secundarias")]
     public Transform secundarias;
 
+    [Header("Personagens Perseguicao")]
+    public GameObject perseguicao;
+
     [Header("Objetos importantes")]
     public Transform objetos;
 
+    [Header("Final normal")]
+    [SerializeField] private Normal normal;
+
     private int progress;
     private MapBoundActivate mapBoundScript;
+    private InventoryController inventoryController;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -20,8 +28,14 @@ public class Progress : MonoBehaviour
         if (mapBoundScript == null)
             Debug.LogError("Não encontrei MapBoundActivate na cena!");
 
+        inventoryController = FindFirstObjectByType<InventoryController>();
+        if (inventoryController == null)
+            Debug.LogError("[Progress] InventoryController não encontrado na cena!");
+
         progress = 0;
         AtualizarProgress();
+        
+        perseguicao.SetActive(false);
     }
 
     // Update is called once per frame
@@ -31,10 +45,8 @@ public class Progress : MonoBehaviour
         Debug.Log($"[Progress] novo valor = {progress}");
         AtualizarProgress();
 
-        if (progress == 6)
-        {
-            mapBoundScript.AfterProgress(progress);
-        }
+        mapBoundScript.AfterProgress(progress);
+
     }
 
     public int GetProgress()
@@ -69,12 +81,22 @@ public class Progress : MonoBehaviour
                         i.SetActive(true);
                         i.transform.localPosition = new Vector3(-37.19f, 33.13f, 0f);
                         break;
-                    case 4:
-                        Debug.Log("FAZ NADA");
-                        break;
                 }
             }
             else if (i.name == "Praxe Psicologia")
+            {
+                switch (progress)
+                {
+                    case 0:
+                        i.gameObject.SetActive(false);
+                        break;
+
+                    case 4:
+                        i.gameObject.SetActive(true);
+                        break;
+                }
+            }
+            else if (i.name == "CCCaloiro")
             {
                 switch (progress)
                 {
@@ -83,7 +105,7 @@ public class Progress : MonoBehaviour
                         i.gameObject.SetActive(false);
                         break;
 
-                    case 4:
+                    case 8:
                         i.gameObject.SetActive(true);
                         break;
                 }
@@ -104,6 +126,28 @@ public class Progress : MonoBehaviour
                         break;
                     case 6:
                         i.SetActive(true);
+                        break;
+                    case 7:
+                        i.SetActive(false);
+                        break;
+                }
+            }
+            else if (i.name == "Trajado 1")
+            {
+                GameObject filho = i.transform.GetChild(0).gameObject;
+                switch (progress)
+                {
+                    case 0:
+                        i.SetActive(false);
+                        filho.SetActive(false);
+                        break;
+
+                    case 3:
+                        i.SetActive(true);
+                        filho.SetActive(true);
+                        break;
+                    case 4:
+                        filho.SetActive(false);
                         break;
                 }
             }
@@ -127,10 +171,74 @@ public class Progress : MonoBehaviour
                         break;
 
                     case 3:
-                        Destroy(i);
+                        i.SetActive(false);
+                        break;
+
+                    case 9:
+                        i.SetActive(true);
+                        i.transform.localPosition = new Vector3(131.61f, -142.43f, 0f);
+                        break;
+
+                    case 10:
+                        i.SetActive(false);
+                        break;
+
+
+                }
+            }
+            if (i.name == "PapeisDireito")
+            {
+                switch (progress)
+                {
+                    case 0:
+                        i.SetActive(false);
+                        break;
+                    case 6:
+                        i.SetActive(true);
+                        break;
+                    case 7:
+                        i.SetActive(false);
                         break;
                 }
             }
+            if (i.name == "Livros")
+            {
+                switch (progress)
+                {
+                    case 0:
+                        i.SetActive(false);
+                        break;
+
+                    case 7:
+                        i.SetActive(true);
+                        break;
+
+                    case 8:
+                        i.SetActive(false);
+                        break;
+                }
+            }
+        }
+
+        if (progress == 10)
+        {
+            perseguicao.SetActive(true);
+        }
+        else
+        {
+            perseguicao.SetActive(false);
+        }
+
+        if (progress == 4 || progress == 11)
+        {
+            if (inventoryController != null)
+                inventoryController.ClearInventory();
+            else
+                Debug.LogWarning("[Progress] InventoryController não atribuído; inventário não limpo.");
+        }
+        if (progress == 13)
+        {
+            normal.Final();
         }
     }
 }

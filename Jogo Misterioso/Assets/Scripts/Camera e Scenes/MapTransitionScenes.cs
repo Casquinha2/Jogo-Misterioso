@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Unity.Cinemachine;
 using System.Collections;
+using System.ComponentModel.Design;
 
 public class MapTransitionScenes : MonoBehaviour
 {
@@ -12,70 +13,99 @@ public class MapTransitionScenes : MonoBehaviour
     [SerializeField] CinemachineConfiner2D confiner;
     [SerializeField] CinemachineCamera virtualCamera;
 
-    [Header("Teleport local (opcional)")]
+    [Header("Teleport local")]
     [SerializeField] Vector2 teleportPosition;
+
+    [Header("Posição de setup da câmera (opcional)")]
+    [SerializeField] private Vector2 cameraSetupPosition;
+    [SerializeField] private bool useCameraSetupPosition = false;
+
 
     [Header("Bounds a ativar/desativar")]
     [SerializeField] GameObject inactivate;
     [SerializeField] GameObject activate;
 
     [Header("Cena destino")]
-    [SerializeField] string sceneToLoad;
+    [SerializeField] string sceneToLoad = "";
 
     [Header("UI de carregamento (opcional)")]
     [SerializeField] GameObject panel;  // se ficar vazio, tudo continua OK
     [SerializeField] float seconds = 0.5f;
 
+
+
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (!collision.CompareTag("Player") || IsTransitioning) return;
 
-        confiner.gameObject.SetActive(false);
-
-        // 1) Bloqueia qualquer input
         IsTransitioning = true;
-
-        // 2) Avise o usuário (se tiver painel)
-        panel?.SetActive(true);
-
-        // 3) Liga/desliga bounds locais
-        activate?.SetActive(true);
-
-        // 4) Opcional: warp local no mapa atual
-        var playerT = collision.transform;
-        var oldPos = playerT.position;
         
-        playerT.position = new Vector3(teleportPosition.x, teleportPosition.y, oldPos.z);
-        virtualCamera.OnTargetObjectWarped(playerT, playerT.position - oldPos);
+        if (panel != null)
+            panel.SetActive(true);
 
-        confiner.gameObject.SetActive(true);
+        if (activate != null)
+            activate.SetActive(true);
 
+        StartCoroutine(HandleCameraSafeTransition(collision.transform));
+    }
+
+    private IEnumerator HandleCameraSafeTransition(Transform playerT)
+    {
+        var oldPos = playerT.position;
+
+        if (activate != null)
+            activate.SetActive(true); // Ativa o novo piso antes de tudo
+
+        yield return null; // Espera 1 frame para que colliders sejam ativados
+
+        // 🔁 Atualiza sempre o confiner, independente de usar posição de setup
         confiner.BoundingShape2D = mapBoundary;
         confiner.InvalidateBoundingShapeCache();
+        confiner.gameObject.SetActive(true);
 
-        // 5) Inicia rotina de load
+        yield return new WaitForEndOfFrame(); // Espera confiner processar
+
+        if (useCameraSetupPosition)
+        {
+            var tempPos = new Vector3(cameraSetupPosition.x, cameraSetupPosition.y, oldPos.z);
+            playerT.position = tempPos;
+
+            virtualCamera.OnTargetObjectWarped(playerT, tempPos - oldPos);
+
+            yield return null; // Dá tempo para a câmera se ajustar
+        }
+
+        var finalPos = new Vector3(teleportPosition.x, teleportPosition.y, oldPos.z);
+        playerT.position = finalPos;
+        virtualCamera.OnTargetObjectWarped(playerT, finalPos - oldPos);
+
+        yield return null; // Segurança visual
+
         StartCoroutine(DoLoadScene());
     }
 
+
+
     private IEnumerator DoLoadScene()
     {
-        // A) Aguarda um pouco (seleyendo o painel)
         if (panel != null)
             yield return new WaitForSecondsRealtime(seconds);
 
-        // B) Carrega cena de forma assíncrona
-        var loadOp = SceneManager.LoadSceneAsync(sceneToLoad);
-        loadOp.allowSceneActivation = true;
-        yield return loadOp;
+        if (!string.IsNullOrWhiteSpace(sceneToLoad))
+        {
+            var loadOp = SceneManager.LoadSceneAsync(sceneToLoad);
+            loadOp.allowSceneActivation = true;
+            yield return loadOp;
+            yield return null;
+        }
 
-        // C) Um frame de buffer para tudo montar
-        yield return null;
+        if (panel != null)
+            panel.SetActive(false);
 
-        // D) Fecha painel (se existir) e desativa o antigo bound
-        panel?.SetActive(false);
-        inactivate?.SetActive(false);
+        if (inactivate != null)
+            inactivate.SetActive(false);
 
-        // E) Libera input
         IsTransitioning = false;
     }
 }

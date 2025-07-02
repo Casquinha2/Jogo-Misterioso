@@ -15,7 +15,8 @@ MonoBehaviour:
   npcName: Moon
   npcPortrait: {fileID: 6236947385317395335, guid: 1cd77f180d2095c4ebf5180eef1252f2, type: 3}
   dialogueLines:
-  - "Ajud\xE1ste imenso, obrigada!"
+  - Ajudaste imenso, obrigada!
   typingSpeed: 0.05
   autoProgressLines: 00
   autoProgressDelay: 1
+  adicionarProgresso: 0

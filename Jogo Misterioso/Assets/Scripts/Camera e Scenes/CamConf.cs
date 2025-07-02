@@ -1,5 +1,6 @@
 using UnityEngine;
 using Unity.Cinemachine;
+using System.Collections;
 
 [RequireComponent(typeof(Collider2D))]
 public class CamConf : MonoBehaviour
@@ -22,8 +23,12 @@ public class CamConf : MonoBehaviour
     [Header("Zoom Out On Exit")]
     [Tooltip("Se marcado, ao sair do trigger faz zoom-out restaurando estado original")]
     [SerializeField] private bool                   zoomOutOnExit  = false;
+    
+    [Header("Delay opcional antes do zoom")]
+    [SerializeField] private float delayAntesDoZoom = 0f;
 
-    private float                       _originalSize;
+
+    private float _originalSize;
     private CinemachineConfiner2D      _confiner;
     private CinemachinePositionComposer _composer;
     private Vector3 _originalOffset;
@@ -53,9 +58,20 @@ public class CamConf : MonoBehaviour
         _originalOffset = _composer.TargetOffset;
     }
 
+
     private void OnTriggerEnter2D(Collider2D col)
     {
         if (!col.CompareTag("Player")) return;
+        StartCoroutine(AplicarZoomComDelay());
+    }
+
+    private IEnumerator AplicarZoomComDelay()
+    {
+        if (delayAntesDoZoom <= 0f)
+            yield return null; // aguarda um frame
+        else
+            yield return new WaitForSeconds(delayAntesDoZoom);
+
 
         var lens = vCam.Lens;
 

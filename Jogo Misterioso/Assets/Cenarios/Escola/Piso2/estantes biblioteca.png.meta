@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: 410d726da7cd13b4fb6112a3b8f320be
+guid: 83548549ea22ba0428c07f5e655ddf2e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2673407095448813379
-    second: varredor2_0
-  - first:
-      213: 2763238624540282468
-    second: varredor2_1
+      213: 3142514586251852882
+    second: estantes biblioteca 1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -99,49 +96,40 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: varredor2_0
+      name: estantes biblioteca 1_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 320
-        height: 320
+        width: 1150
+        height: 145
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: db0c3c7396626ead0800000000000000
-      internalID: -2673407095448813379
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: varredor2_1
-      rect:
-        serializedVersion: 2
-        x: 320
-        y: 0
-        width: 320
-        height: 320
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 46ecc5583eef85620800000000000000
-      internalID: 2763238624540282468
+      spriteID: 25c760fcd547c9b20800000000000000
+      internalID: 3142514586251852882
       vertices: []
       indices: 
       edges: []
@@ -150,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: b73ff1a81ca95fe488c645618aa3cee9
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -160,8 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      varredor2_0: -2673407095448813379
-      varredor2_1: 2763238624540282468
+      estantes biblioteca 1_0: 3142514586251852882
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

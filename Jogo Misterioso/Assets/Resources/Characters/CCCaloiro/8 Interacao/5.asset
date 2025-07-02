@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43841994882913c4d9bc9c84bd9e2a40, type: 3}
+  m_Name: 5
+  m_EditorClassIdentifier: 
+  npcName: CCCaloiro
+  npcPortrait: {fileID: 0}
+  dialogueLines:
+  - "Por acaso at\xE9 ouvi."
+  - Mas porque haveria eu de te contar?
+  - "Eu nem te conhe\xE7o."
+  - "Tenta ganhar a confian\xE7a de algu\xE9m antes de come\xE7ares com tantas perguntas,
+    credo."
+  - "Sei l\xE1, compra um caf\xE9 primeiro ou assim."
+  typingSpeed: 0.05
+  autoProgressLines: 0101010101
+  autoProgressDelay: 1.2
+  adicionarProgresso: 0

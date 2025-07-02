@@ -15,9 +15,11 @@ MonoBehaviour:
   npcName: Moon
   npcPortrait: {fileID: 6236947385317395335, guid: 1cd77f180d2095c4ebf5180eef1252f2, type: 3}
   dialogueLines:
-  - Hmmm, obrigado pela informacao acho eu.
-  - Adeus... Penso eu
+  - Falei com ele antes.
+  - Ele tinha uma chave para esta sala.
+  - "E psicologia tem rivalidade com engenharia inform\xE1tica."
+  - "Ent\xE3o deduzo que tenha sido um pequeno ato de vingan\xE7a."
   typingSpeed: 0.05
-  autoProgressLines: 01
+  autoProgressLines: 01010101
   autoProgressDelay: 1.1
   adicionarProgresso: 1

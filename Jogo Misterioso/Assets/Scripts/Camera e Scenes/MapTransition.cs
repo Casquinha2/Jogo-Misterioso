@@ -1,6 +1,7 @@
 using UnityEngine;
 using Unity.Cinemachine;
 using System.Collections;
+using Unity.VisualScripting;
 
 
 public class MapTransition : MonoBehaviour
@@ -26,6 +27,10 @@ public class MapTransition : MonoBehaviour
     [SerializeField] GameObject panel;
     [SerializeField] float seconds = 0.5f;
 
+    private Transform playerT;
+    private Vector3 oldPos, newPos;
+
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (!collision.CompareTag("Player"))
@@ -39,13 +44,11 @@ public class MapTransition : MonoBehaviour
             panel.SetActive(true);
 
         // 1) Guarda a posição antiga
-        Transform playerT = collision.transform;
-        Vector3 oldPos = playerT.position;
+        // Em OnTriggerEnter2D
+        playerT = collision.transform;
+        oldPos = playerT.position;
 
-        
-
-        // 3) Calcula a nova posição e teleporta o jogador
-        Vector3 newPos = oldPos;
+        newPos = oldPos;
         switch (direction)
         {
             case Direction.Up: newPos.y += additivePos; break;
@@ -55,25 +58,35 @@ public class MapTransition : MonoBehaviour
         }
         playerT.position = newPos;
 
+
         // 4) Informa a Cinemachine do warp, para ela ajustar imediatamente a câmera
-        Vector3 delta = newPos - oldPos;
-        virtualCamera.OnTargetObjectWarped(playerT, delta);
 
+        StartCoroutine(ConfinerCamera());
 
-        confiner.gameObject.SetActive(true);
-
-        // 2) Atualiza o confiner e força recálculo
-        confiner.BoundingShape2D = mapBoundary;
-        confiner.InvalidateBoundingShapeCache();
-
-        
 
         if (panel != null)
             StartCoroutine(CloseLoading());
         else
             IsTransitioning = false;
+    }
 
-        
+    private IEnumerator ConfinerCamera()
+    {
+        Vector3 delta = newPos - oldPos;
+        virtualCamera.OnTargetObjectWarped(playerT, delta);
+
+        yield return null;
+
+        confiner.gameObject.SetActive(true);
+
+        yield return null;
+        yield return null;
+
+        // 2) Atualiza o confiner e força recálculo
+        yield return new WaitForSeconds(0.1f);
+        confiner.BoundingShape2D = mapBoundary;
+        confiner.InvalidateBoundingShapeCache();
+
     }
 
     private IEnumerator CloseLoading()

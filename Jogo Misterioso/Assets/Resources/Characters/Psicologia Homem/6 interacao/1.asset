@@ -15,8 +15,8 @@ MonoBehaviour:
   npcName: Homemzinho
   npcPortrait: {fileID: 604408113146070943, guid: 6a7941e4ae9eb8144bf2d22349a81acb, type: 3}
   dialogueLines:
-  - Sim, tenho cara de chave
-  - Nao, nao consigo trancar portas
+  - Sei o que deves estar a pensar.
+  - "E garanto-te que n\xE3o fui eu."
   typingSpeed: 0.05
   autoProgressLines: 0101
   autoProgressDelay: 1

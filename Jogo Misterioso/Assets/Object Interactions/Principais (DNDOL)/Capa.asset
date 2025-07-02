@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: Capa
   dialogueLines:
-  - Encontrei a capa do Pato Guilherme
+  - Encontrei a capa!
   typingSpeed: 0.05
   autoProgressLines: 01
   autoProgressDelay: 1

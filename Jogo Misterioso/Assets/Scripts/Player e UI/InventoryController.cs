@@ -58,11 +58,11 @@ public class InventoryController : MonoBehaviour
     public List<InventorySaveData> GetInventoryItems()
     {
         List<InventorySaveData> invData = new List<InventorySaveData>();
-        foreach(Transform slotTransform in inventoryPanel.transform)
+        foreach (Transform slotTransform in inventoryPanel.transform)
         {
             Slot slot = slotTransform.GetComponent<Slot>();
-            
-            if(slot.currentItem != null)
+
+            if (slot.currentItem != null)
             {
                 Item item = slot.currentItem.GetComponent<Item>();
                 invData.Add(new InventorySaveData { itemID = item.ID, slotIndex = slotTransform.GetSiblingIndex() });
@@ -118,5 +118,18 @@ public class InventoryController : MonoBehaviour
             }
         }
     }
+    
+    public void ClearInventory()
+    {
+        foreach (Transform slotT in inventoryPanel.transform)
+        {
+            var slot = slotT.GetComponent<Slot>();
+            if (slot == null || slot.currentItem == null) 
+                continue;
 
+            Destroy(slot.currentItem);
+            slot.currentItem = null;
+        }
+        Debug.Log("[InventoryController] Inventário completamente limpo.");
+    }
 }
