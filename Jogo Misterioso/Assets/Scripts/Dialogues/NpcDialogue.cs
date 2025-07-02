@@ -290,7 +290,7 @@ public class NpcDialogue : MonoBehaviour, IInteractable, ICancelableDialogue
         foreach (var ch in currentDialogue.dialogueLines[npcDialogueIndex])
         {
             npcDialogueText.text += ch;
-            yield return new WaitForSeconds(currentDialogue.typingSpeed);
+            yield return new WaitForSecondsRealtime(currentDialogue.typingSpeed);
         }
 
         npcIsTyping = false;
@@ -298,7 +298,7 @@ public class NpcDialogue : MonoBehaviour, IInteractable, ICancelableDialogue
         if (currentDialogue.autoProgressLines.Length > npcDialogueIndex &&
             currentDialogue.autoProgressLines[npcDialogueIndex])
         {
-            yield return new WaitForSeconds(currentDialogue.autoProgressDelay);
+            yield return new WaitForSecondsRealtime(currentDialogue.autoProgressDelay);
             NextLine();
         }
     }
