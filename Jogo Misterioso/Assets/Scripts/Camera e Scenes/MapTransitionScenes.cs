@@ -13,76 +13,91 @@ public class MapTransitionScenes : MonoBehaviour
     [SerializeField] CinemachineConfiner2D confiner;
     [SerializeField] CinemachineCamera virtualCamera;
 
-    [Header("Teleport local (opcional)")]
+    [Header("Teleport local")]
     [SerializeField] Vector2 teleportPosition;
+
+    [Header("Posição de setup da câmera (opcional)")]
+    [SerializeField] private Vector2 cameraSetupPosition;
+    [SerializeField] private bool useCameraSetupPosition = false;
+
 
     [Header("Bounds a ativar/desativar")]
     [SerializeField] GameObject inactivate;
     [SerializeField] GameObject activate;
 
     [Header("Cena destino")]
-    [SerializeField] string sceneToLoad;
+    [SerializeField] string sceneToLoad = "";
 
     [Header("UI de carregamento (opcional)")]
     [SerializeField] GameObject panel;  // se ficar vazio, tudo continua OK
     [SerializeField] float seconds = 0.5f;
 
 
+
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (!collision.CompareTag("Player") || IsTransitioning) return;
 
-        confiner.gameObject.SetActive(false);
-
-        // 1) Bloqueia qualquer input
         IsTransitioning = true;
-
-        // 2) Avise o usuário (se tiver painel)
         panel?.SetActive(true);
 
-        // 3) Liga/desliga bounds locais
         if (activate != null)
-        {
             activate.SetActive(true);
-        }
-        
 
-        // 4) Opcional: warp local no mapa atual
-        var playerT = collision.transform;
+        StartCoroutine(HandleCameraSafeTransition(collision.transform));
+    }
+
+    private IEnumerator HandleCameraSafeTransition(Transform playerT)
+    {
         var oldPos = playerT.position;
 
-        playerT.position = new Vector3(teleportPosition.x, teleportPosition.y, oldPos.z);
-        virtualCamera.OnTargetObjectWarped(playerT, playerT.position - oldPos);
+        if (useCameraSetupPosition)
+        {
+            // 1) Teleporta para posição temporária
+            var tempPos = new Vector3(cameraSetupPosition.x, cameraSetupPosition.y, oldPos.z);
+            playerT.position = tempPos;
 
-        confiner.gameObject.SetActive(true);
+            confiner.gameObject.SetActive(true);
 
-        confiner.BoundingShape2D = mapBoundary;
-        confiner.InvalidateBoundingShapeCache();
+            confiner.BoundingShape2D = mapBoundary;
+            confiner.InvalidateBoundingShapeCache();
+            virtualCamera.OnTargetObjectWarped(playerT, tempPos - oldPos);
 
-        // 5) Inicia rotina de load
+
+            // 2) Espera um frame para a câmera se mover
+            yield return null;
+        }
+
+        // 3) Teleporta para posição final
+        var finalPos = new Vector3(teleportPosition.x, teleportPosition.y, oldPos.z);
+        playerT.position = finalPos;
+
+        virtualCamera.OnTargetObjectWarped(playerT, finalPos - oldPos);
+
+        yield return null;
+
+        // 4) Espera a câmera se ajustar antes de tirar o painel e seguir
         StartCoroutine(DoLoadScene());
     }
 
     private IEnumerator DoLoadScene()
     {
-        // A) Aguarda um pouco (seleyendo o painel)
         if (panel != null)
             yield return new WaitForSecondsRealtime(seconds);
 
-        // B) Carrega cena de forma assíncrona
-        var loadOp = SceneManager.LoadSceneAsync(sceneToLoad);
-        loadOp.allowSceneActivation = true;
-        yield return loadOp;
+        if (!string.IsNullOrWhiteSpace(sceneToLoad))
+        {
+            var loadOp = SceneManager.LoadSceneAsync(sceneToLoad);
+            loadOp.allowSceneActivation = true;
+            yield return loadOp;
+            yield return null;
+        }
 
-        // C) Um frame de buffer para tudo montar
-        yield return null;
-
-        // D) Fecha painel (se existir) e desativa o antigo bound
         panel?.SetActive(false);
         if (inactivate != null)
-            inactivate?.SetActive(false);
+            inactivate.SetActive(false);
 
-        // E) Libera input
         IsTransitioning = false;
     }
 }

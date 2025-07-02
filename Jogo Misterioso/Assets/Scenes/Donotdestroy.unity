@@ -853,7 +853,7 @@ Transform:
   m_GameObject: {fileID: 120488321}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -75.97, y: 52.53, z: -10}
+  m_LocalPosition: {x: 125.37, y: -83.46, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1192,6 +1192,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1835223037}
   - {fileID: 1154816603}
   m_Father: {fileID: 252164222}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2033,7 +2034,7 @@ Transform:
   m_GameObject: {fileID: 211180329}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -75.97, y: 52.53, z: 0}
+  m_LocalPosition: {x: 125.37, y: -83.46, z: 0}
   m_LocalScale: {x: 0.6301246, y: 0.6301246, z: 0.6301246}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2534,6 +2535,8 @@ MonoBehaviour:
   confiner: {fileID: 120488325}
   virtualCamera: {fileID: 120488323}
   teleportPosition: {x: 88.59, y: 77.85}
+  cameraSetupPosition: {x: 0, y: 0}
+  useCameraSetupPosition: 0
   inactivate: {fileID: 1031612840}
   activate: {fileID: 891548583}
   sceneToLoad: Piso2Scene
@@ -2671,6 +2674,7 @@ Transform:
   m_Children:
   - {fileID: 2092472761}
   - {fileID: 153287672}
+  - {fileID: 363018272}
   m_Father: {fileID: 1891880505}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &254046944
@@ -3152,6 +3156,160 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 286719952}
   m_CullTransparentMesh: 1
+--- !u!1 &319803539
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 319803540}
+  - component: {fileID: 319803543}
+  - component: {fileID: 319803542}
+  - component: {fileID: 319803541}
+  m_Layer: 0
+  m_Name: Refeitorio_Waypoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &319803540
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 319803539}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 130.5, y: -107.83, z: -0.025650606}
+  m_LocalScale: {x: 3.4447992, y: 0.2960271, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 363018272}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &319803541
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 319803539}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+--- !u!114 &319803542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 319803539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80fc7553139cd9348b887e12a799234d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mapBoundary: {fileID: 153287671}
+  confiner: {fileID: 120488325}
+  virtualCamera: {fileID: 120488323}
+  direction: 1
+  additivePos: 3.5
+  panel: {fileID: 0}
+  seconds: 0.5
+--- !u!212 &319803543
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 319803539}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Color: {r: 0, g: 1, b: 0.008504152, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &331603712
 GameObject:
   m_ObjectHideFlags: 0
@@ -3287,8 +3445,10 @@ MonoBehaviour:
   confiner: {fileID: 120488325}
   virtualCamera: {fileID: 120488323}
   teleportPosition: {x: 126.87, y: -1.57}
-  inactivate: {fileID: 754160197}
-  activate: {fileID: 754160197}
+  cameraSetupPosition: {x: 0, y: 0}
+  useCameraSetupPosition: 0
+  inactivate: {fileID: 0}
+  activate: {fileID: 0}
   sceneToLoad: Piso0Scene
   panel: {fileID: 1760809966}
   seconds: 0.5
@@ -3481,6 +3641,91 @@ Transform:
   - {fileID: 819069641}
   m_Father: {fileID: 1031612841}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &363018271
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 363018272}
+  - component: {fileID: 363018273}
+  m_Layer: 0
+  m_Name: Exterior
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &363018272
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 363018271}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1809742522}
+  - {fileID: 319803540}
+  m_Father: {fileID: 252164222}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!60 &363018273
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 363018271}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 183.66493, y: -78.41317}
+      - {x: 123.500114, y: -78.39806}
+      - {x: 123.49894, y: -108.42064}
+      - {x: 183.63704, y: -108.42512}
+  m_UseDelaunayMesh: 0
 --- !u!1 &375637722
 GameObject:
   m_ObjectHideFlags: 0
@@ -4114,6 +4359,8 @@ MonoBehaviour:
   confiner: {fileID: 120488325}
   virtualCamera: {fileID: 120488323}
   teleportPosition: {x: -139.57, y: 59.31}
+  cameraSetupPosition: {x: 0, y: 0}
+  useCameraSetupPosition: 0
   inactivate: {fileID: 891548583}
   activate: {fileID: 1031612840}
   sceneToLoad: Piso1Scene
@@ -4586,6 +4833,8 @@ MonoBehaviour:
   confiner: {fileID: 120488325}
   virtualCamera: {fileID: 120488323}
   teleportPosition: {x: 143.39, y: 5.19}
+  cameraSetupPosition: {x: 0, y: 0}
+  useCameraSetupPosition: 0
   inactivate: {fileID: 0}
   activate: {fileID: 0}
   sceneToLoad: Piso0Scene
@@ -4976,7 +5225,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.3186293, y: 1.4272594, z: -10}
+  m_LocalPosition: {x: 1.290864, y: 0.48468995, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5250,6 +5499,8 @@ MonoBehaviour:
   confiner: {fileID: 120488325}
   virtualCamera: {fileID: 120488323}
   teleportPosition: {x: -13.66, y: 62.56}
+  cameraSetupPosition: {x: 0, y: 0}
+  useCameraSetupPosition: 0
   inactivate: {fileID: 1031612840}
   activate: {fileID: 891548583}
   sceneToLoad: Piso2Scene
@@ -5554,6 +5805,8 @@ MonoBehaviour:
   confiner: {fileID: 120488325}
   virtualCamera: {fileID: 120488323}
   teleportPosition: {x: -140, y: 72.55}
+  cameraSetupPosition: {x: 0, y: 0}
+  useCameraSetupPosition: 0
   inactivate: {fileID: 1031612840}
   activate: {fileID: 891548583}
   sceneToLoad: Piso2Scene
@@ -7919,6 +8172,8 @@ MonoBehaviour:
   confiner: {fileID: 120488325}
   virtualCamera: {fileID: 120488323}
   teleportPosition: {x: -24.11, y: 95.34}
+  cameraSetupPosition: {x: 0, y: 0}
+  useCameraSetupPosition: 0
   inactivate: {fileID: 1031612840}
   activate: {fileID: 891548583}
   sceneToLoad: Piso2Scene
@@ -8211,6 +8466,8 @@ MonoBehaviour:
   confiner: {fileID: 120488325}
   virtualCamera: {fileID: 120488323}
   teleportPosition: {x: -87.75, y: 72.28}
+  cameraSetupPosition: {x: 0, y: 0}
+  useCameraSetupPosition: 0
   inactivate: {fileID: 891548583}
   activate: {fileID: 1031612840}
   sceneToLoad: Piso1Scene
@@ -8958,6 +9215,8 @@ MonoBehaviour:
   confiner: {fileID: 120488325}
   virtualCamera: {fileID: 120488323}
   teleportPosition: {x: 116.6, y: -99.6}
+  cameraSetupPosition: {x: 0, y: 0}
+  useCameraSetupPosition: 0
   inactivate: {fileID: 754160197}
   activate: {fileID: 252164221}
   sceneToLoad: Piso-1Scene
@@ -9611,6 +9870,8 @@ MonoBehaviour:
   confiner: {fileID: 120488325}
   virtualCamera: {fileID: 120488323}
   teleportPosition: {x: -189, y: 55.25}
+  cameraSetupPosition: {x: 0, y: 0}
+  useCameraSetupPosition: 0
   inactivate: {fileID: 891548583}
   activate: {fileID: 1031612840}
   sceneToLoad: Piso1Scene
@@ -10412,6 +10673,8 @@ MonoBehaviour:
   confiner: {fileID: 120488325}
   virtualCamera: {fileID: 120488323}
   teleportPosition: {x: -165.59, y: 62.27}
+  cameraSetupPosition: {x: 0, y: 0}
+  useCameraSetupPosition: 0
   inactivate: {fileID: 891548583}
   activate: {fileID: 1031612840}
   sceneToLoad: Piso1Scene
@@ -10568,6 +10831,8 @@ MonoBehaviour:
   confiner: {fileID: 120488325}
   virtualCamera: {fileID: 120488323}
   teleportPosition: {x: -75.97, y: 52.53}
+  cameraSetupPosition: {x: 0, y: 0}
+  useCameraSetupPosition: 0
   inactivate: {fileID: 754160197}
   activate: {fileID: 1031612840}
   sceneToLoad: Piso1Scene
@@ -10862,6 +11127,164 @@ Transform:
   - {fileID: 821188410}
   m_Father: {fileID: 254046945}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1250492719
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1250492720}
+  - component: {fileID: 1250492723}
+  - component: {fileID: 1250492722}
+  - component: {fileID: 1250492721}
+  m_Layer: 0
+  m_Name: Exterior_Waypoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1250492720
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1250492719}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 118.0037, y: -92.88, z: 0}
+  m_LocalScale: {x: 0.32424197, y: 3.9142907, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2092472761}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1250492721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1250492719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 171aeeb3af5c99e4b93b270b86597428, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mapBoundary: {fileID: 363018273}
+  confiner: {fileID: 120488325}
+  virtualCamera: {fileID: 120488323}
+  teleportPosition: {x: 125.37, y: -83.43}
+  cameraSetupPosition: {x: 132.97, y: -87.65}
+  useCameraSetupPosition: 1
+  inactivate: {fileID: 0}
+  activate: {fileID: 0}
+  sceneToLoad: 
+  panel: {fileID: 1760809966}
+  seconds: 0.5
+--- !u!61 &1250492722
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1250492719}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+--- !u!212 &1250492723
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1250492719}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Color: {r: 0.11273074, g: 1, b: 0, a: 0.56078434}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &1268752459
 GameObject:
   m_ObjectHideFlags: 0
@@ -12029,6 +12452,8 @@ MonoBehaviour:
   confiner: {fileID: 120488325}
   virtualCamera: {fileID: 120488323}
   teleportPosition: {x: -189.03, y: 47.11}
+  cameraSetupPosition: {x: 0, y: 0}
+  useCameraSetupPosition: 0
   inactivate: {fileID: 891548583}
   activate: {fileID: 1031612840}
   sceneToLoad: Piso1Scene
@@ -12084,6 +12509,8 @@ MonoBehaviour:
   confiner: {fileID: 120488325}
   virtualCamera: {fileID: 120488323}
   teleportPosition: {x: 72.42, y: 21.25}
+  cameraSetupPosition: {x: 0, y: 0}
+  useCameraSetupPosition: 0
   inactivate: {fileID: 1031612840}
   activate: {fileID: 754160197}
   sceneToLoad: Piso0Scene
@@ -13589,6 +14016,8 @@ MonoBehaviour:
   confiner: {fileID: 120488325}
   virtualCamera: {fileID: 120488323}
   teleportPosition: {x: 42.14, y: 22.96}
+  cameraSetupPosition: {x: 0, y: 0}
+  useCameraSetupPosition: 0
   inactivate: {fileID: 1031612840}
   activate: {fileID: 754160197}
   sceneToLoad: Piso0Scene
@@ -14072,6 +14501,8 @@ MonoBehaviour:
   confiner: {fileID: 120488325}
   virtualCamera: {fileID: 120488323}
   teleportPosition: {x: -1.41, y: 26.65}
+  cameraSetupPosition: {x: 0, y: 0}
+  useCameraSetupPosition: 0
   inactivate: {fileID: 891548583}
   activate: {fileID: 1031612840}
   sceneToLoad: Piso1Scene
@@ -14382,6 +14813,8 @@ MonoBehaviour:
   confiner: {fileID: 120488325}
   virtualCamera: {fileID: 120488323}
   teleportPosition: {x: 54.32, y: 66.39}
+  cameraSetupPosition: {x: 0, y: 0}
+  useCameraSetupPosition: 0
   inactivate: {fileID: 1031612840}
   activate: {fileID: 891548583}
   sceneToLoad: Piso2Scene
@@ -15184,7 +15617,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 2.4299927, y: -2.4299927}
+  m_AnchoredPosition: {x: 2.4299316, y: -2.4299316}
   m_SizeDelta: {x: 43.83, y: 43.83}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1779888203
@@ -15237,6 +15670,8 @@ MonoBehaviour:
   confiner: {fileID: 120488325}
   virtualCamera: {fileID: 120488323}
   teleportPosition: {x: -34.46, y: 62.56}
+  cameraSetupPosition: {x: 0, y: 0}
+  useCameraSetupPosition: 0
   inactivate: {fileID: 1031612840}
   activate: {fileID: 891548583}
   sceneToLoad: Piso2Scene
@@ -15577,6 +16012,164 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1809742521
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1809742522}
+  - component: {fileID: 1809742525}
+  - component: {fileID: 1809742524}
+  - component: {fileID: 1809742523}
+  m_Layer: 0
+  m_Name: Bar_Waypoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1809742522
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1809742521}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 123.7761, y: -84.2, z: 0}
+  m_LocalScale: {x: 0.35674107, y: 3.3943565, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 363018272}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1809742523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1809742521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 171aeeb3af5c99e4b93b270b86597428, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mapBoundary: {fileID: 2092472762}
+  confiner: {fileID: 120488325}
+  virtualCamera: {fileID: 120488323}
+  teleportPosition: {x: 117.57, y: -92.01}
+  cameraSetupPosition: {x: 108.31, y: -93.03}
+  useCameraSetupPosition: 1
+  inactivate: {fileID: 0}
+  activate: {fileID: 0}
+  sceneToLoad: 
+  panel: {fileID: 1760809966}
+  seconds: 0.5
+--- !u!61 &1809742524
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1809742521}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+--- !u!212 &1809742525
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1809742521}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Color: {r: 0.11273074, g: 1, b: 0, a: 0.56078434}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &1818826541
 GameObject:
   m_ObjectHideFlags: 0
@@ -15870,6 +16463,160 @@ RectTransform:
   m_AnchoredPosition: {x: 154.00003, y: 177.99998}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1835223036
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1835223037}
+  - component: {fileID: 1835223040}
+  - component: {fileID: 1835223039}
+  - component: {fileID: 1835223038}
+  m_Layer: 0
+  m_Name: Exterior_Waypoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1835223037
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1835223036}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 130.5, y: -109.55, z: -0.025650606}
+  m_LocalScale: {x: 3.4447992, y: 0.2960271, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 153287672}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1835223038
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1835223036}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+--- !u!114 &1835223039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1835223036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80fc7553139cd9348b887e12a799234d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mapBoundary: {fileID: 363018273}
+  confiner: {fileID: 120488325}
+  virtualCamera: {fileID: 120488323}
+  direction: 0
+  additivePos: 3.5
+  panel: {fileID: 0}
+  seconds: 0.5
+--- !u!212 &1835223040
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1835223036}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Color: {r: 0, g: 1, b: 0.008504152, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &1835955242
 GameObject:
   m_ObjectHideFlags: 0
@@ -16414,6 +17161,8 @@ MonoBehaviour:
   confiner: {fileID: 120488325}
   virtualCamera: {fileID: 120488323}
   teleportPosition: {x: 115.62, y: 19.98}
+  cameraSetupPosition: {x: 0, y: 0}
+  useCameraSetupPosition: 0
   inactivate: {fileID: 252164221}
   activate: {fileID: 754160197}
   sceneToLoad: Piso0Scene
@@ -17417,6 +18166,8 @@ MonoBehaviour:
   confiner: {fileID: 120488325}
   virtualCamera: {fileID: 120488323}
   teleportPosition: {x: -173.79, y: 46.28}
+  cameraSetupPosition: {x: 0, y: 0}
+  useCameraSetupPosition: 0
   inactivate: {fileID: 754160197}
   activate: {fileID: 1031612840}
   sceneToLoad: Piso1Scene
@@ -18270,6 +19021,7 @@ Transform:
   m_Children:
   - {fileID: 1869551894}
   - {fileID: 1483264756}
+  - {fileID: 1250492720}
   m_Father: {fileID: 252164222}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!60 &2092472762
