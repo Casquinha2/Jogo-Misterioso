@@ -1438,6 +1438,7 @@ MonoBehaviour:
   opcao: 0
   followOffset: {x: 0, y: 0}
   zoomOutOnExit: 1
+  delayAntesDoZoom: 0
 --- !u!61 &104890015
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -24469,6 +24470,7 @@ MonoBehaviour:
   opcao: 0
   followOffset: {x: 0, y: 0.75}
   zoomOutOnExit: 1
+  delayAntesDoZoom: 0
 --- !u!61 &1263428700
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -26987,6 +26989,7 @@ MonoBehaviour:
   opcao: 0
   followOffset: {x: 0, y: 0}
   zoomOutOnExit: 1
+  delayAntesDoZoom: 0.05
 --- !u!61 &1371523739
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -30638,6 +30641,7 @@ MonoBehaviour:
   opcao: 0
   followOffset: {x: 0, y: 0}
   zoomOutOnExit: 1
+  delayAntesDoZoom: 0
 --- !u!61 &1535479492
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -38113,6 +38117,7 @@ MonoBehaviour:
   opcao: 0
   followOffset: {x: 0, y: 0.85}
   zoomOutOnExit: 1
+  delayAntesDoZoom: 0
 --- !u!61 &1895300446
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -39576,6 +39581,7 @@ MonoBehaviour:
   opcao: 0
   followOffset: {x: 0, y: 0}
   zoomOutOnExit: 1
+  delayAntesDoZoom: 0
 --- !u!61 &1963349264
 BoxCollider2D:
   m_ObjectHideFlags: 0

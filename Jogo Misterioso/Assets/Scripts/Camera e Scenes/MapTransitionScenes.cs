@@ -52,34 +52,38 @@ public class MapTransitionScenes : MonoBehaviour
     {
         var oldPos = playerT.position;
 
+        if (activate != null)
+            activate.SetActive(true); // Ativa o novo piso antes de tudo
+
+        yield return null; // Espera 1 frame para que colliders sejam ativados
+
+        // 🔁 Atualiza sempre o confiner, independente de usar posição de setup
+        confiner.BoundingShape2D = mapBoundary;
+        confiner.InvalidateBoundingShapeCache();
+        confiner.gameObject.SetActive(true);
+
+        yield return new WaitForEndOfFrame(); // Espera confiner processar
+
         if (useCameraSetupPosition)
         {
-            // 1) Teleporta para posição temporária
             var tempPos = new Vector3(cameraSetupPosition.x, cameraSetupPosition.y, oldPos.z);
             playerT.position = tempPos;
 
-            confiner.gameObject.SetActive(true);
-
-            confiner.BoundingShape2D = mapBoundary;
-            confiner.InvalidateBoundingShapeCache();
             virtualCamera.OnTargetObjectWarped(playerT, tempPos - oldPos);
 
-
-            // 2) Espera um frame para a câmera se mover
-            yield return null;
+            yield return null; // Dá tempo para a câmera se ajustar
         }
 
-        // 3) Teleporta para posição final
         var finalPos = new Vector3(teleportPosition.x, teleportPosition.y, oldPos.z);
         playerT.position = finalPos;
-
         virtualCamera.OnTargetObjectWarped(playerT, finalPos - oldPos);
 
-        yield return null;
+        yield return null; // Segurança visual
 
-        // 4) Espera a câmera se ajustar antes de tirar o painel e seguir
         StartCoroutine(DoLoadScene());
     }
+
+
 
     private IEnumerator DoLoadScene()
     {

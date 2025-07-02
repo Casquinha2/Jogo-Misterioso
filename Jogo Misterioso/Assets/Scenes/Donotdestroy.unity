@@ -853,7 +853,7 @@ Transform:
   m_GameObject: {fileID: 120488321}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 125.37, y: -83.46, z: -10}
+  m_LocalPosition: {x: 52.95, y: 66.44, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2034,7 +2034,7 @@ Transform:
   m_GameObject: {fileID: 211180329}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 125.37, y: -83.46, z: 0}
+  m_LocalPosition: {x: 52.95, y: 66.44, z: 0}
   m_LocalScale: {x: 0.6301246, y: 0.6301246, z: 0.6301246}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5225,7 +5225,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.290864, y: 0.48468995, z: -10}
+  m_LocalPosition: {x: 1.2907562, y: 1.42806, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -14813,7 +14813,7 @@ MonoBehaviour:
   confiner: {fileID: 120488325}
   virtualCamera: {fileID: 120488323}
   teleportPosition: {x: 54.32, y: 66.39}
-  cameraSetupPosition: {x: 0, y: 0}
+  cameraSetupPosition: {x: 52.95, y: 66.44}
   useCameraSetupPosition: 0
   inactivate: {fileID: 1031612840}
   activate: {fileID: 891548583}
