@@ -65,6 +65,10 @@ public class MapBoundActivate : MonoBehaviour
             {
                 child.SetActive(true);
             }
+            else if (child.name == "Corredor63_Waypoint" && progress == 12)
+            {
+                child.SetActive(true);
+            }
         }
     }
 }

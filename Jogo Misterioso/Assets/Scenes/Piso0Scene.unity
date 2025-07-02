@@ -2995,6 +2995,7 @@ MonoBehaviour:
   opcao: 0
   followOffset: {x: 0, y: 0}
   zoomOutOnExit: 1
+  delayAntesDoZoom: 0.05
 --- !u!61 &330196757
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10076,6 +10077,7 @@ MonoBehaviour:
   opcao: 0
   followOffset: {x: 0, y: 0}
   zoomOutOnExit: 1
+  delayAntesDoZoom: 0.05
 --- !u!60 &990727292
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -15974,6 +15976,7 @@ MonoBehaviour:
   opcao: 0
   followOffset: {x: 0, y: 0}
   zoomOutOnExit: 1
+  delayAntesDoZoom: 0.05
 --- !u!61 &1631318454
 BoxCollider2D:
   m_ObjectHideFlags: 0

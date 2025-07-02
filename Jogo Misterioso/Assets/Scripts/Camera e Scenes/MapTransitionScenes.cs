@@ -40,7 +40,9 @@ public class MapTransitionScenes : MonoBehaviour
         if (!collision.CompareTag("Player") || IsTransitioning) return;
 
         IsTransitioning = true;
-        panel?.SetActive(true);
+        
+        if (panel != null)
+            panel.SetActive(true);
 
         if (activate != null)
             activate.SetActive(true);
@@ -98,7 +100,9 @@ public class MapTransitionScenes : MonoBehaviour
             yield return null;
         }
 
-        panel?.SetActive(false);
+        if (panel != null)
+            panel.SetActive(false);
+
         if (inactivate != null)
             inactivate.SetActive(false);
 

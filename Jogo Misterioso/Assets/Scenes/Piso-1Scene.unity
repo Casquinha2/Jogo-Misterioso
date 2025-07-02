@@ -173,7 +173,7 @@ MonoBehaviour:
   opcao: 0
   followOffset: {x: 0, y: 0}
   zoomOutOnExit: 1
-  delayAntesDoZoom: 0
+  delayAntesDoZoom: 0.05
 --- !u!60 &17472585
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -547,7 +547,7 @@ MonoBehaviour:
   opcao: 0
   followOffset: {x: 0, y: 0}
   zoomOutOnExit: 1
-  delayAntesDoZoom: 0
+  delayAntesDoZoom: 0.05
 --- !u!61 &100284183
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2789,7 +2789,7 @@ SpriteRenderer:
   m_SortingLayer: -4
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 0.5882353}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -8742,7 +8742,7 @@ SpriteRenderer:
   m_SortingLayer: -4
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 0.65882355}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

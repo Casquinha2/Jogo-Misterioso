@@ -44,13 +44,11 @@ public class MapTransition : MonoBehaviour
             panel.SetActive(true);
 
         // 1) Guarda a posição antiga
-        Transform playerT = collision.transform;
-        Vector3 oldPos = playerT.position;
+        // Em OnTriggerEnter2D
+        playerT = collision.transform;
+        oldPos = playerT.position;
 
-
-
-        // 3) Calcula a nova posição e teleporta o jogador
-        Vector3 newPos = oldPos;
+        newPos = oldPos;
         switch (direction)
         {
             case Direction.Up: newPos.y += additivePos; break;
@@ -59,6 +57,7 @@ public class MapTransition : MonoBehaviour
             case Direction.Right: newPos.x += additivePos; break;
         }
         playerT.position = newPos;
+
 
         // 4) Informa a Cinemachine do warp, para ela ajustar imediatamente a câmera
 
@@ -81,10 +80,13 @@ public class MapTransition : MonoBehaviour
         confiner.gameObject.SetActive(true);
 
         yield return null;
+        yield return null;
 
         // 2) Atualiza o confiner e força recálculo
+        yield return new WaitForSeconds(0.1f);
         confiner.BoundingShape2D = mapBoundary;
         confiner.InvalidateBoundingShapeCache();
+
     }
 
     private IEnumerator CloseLoading()

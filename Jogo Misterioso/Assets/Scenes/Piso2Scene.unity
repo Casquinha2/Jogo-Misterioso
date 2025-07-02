@@ -3760,7 +3760,7 @@ MonoBehaviour:
   opcao: 0
   followOffset: {x: 0, y: 0}
   zoomOutOnExit: 1
-  delayAntesDoZoom: 0
+  delayAntesDoZoom: 0.05
 --- !u!61 &288302837
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10892,7 +10892,7 @@ MonoBehaviour:
   opcao: 0
   followOffset: {x: 0.5, y: 0.7}
   zoomOutOnExit: 1
-  delayAntesDoZoom: 0
+  delayAntesDoZoom: 0.05
 --- !u!61 &870122906
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -11563,7 +11563,7 @@ MonoBehaviour:
   opcao: 0
   followOffset: {x: 0, y: 0.7}
   zoomOutOnExit: 1
-  delayAntesDoZoom: 0
+  delayAntesDoZoom: 0.05
 --- !u!61 &938344674
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -14791,7 +14791,7 @@ MonoBehaviour:
   opcao: 0
   followOffset: {x: 0, y: 0}
   zoomOutOnExit: 1
-  delayAntesDoZoom: 0
+  delayAntesDoZoom: 0.05
 --- !u!61 &1349362786
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -24041,6 +24041,6 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 891548584}
-  - {fileID: 197510779}
   - {fileID: 1662547814}
+  - {fileID: 197510779}
   - {fileID: 1541640748}
