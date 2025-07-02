@@ -10,14 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 43841994882913c4d9bc9c84bd9e2a40, type: 3}
-  m_Name: 1
+  m_Name: 13
   m_EditorClassIdentifier: 
   npcName: CCCaloiro
-  npcPortrait: {fileID: -3049219908632563281, guid: 52afa3ab65237e54ba854efff6bf04ff, type: 3}
+  npcPortrait: {fileID: 0}
   dialogueLines:
-  - "Oh, n\xE3o te vi a\xED."
-  - Posso ajudar em alguma coisa?
+  - "O que \xE9 que eu ganho?"
+  - "Acho que \xE9 \xF3bvio, ele estar\xE1 a mais de 7 passos da sua capa."
+  - "Logo, ele ir\xE1 ser punido."
   typingSpeed: 0.05
-  autoProgressLines: 0101
-  autoProgressDelay: 1
+  autoProgressLines: 010101
+  autoProgressDelay: 1.1
   adicionarProgresso: 0

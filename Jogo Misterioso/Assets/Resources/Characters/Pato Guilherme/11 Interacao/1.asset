@@ -15,7 +15,7 @@ MonoBehaviour:
   npcName: Pato Guilherme
   npcPortrait: {fileID: -3401815986352629659, guid: c08f7baa3df4ca242adcfaf9ab245f4f, type: 3}
   dialogueLines:
-  - VAI TOMAR NO CU.
+  - "Ent\xE3o caloira, descobriu algo?"
   typingSpeed: 0.05
   autoProgressLines: 01
   autoProgressDelay: 1.1

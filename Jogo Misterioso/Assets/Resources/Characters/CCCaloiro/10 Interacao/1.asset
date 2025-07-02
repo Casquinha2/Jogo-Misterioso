@@ -15,7 +15,7 @@ MonoBehaviour:
   npcName: CCCaloiro
   npcPortrait: {fileID: -3049219908632563281, guid: 52afa3ab65237e54ba854efff6bf04ff, type: 3}
   dialogueLines:
-  - Obrigado pela capa
+  - "Ent\xE3o, trouxeste a capa?"
   typingSpeed: 0.05
   autoProgressLines: 01
   autoProgressDelay: 1

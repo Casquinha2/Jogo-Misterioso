@@ -10,14 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 43841994882913c4d9bc9c84bd9e2a40, type: 3}
-  m_Name: 1
+  m_Name: 9
   m_EditorClassIdentifier: 
-  npcName: CCCaloiro
-  npcPortrait: {fileID: -3049219908632563281, guid: 52afa3ab65237e54ba854efff6bf04ff, type: 3}
+  npcName: 
+  npcPortrait: {fileID: 0}
   dialogueLines:
-  - "Oh, n\xE3o te vi a\xED."
-  - Posso ajudar em alguma coisa?
+  - Pois, claro.
+  - "Tamb\xE9m ouvi essa pessoa a dizer que j\xE1 tinha perdido a capa."
+  - "Ent\xE3o ele estava a dizer que j\xE1 lhe bastava ter de roubar a capa que encontrou
+    de algu\xE9m, no ch\xE3o."
   typingSpeed: 0.05
-  autoProgressLines: 0101
-  autoProgressDelay: 1
+  autoProgressLines: 010101
+  autoProgressDelay: 1.3
   adicionarProgresso: 0

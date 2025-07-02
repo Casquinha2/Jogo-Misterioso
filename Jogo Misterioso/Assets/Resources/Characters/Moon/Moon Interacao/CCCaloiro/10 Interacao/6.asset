@@ -10,14 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 43841994882913c4d9bc9c84bd9e2a40, type: 3}
-  m_Name: 1
+  m_Name: 6
   m_EditorClassIdentifier: 
-  npcName: CCCaloiro
-  npcPortrait: {fileID: -3049219908632563281, guid: 52afa3ab65237e54ba854efff6bf04ff, type: 3}
+  npcName: Moon
+  npcPortrait: {fileID: 6236947385317395335, guid: 1cd77f180d2095c4ebf5180eef1252f2, type: 3}
   dialogueLines:
-  - "Oh, n\xE3o te vi a\xED."
-  - Posso ajudar em alguma coisa?
+  - "Eu por acaso sou de engenharia inform\xE1tica, para tua informa\xE7\xE3o."
   typingSpeed: 0.05
-  autoProgressLines: 0101
-  autoProgressDelay: 1
+  autoProgressLines: 01
+  autoProgressDelay: 1.2
   adicionarProgresso: 0
