@@ -1,4 +1,3 @@
-#if UNITY_EDITOR
 using System.Collections;
 using System.Linq;
 using UnityEngine;
@@ -99,4 +98,3 @@ public class CheckpointManager : MonoBehaviour
         yield return null;
     }
 }
-#endif
