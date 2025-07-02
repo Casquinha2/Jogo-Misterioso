@@ -17,7 +17,7 @@ MonoBehaviour:
   dialogueLines:
   - "Obviamente n\xE3o est\xE1 tudo bem, n\xE3o acha caloira?"
   - "Porque esta obviamente n\xE3o \xE9 a minha capa."
-  - De certeza que psicologia me roubou a capa para se vingarem.
+  - De certeza que psicologia roubou-me a capa para se vingarem.
   - "Aqueles malditos psic\xF3logos de meia tigela!"
   typingSpeed: 0.05
   autoProgressLines: 01010101

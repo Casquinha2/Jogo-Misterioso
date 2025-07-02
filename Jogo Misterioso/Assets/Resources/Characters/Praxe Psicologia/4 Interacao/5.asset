@@ -16,7 +16,7 @@ MonoBehaviour:
   npcPortrait: {fileID: 0}
   dialogueLines:
   - Hm, estou a ver.
-  - Ao menos a caloiras tem respeito.
+  - Ao menos a caloira tem respeito.
   - "Se quiser ir buscar a capa \xE0 sala 82 vai ter de levar a chave para abrir
     a porta da sala."
   - Felizmente para a caloira, sou eu quem tem a chave!

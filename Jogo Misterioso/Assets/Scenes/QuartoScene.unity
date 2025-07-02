@@ -131,7 +131,6 @@ GameObject:
   - component: {fileID: 10480173}
   - component: {fileID: 10480172}
   - component: {fileID: 10480171}
-  - component: {fileID: 10480174}
   m_Layer: 0
   m_Name: TutorialCanvas
   m_TagString: TutorialCanvas
@@ -222,22 +221,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!114 &10480174
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 10480169}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35b41187e53f4e946864ed2b3e8c37a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mode: 0
-  uiCamera: {fileID: 0}
-  planeDistance: 100
-  sortingLayer: UI
 --- !u!1 &211200868
 GameObject:
   m_ObjectHideFlags: 0
@@ -506,6 +489,8 @@ MonoBehaviour:
   objDialoguePanelPrefab: {fileID: 6793569825845607584, guid: 78297fdde5a6b7049a476f932a7a2300, type: 3}
   objDialogueData: {fileID: 11400000, guid: af24fd88c3295754a92b0b0eb0163964, type: 2}
   itemPrefab: {fileID: 0}
+  adicionarProgresso: 0
+  progress: {fileID: 0}
 --- !u!212 &324819539
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -548,7 +533,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1807754811
-  m_SortingLayer: -2
+  m_SortingLayer: -4
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.12152922, g: 1, b: 0, a: 0}
@@ -1006,7 +991,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1807754811
-  m_SortingLayer: -2
+  m_SortingLayer: -4
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 1.8699999, y: 1.8699999, z: 0}
@@ -1211,7 +1196,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1807754811
-  m_SortingLayer: -2
+  m_SortingLayer: -4
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.12152922, g: 1, b: 0, a: 0}
@@ -1316,7 +1301,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1807754811
-  m_SortingLayer: -2
+  m_SortingLayer: -4
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 1.8699999, y: 1.8699999, z: 0}
@@ -1585,7 +1570,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -838620639
-  m_SortingLayer: -3
+  m_SortingLayer: -5
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 4.855, y: 2.525, z: 0}
@@ -1747,6 +1732,8 @@ MonoBehaviour:
   objDialoguePanelPrefab: {fileID: 6793569825845607584, guid: 78297fdde5a6b7049a476f932a7a2300, type: 3}
   objDialogueData: {fileID: 11400000, guid: 90db55de4f223864ba63ef33c08fbea7, type: 2}
   itemPrefab: {fileID: 0}
+  adicionarProgresso: 0
+  progress: {fileID: 0}
 --- !u!212 &839329356
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1789,7 +1776,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1807754811
-  m_SortingLayer: -2
+  m_SortingLayer: -4
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.12152922, g: 1, b: 0, a: 0}
@@ -1959,7 +1946,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1807754811
-  m_SortingLayer: -2
+  m_SortingLayer: -4
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 1.8699999, y: 1.8699999, z: 0}
@@ -2183,7 +2170,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1807754811
-  m_SortingLayer: -2
+  m_SortingLayer: -4
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 1.8699999, y: 1.8699999, z: 0}
@@ -2345,6 +2332,8 @@ MonoBehaviour:
   objDialoguePanelPrefab: {fileID: 6793569825845607584, guid: 78297fdde5a6b7049a476f932a7a2300, type: 3}
   objDialogueData: {fileID: 11400000, guid: 427e6b8f48d2de541882fde20150c4b9, type: 2}
   itemPrefab: {fileID: 0}
+  adicionarProgresso: 0
+  progress: {fileID: 0}
 --- !u!212 &1368742820
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2387,7 +2376,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1807754811
-  m_SortingLayer: -2
+  m_SortingLayer: -4
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.12152922, g: 1, b: 0, a: 0}
@@ -2750,7 +2739,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1807754811
-  m_SortingLayer: -2
+  m_SortingLayer: -4
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.12152922, g: 1, b: 0, a: 0}
@@ -2936,7 +2925,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1807754811
-  m_SortingLayer: -2
+  m_SortingLayer: -4
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 1.8699999, y: 1.8699999, z: 0}
@@ -3181,6 +3170,8 @@ MonoBehaviour:
   objDialoguePanelPrefab: {fileID: 6793569825845607584, guid: 78297fdde5a6b7049a476f932a7a2300, type: 3}
   objDialogueData: {fileID: 11400000, guid: 3598810dd6519654e928dd2023d38f80, type: 2}
   itemPrefab: {fileID: 346904799447055933, guid: 42e35580ae03e6d44834f01f9f9273d4, type: 3}
+  adicionarProgresso: 0
+  progress: {fileID: 0}
 --- !u!212 &2140162194
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3223,7 +3214,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1807754811
-  m_SortingLayer: -2
+  m_SortingLayer: -4
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.12152922, g: 1, b: 0, a: 0}

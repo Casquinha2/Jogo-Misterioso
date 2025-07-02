@@ -14,6 +14,9 @@ public class Progress : MonoBehaviour
     [Header("Objetos importantes")]
     public Transform objetos;
 
+    [Header("Final normal")]
+    [SerializeField] private Normal normal;
+
     private int progress;
     private MapBoundActivate mapBoundScript;
     private InventoryController inventoryController;
@@ -151,71 +154,71 @@ public class Progress : MonoBehaviour
         }
 
         foreach (Transform child in objetos)
+        {
+            GameObject i = child.gameObject;
+
+            if (i.name == "Capa")
             {
-                GameObject i = child.gameObject;
-
-                if (i.name == "Capa")
+                switch (progress)
                 {
-                    switch (progress)
-                    {
-                        case 0:
-                            i.SetActive(false);
-                            i.transform.localPosition = new Vector3(-14.39f, 79.39f, 0f);
-                            break;
+                    case 0:
+                        i.SetActive(false);
+                        i.transform.localPosition = new Vector3(-14.39f, 79.39f, 0f);
+                        break;
 
-                        case 2:
-                            i.SetActive(true);
-                            break;
+                    case 2:
+                        i.SetActive(true);
+                        break;
 
-                        case 3:
-                            i.SetActive(false);
-                            break;
+                    case 3:
+                        i.SetActive(false);
+                        break;
 
-                        case 9:
-                            i.SetActive(true);
-                            i.transform.localPosition = new Vector3(131.61f, -142.43f, 0f);
-                            break;
+                    case 9:
+                        i.SetActive(true);
+                        i.transform.localPosition = new Vector3(131.61f, -142.43f, 0f);
+                        break;
 
-                        case 10:
-                            i.SetActive(false);
-                            break;
+                    case 10:
+                        i.SetActive(false);
+                        break;
 
 
-                    }
-                }
-                if (i.name == "PapeisDireito")
-                {
-                    switch (progress)
-                    {
-                        case 0:
-                            i.SetActive(false);
-                            break;
-                        case 6:
-                            i.SetActive(true);
-                            break;
-                        case 7:
-                            i.SetActive(false);
-                            break;
-                    }
-                }
-                if (i.name == "Livros")
-                {
-                    switch (progress)
-                    {
-                        case 0:
-                            i.SetActive(false);
-                            break;
-
-                        case 7:
-                            i.SetActive(true);
-                            break;
-
-                        case 8:
-                            i.SetActive(false);
-                            break;
-                    }
                 }
             }
+            if (i.name == "PapeisDireito")
+            {
+                switch (progress)
+                {
+                    case 0:
+                        i.SetActive(false);
+                        break;
+                    case 6:
+                        i.SetActive(true);
+                        break;
+                    case 7:
+                        i.SetActive(false);
+                        break;
+                }
+            }
+            if (i.name == "Livros")
+            {
+                switch (progress)
+                {
+                    case 0:
+                        i.SetActive(false);
+                        break;
+
+                    case 7:
+                        i.SetActive(true);
+                        break;
+
+                    case 8:
+                        i.SetActive(false);
+                        break;
+                }
+            }
+        }
 
         if (progress == 10)
         {
@@ -232,6 +235,10 @@ public class Progress : MonoBehaviour
                 inventoryController.ClearInventory();
             else
                 Debug.LogWarning("[Progress] InventoryController não atribuído; inventário não limpo.");
+        }
+        if (progress == 13)
+        {
+            normal.Final();
         }
     }
 }

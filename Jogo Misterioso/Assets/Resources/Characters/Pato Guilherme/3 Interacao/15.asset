@@ -15,8 +15,8 @@ MonoBehaviour:
   npcName: Pato Guilherme
   npcPortrait: {fileID: -3401815986352629659, guid: c08f7baa3df4ca242adcfaf9ab245f4f, type: 3}
   dialogueLines:
-  - "A EST\xC1TUA DO CAM\xD5ES DESAPARECEU?"
-  - MALDITA SEJA PSICOLOGIA!
+  - "A EST\xC1TUA DO CAM\xD5ES DESAPARECEU?!"
+  - MALDITA SEJAS PSICOLOGIA!
   - "QUANTAS MAIS COISAS V\xC3O ROUBAR PARA SE VINGAREM DE N\xD3S, QUANTAS? "
   typingSpeed: 0.05
   autoProgressLines: 010101
