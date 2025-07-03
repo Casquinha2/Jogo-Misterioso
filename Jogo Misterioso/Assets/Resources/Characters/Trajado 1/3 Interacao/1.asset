@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 1
   m_EditorClassIdentifier: 
   npcName: Trajado
-  npcPortrait: {fileID: -6920116254448358164, guid: 9736f5e5449c45440a3dd465a977df73, type: 3}
+  npcPortrait: {fileID: -5918620113213984875, guid: 996ee12baf584c24d824cf649afc7e69, type: 3}
   dialogueLines:
   - Uma caloira com uma capa?
   - "Sabe que n\xE3o pode andar com isso correto?!"

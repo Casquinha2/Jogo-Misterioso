@@ -900,7 +900,7 @@ GameObject:
   - component: {fileID: 125222946}
   - component: {fileID: 125222948}
   m_Layer: 0
-  m_Name: Trajado
+  m_Name: praxe4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -955,17 +955,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.31035805, y: -0.42079875}
+  m_Offset: {x: 0.7313082, y: -0.42079878}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
+    oldSize: {x: 1.78, y: 3.2}
+    newSize: {x: 1.78, y: 3.2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 18.701855, y: 2.242114}
+  m_Size: {x: 13.987194, y: 2.242114}
   m_EdgeRadius: 0
 --- !u!212 &125222947
 SpriteRenderer:
@@ -1011,12 +1011,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: -3777226854691170444, guid: ef1a076d8e1389d4ab870ab6f82f2610, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.78, y: 3.2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -2059,7 +2059,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.0073630214, y: 0.12280393}
+  m_Offset: {x: -0.0073630214, y: -0.0056172013}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -2069,7 +2069,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.4747261, y: 3.3170843}
+  m_Size: {x: 1.4747261, y: 3.2019439}
   m_EdgeRadius: 0
 --- !u!50 &206474579
 Rigidbody2D:
@@ -4421,7 +4421,7 @@ GameObject:
   - component: {fileID: 375637725}
   - component: {fileID: 375637727}
   m_Layer: 0
-  m_Name: Trajado
+  m_Name: praxe2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4476,17 +4476,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 1.3560894, y: -0.42997837}
+  m_Offset: {x: 1.233468, y: -0.42997837}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 1.78, y: 3.2}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 13.105555, y: 8.871922}
+  m_Size: {x: 13.350798, y: 8.871922}
   m_EdgeRadius: 0
 --- !u!212 &375637726
 SpriteRenderer:
@@ -4532,7 +4532,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: -3363138253725889963, guid: 500d69907c048544396261bbd5c9d6b2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -4860,7 +4860,7 @@ GameObject:
   - component: {fileID: 399464145}
   - component: {fileID: 399464147}
   m_Layer: 0
-  m_Name: Trajado
+  m_Name: praxe1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4915,17 +4915,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 2.873598, y: 0.45993876}
+  m_Offset: {x: 2.873598, y: 0.7441387}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 1.78, y: 3.2}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 25.628387, y: 7.9544644}
+  m_Size: {x: 25.628387, y: 8.522863}
   m_EdgeRadius: 0
 --- !u!212 &399464146
 SpriteRenderer:
@@ -4971,7 +4971,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 3995186333185375701, guid: 8a10372fb3465bd4ab053af368360594, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -5260,12 +5260,12 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 399464143}
-  - {fileID: 638065705}
   - {fileID: 375637723}
   - {fileID: 1110215023}
   - {fileID: 125222944}
   - {fileID: 587365166}
   - {fileID: 557753534}
+  - {fileID: 638065705}
   - {fileID: 695049802}
   m_Father: {fileID: 254046945}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6715,7 +6715,7 @@ GameObject:
   - component: {fileID: 557753536}
   - component: {fileID: 557753538}
   m_Layer: 0
-  m_Name: Trajado
+  m_Name: praxe6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6770,17 +6770,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 2.2397656, y: -1.9862456}
+  m_Offset: {x: 1.6327221, y: -1.9862456}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 1.78, y: 3.2}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 15.499694, y: 6.905258}
+  m_Size: {x: 16.713781, y: 6.905258}
   m_EdgeRadius: 0
 --- !u!212 &557753537
 SpriteRenderer:
@@ -6826,7 +6826,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 1094587360712812610, guid: 474bbcd827787604eafa64331152814a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -7021,7 +7021,7 @@ GameObject:
   - component: {fileID: 587365168}
   - component: {fileID: 587365170}
   m_Layer: 0
-  m_Name: Trajado
+  m_Name: praxe5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7076,17 +7076,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 1.8123589, y: 0.04550433}
+  m_Offset: {x: 1.8123589, y: 0.071118355}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 1.78, y: 3.2}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 25.576626, y: 12.0324745}
+  m_Size: {x: 25.576626, y: 15.772064}
   m_EdgeRadius: 0
 --- !u!212 &587365169
 SpriteRenderer:
@@ -7132,7 +7132,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 3954898478570797983, guid: d43552fecda58b24ca3693f56c7ba4a1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -7841,7 +7841,7 @@ GameObject:
   - component: {fileID: 638065707}
   - component: {fileID: 638065709}
   m_Layer: 0
-  m_Name: Trajado
+  m_Name: praxe7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7896,17 +7896,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.5292139, y: -0.52920437}
+  m_Offset: {x: 1.2279785, y: 0.5422516}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 1.3, y: 3.2}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 11.848709, y: 9.202673}
+  m_Size: {x: 18.106009, y: 7.059761}
   m_EdgeRadius: 0
 --- !u!212 &638065708
 SpriteRenderer:
@@ -7952,7 +7952,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 2236382334255336019, guid: 140b4733d11ee034d9dcc560027ca015, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -9233,7 +9233,7 @@ GameObject:
   - component: {fileID: 695049804}
   - component: {fileID: 695049806}
   m_Layer: 0
-  m_Name: Trajado
+  m_Name: praxe8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9288,17 +9288,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.16678429, y: -0.35161686}
+  m_Offset: {x: 0.2511449, y: -0.35161686}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 1.3, y: 3.2}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 20.900696, y: 11.702101}
+  m_Size: {x: 21.069416, y: 11.702101}
   m_EdgeRadius: 0
 --- !u!212 &695049805
 SpriteRenderer:
@@ -9344,7 +9344,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: -1980642404960165280, guid: 2c04bf1d0331ac142be2a3aa6bb475e2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -13373,7 +13373,7 @@ GameObject:
   - component: {fileID: 1110215025}
   - component: {fileID: 1110215027}
   m_Layer: 0
-  m_Name: Trajado
+  m_Name: praxe3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13428,17 +13428,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.13389778, y: -1.6885382}
+  m_Offset: {x: 0.8853662, y: 0.0044755936}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 1.78, y: 3.2}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 10.996233, y: 4.5524797}
+  m_Size: {x: 13.034761, y: 7.938507}
   m_EdgeRadius: 0
 --- !u!212 &1110215026
 SpriteRenderer:
@@ -13484,7 +13484,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 5062604764705190842, guid: 9996e9e40ada8e04c842499d6b84585c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -19556,17 +19556,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.011126697, y: 0.01303041}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 1.78, y: 3.2}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.7567021, y: 3.2071383}
   m_EdgeRadius: 0
 --- !u!50 &1712686610
 Rigidbody2D:
@@ -19639,7 +19639,7 @@ SpriteRenderer:
   m_SortingLayerID: -1807754811
   m_SortingLayer: -4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 254190807636407842, guid: 1e4c8ec5eea496f41ab2c18052165099, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -22823,7 +22823,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.0073630214, y: 1.6267041}
+  m_Offset: {x: -0.0073630214, y: 1.6113611}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
@@ -22833,7 +22833,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.4747261, y: 3.2534082}
+  m_Size: {x: 1.4747261, y: 3.2227223}
   m_EdgeRadius: 0
 --- !u!50 &1963506546
 Rigidbody2D:
