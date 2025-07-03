@@ -1,6 +1,6 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class TabController : MonoBehaviour
 {
@@ -17,14 +17,21 @@ public class TabController : MonoBehaviour
 
     public void ActivateTab(int tabNo)
     {
-        for(int i = 0; i < pages.Length; i++)
+        for (int i = 0; i < pages.Length; i++)
         {
             pages[i].SetActive(false);
         }
 
-        if (tabNo == 3){
+        if (tabNo == 3)
+        {
             ExitGame();
-        }else{
+        }
+        else if (tabNo == 2 && SceneManager.GetActiveScene().name == "QuartoScene")
+        {
+            return;
+        }
+        else
+        {
             pages[tabNo].SetActive(true);
         }
     }

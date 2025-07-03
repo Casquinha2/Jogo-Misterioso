@@ -149,6 +149,10 @@ public class Progress : MonoBehaviour
                     case 4:
                         filho.SetActive(false);
                         break;
+
+                    case 5:
+                        i.SetActive(false);
+                        break;
                 }
             }
         }

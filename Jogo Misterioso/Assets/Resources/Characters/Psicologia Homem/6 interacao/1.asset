@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 1
   m_EditorClassIdentifier: 
   npcName: Homemzinho
-  npcPortrait: {fileID: 604408113146070943, guid: 6a7941e4ae9eb8144bf2d22349a81acb, type: 3}
+  npcPortrait: {fileID: -5212135176266744805, guid: 79318d9df803e0c4f9e195fa6c968e86, type: 3}
   dialogueLines:
   - Sei o que deves estar a pensar.
   - "E garanto-te que n\xE3o fui eu."

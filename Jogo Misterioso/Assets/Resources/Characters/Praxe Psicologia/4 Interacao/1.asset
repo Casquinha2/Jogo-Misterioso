@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 1
   m_EditorClassIdentifier: 
   npcName: Diretor de Curso Psicologia
-  npcPortrait: {fileID: 1208040086343421634, guid: 038bc98388310c848bc34ba30b9fdd62, type: 3}
+  npcPortrait: {fileID: -1826487860146264403, guid: e897411f9296cb742b77a63699d8a81b, type: 3}
   dialogueLines:
   - Precisa de alguma coisa caloira?
   typingSpeed: 0.05

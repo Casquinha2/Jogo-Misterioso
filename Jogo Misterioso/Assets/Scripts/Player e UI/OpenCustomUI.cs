@@ -40,17 +40,6 @@ public class OpenCustomUI : MonoBehaviour, IInteractable
         }
 
         panel.SetActive(false);
-
-        StartCoroutine(RestartLetterBox());
         
-    }
-
-    IEnumerator RestartLetterBox()
-    {
-        yield return new WaitForEndOfFrame();
-
-        var cam = FindFirstObjectByType<CameraScript>();
-        if (cam != null)
-            cam.ApplyLetterBox();
     }
 }

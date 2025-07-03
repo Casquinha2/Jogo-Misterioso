@@ -18,5 +18,5 @@ MonoBehaviour:
   - "Bem, vou continuar a minha investiga\xE7\xE3o."
   typingSpeed: 0.05
   autoProgressLines: 01
-  autoProgressDelay: 1.1
+  autoProgressDelay: 1.5
   adicionarProgresso: 0

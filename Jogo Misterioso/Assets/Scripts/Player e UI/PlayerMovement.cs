@@ -25,8 +25,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (MapTransitionScenes.IsTransitioning || MapTransition.IsTransitioning
-            || PauseController.IsGamePaused)
+        if (MapTransitionScenes.IsTransitioning || PauseController.IsGamePaused)
         {
             rb.linearVelocity = Vector2.zero;
             animator.SetBool("isWalking", false);
@@ -59,7 +58,7 @@ public class PlayerMovement : MonoBehaviour
             animator.SetFloat("LastInputY", moveInput.y);
         }
 
-        if (MapTransitionScenes.IsTransitioning || MapTransition.IsTransitioning)
+        if (MapTransitionScenes.IsTransitioning)
         {
             return;
         }

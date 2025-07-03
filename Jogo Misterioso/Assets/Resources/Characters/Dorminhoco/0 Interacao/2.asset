@@ -17,5 +17,6 @@ MonoBehaviour:
   dialogueLines:
   - "*Ele tamb\xE9m parece ter-se divertido imenso ontem \xE0 noite*"
   typingSpeed: 0.05
-  autoProgressLines: 00
+  autoProgressLines: 01
   autoProgressDelay: 1
+  adicionarProgresso: 0

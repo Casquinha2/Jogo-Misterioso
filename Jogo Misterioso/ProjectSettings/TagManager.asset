@@ -13,6 +13,7 @@ TagManager:
   - MenuCanvas
   - UICanvas
   - CmCamera
+  - Mapa
   layers:
   - Default
   - TransparentFX

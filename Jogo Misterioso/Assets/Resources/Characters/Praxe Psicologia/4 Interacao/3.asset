@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 3
   m_EditorClassIdentifier: 
   npcName: Diretor de Curso Psicologia
-  npcPortrait: {fileID: 0}
+  npcPortrait: {fileID: -1826487860146264403, guid: e897411f9296cb742b77a63699d8a81b, type: 3}
   dialogueLines:
   - Capa roubada?
   - "AH, sim, a capa roubada, n\xF3s deix\xE1mos na sala 82 para o pato ir l\xE1

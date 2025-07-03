@@ -17,6 +17,6 @@ MonoBehaviour:
   dialogueLines:
   - "N\xE3o tem mal, foi bom ver-vos meninas."
   typingSpeed: 0.05
-  autoProgressLines: 00
+  autoProgressLines: 01
   autoProgressDelay: 1.3
   adicionarProgresso: 0

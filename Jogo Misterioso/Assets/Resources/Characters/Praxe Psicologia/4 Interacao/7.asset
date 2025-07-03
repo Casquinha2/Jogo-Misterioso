@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 7
   m_EditorClassIdentifier: 
   npcName: Diretor de Curso Psicologia
-  npcPortrait: {fileID: 0}
+  npcPortrait: {fileID: -1826487860146264403, guid: e897411f9296cb742b77a63699d8a81b, type: 3}
   dialogueLines:
   - "Claro, porque n\xE3o"
   - Aqui tem a sua chave caloira

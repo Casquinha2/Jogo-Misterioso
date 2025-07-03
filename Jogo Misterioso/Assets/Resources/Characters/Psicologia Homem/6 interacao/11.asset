@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 11
   m_EditorClassIdentifier: 
   npcName: Homemzinho
-  npcPortrait: {fileID: 0}
+  npcPortrait: {fileID: -5212135176266744805, guid: 79318d9df803e0c4f9e195fa6c968e86, type: 3}
   dialogueLines:
   - Claro que sei.
   - "N\xE3o teria referido se n\xE3o soubesse nada."

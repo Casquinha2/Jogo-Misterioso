@@ -19,6 +19,6 @@ MonoBehaviour:
   - '*Talvez fique a repetir esta perguntar durante horas*'
   - "*Tu afastas-te lentamente para n\xE3o teres nada haver com o assunto*"
   typingSpeed: 0.05
-  autoProgressLines: 010100
-  autoProgressDelay: 1
+  autoProgressLines: 010101
+  autoProgressDelay: 1.5
   adicionarProgresso: 0

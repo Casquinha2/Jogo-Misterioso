@@ -15,7 +15,7 @@ MonoBehaviour:
   npcName: Trajado
   npcPortrait: {fileID: 7616922701797950536, guid: f433df46e898afd44b9ddf0d5f4cd628, type: 3}
   dialogueLines:
-  - FOSTE APANHADOOOO
+  - FOSTE APANHADO!!!
   typingSpeed: 0.05
   autoProgressLines: 01
   autoProgressDelay: 1

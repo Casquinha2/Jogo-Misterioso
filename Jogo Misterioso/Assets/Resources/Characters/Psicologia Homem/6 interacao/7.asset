@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 7
   m_EditorClassIdentifier: 
   npcName: Homemzinho
-  npcPortrait: {fileID: 0}
+  npcPortrait: {fileID: -5212135176266744805, guid: 79318d9df803e0c4f9e195fa6c968e86, type: 3}
   dialogueLines:
   - "Boa dedu\xE7\xE3o."
   - "Ouvi dizer que andas a investigar o caso da est\xE1tua desaparecida."
