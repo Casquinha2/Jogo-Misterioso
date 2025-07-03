@@ -12,12 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43841994882913c4d9bc9c84bd9e2a40, type: 3}
   m_Name: 1
   m_EditorClassIdentifier: 
-  npcName: Trajado
-  npcPortrait: {fileID: -6920116254448358164, guid: 9736f5e5449c45440a3dd465a977df73, type: 3}
+  npcName: Serginho
+  npcPortrait: {fileID: 2769756059955125311, guid: 36831a08130afa141bdfa467bc0410a6, type: 3}
   dialogueLines:
-  - Uma caloira com uma capa?
-  - Sabes que nao podes andar com isso correto?!
+  - Fui eu que roubei a estatua
+  - Sim, fui eu que roubei a capa do Pato Guilherme
+  - Roubei a estatua pois ela ficou suja de tinta e queria limpar
+  - ao trazer a estatua sujei a minha capa e para nao desconfiarem de mim roubei
+    a capa ao Pato Guilherme
   typingSpeed: 0.05
-  autoProgressLines: 0101
-  autoProgressDelay: 1.5
+  autoProgressLines: 01010101
+  autoProgressDelay: 1
   adicionarProgresso: 0
