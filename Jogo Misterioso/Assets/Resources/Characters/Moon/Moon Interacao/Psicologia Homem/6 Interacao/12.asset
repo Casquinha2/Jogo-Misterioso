@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: 12
   m_EditorClassIdentifier: 
   npcName: Moon
-  npcPortrait: {fileID: 0}
+  npcPortrait: {fileID: 6236947385317395335, guid: 1cd77f180d2095c4ebf5180eef1252f2, type: 3}
   dialogueLines:
   - "Hmmm, isso j\xE1 \xE9 alguma coisa."
   - "Ent\xE3o... adeus... acho eu."
   typingSpeed: 0.05
   autoProgressLines: 0101
-  autoProgressDelay: 1.2
+  autoProgressDelay: 1.1
   adicionarProgresso: 0

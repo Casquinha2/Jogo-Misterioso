@@ -16,8 +16,7 @@ MonoBehaviour:
   npcPortrait: {fileID: -5212135176266744805, guid: 79318d9df803e0c4f9e195fa6c968e86, type: 3}
   dialogueLines:
   - Nem por isso.
-  - "Deve ter sido algu\xE9m de psicologia ou assim. Deve ter sido algu\xE9m de psicologia
-    ou assim."
+  - "Deve ter sido algu\xE9m de psicologia ou assim."
   - "Afinal, est\xE1s na ala deles."
   typingSpeed: 0.05
   autoProgressLines: 010101

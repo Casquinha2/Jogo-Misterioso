@@ -8024,17 +8024,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   npcDialoguePanelPrefab: {fileID: 5968444231653881824, guid: bb7d2de5b00a2134e82e729237ee5d10, type: 3}
-  npcDialogueSequence:
-  - {fileID: 11400000, guid: cb6d29c1a7f678e47bd37ba4b0ce4123, type: 2}
-  - {fileID: 11400000, guid: 3ddcf82913c7228428432b8973846232, type: 2}
-  - {fileID: 11400000, guid: aba603d27fa63d84fa8c7c6ac7163b44, type: 2}
-  - {fileID: 11400000, guid: cbd57cee7f5193e4d879ce8be68f302d, type: 2}
-  - {fileID: 11400000, guid: f501fdc001b869549a39a247eda76d69, type: 2}
-  - {fileID: 11400000, guid: b5ff16b3f5b318b40beaa2b5899b067a, type: 2}
+  npcDialogueSequence: []
   itemPrefab: {fileID: 0}
-  manyInteractions: 0
+  manyInteractions: 1
   moonTalks: 1
-  progress: {fileID: 0}
+  progress: {fileID: 254046946}
 --- !u!61 &639372185
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8069,17 +8063,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.0071834326, y: -0.0071828365}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 1.46, y: 3.2}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.4453995, y: 3.1982512}
   m_EdgeRadius: 0
 --- !u!50 &639372186
 Rigidbody2D:
@@ -8152,7 +8146,7 @@ SpriteRenderer:
   m_SortingLayerID: -1807754811
   m_SortingLayer: -4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: -1259120560668744808, guid: e0b97f0e27bb2344fa70a0f003ad85a7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

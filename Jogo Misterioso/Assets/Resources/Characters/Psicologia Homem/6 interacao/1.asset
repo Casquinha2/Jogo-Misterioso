@@ -19,5 +19,5 @@ MonoBehaviour:
   - "E garanto-te que n\xE3o fui eu."
   typingSpeed: 0.05
   autoProgressLines: 0101
-  autoProgressDelay: 1
+  autoProgressDelay: 1.2
   adicionarProgresso: 0

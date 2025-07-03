@@ -22,5 +22,5 @@ MonoBehaviour:
   - "Talvez eles tenham alguma rela\xE7\xE3o com o desaparecimento da est\xE1tua."
   typingSpeed: 0.05
   autoProgressLines: 0101010101
-  autoProgressDelay: 1.3
+  autoProgressDelay: 1.2
   adicionarProgresso: 0

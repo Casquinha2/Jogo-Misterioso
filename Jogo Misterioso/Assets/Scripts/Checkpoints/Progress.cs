@@ -105,7 +105,7 @@ public class Progress : MonoBehaviour
                         i.gameObject.SetActive(false);
                         break;
 
-                    case 8:
+                    case 9:
                         i.gameObject.SetActive(true);
                         break;
                 }
@@ -178,12 +178,12 @@ public class Progress : MonoBehaviour
                         i.SetActive(false);
                         break;
 
-                    case 9:
+                    case 10:
                         i.SetActive(true);
                         i.transform.localPosition = new Vector3(131.61f, -142.43f, 0f);
                         break;
 
-                    case 10:
+                    case 11:
                         i.SetActive(false);
                         break;
 
@@ -197,10 +197,10 @@ public class Progress : MonoBehaviour
                     case 0:
                         i.SetActive(false);
                         break;
-                    case 6:
+                    case 7:
                         i.SetActive(true);
                         break;
-                    case 7:
+                    case 8:
                         i.SetActive(false);
                         break;
                 }
@@ -213,18 +213,18 @@ public class Progress : MonoBehaviour
                         i.SetActive(false);
                         break;
 
-                    case 7:
+                    case 8:
                         i.SetActive(true);
                         break;
 
-                    case 8:
+                    case 9:
                         i.SetActive(false);
                         break;
                 }
             }
         }
 
-        if (progress == 10)
+        if (progress == 11)
         {
             perseguicao.SetActive(true);
         }
@@ -233,14 +233,14 @@ public class Progress : MonoBehaviour
             perseguicao.SetActive(false);
         }
 
-        if (progress == 4 || progress == 11)
+        if (progress == 4 || progress == 12)
         {
             if (inventoryController != null)
                 inventoryController.ClearInventory();
             else
                 Debug.LogWarning("[Progress] InventoryController não atribuído; inventário não limpo.");
         }
-        if (progress == 13)
+        if (progress == 14)
         {
             normal.Final();
         }
