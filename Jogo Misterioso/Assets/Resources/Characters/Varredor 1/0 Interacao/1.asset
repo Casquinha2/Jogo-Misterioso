@@ -17,5 +17,6 @@ MonoBehaviour:
   dialogueLines:
   - "Porque \xE9 que acabo sempre eu com estes trabalhos?"
   typingSpeed: 0.05
-  autoProgressLines: 
+  autoProgressLines: 01
   autoProgressDelay: 1.2
+  adicionarProgresso: 0

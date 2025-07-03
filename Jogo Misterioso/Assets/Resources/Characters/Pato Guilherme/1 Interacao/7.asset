@@ -17,5 +17,6 @@ MonoBehaviour:
   dialogueLines:
   - Boa sorte na procura da capa caloira!
   typingSpeed: 0.05
-  autoProgressLines: 00
+  autoProgressLines: 01
   autoProgressDelay: 1.1
+  adicionarProgresso: 0

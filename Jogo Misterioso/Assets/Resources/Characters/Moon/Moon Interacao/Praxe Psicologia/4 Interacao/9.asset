@@ -17,6 +17,6 @@ MonoBehaviour:
   dialogueLines:
   - '*Recebeste a chave para a porta da sala 62*'
   typingSpeed: 0.05
-  autoProgressLines: 00
+  autoProgressLines: 01
   autoProgressDelay: 1.2
   adicionarProgresso: 0

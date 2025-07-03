@@ -16,7 +16,7 @@ MonoBehaviour:
   npcPortrait: {fileID: -6920116254448358164, guid: 9736f5e5449c45440a3dd465a977df73, type: 3}
   dialogueLines:
   - Uma caloira com uma capa?
-  - Sabes que nao podes andar com isso correto?!
+  - "Sabes que n\xE3o podes andar com isso correto?!"
   typingSpeed: 0.05
   autoProgressLines: 0101
   autoProgressDelay: 1.5

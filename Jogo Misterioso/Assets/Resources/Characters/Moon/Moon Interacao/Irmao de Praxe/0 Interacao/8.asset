@@ -17,6 +17,6 @@ MonoBehaviour:
   dialogueLines:
   - Ajudaste imenso, obrigada!
   typingSpeed: 0.05
-  autoProgressLines: 00
-  autoProgressDelay: 1
+  autoProgressLines: 01
+  autoProgressDelay: 1.5
   adicionarProgresso: 0
