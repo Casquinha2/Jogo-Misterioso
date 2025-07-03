@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43841994882913c4d9bc9c84bd9e2a40, type: 3}
   m_Name: 9
   m_EditorClassIdentifier: 
-  npcName: 
-  npcPortrait: {fileID: 0}
+  npcName: Caloiro
+  npcPortrait: {fileID: 2822355598257744681, guid: 3e8ca083571ffdb499382d0567ab0fd7, type: 3}
   dialogueLines:
   - Pois, claro.
   - "Tamb\xE9m ouvi essa pessoa a dizer que j\xE1 tinha perdido a capa."
