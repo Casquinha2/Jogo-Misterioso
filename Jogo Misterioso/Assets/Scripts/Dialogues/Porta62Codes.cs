@@ -13,6 +13,10 @@ public class Porta62Codes : MonoBehaviour
     [SerializeField] private GameObject panel;
     [SerializeField] private string checkpointID;
 
+    [Header("Objeto de Diálogo Pós-Teleporte")]
+    [Tooltip("Arraste aqui o componente ObjDialogue que deve iniciar após o teleport.")]
+    [SerializeField] private ObjDialogue objDialogue;
+
     private CinemachineCamera virtualCamera;
 
 
@@ -112,6 +116,21 @@ public class Porta62Codes : MonoBehaviour
                 Vector3 offset = newPos - oldPos;
                 virtualCamera.OnTargetObjectWarped(player.transform, offset);
             }
+
+            TriggerPostTeleportDialogue();
+        }
+    }
+
+    private void TriggerPostTeleportDialogue()
+    {
+        if (objDialogue != null)
+        {
+            // Inicia a interação no ObjDialogue
+            objDialogue.Interact();
+        }
+        else
+        {
+            Debug.LogWarning("[Porta62Codes] Nenhum ObjDialogue configurado para pós-teleporte.");
         }
     }
 }

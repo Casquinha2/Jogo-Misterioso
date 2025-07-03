@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 648fa42727b63ae458df6a3968223511, type: 3}
+  m_Name: Porta
+  m_EditorClassIdentifier: 
+  objectName: Porta
+  dialogueLines:
+  - Ainda bem que consegui sair da sala...
+  - "Quem \xE9 que poder\xE1 ter me trancado l\xE1 dentro?"
+  - "Deixa-me ir para o p\xE1tio para ver se algu\xE9m est\xE1 l\xE1 da chamada ao
+    p\xE1tio de ontem."
+  - "Aposto que algu\xE9m que conhe\xE7a deva saber o como fui aqui parar."
+  typingSpeed: 0.05
+  autoProgressLines: 01010101
+  autoProgressDelay: 2.5
