@@ -10,17 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 43841994882913c4d9bc9c84bd9e2a40, type: 3}
-  m_Name: 1
+  m_Name: 4
   m_EditorClassIdentifier: 
   npcName: Serginho
   npcPortrait: {fileID: 2769756059955125311, guid: 36831a08130afa141bdfa467bc0410a6, type: 3}
   dialogueLines:
-  - Fui eu que roubei a estatua
-  - Sim, fui eu que roubei a capa do Pato Guilherme
-  - Roubei a estatua pois ela ficou suja de tinta e queria limpar
-  - ao trazer a estatua sujei a minha capa e para nao desconfiarem de mim roubei
-    a capa ao Pato Guilherme
+  - "Ok, afinal \xE9 o que parece..."
+  - "Mas eu tive uma raz\xE3o para ter roubado a est\xE1tua!"
   typingSpeed: 0.05
-  autoProgressLines: 01010101
-  autoProgressDelay: 1
+  autoProgressLines: 0101
+  autoProgressDelay: 1.5
   adicionarProgresso: 0

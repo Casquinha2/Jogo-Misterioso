@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      serginho_cabeca_0: 2769756059955125311
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
