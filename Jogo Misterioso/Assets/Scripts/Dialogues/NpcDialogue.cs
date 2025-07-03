@@ -15,10 +15,18 @@ public class NpcDialogue : MonoBehaviour, IInteractable, ICancelableDialogue
 
     [Header("Item (opcional)")]
     public GameObject itemPrefab;
+    public ItemActionType itemAction = ItemActionType.Adicionar;
 
     [Header("Mais opcoes")]
     public bool manyInteractions = false;
     public bool moonTalks = true;
+
+    public enum ItemActionType
+    {
+        Adicionar,
+        Remover
+    }
+
 
     private bool adicionarProgresso;
 
@@ -81,6 +89,23 @@ public class NpcDialogue : MonoBehaviour, IInteractable, ICancelableDialogue
             DialogueManager.Instance.OnResumeDialogue -= HandleResume;
         }
     }
+    bool InventoryContainsItem(GameObject item)
+    {
+        foreach (Transform slotT in inventoryPanel.transform)
+        {
+            var slot = slotT.GetComponent<Slot>();
+            if (slot?.currentItem == null) continue;
+
+            var invItem = slot.currentItem.GetComponent<Item>();
+            var targetItem = item.GetComponent<Item>();
+            if (invItem != null && targetItem != null && invItem.ID == targetItem.ID)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
 
     public bool CanInteract() => !npcIsDialogueActive;
 
@@ -97,25 +122,31 @@ public class NpcDialogue : MonoBehaviour, IInteractable, ICancelableDialogue
         if (npcIsDialogueActive)
             return;
 
-        bool hasItem = false;
         if (itemPrefab != null && inventoryPanel != null && inventoryController != null)
         {
-            foreach (Transform slotT in inventoryPanel.transform)
+            if (itemAction == ItemActionType.Remover)
             {
-                var slot = slotT.GetComponent<Slot>();
-                if (slot?.currentItem == null) continue;
-                var invItem = slot.currentItem.GetComponent<Item>();
-                if (invItem != null && invItem.ID == itemPrefab.GetComponent<Item>().ID)
+                foreach (Transform slotT in inventoryPanel.transform)
                 {
-                    hasItem = true;
-                    Destroy(slot.currentItem);
-                    slot.currentItem = null;
-                    break;
+                    var slot = slotT.GetComponent<Slot>();
+                    if (slot?.currentItem == null) continue;
+                    var invItem = slot.currentItem.GetComponent<Item>();
+                    if (invItem != null && invItem.ID == itemPrefab.GetComponent<Item>().ID)
+                    {
+                        Destroy(slot.currentItem);
+                        slot.currentItem = null;
+                        break;
+                    }
+                }
+            }
+            else if (itemAction == ItemActionType.Adicionar)
+            {   
+                if (!InventoryContainsItem(itemPrefab))
+                {
+                    inventoryController.AddItem(itemPrefab);
                 }
             }
 
-            if (!hasItem)
-                inventoryController.AddItem(itemPrefab);
         }
 
         DialogueManager.Instance.RequestNewDialogue(this);

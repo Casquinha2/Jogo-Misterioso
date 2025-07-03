@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 6a7941e4ae9eb8144bf2d22349a81acb
+guid: 189604049f75735479c452b302eedf6f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 604408113146070943
-    second: Chave quarto_0
+      213: 1610842411531753970
+    second: capa_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Chave quarto_0
+      name: capa_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 31
-        width: 256
-        height: 225
+        x: 79
+        y: 127
+        width: 706
+        height: 226
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f978f630af9436800800000000000000
-      internalID: 604408113146070943
+      spriteID: 2f9db7083acda5610800000000000000
+      internalID: 1610842411531753970
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Chave quarto_0: 604408113146070943
+      capa_0: 1610842411531753970
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

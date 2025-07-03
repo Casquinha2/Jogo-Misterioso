@@ -13,12 +13,20 @@ public class ObjDialogue : MonoBehaviour, IInteractable, ICancelableDialogue
 
     [Header("Item (opcional)")]
     public GameObject itemPrefab;
+    public ItemActionType itemAction = ItemActionType.Adicionar;
 
     [Header("Adicionar progresso?")]
     public bool adicionarProgresso = false;
 
     [Header("Se o adicionarProgresso for true, adicionar o Personagens gameobject")]
     public Progress progress;
+
+    public enum ItemActionType
+    {
+        Adicionar,
+        Remover
+    }
+
 
     private GameObject inventoryPanel;
     private InventoryController inventoryController;
@@ -73,6 +81,23 @@ public class ObjDialogue : MonoBehaviour, IInteractable, ICancelableDialogue
         }
     }
 
+    bool InventoryContainsItem(GameObject item)
+    {
+        foreach (Transform slotT in inventoryPanel.transform)
+        {
+            var slot = slotT.GetComponent<Slot>();
+            if (slot?.currentItem == null) continue;
+
+            var invItem = slot.currentItem.GetComponent<Item>();
+            if (invItem != null && invItem.ID == item.GetComponent<Item>().ID)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
     public bool CanInteract() => !objIsDialogueActive;
 
     public void Interact()
@@ -80,26 +105,35 @@ public class ObjDialogue : MonoBehaviour, IInteractable, ICancelableDialogue
         if (objDialogueData == null || (PauseController.IsGamePaused && !objIsDialogueActive))
             return;
 
-        bool hasItem = false;
         if (itemPrefab != null && inventoryPanel != null && inventoryController != null)
         {
-            foreach (Transform slotT in inventoryPanel.transform)
+            if (itemAction == ItemActionType.Remover)
             {
-                var slot = slotT.GetComponent<Slot>();
-                if (slot?.currentItem == null) continue;
-                var invItem = slot.currentItem.GetComponent<Item>();
-                if (invItem != null && invItem.ID == itemPrefab.GetComponent<Item>().ID)
+                foreach (Transform slotT in inventoryPanel.transform)
                 {
-                    hasItem = true;
-                    Destroy(slot.currentItem);
-                    slot.currentItem = null;
-                    break;
+                    var slot = slotT.GetComponent<Slot>();
+                    if (slot?.currentItem == null) continue;
+                    var invItem = slot.currentItem.GetComponent<Item>();
+                    if (invItem != null && invItem.ID == itemPrefab.GetComponent<Item>().ID)
+                    {
+                        Destroy(slot.currentItem);
+                        slot.currentItem = null;
+                        break;
+                    }
+                }
+            }
+            
+            if (itemAction == ItemActionType.Adicionar)
+            {
+                // Só adiciona se ainda não tiver esse item no inventário
+                if (!InventoryContainsItem(itemPrefab))
+                {
+                    inventoryController.AddItem(itemPrefab);
                 }
             }
 
-            if (!hasItem)
-                inventoryController.AddItem(itemPrefab);
         }
+
 
         DialogueManager.Instance.RequestNewDialogue(this);
 

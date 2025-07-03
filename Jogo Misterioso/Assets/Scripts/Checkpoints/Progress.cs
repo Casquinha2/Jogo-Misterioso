@@ -190,7 +190,7 @@ public class Progress : MonoBehaviour
 
                 }
             }
-            if (i.name == "PapeisDireito")
+            else if (i.name == "PapeisDireito")
             {
                 switch (progress)
                 {
@@ -205,7 +205,24 @@ public class Progress : MonoBehaviour
                         break;
                 }
             }
-            if (i.name == "Livros")
+            else if (i.name == "Livros")
+            {
+                switch (progress)
+                {
+                    case 0:
+                        i.SetActive(false);
+                        break;
+
+                    case 8:
+                        i.SetActive(true);
+                        break;
+
+                    case 9:
+                        i.SetActive(false);
+                        break;
+                }
+            }
+            else if (i.name == "ParedeBiblioteca")
             {
                 switch (progress)
                 {

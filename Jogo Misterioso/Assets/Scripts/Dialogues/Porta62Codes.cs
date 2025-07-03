@@ -2,7 +2,6 @@ using UnityEngine;
 using Unity.Cinemachine;
 using TMPro;
 using System.Linq;
-using System.Collections;
 
 
 public class Porta62Codes : MonoBehaviour
@@ -19,6 +18,16 @@ public class Porta62Codes : MonoBehaviour
 
     private CinemachineCamera virtualCamera;
 
+    public static bool CodeDone
+    {
+        get => PlayerPrefs.GetInt("CodeDone_62", 0) == 1;
+        set
+        {
+            PlayerPrefs.SetInt("CodeDone_62", value ? 1 : 0);
+            PlayerPrefs.Save();
+        }
+    }
+
 
     private int totalClicks1, totalClicks2, totalClicks3;
 
@@ -29,16 +38,30 @@ public class Porta62Codes : MonoBehaviour
             virtualCamera = cam.GetComponent<CinemachineCamera>();
 
     }
-
     public void AddClicks1() { totalClicks1 = (totalClicks1 + 1) % 10; num1.text = totalClicks1.ToString(); }
     public void AddClicks2() { totalClicks2 = (totalClicks2 + 1) % 10; num2.text = totalClicks2.ToString(); }
     public void AddClicks3() { totalClicks3 = (totalClicks3 + 1) % 10; num3.text = totalClicks3.ToString(); }
 
+    void OnEnable()
+    {
+        if (CodeDone)
+        {
+            panel.SetActive(false);
+            return;
+        }
+
+        num1.SetText("0");
+        num2.SetText("0");
+        num3.SetText("0");
+    }
+
 
     public void CodeVerification()
     {
-        if (num1.text == "8" && num2.text == "4" && num3.text == "7")
+        if (num1.text == "4" && num2.text == "8" && num3.text == "7")
         {
+            CodeDone = true;
+
             panel.SetActive(false);
 
             // 1) Achar o Player
