@@ -1870,6 +1870,7 @@ MonoBehaviour:
   objDialoguePanelPrefab: {fileID: 6793569825845607584, guid: 78297fdde5a6b7049a476f932a7a2300, type: 3}
   objDialogueData: {fileID: 11400000, guid: 55810f87acafba2459010c76a4850233, type: 2}
   itemPrefab: {fileID: 0}
+  itemAction: 0
   adicionarProgresso: 0
   progress: {fileID: 0}
 --- !u!61 &177141650
@@ -2829,6 +2830,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 216b1f1fc918901459d1246d5f1ec170, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  idInteractable: 0
+  disableAfterProgress: -1
+  enableAfterProgress: -1
   panel: {fileID: 1969703419}
   qr: {fileID: 0}
   qrRevealScript: {fileID: 0}
@@ -3022,6 +3026,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 216b1f1fc918901459d1246d5f1ec170, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  idInteractable: 0
+  disableAfterProgress: -1
+  enableAfterProgress: -1
   panel: {fileID: 845322331}
   qr: {fileID: 0}
   qrRevealScript: {fileID: 0}
@@ -3180,6 +3187,7 @@ MonoBehaviour:
   objDialoguePanelPrefab: {fileID: 6793569825845607584, guid: 78297fdde5a6b7049a476f932a7a2300, type: 3}
   objDialogueData: {fileID: 11400000, guid: c2ff8a5e828ba6f4c9479f2e92be8e1e, type: 2}
   itemPrefab: {fileID: 0}
+  itemAction: 0
   adicionarProgresso: 0
   progress: {fileID: 0}
 --- !u!61 &277461569
@@ -3491,6 +3499,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 216b1f1fc918901459d1246d5f1ec170, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  idInteractable: 0
+  disableAfterProgress: -1
+  enableAfterProgress: -1
   panel: {fileID: 1020947995}
   qr: {fileID: 0}
   qrRevealScript: {fileID: 0}
@@ -3990,6 +4001,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 216b1f1fc918901459d1246d5f1ec170, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  idInteractable: 0
+  disableAfterProgress: -1
+  enableAfterProgress: -1
   panel: {fileID: 123174090}
   qr: {fileID: 0}
   qrRevealScript: {fileID: 0}
@@ -4607,7 +4621,7 @@ Transform:
   m_GameObject: {fileID: 351849088}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 45.9204, y: 11.6496, z: 0}
+  m_LocalPosition: {x: 45.9204, y: 12.358, z: 0}
   m_LocalScale: {x: 3.5906022, y: 0.30744773, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8653,6 +8667,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 216b1f1fc918901459d1246d5f1ec170, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  idInteractable: 0
+  disableAfterProgress: -1
+  enableAfterProgress: -1
   panel: {fileID: 308137028}
   qr: {fileID: 0}
   qrRevealScript: {fileID: 0}
@@ -9419,6 +9436,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 216b1f1fc918901459d1246d5f1ec170, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  idInteractable: 0
+  disableAfterProgress: -1
+  enableAfterProgress: -1
   panel: {fileID: 1549351899}
   qr: {fileID: 0}
   qrRevealScript: {fileID: 0}
@@ -10444,6 +10464,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 216b1f1fc918901459d1246d5f1ec170, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  idInteractable: 0
+  disableAfterProgress: -1
+  enableAfterProgress: -1
   panel: {fileID: 221941404}
   qr: {fileID: 0}
   qrRevealScript: {fileID: 0}
@@ -10898,6 +10921,7 @@ MonoBehaviour:
   objDialoguePanelPrefab: {fileID: 6793569825845607584, guid: 78297fdde5a6b7049a476f932a7a2300, type: 3}
   objDialogueData: {fileID: 11400000, guid: c2ff8a5e828ba6f4c9479f2e92be8e1e, type: 2}
   itemPrefab: {fileID: 0}
+  itemAction: 0
   adicionarProgresso: 0
   progress: {fileID: 0}
 --- !u!61 &754580085
@@ -11241,6 +11265,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 216b1f1fc918901459d1246d5f1ec170, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  idInteractable: 0
+  disableAfterProgress: -1
+  enableAfterProgress: -1
   panel: {fileID: 1811260887}
   qr: {fileID: 0}
   qrRevealScript: {fileID: 0}
@@ -12019,6 +12046,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 216b1f1fc918901459d1246d5f1ec170, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  idInteractable: 0
+  disableAfterProgress: -1
+  enableAfterProgress: -1
   panel: {fileID: 1322520636}
   qr: {fileID: 0}
   qrRevealScript: {fileID: 0}
@@ -13651,6 +13681,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 216b1f1fc918901459d1246d5f1ec170, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  idInteractable: 0
+  disableAfterProgress: -1
+  enableAfterProgress: -1
   panel: {fileID: 1008715569}
   qr: {fileID: 0}
   qrRevealScript: {fileID: 0}
@@ -14174,6 +14207,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 216b1f1fc918901459d1246d5f1ec170, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  idInteractable: 0
+  disableAfterProgress: -1
+  enableAfterProgress: -1
   panel: {fileID: 322865466}
   qr: {fileID: 0}
   qrRevealScript: {fileID: 0}
@@ -18442,6 +18478,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 216b1f1fc918901459d1246d5f1ec170, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  idInteractable: 0
+  disableAfterProgress: -1
+  enableAfterProgress: -1
   panel: {fileID: 66591413}
   qr: {fileID: 0}
   qrRevealScript: {fileID: 0}
@@ -20426,6 +20465,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 216b1f1fc918901459d1246d5f1ec170, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  idInteractable: 0
+  disableAfterProgress: -1
+  enableAfterProgress: -1
   panel: {fileID: 1579558776}
   qr: {fileID: 0}
   qrRevealScript: {fileID: 0}
@@ -20659,6 +20701,7 @@ MonoBehaviour:
   objDialoguePanelPrefab: {fileID: 6793569825845607584, guid: 78297fdde5a6b7049a476f932a7a2300, type: 3}
   objDialogueData: {fileID: 11400000, guid: 508451e1c3c124d4b94614393abdcc66, type: 2}
   itemPrefab: {fileID: 0}
+  itemAction: 0
   adicionarProgresso: 0
   progress: {fileID: 0}
 --- !u!61 &1662547816
@@ -20886,6 +20929,7 @@ MonoBehaviour:
   objDialoguePanelPrefab: {fileID: 6793569825845607584, guid: 78297fdde5a6b7049a476f932a7a2300, type: 3}
   objDialogueData: {fileID: 11400000, guid: b6d80f32582dd6544920d0f84e0e6ef1, type: 2}
   itemPrefab: {fileID: 0}
+  itemAction: 0
   adicionarProgresso: 0
   progress: {fileID: 0}
 --- !u!61 &1696523457
@@ -21035,6 +21079,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 216b1f1fc918901459d1246d5f1ec170, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  idInteractable: 0
+  disableAfterProgress: -1
+  enableAfterProgress: -1
   panel: {fileID: 1812652117}
   qr: {fileID: 0}
   qrRevealScript: {fileID: 0}
@@ -22722,6 +22769,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 216b1f1fc918901459d1246d5f1ec170, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  idInteractable: 0
+  disableAfterProgress: -1
+  enableAfterProgress: -1
   panel: {fileID: 1200254998}
   qr: {fileID: 0}
   qrRevealScript: {fileID: 0}
@@ -23795,6 +23845,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 216b1f1fc918901459d1246d5f1ec170, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  idInteractable: 0
+  disableAfterProgress: -1
+  enableAfterProgress: -1
   panel: {fileID: 2117994658}
   qr: {fileID: 0}
   qrRevealScript: {fileID: 0}
@@ -24642,6 +24695,7 @@ MonoBehaviour:
   objDialoguePanelPrefab: {fileID: 6793569825845607584, guid: 78297fdde5a6b7049a476f932a7a2300, type: 3}
   objDialogueData: {fileID: 11400000, guid: cf0719e889b78f74397c1f7e14ff5abc, type: 2}
   itemPrefab: {fileID: 0}
+  itemAction: 0
   adicionarProgresso: 0
   progress: {fileID: 0}
 --- !u!61 &1975542213
@@ -25538,6 +25592,7 @@ MonoBehaviour:
   objDialoguePanelPrefab: {fileID: 6793569825845607584, guid: 78297fdde5a6b7049a476f932a7a2300, type: 3}
   objDialogueData: {fileID: 11400000, guid: c2ff8a5e828ba6f4c9479f2e92be8e1e, type: 2}
   itemPrefab: {fileID: 0}
+  itemAction: 0
   adicionarProgresso: 0
   progress: {fileID: 0}
 --- !u!61 &2037748843
@@ -25774,6 +25829,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 216b1f1fc918901459d1246d5f1ec170, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  idInteractable: 0
+  disableAfterProgress: -1
+  enableAfterProgress: -1
   panel: {fileID: 1660919406}
   qr: {fileID: 0}
   qrRevealScript: {fileID: 0}

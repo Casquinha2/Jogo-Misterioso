@@ -10,13 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 648fa42727b63ae458df6a3968223511, type: 3}
-  m_Name: 2
+  m_Name: Vitrine comida 1
   m_EditorClassIdentifier: 
-  objectName: 2
+  objectName: 
   dialogueLines:
-  - "*Este livro \xE9 sobre os feitos de Psicologia na praxe*"
-  - "*N\xE3o tem nada demais, fora o facto que Psicologia e Engenharia t\xEAm uma
-    rivalidade que j\xE1 dura 6 anos*"
+  - "*\xC9 uma vitrine com comida dentro*"
+  - '*Tem imensa variedade*'
+  - "*Folhados de salsicha, folhados de espinafres, chamu\xE7as, past\xE9is de frango,
+    folhados mistos, entre outros...*"
   typingSpeed: 0.05
-  autoProgressLines: 0101
-  autoProgressDelay: 1.5
+  autoProgressLines: 010101
+  autoProgressDelay: 1.2

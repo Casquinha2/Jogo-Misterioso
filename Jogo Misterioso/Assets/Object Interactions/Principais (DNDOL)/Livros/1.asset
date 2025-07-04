@@ -14,7 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: 1
   dialogueLines:
-  - 1
+  - "*Este livro \xE9 sobre os feitos de Engenharia na praxe*"
+  - "*N\xE3o tem nada demais, fora o facto que Engenharia e Psicologia t\xEAm uma
+    rivalidade que j\xE1 dura 6 anos*"
+  - '*E que venceu todos os confrontos menos 1*'
   typingSpeed: 0.05
-  autoProgressLines: 01
-  autoProgressDelay: 1
+  autoProgressLines: 0101
+  autoProgressDelay: 1.5

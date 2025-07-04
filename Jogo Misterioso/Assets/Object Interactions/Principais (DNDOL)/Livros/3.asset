@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: 3
   dialogueLines:
-  - 3
+  - "*Este livro \xE9 sobre os feitos de Gest\xE3o na praxe*"
+  - "*O \xFAnico feito foi quando venceram o confronto h\xE1 3 anos, com o uso do
+    seu lend\xE1rio tambor"
   typingSpeed: 0.05
-  autoProgressLines: 01
-  autoProgressDelay: 1
+  autoProgressLines: 0101
+  autoProgressDelay: 1.5

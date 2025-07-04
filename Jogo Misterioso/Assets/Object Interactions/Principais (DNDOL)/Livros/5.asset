@@ -14,7 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: 5
   dialogueLines:
-  - 5
+  - "*Este livro \xE9 sobre os feitos de CC na praxe*"
+  - "*Tem alguns feitos, alguns deles est\xE3o relacionados com roubos*"
+  - "Hmmm, talvez eles estejam relacionados com o roubo da est\xE1tua do Cam\xF5es"
+  - Vou investigar CC
   typingSpeed: 0.05
-  autoProgressLines: 01
-  autoProgressDelay: 1
+  autoProgressLines: 01010101
+  autoProgressDelay: 1.5

@@ -22858,7 +22858,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Queres entregar o Diretor de Curso Serginho pelo roubo da est\xE1tua ou
-    queres ajudar ele a meter a est\xE1tua no s\xEDtio e fingir que nada aconteceu?"
+    queres ajud\xE1-lo a meter a est\xE1tua no s\xEDtio e fingir que nada aconteceu?"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}

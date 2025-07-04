@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: 4
   dialogueLines:
-  - 4
+  - "*Este livro \xE9 sobre os feitos de Direito na praxe*"
+  - "*Teve alguns feitos, devido \xE0s suas travessuras*"
   typingSpeed: 0.05
-  autoProgressLines: 01
-  autoProgressDelay: 1
+  autoProgressLines: 0101
+  autoProgressDelay: 1.5
