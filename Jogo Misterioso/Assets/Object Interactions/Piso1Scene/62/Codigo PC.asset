@@ -18,7 +18,7 @@ MonoBehaviour:
   - "*Est\xE1 ligado*"
   - "Este computador est\xE1 ligado e algu\xE9m deixou o bloco de notas aberto! "
   - Deixa ver.
-  - '"Q P J"'
+  - '"P Q J"'
   - "O que \xE9 que isto significa?"
   typingSpeed: 0.05
   autoProgressLines: 010101010101

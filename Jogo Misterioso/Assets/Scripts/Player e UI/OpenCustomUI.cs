@@ -51,7 +51,7 @@ public class OpenCustomUI : MonoBehaviour, IInteractable
 
     void OnTriggerExit2D(Collider2D other)
     {
-        if (!other.CompareTag("Player")) return;
+        if (!other.CompareTag("PlayerInteraction")) return;
 
         // fecha sempre ao sair da área
         panel.SetActive(false);

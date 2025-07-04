@@ -15,6 +15,7 @@ TagManager:
   - CmCamera
   - Mapa
   - MapBoundsRoot
+  - PlayerInteraction
   layers:
   - Default
   - TransparentFX

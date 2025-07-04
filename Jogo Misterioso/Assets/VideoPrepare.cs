@@ -97,7 +97,7 @@
     
     void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("PlayerInteraction"))
         {
             Debug.Log("[VideoPrepare] Player saiu do trigger via OnTriggerExit2D.");
 
