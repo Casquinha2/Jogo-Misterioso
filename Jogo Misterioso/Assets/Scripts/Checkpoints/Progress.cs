@@ -1,5 +1,7 @@
 using UnityEngine;
 
+
+[DefaultExecutionOrder(-10)]
 public class Progress : MonoBehaviour
 {
     [Header("Personagens Principais")]
@@ -57,7 +59,7 @@ public class Progress : MonoBehaviour
     public void SetProgress(int i)
     {
         progress = i;
-        for (int j = 0; j <= i; j++)
+        for (int j = 0; j <= progress; j++)
         {
             AtualizarProgress();
             mapBoundScript.AfterProgress(progress);
@@ -273,5 +275,5 @@ public class Progress : MonoBehaviour
             normal.Final();
         }
     }
-    
+
 }

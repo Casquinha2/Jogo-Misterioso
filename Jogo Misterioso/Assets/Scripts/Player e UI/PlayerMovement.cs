@@ -9,6 +9,9 @@ public class PlayerMovement : MonoBehaviour
     private Animator animator;
     private float afktimer = 0f;
 
+    public bool canMove = true;
+
+
     [SerializeField] GameObject interacoes;
     [SerializeField] GameObject finais;
     [SerializeField] string checkpointID;
@@ -27,14 +30,14 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (MapTransitionScenes.IsTransitioning || PauseController.IsGamePaused)
+        if (!canMove || MapTransitionScenes.IsTransitioning || PauseController.IsGamePaused)
         {
-            rb.linearVelocity = Vector2.zero;
+            rb.linearVelocity = Vector2.zero; // Corrigi para rb.velocity, pois linearVelocity é para Rigidbody3D
             animator.SetBool("isWalking", false);
             return;
         }
 
-        rb.linearVelocity = moveInput * moveSpeed; // Set the velocity of the Rigidbody2D based on input and speed
+        rb.linearVelocity = moveInput * moveSpeed; 
         animator.SetBool("isWalking", rb.linearVelocity.magnitude > 0);
         animator.SetBool("isAFK", rb.linearVelocity.magnitude == 0);
 
@@ -44,13 +47,12 @@ public class PlayerMovement : MonoBehaviour
         }
 
         afktimer += Time.deltaTime;
-
     }
+
 
     public void Move(InputAction.CallbackContext context)
     {
-        
-        
+        if (!canMove) return;
 
         if (context.canceled)
         {
@@ -64,10 +66,11 @@ public class PlayerMovement : MonoBehaviour
         {
             return;
         }
-            
+
         moveInput = context.ReadValue<Vector2>();
         animator.SetFloat("InputX", moveInput.x);
         animator.SetFloat("InputY", moveInput.y);
         afktimer = 0f;
-    }
+    }   
+
 }

@@ -14,6 +14,7 @@ TagManager:
   - UICanvas
   - CmCamera
   - Mapa
+  - MapBoundsRoot
   layers:
   - Default
   - TransparentFX

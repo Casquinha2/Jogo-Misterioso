@@ -2192,6 +2192,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 2
+  canMove: 1
   interacoes: {fileID: 254046944}
   finais: {fileID: 879068009}
   checkpointID: 1
@@ -21686,7 +21687,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 1872527773}
           m_TargetAssemblyTypeName: SaveController, Assembly-CSharp
-          m_MethodName: LoadGame
+          m_MethodName: OnClickLoad
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -22116,6 +22117,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 446ced9310a7e3545a98063e4c9cf85b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  progress: {fileID: 254046946}
+  settingsMenu: {fileID: 1618931269}
+  loadingScreen: {fileID: 1760809966}
 --- !u!4 &1872527774
 Transform:
   m_ObjectHideFlags: 0
@@ -22300,7 +22304,7 @@ GameObject:
   - component: {fileID: 1891880506}
   m_Layer: 0
   m_Name: MapBounds
-  m_TagString: Untagged
+  m_TagString: MapBoundsRoot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
