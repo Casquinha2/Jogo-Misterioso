@@ -2101,6 +2101,7 @@ MonoBehaviour:
   objDialoguePanelPrefab: {fileID: 6793569825845607584, guid: 78297fdde5a6b7049a476f932a7a2300, type: 3}
   objDialogueData: {fileID: 11400000, guid: 0a4847319c7605a4ba34c7b53e96632f, type: 2}
   itemPrefab: {fileID: 0}
+  itemAction: 0
   adicionarProgresso: 0
   progress: {fileID: 0}
 --- !u!61 &209700269
@@ -3998,6 +3999,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e3cb13fcc27da14baba4c57607b9615, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  puzzleID: 
   letras:
   - {fileID: 467498661}
   - {fileID: 38299754}
@@ -4025,7 +4027,6 @@ MonoBehaviour:
   - {fileID: 1249602387}
   - {fileID: 502764260}
   - {fileID: 2064266065}
-  porta: {fileID: 1436860080}
   panel: {fileID: 951962028}
 --- !u!114 &342787959
 MonoBehaviour:
@@ -12567,6 +12568,7 @@ MonoBehaviour:
   objDialoguePanelPrefab: {fileID: 6793569825845607584, guid: 78297fdde5a6b7049a476f932a7a2300, type: 3}
   objDialogueData: {fileID: 11400000, guid: 8057a62497ef0634597adc5e1e5e1ea2, type: 2}
   itemPrefab: {fileID: 0}
+  itemAction: 0
   adicionarProgresso: 0
   progress: {fileID: 0}
 --- !u!61 &1041907656
@@ -15629,6 +15631,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 216b1f1fc918901459d1246d5f1ec170, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  idInteractable: 2
+  disableAfterProgress: 6
+  enableAfterProgress: 0
   panel: {fileID: 951962028}
   qr: {fileID: 0}
   qrRevealScript: {fileID: 0}
@@ -17435,6 +17440,7 @@ MonoBehaviour:
   objDialoguePanelPrefab: {fileID: 6793569825845607584, guid: 78297fdde5a6b7049a476f932a7a2300, type: 3}
   objDialogueData: {fileID: 11400000, guid: 7d865596c25fef94e9195216fda3f0a3, type: 2}
   itemPrefab: {fileID: 0}
+  itemAction: 0
   adicionarProgresso: 0
   progress: {fileID: 0}
 --- !u!61 &1582743301
@@ -18239,6 +18245,7 @@ MonoBehaviour:
   objDialoguePanelPrefab: {fileID: 6793569825845607584, guid: 78297fdde5a6b7049a476f932a7a2300, type: 3}
   objDialogueData: {fileID: 11400000, guid: 13620de452639ed4c9ab721814f13e50, type: 2}
   itemPrefab: {fileID: 0}
+  itemAction: 0
   adicionarProgresso: 0
   progress: {fileID: 0}
 --- !u!61 &1629044433
@@ -21600,6 +21607,7 @@ MonoBehaviour:
   nameMapBound: 82
   telaCarregamento: 0
   coordenadas: {x: 96.93, y: 69.7}
+  puzzleID: 
 --- !u!1 &2016483638
 GameObject:
   m_ObjectHideFlags: 0
@@ -21845,6 +21853,7 @@ MonoBehaviour:
   objDialoguePanelPrefab: {fileID: 6793569825845607584, guid: 78297fdde5a6b7049a476f932a7a2300, type: 3}
   objDialogueData: {fileID: 11400000, guid: 57f84cf55b74a4b4ea52dc4869ba1e41, type: 2}
   itemPrefab: {fileID: 0}
+  itemAction: 0
   adicionarProgresso: 0
   progress: {fileID: 0}
 --- !u!61 &2031482614

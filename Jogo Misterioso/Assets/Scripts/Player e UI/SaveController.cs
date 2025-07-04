@@ -1,11 +1,13 @@
 using System.IO;
 using Unity.Cinemachine;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SaveController : MonoBehaviour
 {
     private string saveLocation;
     private InventoryController inventoryController;
+    private Progress progress;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -23,7 +25,9 @@ public class SaveController : MonoBehaviour
             {
                 playerPosition = GameObject.FindGameObjectWithTag("Player").transform.position,
                 mapBoundary = FindFirstObjectByType<CinemachineConfiner2D>().BoundingShape2D.gameObject.name,
-                inventorySaveData = inventoryController.GetInventoryItems()
+                inventorySaveData = inventoryController.GetInventoryItems(),
+                progressData = progress.GetProgress(),
+                sceneToLoad = SceneManager.GetActiveScene().name
 
             };
 
@@ -50,6 +54,11 @@ public class SaveController : MonoBehaviour
             FindFirstObjectByType<CinemachineConfiner2D>().BoundingShape2D = GameObject.Find(saveData.mapBoundary).GetComponent<PolygonCollider2D>();
 
             inventoryController.SetInventoryItems(saveData.inventorySaveData);
+
+            progress.SetProgress(saveData.progressData);
+
+            SceneManager.LoadScene(saveData.sceneToLoad);
+
         }
         else
         {

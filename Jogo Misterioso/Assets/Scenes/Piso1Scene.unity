@@ -6520,6 +6520,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 216b1f1fc918901459d1246d5f1ec170, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  idInteractable: 0
+  disableAfterProgress: -1
+  enableAfterProgress: -1
   panel: {fileID: 1555356860}
   qr: {fileID: 0}
   qrRevealScript: {fileID: 0}
@@ -10559,6 +10562,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 216b1f1fc918901459d1246d5f1ec170, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  idInteractable: 1
+  disableAfterProgress: 1
+  enableAfterProgress: 0
   panel: {fileID: 916413972}
   qr: {fileID: 0}
   qrRevealScript: {fileID: 0}
@@ -12924,6 +12930,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 216b1f1fc918901459d1246d5f1ec170, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  idInteractable: 0
+  disableAfterProgress: -1
+  enableAfterProgress: -1
   panel: {fileID: 1435643933}
   qr: {fileID: 0}
   qrRevealScript: {fileID: 0}
@@ -20049,6 +20058,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1c64cad9ef2dcb43aec9ab06aaac1c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  puzzleID: 1
   num1: {fileID: 1927057890}
   num2: {fileID: 15836955}
   num3: {fileID: 1521664333}
@@ -31750,6 +31760,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 216b1f1fc918901459d1246d5f1ec170, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  idInteractable: 0
+  disableAfterProgress: -1
+  enableAfterProgress: -1
   panel: {fileID: 399811050}
   qr: {fileID: 1563162551}
   qrRevealScript: {fileID: 399811055}

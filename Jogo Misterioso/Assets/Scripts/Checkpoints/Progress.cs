@@ -34,7 +34,7 @@ public class Progress : MonoBehaviour
 
         progress = 0;
         AtualizarProgress();
-        
+
         perseguicao.SetActive(false);
     }
 
@@ -52,6 +52,17 @@ public class Progress : MonoBehaviour
     public int GetProgress()
     {
         return progress;
+    }
+
+    public void SetProgress(int i)
+    {
+        progress = i;
+        for (int j = 0; j <= i; j++)
+        {
+            AtualizarProgress();
+            mapBoundScript.AfterProgress(progress);
+        }
+
     }
 
     public void AtualizarProgress()
@@ -262,4 +273,5 @@ public class Progress : MonoBehaviour
             normal.Final();
         }
     }
+    
 }

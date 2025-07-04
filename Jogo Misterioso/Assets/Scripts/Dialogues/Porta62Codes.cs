@@ -6,37 +6,36 @@ using System.Linq;
 
 public class Porta62Codes : MonoBehaviour
 {
+    [Header("Identificador único deste puzzle/porta")]
+    [Tooltip("Será usado em SessionState para bloquear a interação")]
+    [SerializeField] private string puzzleID;
+
+    [Header("UI do puzzle")]
     [SerializeField] private TextMeshProUGUI num1;
     [SerializeField] private TextMeshProUGUI num2;
     [SerializeField] private TextMeshProUGUI num3;
     [SerializeField] private GameObject panel;
-    [SerializeField] private string checkpointID;
 
-    [Header("Objeto de Diálogo Pós-Teleporte")]
-    [Tooltip("Arraste aqui o componente ObjDialogue que deve iniciar após o teleport.")]
+    [Header("Checkpoint & Diálogo pós-teleporte")]
+    [SerializeField] private string checkpointID;
     [SerializeField] private ObjDialogue objDialogue;
 
     private CinemachineCamera virtualCamera;
-
-    public static bool CodeDone
-    {
-        get => PlayerPrefs.GetInt("CodeDone_62", 0) == 1;
-        set
-        {
-            PlayerPrefs.SetInt("CodeDone_62", value ? 1 : 0);
-            PlayerPrefs.Save();
-        }
-    }
-
-
     private int totalClicks1, totalClicks2, totalClicks3;
 
     void Start()
     {
-        GameObject cam = GameObject.FindGameObjectWithTag("CmCamera");
+        // Captura a câmera virtual
+        var cam = GameObject.FindGameObjectWithTag("CmCamera");
         if (cam != null)
             virtualCamera = cam.GetComponent<CinemachineCamera>();
 
+        // Se já resolvemos este puzzle nesta sessão, bloqueia a interação
+        if (!string.IsNullOrEmpty(puzzleID) &&
+            SessionState.solvedPuzzles.Contains(puzzleID))
+        {
+            DisableInteraction();
+        }
     }
     public void AddClicks1() { totalClicks1 = (totalClicks1 + 1) % 10; num1.text = totalClicks1.ToString(); }
     public void AddClicks2() { totalClicks2 = (totalClicks2 + 1) % 10; num2.text = totalClicks2.ToString(); }
@@ -44,28 +43,36 @@ public class Porta62Codes : MonoBehaviour
 
     void OnEnable()
     {
-        if (CodeDone)
-        {
-            panel.SetActive(false);
-            return;
-        }
-
-        num1.SetText("0");
-        num2.SetText("0");
-        num3.SetText("0");
+        num1.text = "0";
+        num2.text = "0";
+        num3.text = "0";
     }
 
 
     public void CodeVerification()
     {
+        // Quando o código estiver correto:
         if (num1.text == "4" && num2.text == "8" && num3.text == "7")
         {
-            CodeDone = true;
-
+            // 1) Fecha o painel
             panel.SetActive(false);
 
-            // 1) Achar o Player
-            var player = GameObject.FindWithTag("Player");
+            // 2) Marca como resolvido nesta sessão
+            if (!string.IsNullOrEmpty(puzzleID))
+            {
+                SessionState.solvedPuzzles.Add(puzzleID);
+                DisableInteraction();
+            }
+
+            // 3) Continua com seu fluxo de teleporte, confiner e diálogo:
+            TeleportPlayer();
+            TriggerPostTeleportDialogue();
+        }
+    }
+
+    private void TeleportPlayer()
+    {
+        var player = GameObject.FindWithTag("Player");
             if (player == null)
             {
                 Debug.LogWarning("[Porta62Codes] Player não encontrado.");
@@ -141,19 +148,18 @@ public class Porta62Codes : MonoBehaviour
             }
 
             TriggerPostTeleportDialogue();
-        }
     }
-
     private void TriggerPostTeleportDialogue()
     {
         if (objDialogue != null)
-        {
-            // Inicia a interação no ObjDialogue
             objDialogue.Interact();
-        }
-        else
-        {
-            Debug.LogWarning("[Porta62Codes] Nenhum ObjDialogue configurado para pós-teleporte.");
-        }
+    }
+
+    private void DisableInteraction()
+    {
+        // desliga este componente e o collider
+        enabled = false;
+        if (TryGetComponent<Collider2D>(out var c))
+            c.enabled = false;
     }
 }
