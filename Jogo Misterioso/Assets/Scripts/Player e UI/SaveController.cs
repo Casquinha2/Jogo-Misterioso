@@ -2,6 +2,9 @@ using System.IO;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
+using System.Linq;
+
 
 public class SaveController : MonoBehaviour
 {
@@ -27,7 +30,9 @@ public class SaveController : MonoBehaviour
                 mapBoundary = FindFirstObjectByType<CinemachineConfiner2D>().BoundingShape2D.gameObject.name,
                 inventorySaveData = inventoryController.GetInventoryItems(),
                 progressData = progress.GetProgress(),
-                sceneToLoad = SceneManager.GetActiveScene().name
+                sceneToLoad = SceneManager.GetActiveScene().name,
+                solvedPuzzles = SessionState.solvedPuzzles.ToList()
+
 
             };
 
@@ -57,7 +62,13 @@ public class SaveController : MonoBehaviour
 
             progress.SetProgress(saveData.progressData);
 
-            SceneManager.LoadScene(saveData.sceneToLoad);
+            SessionState.solvedPuzzles = new HashSet<string>(saveData.solvedPuzzles);
+            
+            // Só muda de cena se estivermos em outra cena diferente
+            if (SceneManager.GetActiveScene().name != saveData.sceneToLoad)
+            {
+                SceneManager.LoadScene(saveData.sceneToLoad);
+            }
 
         }
         else

@@ -20065,6 +20065,7 @@ MonoBehaviour:
   panel: {fileID: 916413972}
   checkpointID: 3
   objDialogue: {fileID: 549326743}
+  openUI: {fileID: 549326740}
 --- !u!1 &958743423
 GameObject:
   m_ObjectHideFlags: 0

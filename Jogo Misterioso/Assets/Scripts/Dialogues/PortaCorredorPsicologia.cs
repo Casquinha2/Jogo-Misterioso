@@ -4,6 +4,7 @@ using TMPro;
 using Unity.Cinemachine;
 using System.Collections;
 using System.Linq;
+using Unity.VisualScripting;
 
 public class PortaCorredorPsicologia : MonoBehaviour, IInteractable, ICancelableDialogue
 {
@@ -15,30 +16,33 @@ public class PortaCorredorPsicologia : MonoBehaviour, IInteractable, ICancelable
     [SerializeField] private GameObject objDialoguePanelPrefab;
 
     [Header("Item (obrigatório)")]
+    [Tooltip("Arrasta aqui o prefab do item que será entregue ao jogador")]
     [SerializeField] private GameObject itemPrefab;
 
-    [Header("Transição de cena")]
     [SerializeField] private string nameMapBound;
+
     [SerializeField] private bool telaCarregamento = false;
+
     [SerializeField] private Vector2 coordenadas;
 
-    [Header("Persistência em sessão")]
-    [Tooltip("Identificador único deste puzzle na sessão")]
-    [SerializeField] private string puzzleID;
-    private bool jaResolvido;
-
-    // referências internas…
+    // ↓ ↓ ↓ campos resolvidos em Start() via Tags ↓ ↓ ↓
     private Transform uiRoot;
     private GameObject inventoryPanel;
     private GameObject player;
     private PolygonCollider2D mapBoundary;
     private CinemachineConfiner2D confiner;
+
+    // Estado interno do diálogo
     private GameObject objDialoguePanelInstance;
     private GameObject blackPanel;
     private TMP_Text objDialogueText;
-    private string[] rightDialogue, wrongDialogue, selectedDialogueLines;
-    private int objDialogueIndex;
-    private bool objIsTyping, objIsDialogueActive;
+    private string[]   rightDialogue, wrongDialogue, selectedDialogueLines;
+    private int        objDialogueIndex;
+    private bool       objIsTyping, objIsDialogueActive;
+
+    // Cena fixa de destino
+
+    private Transform piso;
 
     void Start()
     {
@@ -75,6 +79,7 @@ public class PortaCorredorPsicologia : MonoBehaviour, IInteractable, ICancelable
             return;
         }
 
+        // InventoryPanel (pode estar inativo)
         inventoryPanel = GameObject.FindWithTag("InventoryPanel");
         if (inventoryPanel == null)
         {
@@ -90,6 +95,7 @@ public class PortaCorredorPsicologia : MonoBehaviour, IInteractable, ICancelable
         if (inventoryPanel == null)
             Debug.LogError("❌ InventoryPanel (mesmo inativo) não encontrado!", this);
 
+        // UI Root (Canvas)
         GameObject uiGo = GameObject.FindWithTag("UICanvas");
         if (uiGo == null)
         {
@@ -102,8 +108,9 @@ public class PortaCorredorPsicologia : MonoBehaviour, IInteractable, ICancelable
         }
         uiRoot = uiGo?.transform;
 
+        // logo após:
         var allUiTs = uiRoot.GetComponentsInChildren<Transform>(true);
-        var loadT = allUiTs.FirstOrDefault(t => t.name == "Loading");
+        var loadT   = allUiTs.FirstOrDefault(t => t.name == "Loading");
         if (loadT != null)
         {
             blackPanel = loadT.gameObject;
@@ -126,6 +133,7 @@ public class PortaCorredorPsicologia : MonoBehaviour, IInteractable, ICancelable
             return;
         }
 
+        // Instancia painel de diálogo (inativo inicialmente)
         objDialoguePanelInstance = Instantiate(
             objDialoguePanelPrefab,
             uiRoot,
@@ -135,19 +143,12 @@ public class PortaCorredorPsicologia : MonoBehaviour, IInteractable, ICancelable
         objDialoguePanelInstance.SetActive(false);
         objDialogueText.text = "";
 
+        // Separa linhas de diálogo
         rightDialogue = objDialogueData.dialogueLines[..indexDialogueCerto];
         wrongDialogue = objDialogueData.dialogueLines[indexDialogueCerto..];
-
-        // 1) Checa se já foi resolvido nesta sessão
-        if (!string.IsNullOrEmpty(puzzleID) &&
-            SessionState.solvedPuzzles.Contains(puzzleID))
-        {
-            jaResolvido = true;
-            ForceDisableInteraction();
-        }
     }
 
-    void OnEnable()
+     void OnEnable()
     {
         if (DialogueManager.Instance == null) return;
         DialogueManager.Instance.OnNewDialogue   += CancelDialogue;
@@ -163,12 +164,8 @@ public class PortaCorredorPsicologia : MonoBehaviour, IInteractable, ICancelable
         DialogueManager.Instance.OnResumeDialogue-= HandleResume;
     }
 
-    public bool CanInteract()
-    {
-        if (jaResolvido) 
-            return false;
-        return !objIsDialogueActive;
-    }
+    public bool CanInteract() => !objIsDialogueActive;
+
     public void Interact()
     {
         bool hasItem = false;
@@ -193,13 +190,13 @@ public class PortaCorredorPsicologia : MonoBehaviour, IInteractable, ICancelable
         selectedDialogueLines = hasItem ? rightDialogue : wrongDialogue;
 
         if (objIsDialogueActive) NextLine();
-        else StartObjDialogue();
+        else                     StartObjDialogue();
     }
 
     private void StartObjDialogue()
     {
         objIsDialogueActive = true;
-        objDialogueIndex = 0;
+        objDialogueIndex    = 0;
         objDialoguePanelInstance.SetActive(true);
         StartCoroutine(TypeLine());
     }
@@ -243,7 +240,9 @@ public class PortaCorredorPsicologia : MonoBehaviour, IInteractable, ICancelable
 
     public void CancelDialogue()
     {
-        if (!objIsDialogueActive) return;
+        if (!objIsDialogueActive || objDialoguePanelInstance == null)
+        return;
+
         EndDialogue();
     }
 
@@ -267,33 +266,33 @@ public class PortaCorredorPsicologia : MonoBehaviour, IInteractable, ICancelable
         objIsDialogueActive = false;
         objDialoguePanelInstance.SetActive(false);
 
+        // Se acertou, dispara a transição
         if (selectedDialogueLines == rightDialogue)
         {
-            // limpa painéis antigos…
-            if (!jaResolvido && !string.IsNullOrEmpty(puzzleID))
-            {
-                jaResolvido = true;
-                // 2) marca resolvido apenas na memória desta sessão
-                SessionState.solvedPuzzles.Add(puzzleID);
-                ForceDisableInteraction();
-            }
+            // limpa diálogos antigos
+            foreach (var tr in uiRoot.GetComponentsInChildren<Transform>(true))
+                if (tr.CompareTag("DialoguePanel"))
+                    Destroy(tr.gameObject);
 
+            // inicia o processo de loading + reposição + troca de cena
             StartCoroutine(DoTransitionToPiso1());
         }
     }
 
-    
-
     private IEnumerator DoTransitionToPiso1()
     {
+        // 1) mostra o loading
         if (blackPanel != null && telaCarregamento)
             LoadingManager.ShowLoading();
+
 
         confiner.BoundingShape2D = mapBoundary;
         confiner.InvalidateBoundingShapeCache();
 
-        // reposiciona player antes de continuar…
+        // 2) espera um frame pra garantir que o UI realmente apareça
         yield return null;
+
+        // 3) reposiciona player antes do unload
         player = GameObject.FindWithTag("Player");
         if (player)
             player.transform.position = new Vector3(coordenadas.x, coordenadas.y, 0f);
@@ -303,13 +302,16 @@ public class PortaCorredorPsicologia : MonoBehaviour, IInteractable, ICancelable
             LoadingManager.SubscribeAutoHide();
             LoadingManager.HideLoadingWithDelay(this);
         }
+        
+
     }
 
-    private void ForceDisableInteraction()
+
+    private IEnumerator HideLoadingAfterDelay()
     {
-        // bloqueia CanInteract() e collider
-        enabled = false;
-        if (TryGetComponent<Collider2D>(out var c))
-            c.enabled = false;
+        yield return new WaitForSeconds(1f);
+        if (blackPanel != null)
+            blackPanel.SetActive(false);
+
     }
 }

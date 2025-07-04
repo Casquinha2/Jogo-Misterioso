@@ -9,8 +9,9 @@ public class SaveData
     public string mapBoundary; //NOME DA CENA QUE ESTA NA CAMERA (patio, sala 62...)
     public List<InventorySaveData> inventorySaveData;
     public int progressData;
-
     public string sceneToLoad;
+    public List<string> solvedPuzzles;
+
 }
 
 

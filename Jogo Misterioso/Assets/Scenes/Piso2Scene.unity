@@ -3999,7 +3999,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e3cb13fcc27da14baba4c57607b9615, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  puzzleID: 
+  puzzleID: 2
   letras:
   - {fileID: 467498661}
   - {fileID: 38299754}
@@ -4028,6 +4028,7 @@ MonoBehaviour:
   - {fileID: 502764260}
   - {fileID: 2064266065}
   panel: {fileID: 951962028}
+  openUI: {fileID: 1436860082}
 --- !u!114 &342787959
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21607,7 +21608,6 @@ MonoBehaviour:
   nameMapBound: 82
   telaCarregamento: 0
   coordenadas: {x: 96.93, y: 69.7}
-  puzzleID: 
 --- !u!1 &2016483638
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI;
 using Unity.Cinemachine;
 using TMPro;
 using System.Collections.Generic;
@@ -9,12 +8,13 @@ public class PsicologiaPuzzle : MonoBehaviour
     [Header("Identificador único deste puzzle")]
     [Tooltip("Será usado em SessionState para bloquear a interação")]
     [SerializeField] private string puzzleID;
-    
+
     [Header("Letras do puzzle")]
     [SerializeField] private List<TMP_Text> letras;
-    
+
     [Header("Referências")]
     [SerializeField] private GameObject panel;
+    [SerializeField] private OpenCustomUI openUI; // <-- Nova referência direta
 
     private Progress progress;
     private CinemachineCamera virtualCamera;
@@ -26,22 +26,29 @@ public class PsicologiaPuzzle : MonoBehaviour
         progress = FindFirstObjectByType<Progress>();
         if (progress == null)
             Debug.LogError("[PsicologiaPuzzle] Progress não encontrado na cena!");
+
+        if (openUI == null)
+            Debug.LogWarning("[PsicologiaPuzzle] Referência 'openUI' não atribuída no Inspector.");
     }
 
     void Start()
     {
-        // pega a câmera virtual
+        // Pega a câmera virtual, se houver
         var cam = GameObject.FindGameObjectWithTag("CmCamera");
         if (cam != null)
             virtualCamera = cam.GetComponent<CinemachineCamera>();
 
-        // Se já resolvemos este puzzle nesta sessão, bloqueia tudo
+        // Se já resolvemos este puzzle, marca e fecha o painel
         if (!string.IsNullOrEmpty(puzzleID) &&
             SessionState.solvedPuzzles.Contains(puzzleID))
         {
             jaResolvido = true;
             panel.SetActive(false);
-            DisableInteraction();
+        }
+        else
+        {
+            // Garante que o painel comece fechado
+            panel.SetActive(false);
         }
     }
 
@@ -84,56 +91,36 @@ public class PsicologiaPuzzle : MonoBehaviour
 
     private void Correto()
     {
-        // fecha o painel
         panel.SetActive(false);
+        jaResolvido = true;
 
-        // marca resolvido nesta sessão
-        if (!string.IsNullOrEmpty(puzzleID) && !jaResolvido)
-        {
-            jaResolvido = true;
+        if (!string.IsNullOrEmpty(puzzleID))
             SessionState.solvedPuzzles.Add(puzzleID);
-            DisableInteraction();
-        }
 
-        // teleporta jogador e atualiza confiner
+        if (openUI != null)
+            openUI.MarkAsSolved();
+
         var player = GameObject.FindWithTag("Player");
-        if (player == null) return;
-
-        var mbRoot = GameObject.Find("MapBounds")?.transform;
-        var piso   = mbRoot?.Find("Piso 2");
-        var corredor = piso?.Find("CorredorPsicologia");
-        var poly   = corredor?.GetComponent<PolygonCollider2D>();
-        var conf   = FindFirstObjectByType<CinemachineConfiner2D>();
-
-        if (conf != null && poly != null)
+        if (player != null)
         {
-            conf.BoundingShape2D = poly;
-            conf.InvalidateBoundingShapeCache();
+            var mbRoot = GameObject.Find("MapBounds")?.transform;
+            var piso = mbRoot?.Find("Piso 2");
+            var corredor = piso?.Find("CorredorPsicologia");
+            var poly = corredor?.GetComponent<PolygonCollider2D>();
+            var conf = FindFirstObjectByType<CinemachineConfiner2D>();
+
+            if (conf != null && poly != null)
+            {
+                conf.BoundingShape2D = poly;
+                conf.InvalidateBoundingShapeCache();
+            }
+
+            var oldPos = player.transform.position;
+            var newPos = new Vector3(91.57f, 69.75f, 0);
+            player.transform.position = newPos;
+            virtualCamera?.OnTargetObjectWarped(player.transform, newPos - oldPos);
         }
 
-        Vector3 oldPos = player.transform.position;
-        Vector3 newPos = new Vector3(91.57f, 69.75f, 0);
-        player.transform.position = newPos;
-        virtualCamera?.OnTargetObjectWarped(player.transform, newPos - oldPos);
-
-        // incrementa progress
         progress.AddProgress();
-    }
-
-    private void DisableInteraction()
-    {
-        // desliga este script
-        enabled = false;
-
-        // impede futuras chamadas de check(...)
-        foreach (var lt in letras)
-        {
-            if (lt.TryGetComponent<Button>(out var btn))
-                btn.interactable = false;
-        }
-
-        // opcional: desativa collider se houver
-        if (TryGetComponent<Collider2D>(out var c))
-            c.enabled = false;
     }
 }

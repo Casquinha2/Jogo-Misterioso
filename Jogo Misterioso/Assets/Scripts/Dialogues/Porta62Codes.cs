@@ -20,6 +20,10 @@ public class Porta62Codes : MonoBehaviour
     [SerializeField] private string checkpointID;
     [SerializeField] private ObjDialogue objDialogue;
 
+    [Header("Referência direta ao script que controla a UI")]
+    [SerializeField] private OpenCustomUI openUI;
+
+
     private CinemachineCamera virtualCamera;
     private int totalClicks1, totalClicks2, totalClicks3;
 
@@ -60,9 +64,20 @@ public class Porta62Codes : MonoBehaviour
             // 2) Marca como resolvido nesta sessão
             if (!string.IsNullOrEmpty(puzzleID))
             {
+                // 1) marca o puzzle como resolvido (string)
                 SessionState.solvedPuzzles.Add(puzzleID);
+
+                // 2) marca a UI da porta como resolvida
+                if (openUI != null)
+                    openUI.MarkAsSolved();
+
+
+                // 3) opcional: só então você desabilita o próprio script Porta62Codes
                 DisableInteraction();
             }
+
+
+
 
             // 3) Continua com seu fluxo de teleporte, confiner e diálogo:
             TeleportPlayer();
@@ -157,9 +172,7 @@ public class Porta62Codes : MonoBehaviour
 
     private void DisableInteraction()
     {
-        // desliga este componente e o collider
+        // desliga só o Porta62Codes, não o collider
         enabled = false;
-        if (TryGetComponent<Collider2D>(out var c))
-            c.enabled = false;
     }
 }
