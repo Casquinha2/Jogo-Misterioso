@@ -2,9 +2,9 @@ using System.IO;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Collections;
 
 [DefaultExecutionOrder(-5)]
 public class SaveController : MonoBehaviour
@@ -13,208 +13,169 @@ public class SaveController : MonoBehaviour
     private string saveLocation;
     private InventoryController inventoryController;
     [SerializeField] private Progress progress;
-
     [SerializeField] private GameObject settingsMenu;
     [SerializeField] private GameObject loadingScreen;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         saveLocation = Path.Combine(Application.persistentDataPath, "saveData.json");
-        Debug.Log("Save file path: " + saveLocation);
         inventoryController = FindFirstObjectByType<InventoryController>();
-        Debug.Log("Save file path: " + inventoryController);
-
         if (progress == null)
-        {
             progress = FindFirstObjectByType<Progress>();
-            if (progress == null)
-            {
-                Debug.LogError("Progress não foi encontrado na cena!");
-            }
-            else
-            {
-                Debug.Log("Progress atribuído automaticamente.");
-            }
-        }
     }
 
     public void SaveGame()
     {
-        try
+        var saveData = new SaveData
         {
-            SaveData saveData = new SaveData
-            {
-                playerPosition = GameObject.FindGameObjectWithTag("Player").transform.position,
-                mapBoundary = FindFirstObjectByType<CinemachineConfiner2D>().BoundingShape2D.gameObject.name,
-                inventorySaveData = inventoryController.GetInventoryItems(),
-                progressData = progress.GetProgress(),
-                sceneToLoad = SceneManager.GetActiveScene().name,
-                solvedPuzzles = SessionState.solvedPuzzles.ToList()
-
-            };
-
-
-            File.WriteAllText(saveLocation, JsonUtility.ToJson(saveData));
-            Debug.Log($"Game saved successfully to {saveLocation}");
-
-            Debug.Log($"Items guardados inv {saveData.inventorySaveData}");
-            Debug.Log($"Progress guardado int {saveData.progressData}");
-        }
-        catch (System.Exception e)
-        {
-            Debug.LogError($"Failed to save game: {e.Message}");
-        }
+            playerPosition    = GameObject.FindWithTag("Player").transform.position,
+            mapBoundary       = FindFirstObjectByType<CinemachineConfiner2D>()
+                                   .BoundingShape2D.gameObject.name,
+            inventorySaveData = inventoryController.GetInventoryItems(),
+            progressData      = progress.GetProgress(),
+            sceneToLoad       = SceneManager.GetActiveScene().name,
+            solvedPuzzles     = SessionState.solvedPuzzles.ToList()
+        };
+        File.WriteAllText(saveLocation, JsonUtility.ToJson(saveData));
     }
 
     public void OnClickLoad()
     {
-        settingsMenu.SetActive(false);    // Fecha menu
-        loadingScreen.SetActive(true);    // Mostra loading
-        PauseController.SetPause(false);   // Despausa o jogo (importante!)
+        settingsMenu.SetActive(false);
+        loadingScreen.SetActive(true);
+        PauseController.SetPause(false);
+        GameObject.FindWithTag("Player")
+                  .GetComponent<PlayerMovement>()
+                  .canMove = false;
 
-        LoadGame();  // Executa load
+        LoadGame();
     }
-
 
     private void LoadGame()
     {
         if (!File.Exists(saveLocation))
         {
-            SaveGame(); // Se não houver save, cria um
+            SaveGame();
             return;
         }
 
-        pendingLoadData = JsonUtility.FromJson<SaveData>(File.ReadAllText(saveLocation));
+        pendingLoadData = JsonUtility
+            .FromJson<SaveData>(File.ReadAllText(saveLocation));
 
-        if (SceneManager.GetActiveScene().name != pendingLoadData.sceneToLoad)
-        {
-            SceneManager.sceneLoaded += OnSceneLoaded;
-            SceneManager.LoadScene(pendingLoadData.sceneToLoad);
-        }
-        else
-        {
-            ApplySave(pendingLoadData);
-        }
+        SceneManager.sceneLoaded += OnSceneLoaded;
+        SceneManager.LoadScene(pendingLoadData.sceneToLoad);
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        SceneManager.sceneLoaded -= OnSceneLoaded; // Evita múltiplas chamadas
-        StartCoroutine(ApplySaveNextFrame());
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+        StartCoroutine(ApplySaveAfterSceneReady());
     }
 
-    private IEnumerator ApplySaveNextFrame()
+    private IEnumerator ApplySaveAfterSceneReady()
     {
-        // Espera 1 frame
-        yield return null;
+        var data = pendingLoadData;
 
-        // Aplica o save depois de tudo estar carregado
-        ApplySave(pendingLoadData);
-    }
+        // 1) espera até o MapBoundsRoot estar disponível
+        yield return new WaitUntil(() =>
+            GameObject.FindWithTag("MapBoundsRoot") != null
+        );
 
-
-
-    private void ApplySave(SaveData data)
-    {
-        PlayerMovement playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
-        if (playerMovement != null)
+        // 2) referências principais
+        var player = GameObject.FindWithTag("Player");
+        if (player == null)
         {
-            playerMovement.canMove = false;  // Bloqueia o movimento
+            Debug.LogError("[ApplySave] Player não encontrado após cena carregada!");
+            yield break;
         }
 
+        var vCam = FindFirstObjectByType<CinemachineCamera>();
+        if (vCam == null)
+            Debug.LogError("[ApplySave] CinemachineCamera não encontrado!");
 
-        var player = GameObject.FindGameObjectWithTag("Player");
-        if (player != null)
+        // 3) remove Confiner existente do vCam
+        if (vCam != null)
         {
-            player.transform.position = data.playerPosition;
+            var existingConfiner = vCam.GetComponent<CinemachineConfiner2D>();
+            if (existingConfiner != null)
+            {
+                Destroy(existingConfiner);
+                yield return null; // espera remoção
+            }
+        }
+
+        // 4) teleporta player
+        player.transform.position = data.playerPosition;
+
+        // 5) teleporta câmera
+        if (vCam != null)
+        {
+            Vector3 camTarget = new Vector3(
+                data.playerPosition.x,
+                data.playerPosition.y,
+                vCam.transform.position.z
+            );
+            vCam.transform.position = camTarget;
+        }
+
+        // 6) recria Confiner no vCam
+        var mapRoot = GameObject.FindWithTag("MapBoundsRoot");
+        if (mapRoot != null && vCam != null)
+        {
+            var poly = mapRoot
+                .GetComponentsInChildren<PolygonCollider2D>(true)
+                .FirstOrDefault(p => p.gameObject.name == data.mapBoundary);
+
+            if (poly != null)
+            {
+                var newConf = vCam.gameObject.AddComponent<CinemachineConfiner2D>();
+                newConf.BoundingShape2D = poly;
+                newConf.InvalidateBoundingShapeCache();
+                newConf.OnTargetObjectWarped(
+                    vCam as CinemachineVirtualCameraBase,
+                    player.transform,
+                    Vector3.zero
+                );
+            }
+            else
+            {
+                Debug.LogError($"[ApplySave] Polygon '{data.mapBoundary}' não encontrado.");
+            }
         }
         else
         {
-            Debug.LogError("[ApplySave] Player não encontrado!");
-            return; // sem player não adianta continuar
+            Debug.LogError("[ApplySave] MapBoundsRoot ou vCam ausente, pulando Confiner.");
         }
 
-        var confiner = FindFirstObjectByType<CinemachineConfiner2D>();
-        var virtualCamera = FindFirstObjectByType<CinemachineCamera>();
-
-        if (virtualCamera == null)
-        {
-            Debug.LogError("[ApplySave] CinemachineVirtualCamera não encontrado!");
-            return;
-        }
-
-        // Teletransporta a câmera para a posição do player antes de atualizar o confiner
-        virtualCamera.transform.position = new Vector3(data.playerPosition.x, data.playerPosition.y, virtualCamera.transform.position.z);
-
-        GameObject mapBoundsRoot = GameObject.FindGameObjectWithTag("MapBoundsRoot");
-        if (mapBoundsRoot == null)
-        {
-            Debug.LogError("[ApplySave] GameObject com a tag 'MapBoundsRoot' não foi encontrado!");
-            return;
-        }
-
-        var polygonsInMapBounds = mapBoundsRoot.GetComponentsInChildren<PolygonCollider2D>(true);
-        var targetPolygon = polygonsInMapBounds.FirstOrDefault(p => p.gameObject.name == data.mapBoundary);
-
-        if (confiner != null && targetPolygon != null)
-        {
-            confiner.BoundingShape2D = targetPolygon;
-        }
-        else
-        {
-            Debug.LogError("[ApplySave] Confiner ou PolygonCollider2D com nome correspondente não encontrados!");
-        }
-
-        // Continua com inventory, progress e puzzles
+        // 7) restaura inventário, progresso e puzzles
         if (inventoryController == null)
-        {
             inventoryController = FindFirstObjectByType<InventoryController>();
-        }
         if (inventoryController != null)
-        {
             inventoryController.SetInventoryItems(data.inventorySaveData);
-        }
         else
-        {
-            Debug.LogError("[ApplySave] InventoryController null!");
-        }
+            Debug.LogError("[ApplySave] inventoryController null!");
 
         if (progress == null)
-        {
             progress = FindFirstObjectByType<Progress>();
-        }
         if (progress != null)
-        {
             progress.SetProgress(data.progressData);
-        }
         else
-        {
-            Debug.LogError("[ApplySave] Progress null!");
-        }
+            Debug.LogError("[ApplySave] progress null!");
 
         SessionState.solvedPuzzles = new HashSet<string>(data.solvedPuzzles);
 
-        Debug.Log("[ApplySave] Save aplicado com sucesso.");
-
-        StartCoroutine(HideLoadingAfterDelay(5f)); // espera 5 segundos
-    }
-
-    private IEnumerator HideLoadingAfterDelay(float delay)
-    {
-        yield return new WaitForSecondsRealtime(delay);
-
+        // 8) fecha loading e libera movimento
         if (loadingScreen != null)
-        {
             loadingScreen.SetActive(false);
-        }
+        else
+            Debug.LogError("[ApplySave] loadingScreen null!");
 
-        // Aqui libera o movimento após a espera
-        PlayerMovement playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
-        if (playerMovement != null)
-        {
-            playerMovement.canMove = true;      
-        }
+        var pm = player.GetComponent<PlayerMovement>();
+        if (pm != null)
+            pm.canMove = true;
+        else
+            Debug.LogError("[ApplySave] PlayerMovement não encontrado!");
+
+        Debug.Log("[ApplySave] Cena pronta, tudo configurado.");
     }
-
 }
