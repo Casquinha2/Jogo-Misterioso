@@ -4,7 +4,6 @@ using UnityEngine.SceneManagement;
 public class Preguicoso : MonoBehaviour
 {
     public Canvas canvas;
-    public GameObject player;
     void Awake()
     {
         canvas.gameObject.SetActive(false);

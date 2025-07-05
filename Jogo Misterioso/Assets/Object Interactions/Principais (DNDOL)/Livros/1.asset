@@ -19,5 +19,5 @@ MonoBehaviour:
     rivalidade que j\xE1 dura 6 anos*"
   - '*E que venceu todos os confrontos menos 1*'
   typingSpeed: 0.05
-  autoProgressLines: 0101
+  autoProgressLines: 010101
   autoProgressDelay: 1.5

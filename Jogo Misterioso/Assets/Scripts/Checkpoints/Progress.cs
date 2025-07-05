@@ -16,6 +16,12 @@ public class Progress : MonoBehaviour
     [Header("Objetos importantes")]
     public Transform objetos;
 
+    [Header("Outros")]
+    public Transform outros;
+
+    [Header("Manchas de tinta")]
+    [SerializeField] private GameObject manchas;
+
     [Header("Final normal")]
     [SerializeField] private Normal normal;
 
@@ -34,7 +40,7 @@ public class Progress : MonoBehaviour
         if (inventoryController == null)
             Debug.LogError("[Progress] InventoryController não encontrado na cena!");
 
-        progress = 0;
+        progress = -1;
         AtualizarProgress();
 
         perseguicao.SetActive(false);
@@ -59,7 +65,7 @@ public class Progress : MonoBehaviour
     public void SetProgress(int i)
     {
         progress = i;
-        for (int j = 0; j <= progress; j++)
+        for (int j = -1; j <= progress; j++)
         {
             AtualizarProgress();
             mapBoundScript.AfterProgress(progress);
@@ -77,7 +83,7 @@ public class Progress : MonoBehaviour
             {
                 switch (progress)
                 {
-                    case 0:
+                    case -1:
                         i.SetActive(true);
                         i.transform.localPosition = new Vector3(59.86f, 8.74f, 0f);
                         break;
@@ -87,7 +93,7 @@ public class Progress : MonoBehaviour
             {
                 switch (progress)
                 {
-                    case 0:
+                    case -1:
                         i.SetActive(false);
                         break;
                     case 1:
@@ -100,7 +106,7 @@ public class Progress : MonoBehaviour
             {
                 switch (progress)
                 {
-                    case 0:
+                    case -1:
                         i.gameObject.SetActive(false);
                         break;
 
@@ -113,7 +119,7 @@ public class Progress : MonoBehaviour
             {
                 switch (progress)
                 {
-                    case 0:
+                    case -1:
 
                         i.gameObject.SetActive(false);
                         break;
@@ -133,7 +139,7 @@ public class Progress : MonoBehaviour
             {
                 switch (progress)
                 {
-                    case 0:
+                    case -1:
                         i.SetActive(false);
                         i.transform.localPosition = new Vector3(88.69f, 70.33f, 0f);
                         break;
@@ -150,7 +156,7 @@ public class Progress : MonoBehaviour
                 GameObject filho = i.transform.GetChild(0).gameObject;
                 switch (progress)
                 {
-                    case 0:
+                    case -1:
                         i.SetActive(false);
                         filho.SetActive(false);
                         break;
@@ -178,7 +184,7 @@ public class Progress : MonoBehaviour
             {
                 switch (progress)
                 {
-                    case 0:
+                    case -1:
                         i.SetActive(false);
                         i.transform.localPosition = new Vector3(-14.39f, 79.39f, 0f);
                         break;
@@ -207,7 +213,7 @@ public class Progress : MonoBehaviour
             {
                 switch (progress)
                 {
-                    case 0:
+                    case -1:
                         i.SetActive(false);
                         break;
                     case 7:
@@ -222,7 +228,7 @@ public class Progress : MonoBehaviour
             {
                 switch (progress)
                 {
-                    case 0:
+                    case -1:
                         i.SetActive(false);
                         break;
 
@@ -239,7 +245,7 @@ public class Progress : MonoBehaviour
             {
                 switch (progress)
                 {
-                    case 0:
+                    case -1:
                         i.SetActive(false);
                         break;
 
@@ -249,6 +255,63 @@ public class Progress : MonoBehaviour
 
                     case 9:
                         i.SetActive(false);
+                        break;
+                }
+            }
+        }
+        foreach (Transform child in outros)
+        {
+            GameObject i = child.gameObject;
+
+            if (i.name == "Porta62")
+            {
+                switch (progress)
+                {
+                    case -1:
+                        i.SetActive(false);
+                        break;
+
+                    case 0:
+                        i.SetActive(true);
+                        break;
+                }
+            }
+            else if (i.name == "MarcadordePresencas")
+            {
+                switch (progress)
+                {
+                    case -1:
+                        i.SetActive(false);
+                        break;
+
+                    case 0:
+                        i.SetActive(true);
+                        break;
+                }
+            }
+            else if (i.name == "Janelas")
+            {
+                switch (progress)
+                {
+                    case -1:
+                        i.SetActive(false);
+                        break;
+
+                    case 0:
+                        i.SetActive(true);
+                        break;
+                }
+            }
+            else if (i.name == "Projetor")
+            {
+                switch (progress)
+                {
+                    case -1:
+                        i.SetActive(false);
+                        break;
+
+                    case 0:
+                        i.SetActive(true);
                         break;
                 }
             }
@@ -270,6 +333,16 @@ public class Progress : MonoBehaviour
             else
                 Debug.LogWarning("[Progress] InventoryController não atribuído; inventário não limpo.");
         }
+
+        if (progress == -1)
+        {
+            manchas.SetActive(false);
+        }
+        else if (progress == 13)
+        {
+            manchas.SetActive(true);
+        }
+
         if (progress == 14)
         {
             normal.Final();

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI; 
 
 public class OpenCustomUI : MonoBehaviour, IInteractable
 {
@@ -21,16 +22,17 @@ public class OpenCustomUI : MonoBehaviour, IInteractable
     {
         panel.SetActive(false);
 
-        // Persistência via SessionState
+        // Persistência e bloqueios de progresso
         if (idInteractable > 0 && SessionState.solvedInteractables.Contains(idInteractable))
             jaResolvido = true;
 
-        // Thresholds de progresso também bloqueiam antes de resolver
         var prog = FindFirstObjectByType<Progress>()?.GetProgress() ?? 0;
         if (disableAfterProgress >= 0 && prog >= disableAfterProgress)
             jaResolvido = true;
-        if (enableAfterProgress  >= 0 && prog < enableAfterProgress)
+        if (enableAfterProgress >= 0 && prog < enableAfterProgress)
             jaResolvido = true;
+
+
     }
 
     public bool CanInteract()

@@ -16,6 +16,7 @@ TagManager:
   - Mapa
   - MapBoundsRoot
   - PlayerInteraction
+  - Progress
   layers:
   - Default
   - TransparentFX

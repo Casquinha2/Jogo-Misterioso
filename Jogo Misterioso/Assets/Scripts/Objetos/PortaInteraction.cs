@@ -19,6 +19,9 @@ public class PortaInteraction : MonoBehaviour, IInteractable, ICancelableDialogu
     [Tooltip("Arrasta aqui o prefab do item que será entregue ao jogador")]
     public GameObject itemPrefab;
 
+
+    private Progress progress;
+
     // ↓ ↓ ↓ campos resolvidos em Start() via Tags ↓ ↓ ↓
     private Transform uiRoot;
     private GameObject inventoryPanel;
@@ -43,6 +46,25 @@ public class PortaInteraction : MonoBehaviour, IInteractable, ICancelableDialogu
 
     void Start()
     {
+
+                // 1. Encontre o GameObject pela tag
+        var progressGO = GameObject.FindGameObjectWithTag("Progress");
+
+        if (progressGO != null)
+        {
+            // 2. Puxe diretamente o componente Progress
+            progress = progressGO.GetComponent<Progress>();
+
+            if (progress == null)
+                Debug.LogError("[SeuScript] Componente Progress não encontrado em " + progressGO.name);
+        }
+        else
+        {
+            Debug.LogError("[SeuScript] GameObject com tag 'Progress' não encontrado!");
+        }
+
+
+
         if (itemPrefab == null)
         {
             Debug.LogError("❌ itemPrefab não atribuído em PortaInteraction! Desligando script...", this);
@@ -302,6 +324,8 @@ public class PortaInteraction : MonoBehaviour, IInteractable, ICancelableDialogu
             foreach (var tr in uiRoot.GetComponentsInChildren<Transform>(true))
                 if (tr.CompareTag("DialoguePanel"))
                     Destroy(tr.gameObject);
+
+            progress.AddProgress();
 
             // inicia o processo de loading + reposição + troca de cena
             StartCoroutine(DoTransitionToPiso1());
