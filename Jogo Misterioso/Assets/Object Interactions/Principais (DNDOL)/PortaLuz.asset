@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: PortaLuz
   dialogueLines:
-  - '*Vez que a frente da porta tem um disjuntor de luz*'
+  - '*Vez que a frente da porta tem um quadro de luz*'
   - Era exatamente aqui que o Serginho disse onde estavam as luzes...
   - Deixa ir apagar rapidamente.
   typingSpeed: 0.05

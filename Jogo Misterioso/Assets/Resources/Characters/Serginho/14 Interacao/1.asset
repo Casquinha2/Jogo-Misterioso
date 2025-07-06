@@ -16,6 +16,7 @@ MonoBehaviour:
   npcPortrait: {fileID: 2769756059955125311, guid: 36831a08130afa141bdfa467bc0410a6, type: 3}
   dialogueLines:
   - Vai apagar a luz enquanto eu vou buscar a estatua
+  - O quadro geral da universidade esta situado na porta esquerda na entrada
   - E depois venha aqui ter
   typingSpeed: 0.05
   autoProgressLines: 0101
