@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: e367ae530c2230f42a8cef19679c5d08
+guid: 98103a88a2fb3474cbfcd2f86637526d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -712437659881680884
-    second: dieito_0
+      213: -2059109787656944884
+    second: bibliotecapedro_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: dieito_0
+      name: bibliotecapedro_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1100
-        height: 500
+        width: 1920
+        height: 1080
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c00542619b9ec16f0800000000000000
-      internalID: -712437659881680884
+      spriteID: c038d29ce829c63e0800000000000000
+      internalID: -2059109787656944884
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      dieito_0: -712437659881680884
+      bibliotecapedro_0: -2059109787656944884
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

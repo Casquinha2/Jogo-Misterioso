@@ -294,6 +294,21 @@ public class Progress : MonoBehaviour
                         break;
                 }
             }
+            else if (i.name == "Estatua")
+            {
+                switch (progress)
+                {
+                    case -1:
+                        i.SetActive(false);
+                        break;
+                    case 15:
+                        i.SetActive(true);
+                        break;
+                    case 16:
+                        i.SetActive(false);
+                        break;
+                }
+            }
         }
         foreach (Transform child in outros)
         {
