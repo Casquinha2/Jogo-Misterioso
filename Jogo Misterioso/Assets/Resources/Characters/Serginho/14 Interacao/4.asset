@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 43841994882913c4d9bc9c84bd9e2a40, type: 3}
-  m_Name: 1
+  m_Name: 4
   m_EditorClassIdentifier: 
   npcName: Serginho
   npcPortrait: {fileID: 2769756059955125311, guid: 36831a08130afa141bdfa467bc0410a6, type: 3}
   dialogueLines:
-  - "J\xE1 vi que conseguiu mandar a luz abaixo caloira."
-  - "\xD3timo trabalho."
-  - "Aqui tem a est\xE1tua e boa sorte a devolv\xEA-la."
+  - "Uau, n\xE3o esperava isto de tudo."
+  - "Ent\xE3o assim sendo..."
+  - "A caloira acha que me consegue ajudar a devolver a est\xE1tua?"
   typingSpeed: 0.05
   autoProgressLines: 010101
   autoProgressDelay: 1.5

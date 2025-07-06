@@ -12,13 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43841994882913c4d9bc9c84bd9e2a40, type: 3}
   m_Name: 1
   m_EditorClassIdentifier: 
-  npcName: Serginho
-  npcPortrait: {fileID: 2769756059955125311, guid: 36831a08130afa141bdfa467bc0410a6, type: 3}
+  npcName: Engenheiro Martim
+  npcPortrait: {fileID: 0}
   dialogueLines:
-  - "J\xE1 vi que conseguiu mandar a luz abaixo caloira."
-  - "\xD3timo trabalho."
-  - "Aqui tem a est\xE1tua e boa sorte a devolv\xEA-la."
+  - "Caloira, desculpe repreend\xEA-la."
+  - "Mas sabe que n\xE3o pode andar com uma capa."
+  - "Tal como a regra diz, caloiro n\xE3o toca no preto."
+  - "E a capa do traje \xE9 preto, n\xE3o pensei que fosse preciso repetir isto."
   typingSpeed: 0.05
-  autoProgressLines: 010101
+  autoProgressLines: 01010101
   autoProgressDelay: 1.5
   adicionarProgresso: 0

@@ -10,15 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 43841994882913c4d9bc9c84bd9e2a40, type: 3}
-  m_Name: 1
+  m_Name: 3
   m_EditorClassIdentifier: 
-  npcName: Serginho
-  npcPortrait: {fileID: 2769756059955125311, guid: 36831a08130afa141bdfa467bc0410a6, type: 3}
+  npcName: Moon
+  npcPortrait: {fileID: 6236947385317395335, guid: 1cd77f180d2095c4ebf5180eef1252f2, type: 3}
   dialogueLines:
-  - "J\xE1 vi que conseguiu mandar a luz abaixo caloira."
-  - "\xD3timo trabalho."
-  - "Aqui tem a est\xE1tua e boa sorte a devolv\xEA-la."
+  - "At\xE9 pode ser."
+  - "Mas \xE9 o meu Diretor de Curso e eu sei que n\xE3o fez por mal!"
   typingSpeed: 0.05
-  autoProgressLines: 010101
+  autoProgressLines: 0101
   autoProgressDelay: 1.5
   adicionarProgresso: 0
