@@ -41,10 +41,4 @@ public class Normal : MonoBehaviour
         fim.gameObject.SetActive(false);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
-
-
-    public void Continuar()
-    {
-        PauseController.SetPause(false);
-    }
 }

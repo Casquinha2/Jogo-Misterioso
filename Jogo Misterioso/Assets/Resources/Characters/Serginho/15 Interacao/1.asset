@@ -10,19 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 43841994882913c4d9bc9c84bd9e2a40, type: 3}
-  m_Name: 16
+  m_Name: 1
   m_EditorClassIdentifier: 
   npcName: Serginho
   npcPortrait: {fileID: 2769756059955125311, guid: 36831a08130afa141bdfa467bc0410a6, type: 3}
   dialogueLines:
-  - Depois eu queria mostrar as minhas tintas aos engenheiros.
-  - "Acabei por deix\xE1-las cair em cima da est\xE1tua do Cam\xF5es."
-  - "Ent\xE3o a minha primeira rea\xE7\xE3o foi evacuar o lugar com a est\xE1tua."
-  - "Por isso peguei na est\xE1tua e escondia.."
-  - "E agora fui apanhado aqui, onde estava a acabar de limpar a est\xE1tua para
-    a devolver."
-  - "Eu n\xE3o fiz nada por m\xE1 inten\xE7\xE3o caloira..."
+  - Tome a estatua e va meter no lugar
   typingSpeed: 0.05
-  autoProgressLines: 010101010101
-  autoProgressDelay: 1.5
+  autoProgressLines: 01
+  autoProgressDelay: 1
   adicionarProgresso: 0

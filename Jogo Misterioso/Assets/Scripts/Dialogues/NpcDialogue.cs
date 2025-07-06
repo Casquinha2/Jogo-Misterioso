@@ -371,5 +371,7 @@ public class NpcDialogue : MonoBehaviour, IInteractable, ICancelableDialogue
         {
             progress.AddProgress();
         }
+
+        adicionarProgresso = false;
     }
 }

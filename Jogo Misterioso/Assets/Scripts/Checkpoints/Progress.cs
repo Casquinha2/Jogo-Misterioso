@@ -1,3 +1,4 @@
+using UnityEditor.Animations;
 using UnityEngine;
 
 
@@ -19,11 +20,17 @@ public class Progress : MonoBehaviour
     [Header("Outros")]
     public Transform outros;
 
+    [Header("Bondoso GameObject")]
+    [SerializeField] private Transform bondoso;
+
     [Header("Manchas de tinta")]
     [SerializeField] private GameObject manchas;
 
-    [Header("Final normal")]
+    [Header("Final Normal")]
     [SerializeField] private Normal normal;
+
+    [Header("Final Bondoso")]
+    [SerializeField] private Bondoso bondosoScript;
 
     private int progress;
     private MapBoundActivate mapBoundScript;
@@ -258,6 +265,36 @@ public class Progress : MonoBehaviour
                         break;
                 }
             }
+            else if (i.name == "PortaApagarLuz")
+            {
+                switch (progress)
+                {
+                    case -1:
+                        i.SetActive(false);
+                        break;
+                    case 14:
+                        i.SetActive(true);
+                        break;
+                    case 15:
+                        i.SetActive(false);
+                        break;
+                }
+            }
+            else if (i.name == "Mural")
+            {
+                switch (progress)
+                {
+                    case -1:
+                        i.SetActive(false);
+                        break;
+                    case 0:
+                        i.SetActive(true);
+                        break;
+                    case 16:
+                        i.SetActive(false);
+                        break;
+                }
+            }
         }
         foreach (Transform child in outros)
         {
@@ -326,7 +363,7 @@ public class Progress : MonoBehaviour
             perseguicao.SetActive(false);
         }
 
-        if (progress == 4 || progress == 12)
+        if (progress == 4 || progress == 12 || progress == 17)
         {
             if (inventoryController != null)
                 inventoryController.ClearInventory();
@@ -346,6 +383,28 @@ public class Progress : MonoBehaviour
         if (progress == 14)
         {
             normal.Final();
+        }
+
+        if (progress == 15)
+        {
+            bondosoScript.DesligarLuz();
+        }
+        if (progress == 16)
+        {
+            bondosoScript.AddEstatua();
+            foreach (Transform child in bondoso)
+            {
+                GameObject i = child.gameObject;
+                if (i.name == "MuralFim")
+                {
+                    i.SetActive(true);
+                }    
+            }
+        }
+        if (progress == 17)
+        {
+            bondosoScript.LigarLuz();
+            bondosoScript.Final();
         }
     }
 
