@@ -15,7 +15,7 @@ MonoBehaviour:
   npcName: Serginho
   npcPortrait: {fileID: 2769756059955125311, guid: 36831a08130afa141bdfa467bc0410a6, type: 3}
   dialogueLines:
-  - ' Caloira?...'
+  - Caloira?...
   - "Mas o que eu fiz \xE9 impens\xE1vel!"
   typingSpeed: 0.05
   autoProgressLines: 0101

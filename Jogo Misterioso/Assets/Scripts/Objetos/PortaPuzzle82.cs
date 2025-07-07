@@ -19,7 +19,7 @@ public class PsicologiaPuzzle : MonoBehaviour
     private Progress progress;
     private CinemachineCamera virtualCamera;
     private int progressao = 0;
-    private bool jaResolvido;
+    private int i = 0;
 
     void Awake()
     {
@@ -29,11 +29,7 @@ public class PsicologiaPuzzle : MonoBehaviour
 
         if (openUI == null)
             Debug.LogWarning("[PsicologiaPuzzle] Referência 'openUI' não atribuída no Inspector.");
-    }
-
-    void Start()
-    {
-        // Pega a câmera virtual, se houver
+        
         var cam = GameObject.FindGameObjectWithTag("CmCamera");
         if (cam != null)
             virtualCamera = cam.GetComponent<CinemachineCamera>();
@@ -42,21 +38,30 @@ public class PsicologiaPuzzle : MonoBehaviour
         if (!string.IsNullOrEmpty(puzzleID) &&
             SessionState.solvedPuzzles.Contains(puzzleID))
         {
-            jaResolvido = true;
-            panel.SetActive(false);
+            DisableInteraction();
         }
-        else
+    }
+
+    void Start()
+    {
+        if (panel == null)
         {
-            // Garante que o painel comece fechado
-            panel.SetActive(false);
+            Debug.LogError("[Porta62Codes] 'panel' não foi atribuído no Inspector!");
+            enabled = false;
+            return;
         }
+        panel.SetActive(false);
+        ResetarTudo();
+    }
+
+    void OnEnable()
+    {
+        // Garante que, sempre que o script for habilitado, os dígitos voltem a zero
+        ResetarTudo();
     }
 
     public void check(TMP_Text letra)
     {
-        if (jaResolvido) 
-            return;
-
         switch (progressao)
         {
             case 0: if (letra.text == "D") Next(letra); else ResetarTudo(); break;
@@ -79,26 +84,36 @@ public class PsicologiaPuzzle : MonoBehaviour
     private void Next(TMP_Text letra)
     {
         progressao++;
-        letra.color = new Color32(0, 255, 0, 255);
+        if (letra.text == "I" && i == 0)
+        {
+            letra.color = new Color32(100, 225, 100, 255);
+            i++;
+        }
+        else
+        {
+            letra.color = new Color32(0, 255, 0, 255);
+        }
+        
     }
 
     private void ResetarTudo()
     {
         progressao = 0;
+        i = 0;
         foreach (var lt in letras)
             lt.color = Color.white;
     }
 
     private void Correto()
-    {
+    {   
         panel.SetActive(false);
-        jaResolvido = true;
 
         if (!string.IsNullOrEmpty(puzzleID))
-            SessionState.solvedPuzzles.Add(puzzleID);
-
-        if (openUI != null)
-            openUI.MarkAsSolved();
+            {
+                SessionState.solvedPuzzles.Add(puzzleID);
+                openUI?.MarkAsSolved();
+                DisableInteraction();
+            }
 
         var player = GameObject.FindWithTag("Player");
         if (player != null)
@@ -122,5 +137,11 @@ public class PsicologiaPuzzle : MonoBehaviour
         }
 
         progress.AddProgress();
+    }
+    
+    private void DisableInteraction()
+    {
+        // desativa apenas este script, mantém collider ativo
+        enabled = false;
     }
 }

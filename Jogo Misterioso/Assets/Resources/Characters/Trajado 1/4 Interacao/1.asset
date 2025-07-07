@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 1
   m_EditorClassIdentifier: 
   npcName: Engenheiro Martim
-  npcPortrait: {fileID: 0}
+  npcPortrait: {fileID: -5918620113213984875, guid: 996ee12baf584c24d824cf649afc7e69, type: 3}
   dialogueLines:
   - "Caloira, desculpe repreend\xEA-la."
   - "Mas sabe que n\xE3o pode andar com uma capa."

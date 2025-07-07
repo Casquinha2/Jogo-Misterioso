@@ -86,7 +86,7 @@ public class ObjDialogue : MonoBehaviour, IInteractable, ICancelableDialogue
         foreach (Transform slotT in inventoryPanel.transform)
         {
             var slot = slotT.GetComponent<Slot>();
-            if (slot?.currentItem == null) continue;
+            if (slot.currentItem == null) continue;
 
             var invItem = slot.currentItem.GetComponent<Item>();
             if (invItem != null && invItem.ID == item.GetComponent<Item>().ID)

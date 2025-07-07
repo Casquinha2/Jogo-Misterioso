@@ -499,7 +499,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 251176563}
+        - m_Target: {fileID: 171766279}
           m_TargetAssemblyTypeName: PsicologiaPuzzle, Assembly-CSharp
           m_MethodName: check
           m_Mode: 2
@@ -605,7 +605,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 251176563}
+        - m_Target: {fileID: 171766279}
           m_TargetAssemblyTypeName: PsicologiaPuzzle, Assembly-CSharp
           m_MethodName: check
           m_Mode: 2
@@ -1913,7 +1913,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 251176563}
+        - m_Target: {fileID: 171766279}
           m_TargetAssemblyTypeName: PsicologiaPuzzle, Assembly-CSharp
           m_MethodName: check
           m_Mode: 2
@@ -2140,7 +2140,7 @@ Transform:
   m_GameObject: {fileID: 120488321}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -160.99, y: 50.06, z: -10}
+  m_LocalPosition: {x: 97.2, y: 69.67, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2222,7 +2222,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 251176563}
+        - m_Target: {fileID: 171766279}
           m_TargetAssemblyTypeName: PsicologiaPuzzle, Assembly-CSharp
           m_MethodName: check
           m_Mode: 2
@@ -3488,6 +3488,7 @@ GameObject:
   - component: {fileID: 171766276}
   - component: {fileID: 171766278}
   - component: {fileID: 171766277}
+  - component: {fileID: 171766279}
   m_Layer: 0
   m_Name: Porta82
   m_TagString: Untagged
@@ -3578,6 +3579,48 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 171766275}
   m_CullTransparentMesh: 1
+--- !u!114 &171766279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 171766275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e3cb13fcc27da14baba4c57607b9615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  puzzleID: 2
+  letras:
+  - {fileID: 417229288}
+  - {fileID: 1269355737}
+  - {fileID: 84123402}
+  - {fileID: 1984915006}
+  - {fileID: 1831719057}
+  - {fileID: 1455598101}
+  - {fileID: 1614462710}
+  - {fileID: 2024978468}
+  - {fileID: 180164231}
+  - {fileID: 855915088}
+  - {fileID: 347966254}
+  - {fileID: 651971524}
+  - {fileID: 789856137}
+  - {fileID: 1150232125}
+  - {fileID: 1547242295}
+  - {fileID: 464263462}
+  - {fileID: 726255023}
+  - {fileID: 710113015}
+  - {fileID: 319580507}
+  - {fileID: 1939102502}
+  - {fileID: 1911783043}
+  - {fileID: 337992555}
+  - {fileID: 1309826345}
+  - {fileID: 158304395}
+  - {fileID: 284393548}
+  - {fileID: 1096762598}
+  panel: {fileID: 171766275}
+  openUI: {fileID: 251176564}
 --- !u!1 &174454233
 GameObject:
   m_ObjectHideFlags: 0
@@ -4351,14 +4394,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   npcDialoguePanelPrefab: {fileID: 5968444231653881824, guid: bb7d2de5b00a2134e82e729237ee5d10, type: 3}
-  npcDialogueSequence:
-  - {fileID: 11400000, guid: 3db42e2a9ad0c52428cb38f90d47c89f, type: 2}
-  - {fileID: 11400000, guid: e5ef9a58d8754f94f935213e6110bf08, type: 2}
-  - {fileID: 11400000, guid: d2835483c9d77824391ca1fd91a68a88, type: 2}
-  - {fileID: 11400000, guid: f150f090e553e6b4da6671b6b50d4aec, type: 2}
-  - {fileID: 11400000, guid: 081beb9514d8c2547857dfba38688d5a, type: 2}
-  - {fileID: 11400000, guid: 4ca16e9b6416ee9498454b8b838b955b, type: 2}
-  - {fileID: 11400000, guid: 6d8439c094e0c78419f902cb41e6f2fd, type: 2}
+  npcDialogueSequence: []
   itemPrefab: {fileID: 0}
   itemAction: 0
   manyInteractions: 1
@@ -4851,7 +4887,7 @@ Transform:
   m_GameObject: {fileID: 211180329}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -160.99, y: 50.06, z: 0}
+  m_LocalPosition: {x: 97.2, y: 69.67, z: 0}
   m_LocalScale: {x: 0.6301246, y: 0.6301246, z: 0.6301246}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5941,7 +5977,6 @@ GameObject:
   - component: {fileID: 251176566}
   - component: {fileID: 251176564}
   - component: {fileID: 251176565}
-  - component: {fileID: 251176563}
   m_Layer: 0
   m_Name: Porta82
   m_TagString: Untagged
@@ -5949,48 +5984,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &251176563
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 251176562}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e3cb13fcc27da14baba4c57607b9615, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  puzzleID: 2
-  letras:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  panel: {fileID: 171766275}
-  openUI: {fileID: 251176564}
 --- !u!114 &251176564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6005,7 +5998,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   idInteractable: 2
   disableAfterProgress: 6
-  enableAfterProgress: 0
+  enableAfterProgress: -1
   panel: {fileID: 171766275}
   qr: {fileID: 0}
   qrRevealScript: {fileID: 0}
@@ -10581,7 +10574,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 251176563}
+        - m_Target: {fileID: 171766279}
           m_TargetAssemblyTypeName: PsicologiaPuzzle, Assembly-CSharp
           m_MethodName: check
           m_Mode: 2
@@ -10981,7 +10974,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 251176563}
+        - m_Target: {fileID: 171766279}
           m_TargetAssemblyTypeName: PsicologiaPuzzle, Assembly-CSharp
           m_MethodName: check
           m_Mode: 2
@@ -12245,7 +12238,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.318634, y: 1.4272614, z: -10}
+  m_LocalPosition: {x: 1.2907574, y: 1.4280586, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -17394,8 +17387,8 @@ Transform:
   m_GameObject: {fileID: 698364338}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 143.0249, y: 15.4672, z: 0}
-  m_LocalScale: {x: 1.1497798, y: 1.0823702, z: 1}
+  m_LocalPosition: {x: 143.0249, y: 15.4199, z: 0}
+  m_LocalScale: {x: 1.1497798, y: 1.1769693, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1159574439}
@@ -17877,7 +17870,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 251176563}
+        - m_Target: {fileID: 171766279}
           m_TargetAssemblyTypeName: PsicologiaPuzzle, Assembly-CSharp
           m_MethodName: check
           m_Mode: 2
@@ -18311,7 +18304,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 251176563}
+        - m_Target: {fileID: 171766279}
           m_TargetAssemblyTypeName: PsicologiaPuzzle, Assembly-CSharp
           m_MethodName: check
           m_Mode: 2
@@ -18834,7 +18827,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 251176563}
+        - m_Target: {fileID: 171766279}
           m_TargetAssemblyTypeName: PsicologiaPuzzle, Assembly-CSharp
           m_MethodName: check
           m_Mode: 2
@@ -21233,7 +21226,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 251176563}
+        - m_Target: {fileID: 171766279}
           m_TargetAssemblyTypeName: PsicologiaPuzzle, Assembly-CSharp
           m_MethodName: check
           m_Mode: 2
@@ -22621,7 +22614,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 251176563}
+        - m_Target: {fileID: 171766279}
           m_TargetAssemblyTypeName: PsicologiaPuzzle, Assembly-CSharp
           m_MethodName: check
           m_Mode: 2
@@ -23655,7 +23648,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 251176563}
+        - m_Target: {fileID: 171766279}
           m_TargetAssemblyTypeName: PsicologiaPuzzle, Assembly-CSharp
           m_MethodName: check
           m_Mode: 2
@@ -23761,7 +23754,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 251176563}
+        - m_Target: {fileID: 171766279}
           m_TargetAssemblyTypeName: PsicologiaPuzzle, Assembly-CSharp
           m_MethodName: check
           m_Mode: 2
@@ -24876,7 +24869,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 251176563}
+        - m_Target: {fileID: 171766279}
           m_TargetAssemblyTypeName: PsicologiaPuzzle, Assembly-CSharp
           m_MethodName: check
           m_Mode: 2
@@ -26042,7 +26035,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 251176563}
+        - m_Target: {fileID: 171766279}
           m_TargetAssemblyTypeName: PsicologiaPuzzle, Assembly-CSharp
           m_MethodName: check
           m_Mode: 2
@@ -27289,7 +27282,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 251176563}
+        - m_Target: {fileID: 171766279}
           m_TargetAssemblyTypeName: PsicologiaPuzzle, Assembly-CSharp
           m_MethodName: check
           m_Mode: 2
@@ -28605,7 +28598,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 251176563}
+        - m_Target: {fileID: 171766279}
           m_TargetAssemblyTypeName: PsicologiaPuzzle, Assembly-CSharp
           m_MethodName: check
           m_Mode: 2
@@ -32192,7 +32185,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 251176563}
+        - m_Target: {fileID: 171766279}
           m_TargetAssemblyTypeName: PsicologiaPuzzle, Assembly-CSharp
           m_MethodName: check
           m_Mode: 2
@@ -33314,7 +33307,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 251176563}
+        - m_Target: {fileID: 171766279}
           m_TargetAssemblyTypeName: PsicologiaPuzzle, Assembly-CSharp
           m_MethodName: check
           m_Mode: 2
@@ -35541,7 +35534,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 251176563}
+        - m_Target: {fileID: 171766279}
           m_TargetAssemblyTypeName: PsicologiaPuzzle, Assembly-CSharp
           m_MethodName: check
           m_Mode: 2
@@ -39075,7 +39068,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 251176563}
+        - m_Target: {fileID: 171766279}
           m_TargetAssemblyTypeName: PsicologiaPuzzle, Assembly-CSharp
           m_MethodName: check
           m_Mode: 2
@@ -41594,6 +41587,7 @@ MonoBehaviour:
   - {fileID: 346904799447055933, guid: 42e35580ae03e6d44834f01f9f9273d4, type: 3}
   - {fileID: 1271407313301645759, guid: 329399bfa659ad44bb03ad75299c1561, type: 3}
   - {fileID: 3916728836493421532, guid: 37eef78000562054ab6fc3f1f2989fbc, type: 3}
+  - {fileID: 5751395683090124959, guid: b12f44692ab65d54ea6efa64248b655d, type: 3}
 --- !u!114 &1872527776
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42393,7 +42387,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 251176563}
+        - m_Target: {fileID: 171766279}
           m_TargetAssemblyTypeName: PsicologiaPuzzle, Assembly-CSharp
           m_MethodName: check
           m_Mode: 2
@@ -44524,7 +44518,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 251176563}
+        - m_Target: {fileID: 171766279}
           m_TargetAssemblyTypeName: PsicologiaPuzzle, Assembly-CSharp
           m_MethodName: check
           m_Mode: 2
@@ -45431,7 +45425,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 251176563}
+        - m_Target: {fileID: 171766279}
           m_TargetAssemblyTypeName: PsicologiaPuzzle, Assembly-CSharp
           m_MethodName: check
           m_Mode: 2
@@ -45725,9 +45719,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d692f06f422fd5c4087f2beae422dcd7, type: 2}
   itemPrefab: {fileID: 0}
   itemAction: 0
-  manyInteractions: 0
+  manyInteractions: 1
   moonTalks: 0
-  progress: {fileID: 0}
+  progress: {fileID: 254046946}
 --- !u!212 &2049236529
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -45769,8 +45763,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1807754811
+  m_SortingLayer: -4
   m_SortingOrder: 0
   m_Sprite: {fileID: 3995186333185375701, guid: 8a10372fb3465bd4ab053af368360594, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -46373,7 +46367,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 251176563}
+        - m_Target: {fileID: 171766279}
           m_TargetAssemblyTypeName: PsicologiaPuzzle, Assembly-CSharp
           m_MethodName: check
           m_Mode: 2
@@ -46727,7 +46721,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 251176563}
+        - m_Target: {fileID: 171766279}
           m_TargetAssemblyTypeName: PsicologiaPuzzle, Assembly-CSharp
           m_MethodName: check
           m_Mode: 2

@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.UI; 
+using UnityEngine.UI;
 
 public class OpenCustomUI : MonoBehaviour, IInteractable
 {
@@ -20,49 +20,76 @@ public class OpenCustomUI : MonoBehaviour, IInteractable
 
     void Start()
     {
+        Debug.Log($"[OpenCustomUI{idInteractable}] Start called");
         panel.SetActive(false);
 
-        // Persistência e bloqueios de progresso
-        if (idInteractable > 0 && SessionState.solvedInteractables.Contains(idInteractable))
-            jaResolvido = true;
-
+        // Log de valores iniciais
         var prog = FindFirstObjectByType<Progress>()?.GetProgress() ?? 0;
+        Debug.Log($"[OpenCustomUI{idInteractable}] Valores iniciais: prog={prog}, disableAfterProgress={disableAfterProgress}, enableAfterProgress={enableAfterProgress}");
+        Debug.Log($"[OpenCustomUI{idInteractable}] Solved IDs: {string.Join(",", SessionState.solvedInteractables)}");
+
+        // Persistência
+        if (idInteractable > 0 && SessionState.solvedInteractables.Contains(idInteractable))
+        {
+            jaResolvido = true;
+            Debug.Log($"[OpenCustomUI{idInteractable}] Desativado por persistência (ID encontrado)");
+        }
+
+        // Desativação por progresso alcançado
         if (disableAfterProgress >= 0 && prog >= disableAfterProgress)
+        {
             jaResolvido = true;
+            Debug.Log($"[OpenCustomUI{idInteractable}] Desativado: prog {prog} >= disableAfterProgress {disableAfterProgress}");
+        }
+
+        // Ativação após progresso mínimo
         if (enableAfterProgress >= 0 && prog < enableAfterProgress)
+        {
             jaResolvido = true;
+            Debug.Log($"[OpenCustomUI{idInteractable}] Ainda não ativado: prog {prog} < enableAfterProgress {enableAfterProgress}");
+        }
 
-
+        Debug.Log($"[OpenCustomUI{idInteractable}] Estado inicial jaResolvido={jaResolvido}");
     }
 
     public bool CanInteract()
     {
-        // só interage enquanto não estiver “resolvido” e sem UI aberta
-        return !jaResolvido && !panel.activeSelf;
+        bool can = !jaResolvido && !panel.activeSelf;
+        Debug.Log($"[OpenCustomUI{idInteractable}] CanInteract() => jaResolvido={jaResolvido}, panelActive={panel.activeSelf} => {can}");
+        return can;
     }
 
     public void Interact()
     {
-        // não faz nada se já resolvido ou se o painel já estiver aberto
-        if (jaResolvido || panel.activeSelf)
-            return;
+        Debug.Log($"[OpenCustomUI{idInteractable}] Interact() called");
 
-        // abre a UI — mas NÃO marca resolvido aqui!
+        if (jaResolvido)
+        {
+            Debug.Log($"[OpenCustomUI{idInteractable}] Interação ignorada: já resolvido");
+            return;
+        }
+        if (panel.activeSelf)
+        {
+            Debug.Log($"[OpenCustomUI{idInteractable}] Interação ignorada: painel já aberto");
+            return;
+        }
+
         panel.SetActive(true);
+        Debug.Log($"[OpenCustomUI{idInteractable}] Painel aberto");
     }
 
     void OnTriggerExit2D(Collider2D other)
     {
         if (!other.CompareTag("PlayerInteraction")) return;
 
-        // fecha sempre ao sair da área
+        Debug.Log($"[OpenCustomUI{idInteractable}] OnTriggerExit2D: fechando painel/resetando QR");
         panel.SetActive(false);
 
-        // reseta o QR, se houver
         if (qr != null)
         {
             qrRevealScript.totalClicks = 0;
             qr.SetActive(true);
+            Debug.Log($"[OpenCustomUI{idInteractable}] QR reiniciado");
         }
     }
 
@@ -71,14 +98,21 @@ public class OpenCustomUI : MonoBehaviour, IInteractable
     /// </summary>
     public void MarkAsSolved()
     {
-        if (jaResolvido) 
+        Debug.Log($"[OpenCustomUI{idInteractable}] MarkAsSolved() called");
+        if (jaResolvido)
+        {
+            Debug.Log($"[OpenCustomUI{idInteractable}] MarkAsSolved ignorado: já marcado");
             return;
+        }
 
         jaResolvido = true;
         panel.SetActive(false);
+        Debug.Log($"[OpenCustomUI{idInteractable}] Puzzle marcado como resolvido e painel fechado");
 
-        // Se quisermos persistência, armazenamos o ID
         if (idInteractable > 0)
+        {
             SessionState.solvedInteractables.Add(idInteractable);
+            Debug.Log($"[OpenCustomUI{idInteractable}] Persistência: ID {idInteractable} adicionado");
+        }
     }
 }

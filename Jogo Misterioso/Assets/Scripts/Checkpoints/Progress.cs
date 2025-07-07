@@ -193,6 +193,7 @@ public class Progress : MonoBehaviour
                     case -1:
                         i.SetActive(false);
                         i.transform.localPosition = new Vector3(-14.39f, 79.39f, 0f);
+                        i.transform.localScale = new Vector3(0.5123f, 0.5123f, 0.5123f);
                         break;
 
                     case 2:
@@ -206,6 +207,7 @@ public class Progress : MonoBehaviour
                     case 10:
                         i.SetActive(true);
                         i.transform.localPosition = new Vector3(131.61f, -142.43f, 0f);
+                        i.transform.localScale = new Vector3(0.5123f, 0.5123f, 0.5123f);
                         break;
 
                     case 11:
@@ -222,7 +224,7 @@ public class Progress : MonoBehaviour
                     case -1:
                         i.SetActive(false);
                         break;
-                    case 7:
+                    case 7: 
                         i.SetActive(true);
                         break;
                     case 8:

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43841994882913c4d9bc9c84bd9e2a40, type: 3}
   m_Name: 1
   m_EditorClassIdentifier: 
-  npcName: Trajado
+  npcName: Engenheiro Martim
   npcPortrait: {fileID: -5918620113213984875, guid: 996ee12baf584c24d824cf649afc7e69, type: 3}
   dialogueLines:
   - Uma caloira com uma capa?

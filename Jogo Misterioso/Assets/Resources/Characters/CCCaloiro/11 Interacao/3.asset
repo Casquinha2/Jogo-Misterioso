@@ -15,7 +15,7 @@ MonoBehaviour:
   npcName: Caloiro
   npcPortrait: {fileID: 2822355598257744681, guid: 3e8ca083571ffdb499382d0567ab0fd7, type: 3}
   dialogueLines:
-  - "\xD3timo"
+  - "\xD3timo!"
   - Aquele maldito vai se arrepender de me ter punido.
   - HAHAHAHAHAHAHA!
   typingSpeed: 0.05
