@@ -20,7 +20,9 @@ MonoBehaviour:
   - "Para detetive, fazes perguntas cuja resposta \xE9 muito \xF3bvia."
   - Mas ei, ouvi dizer que direito gosta de fazer umas travessuras pela universidade.
   - "Talvez eles tenham alguma rela\xE7\xE3o com o desaparecimento da est\xE1tua."
+  - "Dirige-te at\xE9 \xE0 sala 24 na zona de direito, esta sala \xE9 o ponto de
+    encontro da praxe deles."
   typingSpeed: 0.05
-  autoProgressLines: 0101010101
-  autoProgressDelay: 1.3
+  autoProgressLines: 010101010101
+  autoProgressDelay: 1.2
   adicionarProgresso: 0

@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 43841994882913c4d9bc9c84bd9e2a40, type: 3}
-  m_Name: 11
+  m_Name: 2
   m_EditorClassIdentifier: 
-  npcName: CCCaloiro
-  npcPortrait: {fileID: 0}
+  npcName: Serginho
+  npcPortrait: {fileID: 2769756059955125311, guid: 36831a08130afa141bdfa467bc0410a6, type: 3}
   dialogueLines:
-  - "Ent\xE3o gostava que fosses ao bar roubar a capa do trajado que me puniu."
-  - "E depois trouxesses at\xE9 mim a capa."
+  - Caloira?...
+  - "Mas o que eu fiz \xE9 impens\xE1vel!"
   typingSpeed: 0.05
   autoProgressLines: 0101
-  autoProgressDelay: 1.2
+  autoProgressDelay: 1.5
   adicionarProgresso: 0

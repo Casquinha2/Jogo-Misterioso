@@ -15,9 +15,9 @@ MonoBehaviour:
   npcName: 
   npcPortrait: {fileID: 5364273658523971450, guid: a2f2fc11c0d31324aad396070a8f9d50, type: 3}
   dialogueLines:
-  - '*Ele parece estar muito sentido com o roubo*'
-  - '*Talvez fique a repetir esta perguntar durante horas*'
-  - "*Tu afastas-te lentamente para n\xE3o teres nada haver com o assunto*"
+  - '*Ele parece estar muito sentido com o roubo.*'
+  - '*Talvez fique a repetir esta perguntar durante horas.*'
+  - "*Tu afastas-te lentamente para n\xE3o teres nada haver com o assunto.*"
   typingSpeed: 0.05
   autoProgressLines: 010101
   autoProgressDelay: 1.5

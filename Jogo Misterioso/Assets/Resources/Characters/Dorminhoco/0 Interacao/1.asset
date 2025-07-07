@@ -15,7 +15,8 @@ MonoBehaviour:
   npcName: Aluno Dorminhoco
   npcPortrait: {fileID: 4494830624452073118, guid: 6e7e08d8566ca9c4181b394ebe63ae7f, type: 3}
   dialogueLines:
-  - ZZZZZZZZZZZ
+  - ZZZZZZZZZZZ...
   typingSpeed: 0.05
   autoProgressLines: 01
   autoProgressDelay: 1
+  adicionarProgresso: 0

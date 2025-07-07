@@ -21,9 +21,10 @@ MonoBehaviour:
   - Mas agora que falas nisso...
   - Lembro-me de ter visto uma capa perto do mural.
   - "Por isso, deve ter sido algu\xE9m da praxe."
+  - Tenta ir a ala de engenharia falar com o Pato Guilherme. Ele deve saber de algo!
   - "Mas isto \xE9 tudo o que sei."
   - Espero ter ajudado!
   typingSpeed: 0.05
-  autoProgressLines: 0101010101010101
+  autoProgressLines: 010101010101010101
   autoProgressDelay: 1.5
   adicionarProgresso: 0

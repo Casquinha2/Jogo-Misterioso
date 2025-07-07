@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 43841994882913c4d9bc9c84bd9e2a40, type: 3}
-  m_Name: 15
+  m_Name: 1
   m_EditorClassIdentifier: 
-  npcName: CCCaloiro
-  npcPortrait: {fileID: 0}
+  npcName: Engenheiro Martim
+  npcPortrait: {fileID: -5918620113213984875, guid: 996ee12baf584c24d824cf649afc7e69, type: 3}
   dialogueLines:
-  - "Sim sim, mas tu queres a minha informa\xE7\xE3o ou n\xE3o?"
-  - "Porque se quiseres, esta \xE9 a \xFAnica maneira."
-  - "E olha, cuidado para n\xE3o seres apanhada com a capa."
-  - Isso iria dar cabo do plano por completo.
+  - "Caloira, desculpe repreend\xEA-la."
+  - "Mas sabe que n\xE3o pode andar com uma capa."
+  - "Tal como a regra diz, caloiro n\xE3o toca no preto."
+  - "E a capa do traje \xE9 preto, n\xE3o pensei que fosse preciso repetir isto."
   typingSpeed: 0.05
   autoProgressLines: 01010101
-  autoProgressDelay: 1.2
+  autoProgressDelay: 1.5
   adicionarProgresso: 0

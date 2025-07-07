@@ -15,7 +15,7 @@ MonoBehaviour:
   npcName: 
   npcPortrait: {fileID: 0}
   dialogueLines:
-  - "\xD3timo"
+  - "\xD3timo!"
   - Aquele maldito vai se arrepender de me ter punido.
   - HAHAHAHAHAHAHA!
   typingSpeed: 0.05

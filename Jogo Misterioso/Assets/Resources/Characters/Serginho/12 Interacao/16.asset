@@ -16,9 +16,9 @@ MonoBehaviour:
   npcPortrait: {fileID: 2769756059955125311, guid: 36831a08130afa141bdfa467bc0410a6, type: 3}
   dialogueLines:
   - Depois eu queria mostrar as minhas tintas aos engenheiros.
-  - "Acabei por deix\xE1-las cair em cima da est\xE1tua do Cam\xF5es, por estar b\xEAbado."
+  - "Acabei por deix\xE1-las cair em cima da est\xE1tua do Cam\xF5es."
   - "Ent\xE3o a minha primeira rea\xE7\xE3o foi evacuar o lugar com a est\xE1tua."
-  - "Por isso peguei na est\xE1tua e escondia ao p\xE9 da janela no corredor de engenharia."
+  - "Por isso peguei na est\xE1tua e escondia..."
   - "E agora fui apanhado aqui, onde estava a acabar de limpar a est\xE1tua para
     a devolver."
   - "Eu n\xE3o fiz nada por m\xE1 inten\xE7\xE3o caloira..."

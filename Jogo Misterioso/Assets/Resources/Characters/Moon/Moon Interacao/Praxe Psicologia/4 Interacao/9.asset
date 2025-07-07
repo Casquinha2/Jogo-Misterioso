@@ -15,7 +15,7 @@ MonoBehaviour:
   npcName: 
   npcPortrait: {fileID: 5364273658523971450, guid: a2f2fc11c0d31324aad396070a8f9d50, type: 3}
   dialogueLines:
-  - '*Recebeste a chave para a porta da sala 62*'
+  - '*Recebeste a chave para a porta da sala 82.*'
   typingSpeed: 0.05
   autoProgressLines: 01
   autoProgressDelay: 1.2

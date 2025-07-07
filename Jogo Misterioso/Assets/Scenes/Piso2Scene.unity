@@ -22176,7 +22176,7 @@ MonoBehaviour:
   itemPrefab: {fileID: 3916728836493421532, guid: 37eef78000562054ab6fc3f1f2989fbc, type: 3}
   nameMapBound: 82
   telaCarregamento: 0
-  coordenadas: {x: 96.93, y: 69.7}
+  coordenadas: {x: 97.2, y: 69.67}
 --- !u!1 &2016483638
 GameObject:
   m_ObjectHideFlags: 0
