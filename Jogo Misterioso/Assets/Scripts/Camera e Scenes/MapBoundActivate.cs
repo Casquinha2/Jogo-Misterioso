@@ -15,7 +15,7 @@ public class MapBoundActivate : MonoBehaviour
             allChildren.Add(child.gameObject);
     }
 
-    void Start()
+    public void Start()
     {
         foreach (GameObject i in deactivate)
         {
@@ -52,7 +52,11 @@ public class MapBoundActivate : MonoBehaviour
     {
         foreach (GameObject child in deactivate)
         {
-            if ((child.name == "CorredorPsicologia_Waypoint" || child.name == "82_Waypoint") && progress == 6)
+            if (child.name == "Corredor62_Waypoint" && progress >= 1)
+            {
+                child.SetActive(true);
+            }
+            if ((child.name == "CorredorPsicologia_Waypoint" || child.name == "82_Waypoint") && progress >= 6)
             {
                 child.SetActive(true);
             }
@@ -60,11 +64,11 @@ public class MapBoundActivate : MonoBehaviour
             {
                 child.SetActive(false);
             }
-            else if (child.name == "CorredorBiblioteca_Waypoint" && progress == 9)
+            else if (child.name == "CorredorBiblioteca_Waypoint" && progress >= 9)
             {
                 child.SetActive(true);
             }
-            else if (child.name == "Corredor63_Waypoint" && progress == 13)
+            else if (child.name == "Corredor63_Waypoint" && progress >= 13)
             {
                 child.SetActive(true);
             }

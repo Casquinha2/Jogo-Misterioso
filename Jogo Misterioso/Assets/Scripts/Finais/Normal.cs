@@ -6,12 +6,12 @@ public class Normal : MonoBehaviour
     [SerializeField] private Progress progress;
 
     [SerializeField] private Canvas escolha;
-    [SerializeField] private Canvas fim;
+    [SerializeField] private GameObject fim;
 
     void Start()
     {
         escolha.gameObject.SetActive(false);
-        fim.gameObject.SetActive(false);
+        fim.SetActive(false);
     }
     public void Final()
     {
@@ -22,7 +22,7 @@ public class Normal : MonoBehaviour
     public void Acabar()
     {
         escolha.gameObject.SetActive(false);
-        fim.gameObject.SetActive(true);
+        fim.SetActive(true);
     }
 
     public void ExitGame()
@@ -38,7 +38,7 @@ public class Normal : MonoBehaviour
 
     public void Restart()
     {
-        fim.gameObject.SetActive(false);
+        fim.SetActive(false);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

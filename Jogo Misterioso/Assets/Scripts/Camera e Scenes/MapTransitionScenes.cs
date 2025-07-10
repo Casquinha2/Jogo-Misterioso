@@ -33,7 +33,13 @@ public class MapTransitionScenes : MonoBehaviour
     [SerializeField] float seconds = 0.5f;
 
 
-
+    void OnEnable()
+    {
+        if (confiner == null)
+        {
+            confiner = virtualCamera.GetComponent<CinemachineConfiner2D>();
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

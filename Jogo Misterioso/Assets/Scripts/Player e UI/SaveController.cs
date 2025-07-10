@@ -15,6 +15,7 @@ public class SaveController : MonoBehaviour
     [SerializeField] private Progress progress;
     [SerializeField] private GameObject settingsMenu;
     [SerializeField] private GameObject loadingScreen;
+    [SerializeField] private MapBoundActivate mapBoundActivate;
 
     void Start()
     {
@@ -28,13 +29,15 @@ public class SaveController : MonoBehaviour
     {
         var saveData = new SaveData
         {
-            playerPosition    = GameObject.FindWithTag("Player").transform.position,
-            mapBoundary       = FindFirstObjectByType<CinemachineConfiner2D>()
+            playerPosition = GameObject.FindWithTag("Player").transform.position,
+            mapBoundary = FindFirstObjectByType<CinemachineConfiner2D>()
                                    .BoundingShape2D.gameObject.name,
             inventorySaveData = inventoryController.GetInventoryItems(),
-            progressData      = progress.GetProgress(),
-            sceneToLoad       = SceneManager.GetActiveScene().name,
-            solvedPuzzles     = SessionState.solvedPuzzles.ToList()
+            progressData = progress.GetProgress(),
+            sceneToLoad = SceneManager.GetActiveScene().name,
+            solvedPuzzles = SessionState.solvedPuzzles.ToList(),
+            
+            shownDialogues    = WakeUpTracker.Shown.ToList()
         };
         File.WriteAllText(saveLocation, JsonUtility.ToJson(saveData));
     }
@@ -147,6 +150,10 @@ public class SaveController : MonoBehaviour
             Debug.LogError("[ApplySave] MapBoundsRoot ou vCam ausente, pulando Confiner.");
         }
 
+        if (data.shownDialogues != null)
+            WakeUpTracker.Shown = new HashSet<string>(data.shownDialogues);
+
+
         // 7) restaura inventário, progresso e puzzles
         if (inventoryController == null)
             inventoryController = FindFirstObjectByType<InventoryController>();
@@ -175,6 +182,8 @@ public class SaveController : MonoBehaviour
             pm.canMove = true;
         else
             Debug.LogError("[ApplySave] PlayerMovement não encontrado!");
+
+        mapBoundActivate.Start();
 
         Debug.Log("[ApplySave] Cena pronta, tudo configurado.");
     }

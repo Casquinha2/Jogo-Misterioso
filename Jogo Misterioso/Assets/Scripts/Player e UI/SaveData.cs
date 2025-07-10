@@ -12,6 +12,8 @@ public class SaveData
     public string sceneToLoad;
     public List<string> solvedPuzzles;
 
+    public List<string> shownDialogues;
+
 }
 
 

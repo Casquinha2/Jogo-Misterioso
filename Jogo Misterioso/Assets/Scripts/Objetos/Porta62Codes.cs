@@ -28,6 +28,7 @@ public class Porta62Codes : MonoBehaviour
 
     private CinemachineCamera virtualCamera;
     private int totalClicks1, totalClicks2, totalClicks3;
+    
 
     void Awake()
     {

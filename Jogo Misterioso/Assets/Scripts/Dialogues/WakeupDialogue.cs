@@ -10,7 +10,7 @@ public class WakeupDialogue : MonoBehaviour
 
     void Start()
     {
-        // se já mostramos antes, destrói imediatamente
+        // Se já mostramos antes, destrói imediatamente
         if (WakeUpTracker.Shown.Contains(dialogueKey))
         {
             Destroy(gameObject);
@@ -23,13 +23,9 @@ public class WakeupDialogue : MonoBehaviour
 
     IEnumerator DelayedInteractAndSubscribe()
     {
-        // espera um frame para ObjDialogue.Start() rodar e
-        // evitar capturar o cancelamento automático
-        yield return null;
+        yield return null;  // espera ObjDialogue.Start()
 
         objDialogue.Interact();
-
-        // só agora inscreve no evento de fim de diálogo verdadeiro
         ObjDialogue.OnDialogueEnded += HandleEnd;
     }
 
@@ -43,7 +39,7 @@ public class WakeupDialogue : MonoBehaviour
         if (ended != objDialogue) 
             return;
 
-        // marca como mostrado e destrói
+        // Marca como mostrado e destroi
         WakeUpTracker.Shown.Add(dialogueKey);
         Destroy(gameObject);
     }

@@ -1,6 +1,6 @@
-// WakeUpTracker.cs
-using System.Collections.Generic;   // <<< sem isso o HashSet não existe
+using System.Collections.Generic;
 public static class WakeUpTracker
 {
-    public static readonly HashSet<string> Shown = new HashSet<string>();
+    // Inicializa vazio no início do jogo
+    public static HashSet<string> Shown { get; set; } = new HashSet<string>();
 }

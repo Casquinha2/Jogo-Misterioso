@@ -3,15 +3,15 @@ using UnityEngine.SceneManagement;
 
 public class Preguicoso : MonoBehaviour
 {
-    public Canvas canvas;
+    public GameObject canvas;
     void Awake()
     {
-        canvas.gameObject.SetActive(false);
+        canvas.SetActive(false);
     }
 
     public void Restart()
     {
-        canvas.gameObject.SetActive(false);
+        canvas.SetActive(false);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     public void ExitGame()

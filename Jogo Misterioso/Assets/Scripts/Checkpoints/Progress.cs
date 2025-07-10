@@ -390,6 +390,14 @@ public class Progress : MonoBehaviour
         if (progress == -1)
         {
             manchas.SetActive(false);
+            foreach (Transform child in bondoso)
+            {
+                GameObject i = child.gameObject;
+                if (i.name == "MuralFim")
+                {
+                    i.SetActive(false);
+                }    
+            }
         }
         else if (progress == 13)
         {
@@ -400,7 +408,6 @@ public class Progress : MonoBehaviour
         {
             normal.Final();
         }
-
         if (progress == 15)
         {
             bondosoScript.DesligarLuz();

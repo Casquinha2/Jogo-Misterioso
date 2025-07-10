@@ -40365,7 +40365,7 @@ GameObject:
   - component: {fileID: 1857045416}
   - component: {fileID: 1857045415}
   m_Layer: 0
-  m_Name: "Vaso ca\xEDdo"
+  m_Name: Vaso caido
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
