@@ -6,6 +6,8 @@ public class TabController : MonoBehaviour
 {
     public TextMeshProUGUI[] tabText;
     public GameObject[] pages;
+
+    [SerializeField] private SaveController saveController;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -43,8 +45,10 @@ public class TabController : MonoBehaviour
 
     void ExitGame()
     {
+        saveController.SaveGame();
+        
         #if (UNITY_EDITOR)
-            UnityEditor.EditorApplication.isPlaying = false;
+        UnityEditor.EditorApplication.isPlaying = false;
         #elif (UNITY_STANDALONE)
             Application.Quit();
         #elif (Unity_WEBGL)
